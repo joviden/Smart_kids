@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string name="app_name">Умные дети</string>
+    <string name="girisBtn">входить</string>
+    <string name="karsilamametin">умные дети начинают!!!</string>
+
+    <string name="konulartoplama">суммирование</string>
+    <string name="konularcikarma">вычитание</string>
+    <string name="konularcarpma">умножение</string>
+    <string name="konularbolme">разделение</string>
+    <string name="konularritmik">считающий</string>
+    <string name="konularbuyukkucuk">большая меньший</string>
+    <string name="konulartekcift">нечетное/четное</string>
+    <string name="questionfordivision">Найдите правильный ответ подразделения.</string>
+    <string name="questionformultipication">Найдите правильный ответ умножения.</string>
+    <string name="questionforaddition">Найдите правильный ответ добавления.</string>
+    <string name="questionforsubtraction">Найдите правильный ответ на вычитание.</string>
+    <string name="questionforbuyukkucuk">Перетащите их в порядке убывания.</string>
+    <string name="questionforritmik">Заполните пробел правильным номером.</string>
+    <string name="questionforoddeven">Взрывайте воздушные шары, у которых есть даже цифры за 30 секунд!</string>
+    <string name="totalquestion">Общий вопрос: </string>
+    <string name="rightanswers">Правильные ответы: </string>
+    <string name="wronganswers">Неправильные ответы: </string>
+    <string name="unanswered">Неотвеченный вопрос: </string>
+    <string name="totalpoints">"Общее количество очков:"</string>
+    <string name="backtokonular">Назад к урокам</string>
+    <string name="choosedifficulty">Выберите Уровень сложности</string>
+    <string name="easy">Легко</string>
+    <string name="moderate">умеренный</string>
+    <string name="hard">Жесткий</string>
+    <string name="testibitir">испытание на завершение</string>
+    <string name="skor">счет</string>
+    <string name="sonrakisoru">Следующий вопрос</string>
+    <string name="cevapla">ответ</string>
+    <string name="eksilt">уменьшить</string>
+    <string name="artır">увеличивать</string>
+    <string name="toplambalon">Всего шар:</string>
+    <string name="patlatilanbalon">Воздушный шар:</string>
+    <string name="dogrubalon">Правый шар: </string>
+    <string name="hatalibalon">Неправильный шар: </string>
+    <string name="tekraroyna">играть снова</string>
+    <string name="basla">Начало</string>
+    <string name="cikis">Выход</string>
+    <string name="sure">время </string>
+    <string name="exitapp">нажмите, чтобы выйти!</string>
+    <string name="toasttumsayılarıyerlestir">Поместите все цифры в коробки!</string>
+    <string name="toasthicsorucevaplamadın">Вы еще не отметили вопрос!</string>
+    <string name="totalquestionh">"вопрос:"</string>
+    <string name="rightanswersh">"Правый:"</string>
+    <string name="wronganswersh">"Неправильный: "</string>
+    <string name="patlatilanbalonh">шар:</string>
+    <string name="dogrubalonh">Правый:</string>
+    <string name="hatalibalonh">Неправильный:</string>
+    <string name="basari">успех</string>
+    <string name="bolumpuani">счет:</string>
+    <string name="simetrysoru">Нарисуйте симметрию формы, показанной с левой стороны вправо, в соответствии с осью симметрии.</string>
+    <string name="questionleft">вопрос</string>
+    <string name="quittoast">Пожалуйста, нажмите Finish Test, чтобы выйти</string>
+    <string name="simetry">симметрия</string>
+    <string name="rateapp">Оцените это приложение, если вам понравилось! Для меня было бы большой мотивацией для разработки лучших приложений! Спасибо!</string>
+
+
+
+</resources>
+

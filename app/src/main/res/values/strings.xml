@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Smart Kids</string>
+    <string name="girisBtn">enter</string>
+    <string name="karsilamametin">SmArT KiDs StaRtiNg!!!</string>
+
+    <string name="konulartoplama">summation</string>
+    <string name="konularcikarma">subtraction</string>
+    <string name="konularcarpma">multiplication</string>
+    <string name="konularbolme">division</string>
+    <string name="konularbuyukkucuk">greater/lesser</string>
+    <string name="questionfordivision">Find the right answer for the division.</string>
+    <string name="totalquestion">"Total Question: "</string>
+    <string name="rightanswers">"Right Answers: "</string>
+    <string name="wronganswers">"Wrong Answers: "</string>
+    <string name="unanswered">"Unanswered: "</string>
+    <string name="totalpoints">"Total Points: "</string>
+    <string name="backtokonular">back to lessons</string>
+    <string name="choosedifficulty">Choose Difficulty Level</string>
+    <string name="easy">easy</string>
+    <string name="moderate">moderate</string>
+    <string name="hard">hard</string>
+    <string name="testibitir">finish test</string>
+    <string name="skor">score</string>
+    <string name="sonrakisoru">next question</string>
+    <string name="questionformultipication">Find the right answer for the  multiplication.</string>
+    <string name="questionforaddition">Find the right answer for the  summation.</string>
+    <string name="questionforsubtraction">Find the right answer for the  subtraction.</string>
+    <string name="questionforbuyukkucuk">Drag these numbers into Descending order.</string>
+    <string name="cevapla">answer</string>
+    <string name="questionforritmik">Fill the blank with the correct number.</string>
+    <string name="eksilt">decrease</string>
+    <string name="artır">increase</string>
+    <string name="questionforoddeven">Pop the balloons which have even numbers in 30 seconds!</string>
+    <string name="toplambalon">Total Balloons: </string>
+    <string name="patlatilanbalon">Popped Balloons: </string>
+    <string name="dogrubalon">Correct Balloons: </string>
+    <string name="hatalibalon">Wrong Balloons: </string>
+    <string name="tekraroyna">play again</string>
+    <string name="basla">start</string>
+    <string name="cikis">exit</string>
+    <string name="sure">time</string>
+    <string name="toasttumsayılarıyerlestir">Drag all the numbers on boxes!</string>
+    <string name="toasthicsorucevaplamadın">You have not marked any question yet!</string>
+    <string name="exitapp">click to exit!</string>
+    <string name="totalquestionh">"Question: "</string>
+    <string name="rightanswersh">"True: "</string>
+    <string name="wronganswersh">"False: "</string>
+    <string name="patlatilanbalonh">Balloons: </string>
+    <string name="dogrubalonh">Correct: </string>
+    <string name="hatalibalonh">Wrong: </string>
+    <string name="konularritmik">serials</string>
+    <string name="konularbaslik">Funny Math</string>
+    <string name="konulartekcift">odd / even </string>
+    <string name="basari">Success</string>
+    <string name="bolumpuani">Score:</string>
+    <string name="simetrysoru">Draw the symmetry of the shape shown on the left side to the right side, according to the axis of symmetry.</string>
+    <string name="questionleft">question</string>
+    <string name="quittoast">Please click Finish Test to exit!</string>
+    <string name="simetry">symmetry</string>
+    <string name="disclaimer">Disclaimer
+FAIR USE NOTICE. \n The Application of SmartKids may contain copyrighted material (images,gifs, videos etc.) the use of which may not always be specifically authorized by the copyright owner. \n
+        This constitutes a “fair use” of any such copyrighted material as we are providing small and insignificant proportion of the works available for math learning (Educational) purposes within the scope of United States Copyright Law, Section 107. \n
+
+All original works belong to their respective owners. This application was established solely for transformative, educational purposes, and no way intends to infringe on the copyrights or business of any individual or corporation. SmartKids do not sell these materials or distribute them, and access to all learning content is completely free of charge.  SmartKids use a comparatively small proportion of the original works and our service does not impinge on the potential market for or value of the works. Furthermore, by using content for instruction, SmartKidsbenefits the entitled parties and their distributors and provides links to where the original content can be purchased in its entirety from legitimate sources.
+
+The appropriate accreditation is given to respective owners. Copying or redistributing any of the copyrighted material on this website is strictly forbidden. \n
+
+If you have a complaint about something or believe your content is being used incorrectly, Please contact with developer. \n
+
+For more information on “fair use”, please refer to: United States Code: Title 17, Section 107, http://www.copyright.gov/title17/92chap1.html#107. \n
+
+For all inquiries please write to salginerdem@gmail.com.</string>
+
+
+    <string name="rateapp">Please rate this app by tapping this button! It would be a great motivation for me to design better apps!!! Thank you!</string>
+
+
+
+
+
+</resources>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Niños Inteligentes</string>
+    <string name="girisBtn">entrar</string>
+    <string name="karsilamametin">Inicio Inteligente de Niños!!!</string>
+    <string name="konulartoplama">suma</string>
+    <string name="konularcikarma">sustracción</string>
+    <string name="konularcarpma">multiplicación</string>
+    <string name="konularbolme">división</string>
+    <string name="konularritmik">conteo rítmico</string>
+    <string name="konularbuyukkucuk">mayor / menor</string>
+    <string name="konulartekcift">impares/pares</string>
+    <string name="questionfordivision">Encuentra la respuesta correcta para la división?</string>
+    <string name="totalquestion">"Pregunta total: "</string>
+    <string name="rightanswers">"Right Answers: "</string>
+    <string name="wronganswers">"Respuestas correctas:"</string>
+    <string name="unanswered">"Incontestado: "</string>
+    <string name="totalpoints">"Puntos totales"</string>
+    <string name="backtokonular">volver a las lecciones</string>
+    <string name="choosedifficulty">Elige nivel de dificultad</string>
+    <string name="easy">fácil</string>
+    <string name="moderate">moderar</string>
+    <string name="hard">difícil</string>
+    <string name="testibitir">terminar la prueba</string>
+    <string name="skor">puntuación</string>
+    <string name="sonrakisoru">próxima pregunta</string>
+    <string name="questionformultipication">Encuentre la respuesta correcta para la multiplicación?</string>
+    <string name="questionforaddition">Encuentra la respuesta correcta para la suma?</string>
+    <string name="questionforsubtraction">Encuentra la respuesta correcta para la resta?</string>
+    <string name="questionforbuyukkucuk">Arrastra estos números en orden Descendente.</string>
+    <string name="cevapla">responder</string>
+    <string name="questionforritmik">Llene el espacio en blanco con el número correcto.</string>
+    <string name="eksilt">disminución</string>
+    <string name="artır">incrementar</string>
+    <string name="questionforoddeven">Explosión de los globos que tienen números pares en 30 segundos!</string>
+    <string name="toplambalon">Globos Totales:</string>
+    <string name="patlatilanbalon">Globo Estallado:</string>
+    <string name="dogrubalon">Corregir Globos</string>
+    <string name="hatalibalon">Globos Equivocados</string>
+    <string name="tekraroyna">juega de nuevo</string>
+    <string name="basla">comienzo</string>
+    <string name="cikis">salida</string>
+    <string name="sure">hora</string>
+    <string name="toasttumsayılarıyerlestir">¡Arrastra todos los números en cajas!</string>
+    <string name="toasthicsorucevaplamadın">¡Aún no has marcado ninguna pregunta!</string>
+    <string name="exitapp">haga clic para salir!</string>
+    <string name="totalquestionh">"Pregunta:"</string>
+    <string name="rightanswersh">"Correcto:"</string>
+    <string name="wronganswersh">"Falso:"</string>
+    <string name="patlatilanbalonh">Globos:</string>
+    <string name="dogrubalonh">Correcto:</string>
+    <string name="hatalibalonh">Falso:</string>
+    <string name="basari">Éxito</string>
+    <string name="bolumpuani">Puntos:</string>
+    <string name="simetrysoru">Dibuje la simetría de la forma que se muestra en el lado izquierdo a la derecha según el eje de simetría.</string>
+    <string name="questionleft">pregunta</string>
+    <string name="quittoast">Haga clic en Finalizar prueba para salir!</string>
+    <string name="simetry">simetría</string>
+    <string name="rateapp">Por favor califique esta aplicación si le gustó!\nSería una gran motivación para mí diseñar mejores aplicaciones!\n Gracias!</string>
+
+
+</resources>

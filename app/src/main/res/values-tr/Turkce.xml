@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string name="app_name">Akıllı Çocuklar</string>
+    <string name="girisBtn">giris</string>
+    <string name="karsilamametin">Akıllı Çocuklar Baslıyor!!!</string>
+    <string name="konulartoplama">toplama</string>
+    <string name="konularcikarma">çıkarma</string>
+    <string name="konularcarpma">çarpma</string>
+    <string name="konularbolme">bölme</string>
+    <string name="konularritmik">ritmik sayma</string>
+    <string name="konularbuyukkucuk">büyük kücük</string>
+    <string name="konulartekcift">tek / çift </string>
+    <string name="questionfordivision">Bölme işleminin sonucu hangisidir?</string>
+    <string name="questionformultipication">Çarpma işleminin sonucu hangisidir?</string>
+    <string name="questionforaddition">Toplama işleminin sonucu hangisidir?</string>
+    <string name="questionforsubtraction">Çıkarma işleminin sonucu hangisidir?</string>
+    <string name="questionforbuyukkucuk">Yukarıdaki sayıları Büyükten Küçüğe taşıyınız.</string>
+    <string name="questionforritmik">Boş bırakılan yere hangi sayı gelmelidir?</string>
+    <string name="questionforoddeven">Üzerinde ÇİFT sayı bulunan balonları patlat!!!</string>
+    <string name="totalquestion">Toplam Soru: </string>
+    <string name="rightanswers">Doğru Sayısı: </string>
+    <string name="wronganswers">Yanliş Sayısı: </string>
+    <string name="unanswered">Boş: </string>
+    <string name="totalpoints">"Toplam Puan:  "</string>
+    <string name="backtokonular">konulara dön</string>
+    <string name="choosedifficulty">Zorluk Derecesi Seçiniz</string>
+    <string name="easy">kolay</string>
+    <string name="moderate">orta</string>
+    <string name="hard">zor</string>
+    <string name="testibitir">testi bitir</string>
+    <string name="skor">skor</string>
+    <string name="sonrakisoru">sonraki soru</string>
+    <string name="cevapla">cevapla</string>
+    <string name="eksilt">eksilt</string>
+    <string name="artır">artır</string>
+    <string name="toplambalon">Toplam Balon:</string>
+    <string name="patlatilanbalon">Patlatılan Balon:</string>
+    <string name="dogrubalon">Dogru Balon: </string>
+    <string name="hatalibalon">Hatali Balon: </string>
+    <string name="tekraroyna">tekrar oyna</string>
+    <string name="basla">başla</string>
+    <string name="cikis">çıkış</string>
+    <string name="sure">süre </string>
+    <string name="exitapp">cikmak icin bas!</string>
+    <string name="toasttumsayılarıyerlestir">Tüm sayıları yerleştir!</string>
+    <string name="toasthicsorucevaplamadın">Hiç soru çözmedin!</string>
+    <string name="totalquestionh">"Soru:"</string>
+    <string name="rightanswersh">"Doğru:"</string>
+    <string name="wronganswersh">"Yanlış:"</string>
+    <string name="patlatilanbalonh">Balon:</string>
+    <string name="dogrubalonh">Doğru:</string>
+    <string name="hatalibalonh">Yanlış:</string>
+    <string name="basari">Başarı:</string>
+    <string name="bolumpuani">Skor:</string>
+    <string name="simetrysoru">Sol tarafta gösterilen şeklin simetriğini, simetri eksenine göre sağ tarafa çiziniz.</string>
+    <string name="questionleft">soru</string>
+    <string name="quittoast">Çıkmak için Testi Bitir butonuna dokunun!</string>
+    <string name="simetry">simetri</string>
+
+    <string name="rateapp">Uygulamamı beğendiyseniz tiklayarak 5 yıldız verebilirsiniz! Daha iyi uygulamalar yapmak için en büyük motivasyon kaynağım yapacağınız yorumlardır! Teşekkürler!</string>
+
+
+
+</resources>
+

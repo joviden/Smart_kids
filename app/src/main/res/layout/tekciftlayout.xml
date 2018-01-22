@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/holo_orange_dark">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/tekciftbackground"
+            android:id="@+id/baslatlayout"
+
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/sorumetinTxv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:textColor="#292b2b"
+                android:background="#e7cc75"
+                android:text="@string/questionforoddeven"
+                android:layout_above="@id/yurut"
+                android:layout_marginBottom="20dp"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/yurut"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:onClick="basla"
+                android:fontFamily="casual"
+                android:layout_marginBottom="60dp"
+                android:background="@drawable/siklarclicked"
+                android:text="@string/basla"
+                android:textStyle="bold"
+                android:textAllCaps="false"/>
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:id="@+id/sonuclarlayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/holo_orange_dark"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:gravity="center_horizontal">
+
+            <pl.droidsonroids.gif.GifImageView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/funnymath"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="40dp" />
+
+            <TextView
+                android:id="@+id/toplambalonTxtv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:fontFamily="casual"
+                android:padding="4dp"
+                android:text="@string/toplambalon"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/patlatılanbalonTxtv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:fontFamily="casual"
+                android:padding="4dp"
+                android:text="@string/patlatilanbalon"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/dogrubalonTxtv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:fontFamily="casual"
+                android:padding="4dp"
+                android:text="@string/dogrubalon"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/hatalibalonTxtv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:fontFamily="casual"
+                android:padding="4dp"
+                android:text="@string/hatalibalon"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/toplampuanTxtv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:fontFamily="casual"
+                android:padding="4dp"
+                android:text="@string/totalpoints"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+
+            <Button
+                android:id="@+id/tekraroynaBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/siklar"
+                android:fontFamily="casual"
+                android:onClick="tekraroyna"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="6dp"
+                android:layout_margin="10dp"
+                android:text="@string/tekraroyna"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                />
+            <Button
+                android:id="@+id/testcikisBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/siklar"
+                android:layout_margin="20dp"
+                android:fontFamily="casual"
+                android:onClick="konularadon"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="6dp"
+                android:text="@string/backtokonular"
+                android:enabled="false"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+
+
+        <RelativeLayout
+            android:id="@+id/boardlayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            android:layout_marginHorizontal="3dp"
+            android:visibility="visible"
+            android:paddingHorizontal="3dp"
+            android:background="@drawable/tekciftbackground1">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="6dp"
+                android:layout_alignParentTop="true">
+
+
+                <Button
+                    android:id="@+id/cikisBtn"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="20dp"
+                    android:fontFamily="casual"
+                    android:textAllCaps="false"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:background="@drawable/exit"
+                    android:layout_below="@id/skorTxv"/>
+                <TextView
+                    android:id="@+id/skorTxv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_centerHorizontal="true"
+                    android:paddingHorizontal="70dp"
+                    android:paddingVertical="6dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/skor"
+                    android:fontFamily="casual"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:background="@drawable/siklarclicked"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true">
+
+                <TextView
+                    android:id="@+id/sureTxtv"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/sure"
+                    android:fontFamily="casual"
+                    android:textAlignment="center"
+                    android:textSize="40sp"
+                    android:textStyle="bold" />
+
+
+                <Button
+                    android:id="@+id/balonview1"
+                    android:layout_width="60dp"
+                    android:layout_height="80dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:onClick="patlat1"
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/balonview2"
+                    android:layout_width="60dp"
+                    android:layout_height="80dp"
+                    android:layout_alignParentBottom="true"
+                    android:textSize="20sp"
+                    android:onClick="patlat2"
+                    android:layout_margin="0dp"
+                    android:padding="0dp"
+                    android:layout_toRightOf="@id/balonview1"
+
+                    android:textAlignment="center"/>
+
+                <Button
+                    android:id="@+id/balonview3"
+                    android:layout_width="60dp"
+                    android:layout_height="80dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_toRightOf="@id/balonview2"
+                    android:textSize="20sp"
+                    android:onClick="patlat3"
+                    android:layout_margin="0dp"
+                    android:padding="0dp"
+                    android:textAlignment="center"/>
+
+                <Button
+                    android:id="@+id/balonview4"
+                    android:layout_width="60dp"
+                    android:layout_height="80dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_toRightOf="@id/balonview3"
+                    android:textSize="20sp"
+                    android:onClick="patlat4"
+                    android:layout_margin="0dp"
+                    android:padding="0dp"
+                    android:textAlignment="center"/>
+
+                <Button
+                    android:id="@+id/balonview5"
+                    android:layout_width="60dp"
+                    android:layout_height="80dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_margin="0dp"
+                    android:padding="0dp"
+                    android:textSize="20sp"
+                    android:onClick="patlat5"
+                    android:layout_toRightOf="@id/balonview4"/>
+                <Button
+                    android:id="@+id/balonview6"
+                    android:layout_width="60dp"
+                    android:layout_height="80dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:textSize="20sp"
+                    android:onClick="patlat6"
+                    android:textAlignment="center"/>
+
+                <Button
+                    android:id="@+id/balonview7"
+                    android:layout_width="60dp"
+                    android:layout_height="80dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_toRightOf="@id/balonview1"
+                    android:textSize="20sp"
+                    android:onClick="patlat7"
+                    android:textAlignment="center"/>
+
+                <Button
+                    android:id="@+id/balonview8"
+                    android:layout_width="60dp"
+                    android:layout_height="80dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_toRightOf="@id/balonview2"
+                    android:textSize="20sp"
+                    android:onClick="patlat8"
+                    android:textAlignment="center"/>
+
+                <Button
+                    android:id="@+id/balonview9"
+                    android:layout_width="60dp"
+                    android:layout_height="80dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_toRightOf="@id/balonview3"
+                    android:textSize="20sp"
+                    android:onClick="patlat9"
+                    android:textAlignment="center"/>
+
+                <Button
+                    android:id="@+id/balonview10"
+                    android:layout_width="60dp"
+                    android:layout_height="80dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_toRightOf="@id/balonview4"
+                    android:textSize="20sp"
+                    android:onClick="patlat10"
+                    android:textAlignment="center"/>
+
+
+
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+
+        <com.google.android.gms.ads.AdView
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            ads:adSize="SMART_BANNER"
+            ads:adUnitId="ca-app-pub-4100535460120599/3198494746">
+        </com.google.android.gms.ads.AdView>
+
+    </RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</android.support.constraint.ConstraintLayout>

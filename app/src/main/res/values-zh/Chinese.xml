@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">聪明的孩子</string>
+    <string name="girisBtn">enter</string>
+    <string name="karsilamametin">输入</string>
+    <string name="konularbaslik">2类数学</string>
+    <string name="konulartoplama">合计</string>
+    <string name="konularcikarma">减法</string>
+    <string name="konularcarpma">乘法</string>
+    <string name="konularbolme">师</string>
+    <string name="konularritmik">有节奏的计数</string>
+    <string name="konularbuyukkucuk">更大 / 较小</string>
+    <string name="konulartekcift">奇数/偶数</string>
+    <string name="questionfordivision">找到正确的答案。</string>
+    <string name="totalquestion">"总问题："</string>
+    <string name="rightanswers">"正确答案： "</string>
+    <string name="wronganswers">"错误的答案： "</string>
+    <string name="unanswered">"解答： "</string>
+    <string name="totalpoints">"总积分： "</string>
+    <string name="backtokonular">回到课程</string>
+    <string name="choosedifficulty">选择难度级别</string>
+    <string name="easy">简单</string>
+    <string name="moderate">中等</string>
+    <string name="hard">硬</string>
+    <string name="testibitir">完成测试</string>
+    <string name="skor">得分了</string>
+    <string name="sonrakisoru">下一个问题</string>
+    <string name="questionformultipication">找到乘法的正确答案.</string>
+    <string name="questionforaddition">为求和找到正确的答案。</string>
+    <string name="questionforsubtraction">找到减法的正确答案。</string>
+    <string name="questionforbuyukkucuk">将这些数字按降序排列。</string>
+    <string name="cevapla">回答</string>
+    <string name="questionforritmik">用正确的数字填充空白。</string>
+    <string name="eksilt">减少</string>
+    <string name="artır">增加</string>
+    <string name="questionforoddeven">在30秒内爆炸有偶数的气球！</string>
+    <string name="toplambalon">总气球： </string>
+    <string name="patlatilanbalon">诅咒气球： </string>
+    <string name="dogrubalon">正确的气球： </string>
+    <string name="hatalibalon">错误的气球： </string>
+    <string name="tekraroyna">再玩一次</string>
+    <string name="basla">开始</string>
+    <string name="cikis">出口</string>
+    <string name="sure">时间</string>
+    <string name="toasttumsayılarıyerlestir">把所有的数字拖到盒子上！</string>
+    <string name="toasthicsorucevaplamadın">你还没有标记任何问题！</string>
+    <string name="exitapp">点击退出！</string>
+    <string name="totalquestionh">"题:"</string>
+    <string name="rightanswersh">"权:"</string>
+    <string name="wronganswersh">"假:"</string>
+    <string name="patlatilanbalonh">气球:</string>
+    <string name="dogrubalonh">权:</string>
+    <string name="hatalibalonh">假:</string>
+    <string name="basari">成功</string>
+    <string name="bolumpuani">比分:</string>
+    <string name="simetrysoru">根据对称轴画出左侧所示形状的对称性。</string>
+    <string name="questionleft">题</string>
+    <string name="quittoast">请点击完成测试退出！</string>
+    <string name="simetry">对称</string>
+    <string name="rateapp">请评价这个应用程序，如果你喜欢它！ 这将是一个伟大的动机，我设计更好的应用程序！ 谢谢！</string>
+
+
+</resources>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Kluge Kinder</string>
+    <string name="girisBtn">eintreten</string>
+    <string name="karsilamametin">Smart Kids Starten!!!</string>
+    <string name="konulartoplama">Summe</string>
+    <string name="konularcikarma">subtraktion</string>
+    <string name="konularcarpma">multiplikation</string>
+    <string name="konularbolme">aufteilung</string>
+    <string name="konularbuyukkucuk">größer / kleiner</string>
+    <string name="questionfordivision">Finden Sie die richtige Antwort für die Division.</string>
+    <string name="totalquestion">"Gesamtfrage: "</string>
+    <string name="rightanswers">"Richtige Antworten: "</string>
+    <string name="wronganswers">"Falsche Antworten:"</string>
+    <string name="unanswered">"Unbeantwortet: "</string>
+    <string name="totalpoints">"Gesamtpunktzahl:"</string>
+    <string name="backtokonular">zurück zu den Lektionen</string>
+    <string name="choosedifficulty">Wählen Sie Schwierigkeitsgrad</string>
+    <string name="easy">einfach</string>
+    <string name="moderate">mäßig</string>
+    <string name="hard">hart</string>
+    <string name="testibitir">abschlusstest</string>
+    <string name="skor">ergebnis</string>
+    <string name="sonrakisoru">nächste Frage</string>
+    <string name="questionformultipication">Finde die richtige Antwort für die Multiplikation.</string>
+    <string name="questionforaddition">Finden Sie die richtige Antwort für die Zusammenfassung.</string>
+    <string name="questionforsubtraction">Finde die richtige Antwort für die Subtraktion.</string>
+    <string name="questionforbuyukkucuk">Ziehen Sie diese Zahlen in absteigende Reihenfolge.</string>
+    <string name="cevapla">antworten</string>
+    <string name="questionforritmik">Füllen Sie das Feld mit der richtigen Nummer aus.</string>
+    <string name="eksilt">verringern</string>
+    <string name="artır">erhöhen</string>
+    <string name="questionforoddeven">Sprengen Sie die Ballons mit geraden Zahlen in 30 Sekunden!</string>
+    <string name="toplambalon">Gesamtballons: </string>
+    <string name="patlatilanbalon">Gestrahlte Luftballons: </string>
+    <string name="dogrubalon">Korrekte Ballons: </string>
+    <string name="hatalibalon">Falsche Ballons: </string>
+    <string name="tekraroyna">spiel nochmal</string>
+    <string name="basla">start</string>
+    <string name="cikis">exit</string>
+    <string name="sure">zeit</string>
+    <string name="toasttumsayılarıyerlestir">Ziehe alle Zahlen auf Boxen!</string>
+    <string name="toasthicsorucevaplamadın">Du hast noch keine Frage markiert!</string>
+    <string name="exitapp">Tippe zum Beenden</string>
+    <string name="totalquestionh">"Frage:"</string>
+    <string name="rightanswersh">"Richtig:"</string>
+    <string name="wronganswersh">"Falsch:"</string>
+    <string name="patlatilanbalonh">Ballons:</string>
+    <string name="dogrubalonh">Richtig:</string>
+    <string name="hatalibalonh">Falsch:</string>
+    <string name="konularritmik">Zahlenreihe</string>
+    <string name="konulartekcift">gerade/ungerade</string>
+    <string name="basari">Folge</string>
+    <string name="bolumpuani">Ergebnis:</string>
+    <string name="simetrysoru">Zeichnen Sie die Symmetrie der links gezeigten Form entsprechend der Symmetrieachse.</string>
+    <string name="questionleft">Frage</string>
+    <string name="quittoast">Bitte klicken Sie auf Test beenden um zu beenden!</string>
+    <string name="simetry">symmetrie</string>
+    <string name="rateapp">Bitte bewerten Sie diese App, wenn es Ihnen gefallen hat! Es wäre eine große Motivation für mich, bessere Apps zu entwickeln !!! Vielen Dank!</string>
+
+
+</resources>

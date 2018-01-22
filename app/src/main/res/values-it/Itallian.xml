@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Bambini Intelligenti</string>
+    <string name="girisBtn">accedere</string>
+    <string name="karsilamametin">Ragazzi Intelligenti che Iniziano!!!</string>
+    <string name="konulartoplama">somma</string>
+    <string name="konularcikarma">sottrazione</string>
+    <string name="konularcarpma">moltiplicazione</string>
+    <string name="konularbolme">divisione</string>
+    <string name="konularritmik">conteggio ritmico</string>
+    <string name="konularbuyukkucuk">maggiore / minore</string>
+    <string name="konulartekcift">dispari/pari</string>
+    <string name="questionfordivision">Trova la risposta giusta per la divisione.</string>
+    <string name="totalquestion">"Questione Totale: "</string>
+    <string name="rightanswers">"Giuste Risposte: "</string>
+    <string name="wronganswers">"Risposte Sbagliate: "</string>
+    <string name="unanswered">"Senza Risposta: "</string>
+    <string name="totalpoints">"Punti Totali:"</string>
+    <string name="backtokonular">ritorno alle lezioni</string>
+    <string name="choosedifficulty">Scegli il livello di difficoltà</string>
+    <string name="easy">facile</string>
+    <string name="moderate">moderare</string>
+    <string name="hard">difficile</string>
+    <string name="testibitir">finire il test</string>
+    <string name="skor">punto</string>
+    <string name="sonrakisoru">prossima domanda</string>
+    <string name="questionformultipication">Trova la risposta giusta per la moltiplicazione.</string>
+    <string name="questionforaddition">Trova la risposta giusta per la sommatoria.</string>
+    <string name="questionforsubtraction">Trova la risposta giusta per la sottrazione.</string>
+    <string name="questionforbuyukkucuk">Trascina questi numeri in ordine decrescente.</string>
+    <string name="cevapla">risposta</string>
+    <string name="questionforritmik">Riempi lo spazio vuoto con il numero corretto.</string>
+    <string name="eksilt">verringern</string>
+    <string name="artır">increase</string>
+    <string name="questionforoddeven">Fai esplodere i palloncini che hanno numeri pari in 30 secondi!</string>
+    <string name="toplambalon">Palloncini Totali: </string>
+    <string name="patlatilanbalon">Palloncini Fatti Saltare: </string>
+    <string name="dogrubalon">Palloncini Corretti: </string>
+    <string name="hatalibalon">Palloncini Sbagliati: </string>
+    <string name="tekraroyna">gioca di nuovo</string>
+    <string name="basla">inizio</string>
+    <string name="cikis">uscire</string>
+    <string name="sure">tempo</string>
+    <string name="toasttumsayılarıyerlestir">Trascina tutti i numeri sulle caselle!</string>
+    <string name="toasthicsorucevaplamadın">Non hai ancora segnato nessuna domanda!</string>
+    <string name="exitapp">tocca per uscire!</string>
+    <string name="totalquestionh">"Questione:"</string>
+    <string name="rightanswersh">"True:"</string>
+    <string name="wronganswersh">"False:"</string>
+    <string name="patlatilanbalonh">Balloons:</string>
+    <string name="dogrubalonh">corretta:</string>
+    <string name="hatalibalonh">sbagliato:</string>
+    <string name="basari">Risultato</string>
+    <string name="bolumpuani">Punto:</string>
+    <string name="simetrysoru">Disegna la simmetria della forma mostrata sul lato sinistro a destra secondo lasse della simmetria.</string>
+    <string name="questionleft">domanda</string>
+    <string name="quittoast">Fare clic su Fine prova per uscire</string>
+    <string name="simetry">simmetria</string>
+    <string name="rateapp">Si prega di valutare questa app se ti è piaciuto! Sarebbe una grande motivazione per me progettare app migliori !!! \n Grazie!</string>
+
+
+</resources>

@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.smartkids.BuyukKucukActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/holo_orange_dark">
+
+
+        <LinearLayout
+            android:id="@+id/sorugovdelayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_orange_dark"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/sorubaslikLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/siklar"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <TextView
+                    android:id="@+id/sorunumarasıTxtv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/sorunumarasi"
+                    android:fontFamily="casual"
+                    android:paddingHorizontal="90dp"
+                    android:paddingVertical="2dp"
+                    android:text="@string/questionleft"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/sayi1arLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+
+                    <TextView
+                        android:id="@+id/sayi1Txtv"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text="10"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:background="@drawable/cevapbtn"
+                        android:textSize="22sp"
+                        android:layout_margin="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/sayi2Txtv"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text="11"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:background="@drawable/cevapbtn"
+                        android:textSize="22sp"
+                        android:layout_margin="5dp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/sayi3Txtv"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text="12"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:background="@drawable/cevapbtn"
+                        android:textSize="22sp"
+                        android:layout_margin="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/sayi4Txtv"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text="13"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:background="@drawable/cevapbtn"
+                        android:textSize="22sp"
+                        android:layout_margin="5dp"
+                        android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/soruTxtv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:paddingHorizontal="2dp"
+                    android:paddingVertical="8dp"
+                    android:text="@string/questionforbuyukkucuk"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/siklarlayout1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/sorubaslikLayout"
+                android:layout_centerHorizontal="true"
+                android:padding="2dp"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/cvp1Txtv"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text="?"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:background="@drawable/sorunumarasi"
+                        android:textSize="22sp"
+                        android:layout_margin="8dp"
+                        android:textStyle="bold" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text=">"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="45sp"
+                    android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/cvp2Txtv"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text="?"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:background="@drawable/sorunumarasi"
+                        android:textSize="22sp"
+                        android:layout_margin="5dp"
+                        android:textStyle="bold" />
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text=">"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="45sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/cvp3Txtv"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text="?"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:background="@drawable/sorunumarasi"
+                        android:textSize="22sp"
+                        android:layout_margin="5dp"
+                        android:textStyle="bold" />
+                     <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text=">"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="45sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/cvp4Txtv"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text="?"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:background="@drawable/sorunumarasi"
+                        android:textSize="22sp"
+                        android:layout_margin="5dp"
+                        android:textStyle="bold" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/siklarlayout2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/siklarlayout1"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/cvpBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginHorizontal="2dp"
+                    android:layout_marginVertical="4dp"
+                    android:background="@drawable/siklar"
+                    android:fontFamily="casual"
+                    android:onClick="cevapla"
+                    android:paddingHorizontal="50dp"
+                    android:text="@string/cevapla"
+                    android:textAllCaps="false"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:id="@+id/sonuclarlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/cikislayout"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="20dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <pl.droidsonroids.gif.GifImageView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/funnymath"
+                android:layout_marginBottom="40dp" />
+
+            <TextView
+                android:id="@+id/sorusayisiTxtv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:gravity="center_vertical"
+                android:padding="4dp"
+                android:text="@string/totalquestion"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:fontFamily="casual"/>
+
+            <TextView
+                android:id="@+id/dogrusayisiTxtv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:gravity="center_vertical"
+                android:padding="4dp"
+                android:text="@string/rightanswers"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:fontFamily="casual"/>
+
+            <TextView
+                android:id="@+id/yanlissayisiTxtv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:gravity="center_vertical"
+                android:padding="4dp"
+                android:text="@string/wronganswers"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:fontFamily="casual" />
+
+            <TextView
+                android:id="@+id/bossayisiTxtv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:gravity="center_vertical"
+                android:padding="4dp"
+                android:text="@string/unanswered"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:fontFamily="casual" />
+
+            <TextView
+                android:id="@+id/toplampuanTxtv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:gravity="center_vertical"
+                android:padding="4dp"
+                android:text="@string/totalpoints"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:fontFamily="casual"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/cikislayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="60dp"
+            android:gravity="center_horizontal"
+            android:layout_above="@id/adView"
+            android:visibility="gone">
+
+            <Button
+                android:id="@+id/testcikisBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/siklar"
+                android:fontFamily="casual"
+                android:layout_marginBottom="20dp"
+                android:onClick="cikis"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="6dp"
+                android:text="@string/backtokonular"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/zorluklayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/basliklayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/holo_orange_dark"
+                android:gravity="center_horizontal">
+
+                <pl.droidsonroids.gif.GifImageView
+                    android:id="@+id/gifRandom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/funnymath" />
+
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/zorlukderecesiBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp"
+                android:layout_marginVertical="40dp"
+                android:background="@drawable/nextbuttongroup"
+                android:fontFamily="casual"
+                android:paddingHorizontal="20dp"
+                android:text="@string/choosedifficulty"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/kolayBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:background="@drawable/siklarclicked"
+                android:fontFamily="casual"
+                android:onClick="kolay"
+                android:paddingHorizontal="20dp"
+                android:text="@string/easy"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/ortaBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:background="@drawable/siklar"
+                android:fontFamily="casual"
+                android:onClick="orta"
+                android:paddingHorizontal="20dp"
+                android:text="@string/moderate"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/zorBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:background="@drawable/hatalisik"
+                android:fontFamily="casual"
+                android:onClick="zor"
+                android:paddingHorizontal="20dp"
+                android:text="@string/hard"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/nextbutonslayout"
+            android:layout_above="@id/adView"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/tamamlaBtn"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/nextbuttongroup"
+                android:fontFamily="casual"
+                android:onClick="tamamla"
+                android:padding="2dp"
+                android:text="@string/testibitir"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:id="@+id/skorlayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginVertical="15dp"
+                android:layout_centerVertical="true"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="6dp">
+
+
+                <TextView
+                    android:id="@+id/skorTxv"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:paddingVertical="6dp"
+                    android:text="@string/skor"
+                    android:fontFamily="casual"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:background="@drawable/siklarclicked"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/cevapBtn"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/nextbuttongroup"
+                android:fontFamily="casual"
+                android:onClick="nextquestion"
+                android:padding="2dp"
+                android:text="@string/sonrakisoru"
+                android:textAllCaps="false"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <com.google.android.gms.ads.AdView
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            ads:adSize="SMART_BANNER"
+            ads:adUnitId="ca-app-pub-4100535460120599/3198494746">
+        </com.google.android.gms.ads.AdView>
+
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
+
+
+
+
