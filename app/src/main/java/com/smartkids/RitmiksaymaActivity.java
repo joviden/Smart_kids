@@ -106,14 +106,6 @@ public class RitmiksaymaActivity extends Activity {
         cevapView = (TextView)findViewById(R.id.cevapTxtv);
         artirBtn = (Button)findViewById(R.id.artitBtn);
         eksiltBtn = (Button)findViewById(R.id.eksiltBtn);
-        ticking = MediaPlayer.create(this,R.raw.tick);
-        ticking.start();
-        ticking.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mediaPlayer) {
-                ticking.release();
-            }
-        });
 
 
         Integer i = Integer.valueOf(cevapView.getText().toString());
@@ -126,14 +118,7 @@ public class RitmiksaymaActivity extends Activity {
         cevapView = (TextView)findViewById(R.id.cevapTxtv);
         artirBtn = (Button)findViewById(R.id.artitBtn);
         eksiltBtn = (Button)findViewById(R.id.eksiltBtn);
-        ticking = MediaPlayer.create(this,R.raw.tick);
-        ticking.start();
-        ticking.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mediaPlayer) {
-                ticking.release();
-            }
-        });
+
 
         Integer i = Integer.valueOf(cevapView.getText().toString());
         i--;

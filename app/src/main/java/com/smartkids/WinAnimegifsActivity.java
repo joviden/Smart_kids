@@ -50,7 +50,7 @@ public class WinAnimegifsActivity extends Activity {
 
 
         Random randomsound = new Random();
-        z = random.nextInt(5-0)+0;
+        z = random.nextInt(6-0)+0;
         victorysound = MediaPlayer.create(this,raw.get(z));
         victorysound.start();
         new CountDownTimer(2200, 1000) {

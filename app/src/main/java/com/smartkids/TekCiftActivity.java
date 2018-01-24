@@ -93,7 +93,7 @@ public class TekCiftActivity extends AppCompatActivity {
         final LinearLayout sonuclarlayout = (LinearLayout)findViewById(R.id.sonuclarlayout);
         final RelativeLayout baslatlayout = (RelativeLayout)findViewById(R.id.baslatlayout);
         final RelativeLayout boardlayout = (RelativeLayout)findViewById(R.id.boardlayout);
-        final TextView sureTxv =(TextView)findViewById(R.id.sureTxtv);
+        final Button sureTxv =findViewById(R.id.sureTxtv);
         final Button cikis = (Button) findViewById(R.id.cikisBtn);
 
         scorecounter=0;
@@ -140,7 +140,11 @@ public class TekCiftActivity extends AppCompatActivity {
                                           @Override
                                           public void run() {
 
+
+
                                               balon1.setY(q); balon2.setY(q); balon3.setY(q); balon4.setY(q); balon5.setY(q); balon6.setY(q); balon7.setY(q); balon8.setY(q); balon9.setY(q); balon10.setY(q);
+
+
 
 
                                               ArrayList<Integer> backgrounds = new ArrayList<Integer>();
@@ -158,6 +162,7 @@ public class TekCiftActivity extends AppCompatActivity {
 
                                                   Button hrkbalon = (Button) balonlar.get(a);
                                                   hrkbalon.setBackgroundResource(backgrounds.get(0));
+                                                  hrkbalon.setVisibility(View.VISIBLE);
 
 
                                                   Random rnd = new Random();
@@ -486,6 +491,13 @@ public class TekCiftActivity extends AppCompatActivity {
             dogrubalon++;
             balon1.setBackgroundResource(R.drawable.booom);
             balon1.setText("");
+            final Handler handler1 = new Handler();
+            handler1.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    balon1.setVisibility(View.INVISIBLE);
+                }
+            }, 550);
             skorview.setBackgroundResource(R.drawable.siklarclicked);
             scorecounter = scorecounter+100;
             ValueAnimator animator = new ValueAnimator();
@@ -513,11 +525,13 @@ public class TekCiftActivity extends AppCompatActivity {
 
                 @Override
                 public void onTick(long millisUntilFinished) {
+
                     // Nothing to do
                 }
 
                 @Override
                 public void onFinish() {
+                    balon1.setVisibility(View.INVISIBLE);
                     if (countsound.isPlaying()) {
                         countsound.stop();
                         countsound.release();
@@ -544,6 +558,13 @@ public class TekCiftActivity extends AppCompatActivity {
             skorview.setBackgroundResource(R.drawable.hatalisik);
             balon1.setBackgroundResource(R.drawable.boombad);
             balon1.setText("");
+            final Handler handler1 = new Handler();
+            handler1.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    balon1.setVisibility(View.INVISIBLE);
+                }
+            }, 550);
 
             ValueAnimator animator = new ValueAnimator();
             animator.setObjectValues(scorecounter-100, scorecounter);
@@ -575,6 +596,7 @@ public class TekCiftActivity extends AppCompatActivity {
 
                 @Override
                 public void onFinish() {
+                    balon1.setVisibility(View.INVISIBLE);
                     if (countsound.isPlaying()) {
                         countsound.stop();
                         countsound.release();
@@ -608,6 +630,13 @@ public class TekCiftActivity extends AppCompatActivity {
             final TextView skorview = (TextView)findViewById(R.id.skorTxv);
             balon2.setBackgroundResource(R.drawable.booom);
             balon2.setText("");
+            final Handler handler1 = new Handler();
+            handler1.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    balon2.setVisibility(View.INVISIBLE);
+                }
+            }, 550);
             skorview.setBackgroundResource(R.drawable.siklarclicked);
             scorecounter = scorecounter+100;
             ValueAnimator animator = new ValueAnimator();
@@ -663,6 +692,13 @@ public class TekCiftActivity extends AppCompatActivity {
             skorview.setBackgroundResource(R.drawable.hatalisik);
             balon2.setBackgroundResource(R.drawable.boombad);
             balon2.setText("");
+            final Handler handler1 = new Handler();
+            handler1.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    balon2.setVisibility(View.INVISIBLE);
+                }
+            }, 550);
 
             ValueAnimator animator = new ValueAnimator();
             animator.setObjectValues(scorecounter-100, scorecounter);
@@ -729,6 +765,13 @@ public class TekCiftActivity extends AppCompatActivity {
             skorview.setBackgroundResource(R.drawable.siklarclicked);
             balon3.setBackgroundResource(R.drawable.booom);
             balon3.setText("");
+            final Handler handler1 = new Handler();
+            handler1.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    balon3.setVisibility(View.INVISIBLE);
+                }
+            }, 550);
             scorecounter = scorecounter+100;
             ValueAnimator animator = new ValueAnimator();
             animator.setObjectValues(scorecounter-100, scorecounter);
@@ -782,6 +825,13 @@ public class TekCiftActivity extends AppCompatActivity {
             skorview.setBackgroundResource(R.drawable.hatalisik);
             balon3.setBackgroundResource(R.drawable.boombad);
             balon3.setText("");
+            final Handler handler1 = new Handler();
+            handler1.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    balon3.setVisibility(View.INVISIBLE);
+                }
+            }, 550);
 
             ValueAnimator animator = new ValueAnimator();
             animator.setObjectValues(scorecounter-100, scorecounter);
@@ -846,6 +896,13 @@ public class TekCiftActivity extends AppCompatActivity {
             skorview.setBackgroundResource(R.drawable.siklarclicked);
             balon4.setBackgroundResource(R.drawable.booom);
             balon4.setText("");
+            final Handler handler1 = new Handler();
+            handler1.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    balon4.setVisibility(View.INVISIBLE);
+                }
+            }, 550);
             scorecounter = scorecounter+100;
             ValueAnimator animator = new ValueAnimator();
             animator.setObjectValues(scorecounter-100, scorecounter);
@@ -901,6 +958,13 @@ public class TekCiftActivity extends AppCompatActivity {
             skorview.setBackgroundResource(R.drawable.hatalisik);
             balon4.setBackgroundResource(R.drawable.boombad);
             balon4.setText("");
+            final Handler handler1 = new Handler();
+            handler1.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    balon4.setVisibility(View.INVISIBLE);
+                }
+            }, 550);
 
             ValueAnimator animator = new ValueAnimator();
             animator.setObjectValues(scorecounter-100, scorecounter);
@@ -963,6 +1027,13 @@ public class TekCiftActivity extends AppCompatActivity {
             skorview.setBackgroundResource(R.drawable.siklarclicked);
             balon5.setBackgroundResource(R.drawable.booom);
             balon5.setText("");
+            final Handler handler1 = new Handler();
+            handler1.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    balon5.setVisibility(View.INVISIBLE);
+                }
+            }, 550);
             scorecounter = scorecounter+100;
             ValueAnimator animator = new ValueAnimator();
             animator.setObjectValues(scorecounter-100, scorecounter);
@@ -1018,6 +1089,13 @@ public class TekCiftActivity extends AppCompatActivity {
             skorview.setBackgroundResource(R.drawable.hatalisik);
             balon5.setBackgroundResource(R.drawable.boombad);
             balon5.setText("");
+            final Handler handler1 = new Handler();
+            handler1.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    balon5.setVisibility(View.INVISIBLE);
+                }
+            }, 550);
 
             ValueAnimator animator = new ValueAnimator();
             animator.setObjectValues(scorecounter-100, scorecounter);
@@ -1080,6 +1158,13 @@ public class TekCiftActivity extends AppCompatActivity {
             skorview.setBackgroundResource(R.drawable.siklarclicked);
             balon6.setBackgroundResource(R.drawable.booom);
             balon6.setText("");
+            final Handler handler1 = new Handler();
+            handler1.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    balon6.setVisibility(View.INVISIBLE);
+                }
+            }, 550);
             scorecounter = scorecounter+100;
             ValueAnimator animator = new ValueAnimator();
             animator.setObjectValues(scorecounter-100, scorecounter);
@@ -1135,6 +1220,13 @@ public class TekCiftActivity extends AppCompatActivity {
             skorview.setBackgroundResource(R.drawable.hatalisik);
             balon6.setBackgroundResource(R.drawable.boombad);
             balon6.setText("");
+            final Handler handler1 = new Handler();
+            handler1.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    balon6.setVisibility(View.INVISIBLE);
+                }
+            }, 550);
 
             ValueAnimator animator = new ValueAnimator();
             animator.setObjectValues(scorecounter-100, scorecounter);
@@ -1195,6 +1287,13 @@ public class TekCiftActivity extends AppCompatActivity {
             skorview.setBackgroundResource(R.drawable.siklarclicked);
             balon7.setBackgroundResource(R.drawable.booom);
             balon7.setText("");
+            final Handler handler1 = new Handler();
+            handler1.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    balon7.setVisibility(View.INVISIBLE);
+                }
+            }, 550);
             scorecounter = scorecounter+100;
             ValueAnimator animator = new ValueAnimator();
             animator.setObjectValues(scorecounter-100, scorecounter);
@@ -1250,6 +1349,13 @@ public class TekCiftActivity extends AppCompatActivity {
             skorview.setBackgroundResource(R.drawable.hatalisik);
             balon7.setBackgroundResource(R.drawable.boombad);
             balon7.setText("");
+            final Handler handler1 = new Handler();
+            handler1.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    balon7.setVisibility(View.INVISIBLE);
+                }
+            }, 550);
 
             ValueAnimator animator = new ValueAnimator();
             animator.setObjectValues(scorecounter-100, scorecounter);
@@ -1312,6 +1418,13 @@ public class TekCiftActivity extends AppCompatActivity {
             skorview.setBackgroundResource(R.drawable.siklarclicked);
             balon8.setBackgroundResource(R.drawable.booom);
             balon8.setText("");
+            final Handler handler1 = new Handler();
+            handler1.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    balon8.setVisibility(View.INVISIBLE);
+                }
+            }, 550);
             scorecounter = scorecounter+100;
             ValueAnimator animator = new ValueAnimator();
             animator.setObjectValues(scorecounter-100, scorecounter);
@@ -1367,6 +1480,13 @@ public class TekCiftActivity extends AppCompatActivity {
             skorview.setBackgroundResource(R.drawable.hatalisik);
             balon8.setBackgroundResource(R.drawable.boombad);
             balon8.setText("");
+            final Handler handler1 = new Handler();
+            handler1.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    balon8.setVisibility(View.INVISIBLE);
+                }
+            }, 550);
 
 
             ValueAnimator animator = new ValueAnimator();
@@ -1430,6 +1550,13 @@ public class TekCiftActivity extends AppCompatActivity {
             skorview.setBackgroundResource(R.drawable.siklarclicked);
             balon9.setBackgroundResource(R.drawable.booom);
             balon9.setText("");
+            final Handler handler1 = new Handler();
+            handler1.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    balon9.setVisibility(View.INVISIBLE);
+                }
+            }, 550);
             scorecounter = scorecounter+100;
             ValueAnimator animator = new ValueAnimator();
             animator.setObjectValues(scorecounter-100, scorecounter);
@@ -1485,6 +1612,13 @@ public class TekCiftActivity extends AppCompatActivity {
             skorview.setBackgroundResource(R.drawable.hatalisik);
             balon9.setBackgroundResource(R.drawable.boombad);
             balon9.setText("");
+            final Handler handler1 = new Handler();
+            handler1.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    balon9.setVisibility(View.INVISIBLE);
+                }
+            }, 550);
 
 
             ValueAnimator animator = new ValueAnimator();
@@ -1548,6 +1682,13 @@ public class TekCiftActivity extends AppCompatActivity {
             skorview.setBackgroundResource(R.drawable.siklarclicked);
             balon10.setBackgroundResource(R.drawable.booom);
             balon10.setText("");
+            final Handler handler1 = new Handler();
+            handler1.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    balon10.setVisibility(View.INVISIBLE);
+                }
+            }, 550);
             scorecounter = scorecounter+100;
             ValueAnimator animator = new ValueAnimator();
             animator.setObjectValues(scorecounter-100, scorecounter);
@@ -1604,6 +1745,13 @@ public class TekCiftActivity extends AppCompatActivity {
             skorview.setBackgroundResource(R.drawable.hatalisik);
             balon10.setBackgroundResource(R.drawable.boombad);
             balon10.setText("");
+            final Handler handler1 = new Handler();
+            handler1.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    balon10.setVisibility(View.INVISIBLE);
+                }
+            }, 550);
 
             ValueAnimator animator = new ValueAnimator();
             animator.setObjectValues(scorecounter-100, scorecounter);

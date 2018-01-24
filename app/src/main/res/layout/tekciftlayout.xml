@@ -165,7 +165,7 @@
             android:layout_marginHorizontal="3dp"
             android:visibility="visible"
             android:paddingHorizontal="3dp"
-            android:background="@drawable/tekciftbackground1">
+            android:background="@drawable/tekciftbackground">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -218,16 +218,17 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true">
 
-                <TextView
+                <Button
                     android:id="@+id/sureTxtv"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true"
-                    android:text="@string/sure"
+                    android:background="@null"
+                    android:text="30"
                     android:fontFamily="casual"
                     android:textAlignment="center"
-                    android:textSize="40sp"
+                    android:textSize="30sp"
                     android:textStyle="bold" />
 
 

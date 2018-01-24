@@ -18,11 +18,11 @@
     <string name="questionforbuyukkucuk">Yukarıdaki sayıları Büyükten Küçüğe taşıyınız.</string>
     <string name="questionforritmik">Boş bırakılan yere hangi sayı gelmelidir?</string>
     <string name="questionforoddeven">Üzerinde ÇİFT sayı bulunan balonları patlat!!!</string>
-    <string name="totalquestion">Toplam Soru: </string>
-    <string name="rightanswers">Doğru Sayısı: </string>
-    <string name="wronganswers">Yanliş Sayısı: </string>
-    <string name="unanswered">Boş: </string>
-    <string name="totalpoints">"Toplam Puan:  "</string>
+    <string name="totalquestion">Toplam Soru:</string>
+    <string name="rightanswers">Dogru Sayısı:</string>
+    <string name="wronganswers">Yanlıs Sayısı:</string>
+    <string name="unanswered">Bos:</string>
+    <string name="totalpoints">Toplam Puan:</string>
     <string name="backtokonular">konulara dön</string>
     <string name="choosedifficulty">Zorluk Derecesi Seçiniz</string>
     <string name="easy">kolay</string>

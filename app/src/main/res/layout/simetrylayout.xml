@@ -574,7 +574,7 @@
                     android:fontFamily="casual"
                     android:onClick="cevapla"
                     android:paddingHorizontal="50dp"
-                    android:text="cevapla"
+                    android:text="@string/cevapla"
                     android:textAllCaps="false"
                     android:textSize="18sp"
                     android:textStyle="bold" />
