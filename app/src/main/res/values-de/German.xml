@@ -14,7 +14,7 @@
     <string name="wronganswers">"Falsche Antworten:"</string>
     <string name="unanswered">"Unbeantwortet: "</string>
     <string name="totalpoints">"Gesamtpunktzahl:"</string>
-    <string name="backtokonular">zurück zu den Lektionen</string>
+
     <string name="choosedifficulty">Wählen Sie Schwierigkeitsgrad</string>
     <string name="easy">einfach</string>
     <string name="moderate">mäßig</string>
@@ -30,7 +30,7 @@
     <string name="questionforritmik">Füllen Sie das Feld mit der richtigen Nummer aus.</string>
     <string name="eksilt">verringern</string>
     <string name="artır">erhöhen</string>
-    <string name="questionforoddeven">Sprengen Sie die Ballons mit geraden Zahlen in 30 Sekunden!</string>
+
     <string name="toplambalon">Gesamtballons: </string>
     <string name="patlatilanbalon">Gestrahlte Luftballons: </string>
     <string name="dogrubalon">Korrekte Ballons: </string>
@@ -57,6 +57,48 @@
     <string name="quittoast">Bitte klicken Sie auf Test beenden um zu beenden!</string>
     <string name="simetry">symmetrie</string>
     <string name="rateapp">Bitte bewerten Sie diese App, wenn es Ihnen gefallen hat! Es wäre eine große Motivation für mich, bessere Apps zu entwickeln !!! Vielen Dank!</string>
+    <string name="bolumbasari">Erfolg: %</string>
+    <string name="backtokonular">zurück</string>
+    <string name="leveldurumu"> Punkte für das nächste Level! \n Mach weiter!</string>
+    <string name="levelyetersiz"> Du hast nicht genug Punkte für dieses Level!</string>
+    <string name="questionforoddeven">Pop die Ballons mit geraden Zahlen!</string>
+    <string name="timechallenge">Zeit Herausforderung</string>
+    <string name="fouroperations">4 Bedienung</string>
+    <string name="twoplayers">2 Spieler</string>
+    <string name="mathgames">Mathe-Spiele</string>
+    <string name="pause">pause</string>
+    <string name="go">gehen</string>
+    <string name="level">ebene</string>
+    <string name="leave">verlassen wollen?</string>
+    <string name="exit">verlassen</string>
+    <string name="cliktoreturn">spiel zurückgeben</string>
+    <string name="levelpass">Herzliche Glückwünsche! Sie haben ein neues Level erreicht  \n Du kannst einen neuen Charakter wählen! </string>
+
+
+    <string name="comingsoon">Zwei Spieler Spiel kommt bald!</string>
+    <string name="disclaim">Hinweis</string>
+    <string name="infotxt">"     "Hallo! Vielen Dank für die Installation und Verwendung meiner Anwendung. Ich hoffe, dass Sie oder Ihr Kind mit dieser Übung die mathematischen Fragen lernen und lösen können.
+    Ich entwickelte die Anwendung selbst und meinen 8 Jahre alten Sohn für die Ägäis. Die Ägäis liebte diese Übung und erzielte eine sichtbare Verbesserung im Mathematikunterricht! Ich bin sicher, dass Sie oder Ihr Kind es bekommen werden.
+    \ n "    " Wenn dir diese Anwendung gefällt, bitte nicht kommentieren und 5 Sterne geben! Vielen Dank im Voraus für die netten Kommentare, die Sie machen werden. \ n
+    "    "Ich habe 60 Tage gebraucht, um Smart Kids vorzubereiten. Während dieser 60 Tage arbeitete ich in einem sehr intensiven Tempo und schlaflosen Nächten. Um ein bisschen von deiner Ejakulation zu bekommen, habe ich dir gegeben
+    Ich musste meiner Bewerbung Anzeigen hinzufügen, auch wenn ich das nicht wollte. Ich entschuldige mich für die Anzeigen und danke Ihnen für Ihr Verständnis. \ N
+    "    "Bevor ich es vergesse, für ihre Unterstützung bei der Anwendungsentwicklung Nilaya meine Frau, meine Kollegen, die ich meinen Dank an den Frieden und die Android-Anwendung Tests Guru Vulkan und andere Freunde verlängern!
+    Wir sehen uns in neuen Anwendungen!</string>
+    <string name="simetrierror">Sie müssen die richtige Anzahl an Boxen auswählen!</string>
+    <string name="toplamapuan">Summe Punkte:</string>
+    <string name="cikarmapuan">Subtraktion Punkte:</string>
+    <string name="carpmapuan">Multiplikation Punkte:</string>
+    <string name="bolmepuan">Division Punkte</string>
+    <string name="simetripuan">Symmetrie Punkte:</string>
+    <string name="ritmikpuan">Serien Punkte:</string>
+    <string name="buyukkucukpuan">Größere Punkte:</string>
+    <string name="tekciftpuan">Ungerade/Gerade Punkte:</string>
+    <string name="timechallengepuan">Zeit Challenge Punkte:</string>
+    <string name="totalsmartpuan">Insgesamt Smart Kids Punkte:</string>
+    <string name="levelsayisi">Dein Niveau:</string>
+    <string name="nextlevelpts">Punkte für das nächste Level:</string>
+    <string name="skortablosu">Bewertungsbogen</string>
+
 
 
 </resources>

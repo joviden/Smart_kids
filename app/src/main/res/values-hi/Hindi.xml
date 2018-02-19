@@ -57,5 +57,43 @@
     <string name="quittoast">बाहर निकलने के लिए कृपया समाप्त टेस्ट पर क्लिक करें!</string>
     <string name="simetry">समरूपता</string>
     <string name="rateapp">अगर आपको यह पसंद आया तो कृपया इस एप को रेट करें! यह बेहतर एप डिजाइन करने के लिए मेरे लिए एक महान प्रेरणा होगी !!! धन्यवाद!</string>
+    <string name="bolumbasari">सफलता: %</string>
+    <string name="leveldurumu"> अगले स्तर के लिए छोड़ दिया अंक! \n बढ़ते रहें!</string>
+    <string name="levelyetersiz"> आपके पास इस स्तर के लिए पर्याप्त अंक नहीं हैं!</string>
+    <string name="timechallenge">समय चैलेंज</string>
+    <string name="fouroperations">4 ऑपरेशन</string>
+    <string name="twoplayers">2 खिलाड़ी</string>
+    <string name="mathgames">गणित खेलों</string>
+    <string name="pause">ठहराव</string>
+    <string name="go">चले जाओ</string>
+    <string name="level">स्तर</string>
+    <string name="leave">छोड़ना चाहते हैं?</string>
+    <string name="exit">बाहर जाएं</string>
+    <string name="cliktoreturn">वापसी खेल</string>
+    <string name="levelpass">बधाई! आप नए स्तर पर सफल हुए हैं!  \n आप नया चरित्र चुन सकते हैं! </string>
+    <string name="comingsoon">दो खिलाड़ी खेल जल्द ही आ रहा है!</string>
+    <string name="disclaim">ध्यान दें</string>
+    <string name="infotxt">"    "नमस्ते! मेरे अनुप्रयोग को स्थापित करने और उपयोग करने के लिए बहुत बहुत धन्यवाद। मुझे आशा है कि आप या इस आवेदन के साथ अपने बच्चे का समाधान होगा दोनों गणितीय प्रश्न दोनों पीस द्वारा पूरा किया जाना है।
+    मैं अपने आप को और अपने 8 वर्षीय बेटा एजियन के लिए आवेदन का विकास किया। अगर मैं इस आवेदन प्यार और गणित वर्ग में देखने के लिए एक विकास देखा हासिल किया है! मुझे यकीन है आप या आपके बच्चे को यह मिलेगा
+    \ N "    " आप इस एप्लिकेशन को पसंद करते हैं, मत भूलना कृपया टिप्पणी करने के लिए और इसे 5 तारे दें! आपको अच्छी टिप्पणियों के लिए अग्रिम धन्यवाद। \ n
+    "    "स्मार्ट बच्चों को तैयार करने में मुझे 60 दिन लगे हम 60 दिन, और रातों की नींद हराम में एक बहुत ही गहन गति में यह कोशिश की थी। मैं श्रम पैसा एक छोटा सा पाने के लिए दे दी है
+    मैं शीघ्र कार्यान्वयन द्वारा विज्ञापन हालांकि जोड़ने के लिए। मैं विज्ञापनों के लिए माफी माँगता हूँ और मैं अपनी समझ के लिए धन्यवाद। \ N
+    "    " इससे पहले कि मैं भूल जाते हैं, अनुप्रयोग विकास प्रक्रिया Nilaya मेरी पत्नी में उनके समर्थन के लिए, अपने सहयोगियों मैं अपने आभार शांति और एंड्रॉयड आवेदन परीक्षण गुरु ज्वालामुखी और अन्य दोस्तों के लिए विस्तार!
+    आपको नए अनुप्रयोगों में देखें!</string>
+    <string name="simetrierror">आपको बक्से की सही संख्या का चयन करना होगा!</string>
+    <string name="toplamapuan"> सारांश अंक:</string>
+    <string name="cikarmapuan"> घटाव अंक:</string>
+    <string name="carpmapuan">गुणन अंक:</string>
+    <string name="bolmepuan">डिवीजन अंक:</string>
+    <string name="simetripuan">सममितता अंक:</string>
+    <string name="ritmikpuan">सीरियल पॉइंट्स:</string>
+    <string name="buyukkucukpuan">ग्रेटर-लेस्जर पॉइंट्स:</string>
+    <string name="tekciftpuan">अजीब / भी अंक:</string>
+    <string name="timechallengepuan">समय चुनौती अंक:</string>
+    <string name="totalsmartpuan">कुल स्मार्ट बच्चों के अंक:</string>
+    <string name="levelsayisi">आपका स्तर:</string>
+    <string name="nextlevelpts">अगले स्तर के लिए अंक:</string>
+    <string name="skortablosu">स्कोर पत्रक</string>
+
 
 </resources>

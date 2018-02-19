@@ -43,7 +43,7 @@
     <string name="sure">tempo</string>
     <string name="toasttumsayılarıyerlestir">Trascina tutti i numeri sulle caselle!</string>
     <string name="toasthicsorucevaplamadın">Non hai ancora segnato nessuna domanda!</string>
-    <string name="exitapp">tocca per uscire!</string>
+    <string name="exitapp">tocca per uscire</string>
     <string name="totalquestionh">"Questione:"</string>
     <string name="rightanswersh">"True:"</string>
     <string name="wronganswersh">"False:"</string>
@@ -57,6 +57,45 @@
     <string name="quittoast">Fare clic su Fine prova per uscire</string>
     <string name="simetry">simmetria</string>
     <string name="rateapp">Si prega di valutare questa app se ti è piaciuto! Sarebbe una grande motivazione per me progettare app migliori !!! \n Grazie!</string>
+    <string name="bolumbasari">Successo: %</string>
+    <string name="leveldurumu"> punti rimasti per il livello successivo! \n Continua così!</string>
+    <string name="levelyetersiz"> Non hai abbastanza punti per questo livello!</string>
+    <string name="timechallenge">Sfida del tempo</string>
+    <string name="fouroperations">4 Funzionamento</string>
+    <string name="twoplayers">2 Giocatori</string>
+    <string name="mathgames">Giochi di Matematica</string>
+    <string name="pause">pausa</string>
+    <string name="go">partire</string>
+    <string name="level">livello</string>
+    <string name="leave">vuoi andare?</string>
+    <string name="exit">uscire</string>
+    <string name="cliktoreturn">gioco di ritorno</string>
+    <string name="levelpass">Complimenti! Hai superato il nuovo livello!  \n Puoi scegliere un nuovo personaggio! </string>
+
+    <string name="comingsoon">Il gioco per due giocatori arriverà presto!</string>
+    <string name="disclaim">nota</string>
+    <string name="infotxt">"    " Ciao! Grazie mille per l installazione e l utilizzo della mia applicazione. Spero che con questa pratica tu o il bambino sia insegnato e risolto le domande di matematica.
+    Ho sviluppato lapplicazione me stesso e mio figlio di 8 anni per l Egeo. L Egeo amava questa pratica e ha conseguito un miglioramento visibile nelle lezioni di matematica! Sono sicuro che tu o tuo figlio lo otterrete.
+    \ n "    " Se ti piace questa applicazione, per favore non commentare e dare 5 stelle! Grazie in anticipo per i bei commenti che farai. \ n
+    "    " Mi ci sono voluti 60 giorni per preparare Smart Kids. Durante questi 60 giorni ho lavorato in un tempo molto intenso e notti insonni. Essere in grado di ottenere un po della tua eiaculazione che ti ho dato
+    Ho dovuto aggiungere annunci alla mia applicazione, anche se non volevo. Mi scuso per gli annunci e grazie per la vostra comprensione. \ N
+    "    " Prima che mi dimentichi, per il loro supporto nel processo di sviluppo delle applicazioni Nilaya mia moglie, i miei colleghi mi estendere la mia gratitudine alla pace e l applicazione Android test guru vulcano e altri amici!
+    Ci vediamo in nuove applicazioni!</string>
+    <string name="simetrierror">Devi selezionare il numero corretto di scatole!</string>
+    <string name="toplamapuan">Punti di Somma:</string>
+    <string name="cikarmapuan">Punti di Sottrazione:</string>
+    <string name="carpmapuan">Punti di Moltiplicazione:</string>
+    <string name="bolmepuan">Punti Divisione:</string>
+    <string name="simetripuan">Punti di Simmetria:</string>
+    <string name="ritmikpuan">Punti di Serie:</string>
+    <string name="buyukkucukpuan">Punti più Piccoli:</string>
+    <string name="tekciftpuan">Punti Pari / Dispari:</string>
+    <string name="timechallengepuan">Punti di Sfida del Tempo:</string>
+    <string name="totalsmartpuan">Punti Totali Smart Kids:</string>
+    <string name="levelsayisi">Il Tuo Livello:</string>
+    <string name="nextlevelpts">Punti per il Prossimo Livello:</string>
+    <string name="skortablosu">Scheda del Dunteggio</string>
+
 
 
 </resources>

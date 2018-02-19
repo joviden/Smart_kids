@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.smartkids"
-    >
+    package="com.smartkids.akillicocuklar2">
+
+    <uses-permission
+        android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -10,11 +12,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:versionCode="5"
-        android:versionName="1.2"
+        android:versionCode="8"
+        android:versionName="1.5"
         android:largeHeap="true">
 
-        <activity android:name="com.smartkids.MainActivity"
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+        <meta-data android:name="com.google.android.gms.games.APP_ID"
+            android:value="@string/app_id" />
+        <meta-data android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version"/>
+
+        <activity android:name=".MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,44 +35,38 @@
         </activity>
 
         <activity
-            android:name="com.smartkids.HomeActivity"
+            android:name=".TrainingActivity"
             android:screenOrientation="portrait"/>
 
-        <activity android:name="com.smartkids.toplamaActivity"
+        <activity android:name=".ToplamaActivity"
             android:screenOrientation="portrait"/>
 
-        <activity android:name="com.smartkids.CikarmaActivity"
+        <activity android:name=".CikarmaActivity"
             android:screenOrientation="portrait"/>
 
-        <activity android:name="com.smartkids.RitmiksaymaActivity"
+        <activity android:name=".RitmiksaymaActivity"
             android:screenOrientation="portrait"/>
 
-        <activity android:name="com.smartkids.CarpmaActivity"
+        <activity android:name=".CarpmaActivity"
             android:screenOrientation="portrait"/>
 
-        <activity android:name="com.smartkids.BolmeActivity"
+        <activity android:name="com.smartkids.akillicocuklar2.BolmeActivity"
             android:screenOrientation="portrait"/>
 
-        <activity android:name="com.smartkids.WinAnimegifsActivity"
+        <activity android:name=".BuyukKucukActivity"
             android:screenOrientation="portrait"/>
 
-        <activity android:name="com.smartkids.LooseAnimeActivity"
+        <activity android:name=".TekCiftActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".SimetryActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MainmenuActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MathgamesActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".TimechallengeActivity"
             android:screenOrientation="portrait"/>
 
-        <activity android:name="com.smartkids.BuyukKucukActivity"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name="com.smartkids.TekCiftActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.smartkids.SimetryActivity"
-            android:screenOrientation="portrait"/>
-
-
-
-
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

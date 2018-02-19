@@ -16,14 +16,14 @@
     <string name="wronganswers">"Respuestas correctas:"</string>
     <string name="unanswered">"Incontestado: "</string>
     <string name="totalpoints">"Puntos totales"</string>
-    <string name="backtokonular">volver a las lecciones</string>
+
     <string name="choosedifficulty">Elige nivel de dificultad</string>
     <string name="easy">fácil</string>
     <string name="moderate">moderar</string>
     <string name="hard">difícil</string>
-    <string name="testibitir">terminar la prueba</string>
+    <string name="testibitir">terminar</string>
     <string name="skor">puntuación</string>
-    <string name="sonrakisoru">próxima pregunta</string>
+    <string name="sonrakisoru">próximo</string>
     <string name="questionformultipication">Encuentre la respuesta correcta para la multiplicación?</string>
     <string name="questionforaddition">Encuentra la respuesta correcta para la suma?</string>
     <string name="questionforsubtraction">Encuentra la respuesta correcta para la resta?</string>
@@ -32,7 +32,7 @@
     <string name="questionforritmik">Llene el espacio en blanco con el número correcto.</string>
     <string name="eksilt">disminución</string>
     <string name="artır">incrementar</string>
-    <string name="questionforoddeven">Explosión de los globos que tienen números pares en 30 segundos!</string>
+
     <string name="toplambalon">Globos Totales:</string>
     <string name="patlatilanbalon">Globo Estallado:</string>
     <string name="dogrubalon">Corregir Globos</string>
@@ -43,7 +43,7 @@
     <string name="sure">hora</string>
     <string name="toasttumsayılarıyerlestir">¡Arrastra todos los números en cajas!</string>
     <string name="toasthicsorucevaplamadın">¡Aún no has marcado ninguna pregunta!</string>
-    <string name="exitapp">haga clic para salir!</string>
+    <string name="exitapp">salida</string>
     <string name="totalquestionh">"Pregunta:"</string>
     <string name="rightanswersh">"Correcto:"</string>
     <string name="wronganswersh">"Falso:"</string>
@@ -57,6 +57,49 @@
     <string name="quittoast">Haga clic en Finalizar prueba para salir!</string>
     <string name="simetry">simetría</string>
     <string name="rateapp">Por favor califique esta aplicación si le gustó!\nSería una gran motivación para mí diseñar mejores aplicaciones!\n Gracias!</string>
+
+    <string name="bolumbasari">Éxito: %</string>
+    <string name="backtokonular">espalda</string>
+    <string name="leveldurumu"> puntos restantes para el siguiente nivel! \n ¡Sigue adelante!</string>
+    <string name="levelyetersiz"> ¡No tienes suficientes puntos para este nivel!</string>
+    <string name="questionforoddeven">Pop los globos que tiene resultados de números pares!</string>
+    <string name="timechallenge">Time Challenge</string>
+    <string name="fouroperations">4 Operación</string>
+    <string name="twoplayers">2 jugadores</string>
+    <string name="mathgames">Juegos matemáticos</string>
+    <string name="pause">pausa</string>
+    <string name="go">ir</string>
+    <string name="level">nivel</string>
+    <string name="leave">¿Querer irse?</string>
+    <string name="exit">salida</string>
+    <string name="cliktoreturn">juego de regreso</string>
+    <string name="levelpass">¡Felicitaciones! ¡Has tenido éxito en el nuevo Nivel! \n ¡Puedes elegir un nuevo personaje! </string>
+
+    <string name="comingsoon">¡El juego de dos jugadores llegará pronto!</string>
+    <string name="disclaim">nota</string>
+    <string name="infotxt">"     "¡Hola! Muchas gracias por instalar y usar mi aplicación. Espero que con esta práctica usted o su hijo aprendan y resuelvan las preguntas de matemáticas.
+    Desarrollé la aplicación yo mismo y mi hijo de 8 años para el Egeo. ¡El Egeo amaba esta práctica y logró una mejora visible en las lecciones de matemáticas! Estoy seguro de que usted o su hijo lo obtendrán.
+    \ n "    " Si te gusta esta aplicación, ¡por favor no comentes y da 5 estrellas! Gracias de antemano por los buenos comentarios que hará. \ n
+    "    "Me tomó 60 días preparar Smart Kids. Durante estos 60 días trabajé en un tempo muy intenso y noches sin dormir. Para poder obtener un poco de tu eyaculación, te di
+    Tuve que agregar anuncios a mi aplicación, incluso si no quería. Me disculpo por los anuncios y gracias por su comprensión. \ N
+    "    " ¡Perdono mi gratitud a mi esposa Nilaya, a mi colega Barışa y al gurú de las pruebas de aplicaciones para Android Volkana y otros amigos por su apoyo en el proceso de desarrollo de la aplicación!
+    ¡Nos vemos en nuevas aplicaciones!</string>
+    <string name="simetrierror">¡Tienes que seleccionar la cantidad correcta de cajas!</string>
+
+    <string name="toplamapuan">Puntos de Suma:</string>
+    <string name="cikarmapuan">Puntos de Resta:</string>
+    <string name="carpmapuan">Puntos de MUltiplicación:</string>
+    <string name="bolmepuan">Puntos de División:</string>
+    <string name="simetripuan">Puntos de Simetría:</string>
+    <string name="ritmikpuan">Puntos Seriales:</string>
+    <string name="buyukkucukpuan">Puntos Mayores/Menores:</string>
+    <string name="tekciftpuan">Puntos Impares /Pares:</string>
+    <string name="timechallengepuan">Puntos de Carrera de Tiempo:</string>
+    <string name="totalsmartpuan">Puntos Totales de Smart Kids:</string>
+    <string name="levelsayisi">Tu nivel:</string>
+    <string name="nextlevelpts">Puntos Para el Siguiente Nivel:</string>
+    <string name="skortablosu">Hoja de Puntuación</string>
+
 
 
 </resources>

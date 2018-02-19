@@ -14,13 +14,13 @@
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-       >
+        android:background="@android:color/holo_orange_dark">
         <RelativeLayout
             android:id="@+id/sorugovdelayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@android:color/holo_orange_dark"
-            android:visibility="visible">
+            android:visibility="gone">
 
 
 
@@ -42,18 +42,21 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <TextView
+            <Button
                 android:id="@+id/soruTxtv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:layout_marginBottom="40dp"
+                android:layout_below="@id/sorunumarasıTxtv"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="4dp"
                 android:paddingHorizontal="2dp"
                 android:paddingVertical="8dp"
                 android:text="@string/simetrysoru"
-                android:textAlignment="inherit"
-                android:layout_below="@id/sorunumarasıTxtv"
-                android:textSize="18sp"
+                android:background="@android:color/transparent"
+                android:textAlignment="viewStart"
+                android:fontFamily="casual"
+                android:textAllCaps="false"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -556,227 +559,219 @@
 
 
 
-            <LinearLayout
-                android:id="@+id/cevaplayout"
+
+
+            <Button
+                android:id="@+id/cvpBtn"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/gridboard"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/cvpBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginHorizontal="2dp"
-                    android:background="@drawable/siklar"
-                    android:fontFamily="casual"
-                    android:onClick="cevapla"
-                    android:paddingHorizontal="50dp"
-                    android:text="@string/cevapla"
-                    android:textAllCaps="false"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/nextbutonslayout"
-                android:layout_below="@id/cevaplayout"
-                android:gravity="center_horizontal|center_vertical"
+                android:layout_height="40dp"
+                android:layout_marginHorizontal="2dp"
                 android:layout_marginTop="20dp"
-                android:orientation="horizontal">
+                android:background="@drawable/siklar"
+                android:fontFamily="casual"
+                android:onClick="cevapla"
+                android:paddingHorizontal="50dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/gridboard"
+                android:text="@string/cevapla"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:id="@+id/nextbutonslayout"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_above="@+id/adView"
+                android:layout_alignParentStart="true"
+                android:gravity="center_horizontal|center_vertical"
+                android:orientation="horizontal"
+                android:visibility="visible">
 
                 <Button
                     android:id="@+id/tamamlaBtn"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="5dp"
+                    android:layout_toLeftOf="@id/skorTxv"
                     android:background="@drawable/nextbuttongroup"
                     android:fontFamily="casual"
                     android:onClick="tamamla"
-                    android:padding="2dp"
+                    android:padding="5dp"
                     android:text="@string/testibitir"
                     android:textAllCaps="false"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
-                <RelativeLayout
-                    android:id="@+id/skorlayout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
+                <TextView
+                    android:id="@+id/skorTxv"
+                    android:layout_width="100dp"
+                    android:layout_height="60dp"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginVertical="15dp"
-                    android:layout_centerVertical="true"
-                    android:paddingHorizontal="8dp"
-                    android:paddingVertical="6dp">
-
-
-                    <TextView
-                        android:id="@+id/skorTxv"
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:paddingVertical="6dp"
-                        android:text="@string/skor"
-                        android:fontFamily="casual"
-                        android:textAlignment="center"
-                        android:textColor="@android:color/black"
-                        android:background="@drawable/siklarclicked"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-
-                </RelativeLayout>
+                    android:background="@drawable/siklarclicked"
+                    android:fontFamily="casual"
+                    android:gravity="center_vertical"
+                    android:text="@string/skor"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/cevapBtn"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="5dp"
+                    android:layout_toRightOf="@id/skorTxv"
                     android:background="@drawable/nextbuttongroup"
                     android:fontFamily="casual"
                     android:onClick="nextquestion"
-                    android:padding="2dp"
+                    android:padding="5dp"
                     android:text="@string/sonrakisoru"
                     android:textAllCaps="false"
                     android:textSize="16dp"
                     android:textStyle="bold" />
-            </LinearLayout>
-        </RelativeLayout>
+            </RelativeLayout>
+
+            <com.google.android.gms.ads.AdView
+                xmlns:ads="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/adView"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                ads:adSize="SMART_BANNER"
+                ads:adUnitId="ca-app-pub-4100535460120599/3198494746">
+            </com.google.android.gms.ads.AdView>
+
+
+                </RelativeLayout>
+
+
 
         <LinearLayout
             android:id="@+id/sonuclarlayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginBottom="20dp"
             android:layout_alignParentTop="true"
-            android:background="@android:color/holo_orange_dark"
-            android:visibility="gone"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="visible">
 
-            <pl.droidsonroids.gif.GifImageView
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <ImageView
+                android:layout_width="400dp"
+                android:layout_height="80dp"
+                android:src="@drawable/scores"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/funnymath"
-                android:layout_marginBottom="40dp" />
+                android:layout_marginTop="5dp"/>
+
+
 
             <LinearLayout
-                android:id="@+id/puanlamalayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
+                android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:layout_marginTop="50dp"
-                android:background="@android:color/holo_orange_dark"
-                android:visibility="visible">
+                android:background="@drawable/frame4"
+                android:layout_marginHorizontal="20dp"
+                android:gravity="center_vertical"
+                android:layout_gravity="center_horizontal|center_vertical">
 
-                <TextView
+
+
+                <Button
                     android:id="@+id/sorusayisiTxtv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
+                    android:layout_marginLeft="50dp"
                     android:gravity="center_vertical"
-                    android:padding="4dp"
                     android:text="@string/totalquestion"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:fontFamily="casual"/>
+                    android:fontFamily="casual"
+                    android:background="@android:color/transparent"
+                    android:textAllCaps="false"
+                    />
 
-                <TextView
+                <Button
                     android:id="@+id/dogrusayisiTxtv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
+                    android:layout_marginLeft="50dp"
                     android:gravity="center_vertical"
                     android:padding="4dp"
                     android:text="@string/rightanswers"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:fontFamily="casual"/>
+                    android:fontFamily="casual"
+                    android:background="@android:color/transparent"
+                    android:textAllCaps="false"/>
 
-                <TextView
+                <Button
                     android:id="@+id/yanlissayisiTxtv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
+                    android:layout_marginLeft="50dp"
                     android:gravity="center_vertical"
                     android:padding="4dp"
                     android:text="@string/wronganswers"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:fontFamily="casual" />
+                    android:fontFamily="casual"
+                    android:background="@android:color/transparent"
+                    android:textAllCaps="false"/>
 
-                <TextView
+                <Button
                     android:id="@+id/bossayisiTxtv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
+                    android:layout_marginLeft="50dp"
                     android:gravity="center_vertical"
                     android:padding="4dp"
                     android:text="@string/unanswered"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:fontFamily="casual" />
+                    android:fontFamily="casual"
+                    android:background="@android:color/transparent"
+                    android:textAllCaps="false"/>
 
-                <TextView
+                <Button
                     android:id="@+id/toplampuanTxtv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
+                    android:layout_marginLeft="50dp"
                     android:gravity="center_vertical"
                     android:padding="4dp"
                     android:text="@string/totalquestion"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:fontFamily="casual"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/cikislayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/puanlamalayout"
-                android:layout_marginTop="40dp"
-                android:gravity="center_horizontal"
-                android:visibility="visible">
+                    android:fontFamily="casual"
+                    android:background="@android:color/transparent"
+                    android:textAllCaps="false"/>
                 <Button
                     android:id="@+id/testcikisBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="@string/backtokonular"
                     android:background="@drawable/siklar"
                     android:fontFamily="casual"
                     android:onClick="cikis"
-
-                    android:paddingHorizontal="10dp"
-                    android:paddingVertical="6dp"
-                    android:text="@string/backtokonular"
+                    android:paddingHorizontal="8dp"
                     android:textAllCaps="false"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:textStyle="bold"
+                    android:layout_gravity="center"
                     />
+
+
             </LinearLayout>
-
-
 
 
         </LinearLayout>
 
 
-        <com.google.android.gms.ads.AdView
-            xmlns:ads="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/adView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true"
-            ads:adSize="SMART_BANNER"
-            ads:adUnitId="ca-app-pub-4100535460120599/3198494746">
-        </com.google.android.gms.ads.AdView>
+
 
 
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">聪明的孩子</string>
-    <string name="girisBtn">enter</string>
+    <string name="girisBtn">进入</string>
     <string name="karsilamametin">输入</string>
     <string name="konularbaslik">2类数学</string>
     <string name="konulartoplama">合计</string>
@@ -17,7 +17,7 @@
     <string name="wronganswers">"错误的答案： "</string>
     <string name="unanswered">"解答： "</string>
     <string name="totalpoints">"总积分： "</string>
-    <string name="backtokonular">回到课程</string>
+
     <string name="choosedifficulty">选择难度级别</string>
     <string name="easy">简单</string>
     <string name="moderate">中等</string>
@@ -33,7 +33,7 @@
     <string name="questionforritmik">用正确的数字填充空白。</string>
     <string name="eksilt">减少</string>
     <string name="artır">增加</string>
-    <string name="questionforoddeven">在30秒内爆炸有偶数的气球！</string>
+
     <string name="toplambalon">总气球： </string>
     <string name="patlatilanbalon">诅咒气球： </string>
     <string name="dogrubalon">正确的气球： </string>
@@ -58,6 +58,47 @@
     <string name="quittoast">请点击完成测试退出！</string>
     <string name="simetry">对称</string>
     <string name="rateapp">请评价这个应用程序，如果你喜欢它！ 这将是一个伟大的动机，我设计更好的应用程序！ 谢谢！</string>
+    <string name="bolumbasari">更迭： %</string>
+    <string name="backtokonular">背部</string>
+    <string name="leveldurumu"> 点为下一个级别！ \n 继续！</string>
+    <string name="levelyetersiz"> 这个级别你没有足够的分数！</string>
+    <string name="questionforoddeven">弹出偶数号结果的气球！</string>
+    <string name="timechallenge">时间挑战</string>
+    <string name="fouroperations">4操作</string>
+    <string name="twoplayers">2名球员</string>
+    <string name="mathgames">数学游戏</string>
+    <string name="pause">暂停</string>
+    <string name="go">走</string>
+    <string name="level">水平</string>
+    <string name="leave">要离开？</string>
+    <string name="exit">出口</string>
+    <string name="cliktoreturn">回归游戏</string>
+    <string name="levelpass">恭喜！ 你已经成功了新的水平！  \n 你可以选择新角色！ </string>
+    <string name="comingsoon">两名球员即将推出游戏</string>
+    <string name="disclaim">免责声明</string>
+    <string name="infotxt">“    ”你好！非常感谢您安装和使用我的应用程序。我希望通过这种练习，你或你的孩子都将被教导并解决数学问题。
+    我自己和我8岁的儿子为爱琴海开发了这个应用程序。爱琴海喜欢这种做法，并在数学课上取得了明显的进步！我相信你或你的孩子会得到它。
+    \ n“    ”如果你喜欢这个应用程序，请不要发表评论，并给5星！预先感谢您提出的好评。 \ n
+    "    " 我花了60天准备Smart Kids。在这60天的时间里，我以非常激烈的节奏和不眠之夜工作。为了能够获得我给你的一点点射精
+    即使我不想要，我也必须将广告添加到我的应用程序中。我为广告道歉并感谢您的理解。\ N
+    “    ”我原谅我对我的妻子Nilaya，我的同事Barışa和Android应用程序测试大师Volkana和其他朋友在开发应用程序过程中的支持表示感谢！
+    在新的应用程序中见到你！</string>
+    <string name="simetrierror">你必须选择正确数量的盒子！</string>
+
+    <string name="toplamapuan">总结点：</string>
+    <string name="cikarmapuan">减法点数：</string>
+    <string name="carpmapuan">乘法点：</string>
+    <string name="bolmepuan">部门要点：</string>
+    <string name="simetripuan">对称点：</string>
+    <string name="ritmikpuan">系列点数：</string>
+    <string name="buyukkucukpuan">更高的分数：</string>
+    <string name="tekciftpuan">奇数/偶数点：</string>
+    <string name="timechallengepuan">时间挑战点：</string>
+    <string name="totalsmartpuan">总Smart Kids得分：：</string>
+    <string name="levelsayisi">你的等级：</string>
+    <string name="nextlevelpts">下一级的积分：</string>
+    <string name="skortablosu">评分表</string>
+
 
 
 </resources>

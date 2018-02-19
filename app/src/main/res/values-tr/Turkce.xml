@@ -11,19 +11,19 @@
     <string name="konularritmik">ritmik sayma</string>
     <string name="konularbuyukkucuk">büyük kücük</string>
     <string name="konulartekcift">tek / çift </string>
-    <string name="questionfordivision">Bölme işleminin sonucu hangisidir?</string>
-    <string name="questionformultipication">Çarpma işleminin sonucu hangisidir?</string>
-    <string name="questionforaddition">Toplama işleminin sonucu hangisidir?</string>
-    <string name="questionforsubtraction">Çıkarma işleminin sonucu hangisidir?</string>
-    <string name="questionforbuyukkucuk">Yukarıdaki sayıları Büyükten Küçüğe taşıyınız.</string>
-    <string name="questionforritmik">Boş bırakılan yere hangi sayı gelmelidir?</string>
-    <string name="questionforoddeven">Üzerinde ÇİFT sayı bulunan balonları patlat!!!</string>
+    <string name="questionfordivision">Bölme isleminin sonucu hangisidir?</string>
+    <string name="questionformultipication">Çarpma isleminin sonucu hangisidir?</string>
+    <string name="questionforaddition">Toplama isleminin sonucu hangisidir?</string>
+    <string name="questionforsubtraction">Çıkarma isleminin sonucu hangisidir?</string>
+    <string name="questionforbuyukkucuk">Yukarıdaki sayıları Büyükten Küçüge tasıyınız.</string>
+    <string name="questionforritmik">Bos bırakılan yere hangi sayı gelmelidir?</string>
+
     <string name="totalquestion">Toplam Soru:</string>
     <string name="rightanswers">Dogru Sayısı:</string>
     <string name="wronganswers">Yanlıs Sayısı:</string>
     <string name="unanswered">Bos:</string>
     <string name="totalpoints">Toplam Puan:</string>
-    <string name="backtokonular">konulara dön</string>
+
     <string name="choosedifficulty">Zorluk Derecesi Seçiniz</string>
     <string name="easy">kolay</string>
     <string name="moderate">orta</string>
@@ -39,26 +39,65 @@
     <string name="dogrubalon">Dogru Balon: </string>
     <string name="hatalibalon">Hatali Balon: </string>
     <string name="tekraroyna">tekrar oyna</string>
-    <string name="basla">başla</string>
-    <string name="cikis">çıkış</string>
+    <string name="basla">basla</string>
+    <string name="cikis">çıkıs</string>
     <string name="sure">süre </string>
-    <string name="exitapp">cikmak icin bas!</string>
-    <string name="toasttumsayılarıyerlestir">Tüm sayıları yerleştir!</string>
+    <string name="exitapp">çıkıs!</string>
+    <string name="toasttumsayılarıyerlestir">Tüm sayıları yerlestir!</string>
     <string name="toasthicsorucevaplamadın">Hiç soru çözmedin!</string>
     <string name="totalquestionh">"Soru:"</string>
-    <string name="rightanswersh">"Doğru:"</string>
-    <string name="wronganswersh">"Yanlış:"</string>
+    <string name="rightanswersh">"Dogru:"</string>
+    <string name="wronganswersh">"Yanlıs:"</string>
     <string name="patlatilanbalonh">Balon:</string>
-    <string name="dogrubalonh">Doğru:</string>
-    <string name="hatalibalonh">Yanlış:</string>
-    <string name="basari">Başarı:</string>
+    <string name="dogrubalonh">Dogru:</string>
+    <string name="hatalibalonh">Yanlıs:</string>
+    <string name="basari">Basarı:</string>
     <string name="bolumpuani">Skor:</string>
-    <string name="simetrysoru">Sol tarafta gösterilen şeklin simetriğini, simetri eksenine göre sağ tarafa çiziniz.</string>
+    <string name="simetrysoru">Sol tarafta gösterilen seklin simetrigini, simetri eksenine göre sag tarafa çiziniz.</string>
     <string name="questionleft">soru</string>
     <string name="quittoast">Çıkmak için Testi Bitir butonuna dokunun!</string>
     <string name="simetry">simetri</string>
+    <string name="rateapp">Uygulamamı begendiyseniz tiklayarak 5 yıldız verebilirsiniz! Daha iyi uygulamalar yapmak için en büyük motivasyon kaynagım yapacagınız yorumlardır! Tesekkürler!</string>
+    <string name="bolumbasari">Basarı: %</string>
+    <string name="backtokonular">geri</string>
+    <string name="leveldurumu"> puan kaldı! \n Devam et kovboy!</string>
+    <string name="levelyetersiz"> Malesef bu level için yeterli puanın yok!</string>
+    <string name="questionforoddeven">Islem sonucu çift sayı olan balonları patlat!</string>
+    <string name="timechallenge">Zaman Yarısı</string>
+    <string name="fouroperations">4 Islem</string>
+    <string name="twoplayers">2 Oyuncu</string>
+    <string name="mathgames">Oyunlar</string>
+    <string name="pause">durdur</string>
+    <string name="go">basla</string>
+    <string name="level">level</string>
+    <string name="leave">çıkmak mı istiyorsun?</string>
+    <string name="exit">çıkıs</string>
+    <string name="cliktoreturn">oyuna dön</string>
+    <string name="levelpass">Tebrikler! Yeni bir levela geçtin!  \n Simdi yeni bir karakter seçebilirsin! </string>
+    <string name="comingsoon">2 Kişilik Oyun çok yakında geliyor!</string>
+    <string name="disclaim">Telif Hakları Hk.</string>
+    <string name="infotxt">"     "Merhaba! Uygulamamı yüklediginiz ve kullandıgınız için çok teşekkür ederim. Umarım bu uygulama ile siz ya da çocugunuz hem egelenecek hem de matematik soruları çözeceksiniz.
+    Uygulamayı kendim ve 8 yaşındaki oglum Ege için geliştirdim. Ege bu uygulamayı çok sevdi ve matematik dersinde göz görülür bir gelişim elde etti! Sizin ya da çocugunuzun da elde edecegine eminim.
+    \n"     "Eger bu uygulamayı begendiyseniz lütfen yorum yapmayı ve 5 yıldız vermeyi ihmal etmeyin! Yapacagınız güzel yorumlar için şimdiden teşekkür ederim. \n
+    "     "Smart Kids i hazırlamam 60 günümü aldı. Bu 60 gün içerisinde çok yogun bir tempo içinde çalıştım ve uykusuz geceler geçirdim. Verdigim emegin karşılıgını bir nebze olsun alabilmek için
+    istemiyerek de olsa uygulamaya reklam eklemek zorunda kaldım. Reklamlar için özür diliyorum ve anlayışınız için teşekkür ediyorum.\n
+    "     " Unutmadan, uygulamayı geliştirme sürecinde desteklerinden dolayı eşim Nilaya, iş arkadaşım Barışa ve android uygulama testing gurusu Volkana ve diger dostlara şükranlarımı sunuyorum!
+    Yeni uygulamalarda görüşmek üzere!</string>
+    <string name="simetrierror">Dogru sayıda kutu işaretlemelisin!</string>
+    <string name="toplamapuan">Toplama Puanı:</string>
+    <string name="cikarmapuan">Cıkarma Puanı:</string>
+    <string name="carpmapuan">Carpma Puanı:</string>
+    <string name="bolmepuan">Bölme Puanı:</string>
+    <string name="simetripuan">Simetri Puanı:</string>
+    <string name="ritmikpuan">Ritmik Sayma Puanı:</string>
+    <string name="buyukkucukpuan">Büyük/Kücük Puanı:</string>
+    <string name="tekciftpuan">Tek Cift Puanı:</string>
+    <string name="timechallengepuan">Zaman Yarısı Puanı:</string>
+    <string name="totalsmartpuan">Toplam Smart Kids Puanı:</string>
+    <string name="levelsayisi">Level Seviyesi:</string>
+    <string name="nextlevelpts">Sonraki Level Kalan Puan:</string>
+    <string name="skortablosu">Skor Tablosu</string>
 
-    <string name="rateapp">Uygulamamı beğendiyseniz tiklayarak 5 yıldız verebilirsiniz! Daha iyi uygulamalar yapmak için en büyük motivasyon kaynağım yapacağınız yorumlardır! Teşekkürler!</string>
 
 
 

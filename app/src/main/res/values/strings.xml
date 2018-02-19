@@ -15,7 +15,6 @@
     <string name="wronganswers">"Wrong Answers: "</string>
     <string name="unanswered">"Unanswered: "</string>
     <string name="totalpoints">"Total Points: "</string>
-    <string name="backtokonular">back to lessons</string>
     <string name="choosedifficulty">Choose Difficulty Level</string>
     <string name="easy">easy</string>
     <string name="moderate">moderate</string>
@@ -31,7 +30,7 @@
     <string name="questionforritmik">Fill the blank with the correct number.</string>
     <string name="eksilt">decrease</string>
     <string name="artır">increase</string>
-    <string name="questionforoddeven">Pop the balloons which have even numbers in 30 seconds!</string>
+
     <string name="toplambalon">Total Balloons: </string>
     <string name="patlatilanbalon">Popped Balloons: </string>
     <string name="dogrubalon">Correct Balloons: </string>
@@ -42,7 +41,7 @@
     <string name="sure">time</string>
     <string name="toasttumsayılarıyerlestir">Drag all the numbers on boxes!</string>
     <string name="toasthicsorucevaplamadın">You have not marked any question yet!</string>
-    <string name="exitapp">click to exit!</string>
+    <string name="exitapp">click to exit</string>
     <string name="totalquestionh">"Question: "</string>
     <string name="rightanswersh">"True: "</string>
     <string name="wronganswersh">"False: "</string>
@@ -71,9 +70,50 @@ If you have a complaint about something or believe your content is being used in
 For more information on “fair use”, please refer to: United States Code: Title 17, Section 107, http://www.copyright.gov/title17/92chap1.html#107. \n
 
 For all inquiries please write to salginerdem@gmail.com.</string>
-
-
     <string name="rateapp">Please rate this app by tapping this button! It would be a great motivation for me to design better apps!!! Thank you!</string>
+    <string name="bolumbasari">Success: %</string>
+    <string name="backtokonular">back</string>
+    <string name="leveldurumu"> points left for the next level! \n Keep Going!</string>
+    <string name="levelyetersiz"> You dont have enough points for this level!</string>
+    <string name="questionforoddeven">Pop the balloons which has even numbers results!</string>
+    <string name="timechallenge">Time Challenge</string>
+    <string name="fouroperations">4 Operations</string>
+    <string name="twoplayers">2 Players</string>
+    <string name="mathgames">Math Games</string>
+    <string name="pause">pause</string>
+    <string name="go">go</string>
+    <string name="level">level</string>
+    <string name="leave">want to leave?</string>
+    <string name="exit">exit</string>
+    <string name="cliktoreturn">return game</string>
+    <string name="levelpass">Congratulations! You have succeeded new Level!  \n You can choose new character! </string>
+    <string name="comingsoon">Two Players Game is coming soon!</string>
+    <string name="disclaim">disclaimer note</string>
+    <string name="infotxt">"     "Hello there! Thank you very much for installing and using my application. I hope that with this application you or your child will both be taught and solved the math questions. \n
+    I developed the application myself and my 8 year old son for Ege. Ege loved this app and achieved a visible improvement in mathematics lessons! I am sure you or your child will too.
+    \n "    " If you like this application, please make comment and give 5 stars! Thank you in advance for the nice comments you will make. \n
+    "    " It took me 60 days to prepare Smart Kids. During these 60 days I worked in a very intense tempo and had sleepless nights. Because of huge working and spending time I had to add ads to my application, even if I did not want to. I apologize for the ads and thank you for your understanding. \n
+    "    "Very special thanks to my wife Nilay, my colleague Barış and the android application testing guru Volkan and other friends for their support in the process of developing the Smart Kids!
+    "    "See you in new applications! I ll be looking forward to see your comments and offers...</string>
+    <string name="simetrierror">You have to select correct number of boxes!</string>
+    <string name="toplamapuan">Summation Points:</string>
+    <string name="cikarmapuan">Subraction Points:</string>
+    <string name="carpmapuan">Multiplication Points:</string>
+    <string name="bolmepuan">Division Points:</string>
+    <string name="simetripuan">Symmetry Points:</string>
+    <string name="ritmikpuan">Serials Points:</string>
+    <string name="buyukkucukpuan">Greater-Lesser Points:</string>
+    <string name="tekciftpuan">Odd/Even Points:</string>
+    <string name="timechallengepuan">Time Challenge Points:</string>
+    <string name="totalsmartpuan">Total Smart Kids Points:</string>
+    <string name="levelsayisi">Your Level:</string>
+    <string name="nextlevelpts">Points For Next Level:</string>
+    <string name="skortablosu">Score Sheet</string>
+
+
+
+
+
 
 
 

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Google Play game services IDs.
+Save this file as res/values/games-ids.xml in your project.
+-->
+<resources>
+    <!-- app_id -->
+    <string name="app_id" translatable="false">896201352221</string>
+    <!-- package_name -->
+    <string name="package_name" translatable="false">com.smartkids.akillicocuklar2</string>
+    <!-- achievement Good Starter (Summation) -->
+    <string name="achievement_good_starter_summation" translatable="false">CgkInciNzooaEAIQCQ</string>
+    <!-- achievement Good Starter (Subtraction) -->
+    <string name="achievement_good_starter_subtraction" translatable="false">CgkInciNzooaEAIQCg</string>
+    <!-- achievement Good Starter (Multiplication) -->
+    <string name="achievement_good_starter_multiplication" translatable="false">CgkInciNzooaEAIQCw</string>
+    <!-- achievement Good Starter (Division) -->
+    <string name="achievement_good_starter_division" translatable="false">CgkInciNzooaEAIQDA</string>
+    <!-- achievement Good Starter (Serials) -->
+    <string name="achievement_good_starter_serials" translatable="false">CgkInciNzooaEAIQDQ</string>
+    <!-- achievement Good Starter (Greater/Lesser) -->
+    <string name="achievement_good_starter_greaterlesser" translatable="false">CgkInciNzooaEAIQDg</string>
+    <!-- achievement Good Starter (Odd/Even) -->
+    <string name="achievement_good_starter_oddeven" translatable="false">CgkInciNzooaEAIQDw</string>
+    <!-- achievement Good Starter (Symmetry) -->
+    <string name="achievement_good_starter_symmetry" translatable="false">CgkInciNzooaEAIQEA</string>
+    <!-- achievement Clever Kid (Subtraction) -->
+    <string name="achievement_clever_kid_subtraction" translatable="false">CgkInciNzooaEAIQEQ</string>
+    <!-- achievement Clever Kid (Division) -->
+    <string name="achievement_clever_kid_division" translatable="false">CgkInciNzooaEAIQEg</string>
+    <!-- achievement Clever Kid (Summation) -->
+    <string name="achievement_clever_kid_summation" translatable="false">CgkInciNzooaEAIQEw</string>
+    <!-- achievement Clever Kid (Multiplication) -->
+    <string name="achievement_clever_kid_multiplication" translatable="false">CgkInciNzooaEAIQFA</string>
+    <!-- achievement Clever Kid (Serials) -->
+    <string name="achievement_clever_kid_serials" translatable="false">CgkInciNzooaEAIQFQ</string>
+    <!-- achievement Clever Kid (Greater/Lesser) -->
+    <string name="achievement_clever_kid_greaterlesser" translatable="false">CgkInciNzooaEAIQFg</string>
+    <!-- achievement Clever Kid (Odd/Even) -->
+    <string name="achievement_clever_kid_oddeven" translatable="false">CgkInciNzooaEAIQFw</string>
+    <!-- achievement Clever Kid (Symmetry) -->
+    <string name="achievement_clever_kid_symmetry" translatable="false">CgkInciNzooaEAIQGA</string>
+    <!-- achievement 5000 Smart Points -->
+    <string name="achievement_5000_smart_points" translatable="false">CgkInciNzooaEAIQHg</string>
+    <!-- achievement 10000 Smart Points -->
+    <string name="achievement_10000_smart_points" translatable="false">CgkInciNzooaEAIQHw</string>
+    <!-- achievement 25000 Smart Points -->
+    <string name="achievement_25000_smart_points" translatable="false">CgkInciNzooaEAIQIA</string>
+    <!-- achievement 40000 Smart Points -->
+    <string name="achievement_40000_smart_points" translatable="false">CgkInciNzooaEAIQIQ</string>
+    <!-- achievement 80000 Smart Points -->
+    <string name="achievement_80000_smart_points" translatable="false">CgkInciNzooaEAIQIg</string>
+    <!-- achievement 100000 Smart Points -->
+    <string name="achievement_100000_smart_points" translatable="false">CgkInciNzooaEAIQJA</string>
+    <!-- achievement 150000 Smart Points -->
+    <string name="achievement_150000_smart_points" translatable="false">CgkInciNzooaEAIQJQ</string>
+    <!-- achievement Real Time Shooter -->
+    <string name="achievement_real_time_shooter" translatable="false">CgkInciNzooaEAIQJg</string>
+    <!-- achievement Real Time Crusher -->
+    <string name="achievement_real_time_crusher" translatable="false">CgkInciNzooaEAIQJw</string>
+    <!-- achievement Real Time Expert -->
+    <string name="achievement_real_time_expert" translatable="false">CgkInciNzooaEAIQKA</string>
+    <!-- achievement Real Time Professor -->
+    <string name="achievement_real_time_professor" translatable="false">CgkInciNzooaEAIQKQ</string>
+    <!-- achievement Summation Expert -->
+    <string name="achievement_summation_expert" translatable="false">CgkInciNzooaEAIQKg</string>
+    <!-- achievement Subtraction Expert -->
+    <string name="achievement_subtraction_expert" translatable="false">CgkInciNzooaEAIQKw</string>
+    <!-- achievement Multiplication Expert -->
+    <string name="achievement_multiplication_expert" translatable="false">CgkInciNzooaEAIQLA</string>
+    <!-- achievement Division Expert -->
+    <string name="achievement_division_expert" translatable="false">CgkInciNzooaEAIQLQ</string>
+    <!-- achievement Greater or Lesser Expert -->
+    <string name="achievement_greater_or_lesser_expert" translatable="false">CgkInciNzooaEAIQLg</string>
+    <!-- achievement Serials Expert -->
+    <string name="achievement_serials_expert" translatable="false">CgkInciNzooaEAIQLw</string>
+    <!-- achievement Symmetry Expert -->
+    <string name="achievement_symmetry_expert" translatable="false">CgkInciNzooaEAIQMA</string>
+    <!-- achievement Odd or Even Expert -->
+    <string name="achievement_odd_or_even_expert" translatable="false">CgkInciNzooaEAIQMQ</string>
+    <!-- achievement Summation Proffesor -->
+    <string name="achievement_summation_proffesor" translatable="false">CgkInciNzooaEAIQMg</string>
+    <!-- achievement Subtraction Proffessor -->
+    <string name="achievement_subtraction_proffessor" translatable="false">CgkInciNzooaEAIQMw</string>
+    <!-- achievement Multiplication Proffessor -->
+    <string name="achievement_multiplication_proffessor" translatable="false">CgkInciNzooaEAIQNA</string>
+    <!-- achievement Division Proffessor -->
+    <string name="achievement_division_proffessor" translatable="false">CgkInciNzooaEAIQNQ</string>
+    <!-- achievement Greater of Lesser Proffessor -->
+    <string name="achievement_greater_of_lesser_proffessor" translatable="false">CgkInciNzooaEAIQNg</string>
+    <!-- achievement Serials Proffessor -->
+    <string name="achievement_serials_proffessor" translatable="false">CgkInciNzooaEAIQNw</string>
+    <!-- achievement Symmetry Proffessor -->
+    <string name="achievement_symmetry_proffessor" translatable="false">CgkInciNzooaEAIQOA</string>
+    <!-- achievement Odd or Even Proffessor -->
+    <string name="achievement_odd_or_even_proffessor" translatable="false">CgkInciNzooaEAIQOQ</string>
+    <!-- leaderboard Smart Kids Kings -->
+    <string name="leaderboard_smart_kids_kings" translatable="false">CgkInciNzooaEAIQGQ</string>
+    <!-- leaderboard Summation Stars -->
+    <string name="leaderboard_summation_stars" translatable="false">CgkInciNzooaEAIQGg</string>
+    <!-- leaderboard Subtraction Stars -->
+    <string name="leaderboard_subtraction_stars" translatable="false">CgkInciNzooaEAIQAg</string>
+    <!-- leaderboard Division Stars -->
+    <string name="leaderboard_division_stars" translatable="false">CgkInciNzooaEAIQAw</string>
+    <!-- leaderboard Multiplication Stars -->
+    <string name="leaderboard_multiplication_stars" translatable="false">CgkInciNzooaEAIQBA</string>
+    <!-- leaderboard Serials Stars -->
+    <string name="leaderboard_serials_stars" translatable="false">CgkInciNzooaEAIQBQ</string>
+    <!-- leaderboard Greater / Lesser Stars -->
+    <string name="leaderboard_greater__lesser_stars" translatable="false">CgkInciNzooaEAIQBg</string>
+    <!-- leaderboard Odd / Even Stars -->
+    <string name="leaderboard_odd__even_stars" translatable="false">CgkInciNzooaEAIQBw</string>
+    <!-- leaderboard Symmetry Stars -->
+    <string name="leaderboard_symmetry_stars" translatable="false">CgkInciNzooaEAIQCA</string>
+    <!-- leaderboard Time Challenge Stars -->
+    <string name="leaderboard_time_challenge_stars" translatable="false">CgkInciNzooaEAIQHQ</string>
+</resources>

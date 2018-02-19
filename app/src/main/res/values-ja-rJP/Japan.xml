@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">スマートキッズ</string>
+    <string name="girisBtn">入る</string>
+    <string name="karsilamametin">SmArT KiDs StaRtiNg!!!</string>
+    <string name="konulartoplama">総和</string>
+    <string name="konularcikarma">減算</string>
+    <string name="konularcarpma">乗算</string>
+    <string name="konularbolme">分割</string>
+    <string name="konularbuyukkucuk">大きい/小さい</string>
+    <string name="questionfordivision">部門の正解を見つけてください。</string>
+    <string name="totalquestion">"合計質問： "</string>
+    <string name="rightanswers">"正しい答え： "</string>
+    <string name="wronganswers">"間違った答え： "</string>
+    <string name="unanswered">"未回答： "</string>
+    <string name="totalpoints">"合計点： "</string>
+    <string name="choosedifficulty">難易度を選択</string>
+    <string name="easy">簡単</string>
+    <string name="moderate">中程度の</string>
+    <string name="hard">ハード</string>
+    <string name="testibitir">仕上げ</string>
+        <string name="skor">スコア</string>
+    <string name="sonrakisoru">次</string>
+    <string name="questionformultipication">乗算の正解を見つけてください。</string>
+    <string name="questionforaddition">合計の正解を見つけてください。</string>
+    <string name="questionforsubtraction">減算の正解を見つけてください。</string>
+    <string name="questionforbuyukkucuk">これらの数字を降順にドラッグします。</string>
+    <string name="cevapla">回答</string>
+    <string name="questionforritmik">ブランクに正しい番号を記入してください。</string>
+    <string name="eksilt">減少</string>
+    <string name="artır">増加する</string>
+    <string name="toplambalon">総バルーン： </string>
+    <string name="patlatilanbalon">ポップ風船： </string>
+    <string name="dogrubalon">正しいバルーン： </string>
+    <string name="hatalibalon">間違った風船： </string>
+    <string name="tekraroyna">再びプレー</string>
+    <string name="basla">開始</string>
+    <string name="cikis">出口</string>
+    <string name="sure">時間</string>
+    <string name="toasttumsayılarıyerlestir">すべての数字をボックスにドラッグしてください！</string>
+    <string name="toasthicsorucevaplamadın">あなたはまだ質問をマークしていません！</string>
+    <string name="exitapp">出口</string>
+    <string name="totalquestionh">"質問： "</string>
+    <string name="rightanswersh">"真： "</string>
+    <string name="wronganswersh">"偽: "</string>
+    <string name="patlatilanbalonh">バルーン： </string>
+    <string name="dogrubalonh">正しい： </string>
+    <string name="hatalibalonh">違う： </string>
+    <string name="konularritmik">連載</string>
+    <string name="konularbaslik">面白い数学</string>
+    <string name="konulartekcift">奇数/偶数 </string>
+    <string name="basari">成功</string>
+    <string name="bolumpuani">スコア：</string>
+    <string name="simetrysoru">対称軸に沿って、左側から右側に示された形状の対称性を描きます。</string>
+    <string name="questionleft">質問</string>
+    <string name="quittoast">終了テストをクリックして終了してください！</string>
+    <string name="simetry">対称</string>
+    <string name="bolumbasari">成功： %</string>
+    <string name="backtokonular">バック</string>
+    <string name="leveldurumu"> ポイントは次のレベルのために残った！ \n 立ち止まるな！</string>
+    <string name="levelyetersiz"> このレベルには十分なポイントがありません！</string>
+    <string name="questionforoddeven">結果が偶数のバルーンをポップしてください！</string>
+    <string name="timechallenge">時間の挑戦</string>
+    <string name="fouroperations">4操作</string>
+    <string name="twoplayers">2人のプレーヤー</string>
+    <string name="mathgames">数学ゲーム</string>
+    <string name="pause">一時停止する</string>
+    <string name="go">行く</string>
+    <string name="level">レベル</string>
+    <string name="leave">帰りたい？</string>
+    <string name="exit">出口</string>
+    <string name="cliktoreturn">リターンゲーム</string>
+    <string name="levelpass">おめでとう！ あなたは新しいレベルに成功しました！  \n あなたは新しいキャラクターを選ぶことができます！ </string>
+
+
+    <string name="comingsoon">2人のプレーヤーのゲームがまもなく登場です！</string>
+    <string name="disclaim">注意</string>
+    <string name="infotxt">"    "こんにちは！私のアプリケーションをインストールして使用していただきありがとうございます。私はこの練習であなたまたはあなたの子供が両方とも教えられ、数学の問題を解決することを願っています。
+    私は自分自身とEgeのための私の8歳の息子のアプリケーションを開発しました。 Egeはこの練習を好きで、数学の授業で目に見える改善を達成しました！私はあなたまたはあなたの子供がそれを得ると確信しています。
+    \ n "    "このアプリケーションが気に入ったらコメントして5つ星を付けてください！あなたが作る素晴らしいコメントのために、事前にありがとう。 \ nは
+    "    "「スマートキッズの準備には60日かかりました。この60日間、私は非常に激しいテンポと不眠の夜に働いた。あなたの射精の少しを得ることができるように私はあなたに与えた
+    私が望む場合でも、アプリケーションに広告を追加する必要がありました。私は広告を謝罪し、あなたの理解のためにあなたに感謝します。\ N
+    "    "私は、妻のNilaya、同僚のBarışa、アンドロイドアプリケーションのテストを担当するVolkanaと他の友人に、アプリケーションの開発過程でのサポートに感謝します！
+    新しいアプリケーションでお会いしましょう！</string>
+    <string name="simetrierror">正しい数のボックスを選択する必要があります!</string>
+    <string name="toplamapuan">合計点:</string>
+    <string name="cikarmapuan">減算ポイント：</string>
+    <string name="carpmapuan">乗算ポイント：</string>
+    <string name="bolmepuan">分割ポイント：</string>
+    <string name="simetripuan">対称点：</string>
+    <string name="ritmikpuan">シリアルポイント:</string>
+    <string name="buyukkucukpuan">より大きなポイント:</string>
+    <string name="tekciftpuan">奇数/偶数点:</string>
+    <string name="timechallengepuan">タイムチャレンジポイント:</string>
+    <string name="totalsmartpuan">合計スマートキッズポイント:</string>
+    <string name="levelsayisi">あなたのレベル:</string>
+    <string name="nextlevelpts">次のレベルのポイント:</string>
+    <string name="skortablosu">得点表</string>
+
+
+
+
+
+
+
+
+
+
+</resources>
