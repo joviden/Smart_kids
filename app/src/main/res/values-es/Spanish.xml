@@ -16,7 +16,6 @@
     <string name="wronganswers">"Respuestas correctas:"</string>
     <string name="unanswered">"Incontestado: "</string>
     <string name="totalpoints">"Puntos totales"</string>
-
     <string name="choosedifficulty">Elige nivel de dificultad</string>
     <string name="easy">fácil</string>
     <string name="moderate">moderar</string>
@@ -32,7 +31,6 @@
     <string name="questionforritmik">Llene el espacio en blanco con el número correcto.</string>
     <string name="eksilt">disminución</string>
     <string name="artır">incrementar</string>
-
     <string name="toplambalon">Globos Totales:</string>
     <string name="patlatilanbalon">Globo Estallado:</string>
     <string name="dogrubalon">Corregir Globos</string>
@@ -57,16 +55,35 @@
     <string name="quittoast">Haga clic en Finalizar prueba para salir!</string>
     <string name="simetry">simetría</string>
     <string name="rateapp">Por favor califique esta aplicación si le gustó!\nSería una gran motivación para mí diseñar mejores aplicaciones!\n Gracias!</string>
-
     <string name="bolumbasari">Éxito: %</string>
     <string name="backtokonular">espalda</string>
     <string name="leveldurumu"> puntos restantes para el siguiente nivel! \n ¡Sigue adelante!</string>
     <string name="levelyetersiz"> ¡No tienes suficientes puntos para este nivel!</string>
     <string name="questionforoddeven">Pop los globos que tiene resultados de números pares!</string>
+
+
+
+
+
+
+
     <string name="timechallenge">Time Challenge</string>
     <string name="fouroperations">4 Operación</string>
-    <string name="twoplayers">2 jugadores</string>
-    <string name="mathgames">Juegos matemáticos</string>
+    <string name="twoplayers">Math-ball</string>
+    <string name="mathgames">Juegos Mentales</string>
+    <string name="removeads">Eliminar Anuncios</string>
+    <string name="otherapps">otras apps</string>
+
+
+    <string name="timechallenge_exp">carrera contra el tiempo</string>
+    <string name="fouroperationsexp">estudiar 4 operaciones!</string>
+    <string name="twoplayersexp">matemáticas y fútbol!</string>
+    <string name="mathgamesexp">¡juega juegos de matemáticas!</string>
+    <string name="removeadsexp">disfrutar sin publicidad!</string>
+    <string name="otherappsexp">te gustarán!</string>
+
+
+
     <string name="pause">pausa</string>
     <string name="go">ir</string>
     <string name="level">nivel</string>
@@ -74,7 +91,6 @@
     <string name="exit">salida</string>
     <string name="cliktoreturn">juego de regreso</string>
     <string name="levelpass">¡Felicitaciones! ¡Has tenido éxito en el nuevo Nivel! \n ¡Puedes elegir un nuevo personaje! </string>
-
     <string name="comingsoon">¡El juego de dos jugadores llegará pronto!</string>
     <string name="disclaim">nota</string>
     <string name="infotxt">"     "¡Hola! Muchas gracias por instalar y usar mi aplicación. Espero que con esta práctica usted o su hijo aprendan y resuelvan las preguntas de matemáticas.
@@ -85,7 +101,6 @@
     "    " ¡Perdono mi gratitud a mi esposa Nilaya, a mi colega Barışa y al gurú de las pruebas de aplicaciones para Android Volkana y otros amigos por su apoyo en el proceso de desarrollo de la aplicación!
     ¡Nos vemos en nuevas aplicaciones!</string>
     <string name="simetrierror">¡Tienes que seleccionar la cantidad correcta de cajas!</string>
-
     <string name="toplamapuan">Puntos de Suma:</string>
     <string name="cikarmapuan">Puntos de Resta:</string>
     <string name="carpmapuan">Puntos de MUltiplicación:</string>
@@ -99,6 +114,18 @@
     <string name="levelsayisi">Tu nivel:</string>
     <string name="nextlevelpts">Puntos Para el Siguiente Nivel:</string>
     <string name="skortablosu">Hoja de Puntuación</string>
+    <string name="tebrikler">Felicidades, tú ganas!</string>
+    <string name="teselli">Pierdes, intenta de nuevo!</string>
+    <string name="points">Puntuación</string>
+    <string name="time">Hora</string>
+    <string name="draw">Estirado :)</string>
+    <string name="question">pregunta</string>
+    <string name="twoplayersinfo">Bienvenido a Smart Kids Two Players \n Encuentra la respuesta correcta lo antes posible.</string>
+    <string name="sharebody">¿Confías en tus matemáticas? \n https://play.google.com/store/apps/details?id=com.smartkids.akillicocuklar2</string>
+    <string name="sharesub">¡He encontrado una gran aplicación de matemáticas!</string>
+    <string name="switchcheck">Por favor seleccione al menos una operación matemática!</string>
+
+
 
 
 

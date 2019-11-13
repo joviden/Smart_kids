@@ -17,7 +17,6 @@
     <string name="wronganswers">"错误的答案： "</string>
     <string name="unanswered">"解答： "</string>
     <string name="totalpoints">"总积分： "</string>
-
     <string name="choosedifficulty">选择难度级别</string>
     <string name="easy">简单</string>
     <string name="moderate">中等</string>
@@ -33,7 +32,6 @@
     <string name="questionforritmik">用正确的数字填充空白。</string>
     <string name="eksilt">减少</string>
     <string name="artır">增加</string>
-
     <string name="toplambalon">总气球： </string>
     <string name="patlatilanbalon">诅咒气球： </string>
     <string name="dogrubalon">正确的气球： </string>
@@ -44,7 +42,7 @@
     <string name="sure">时间</string>
     <string name="toasttumsayılarıyerlestir">把所有的数字拖到盒子上！</string>
     <string name="toasthicsorucevaplamadın">你还没有标记任何问题！</string>
-    <string name="exitapp">点击退出！</string>
+    <string name="exitapp">点击退出</string>
     <string name="totalquestionh">"题:"</string>
     <string name="rightanswersh">"权:"</string>
     <string name="wronganswersh">"假:"</string>
@@ -63,10 +61,24 @@
     <string name="leveldurumu"> 点为下一个级别！ \n 继续！</string>
     <string name="levelyetersiz"> 这个级别你没有足够的分数！</string>
     <string name="questionforoddeven">弹出偶数号结果的气球！</string>
-    <string name="timechallenge">时间挑战</string>
-    <string name="fouroperations">4操作</string>
-    <string name="twoplayers">2名球员</string>
-    <string name="mathgames">数学游戏</string>
+
+
+
+    <string name="timechallenge">Time Challenge</string>
+    <string name="fouroperations">4 Operations</string>
+    <string name="twoplayers">Math-ball</string>
+    <string name="mathgames">Mental Games</string>
+    <string name="timechallenge_exp">与时间赛跑</string>
+    <string name="fouroperationsexp">让我们做4个操作!</string>
+    <string name="twoplayersexp">数学和足球!</string>
+    <string name="mathgamesexp">玩数学游戏！</string>
+    <string name="removeads">移除广告</string>
+    <string name="removeadsexp">享受 SmartKids!</string>
+    <string name="otherapps">其他应用</string>
+    <string name="otherexp">你会喜欢他们的!</string>
+
+
+
     <string name="pause">暂停</string>
     <string name="go">走</string>
     <string name="level">水平</string>
@@ -98,6 +110,18 @@
     <string name="levelsayisi">你的等级：</string>
     <string name="nextlevelpts">下一级的积分：</string>
     <string name="skortablosu">评分表</string>
+    <string name="tebrikler">恭喜，你赢了！</string>
+    <string name="teselli">你输了，再试一次！</string>
+    <string name="points">得分了</string>
+    <string name="time">时间</string>
+    <string name="draw">平 :)</string>
+    <string name="question">题</string>
+    <string name="twoplayersinfo">欢迎来到智能儿童两名玩家\n 尽快找到正确的答案！</string>
+    <string name="sharebody">你相信你的数学吗？ \n https://play.google.com/store/apps/details?id=com.smartkids.akillicocuklar2</string>
+    <string name="sharesub">我找到了很棒的数学应用！</string>
+    <string name="switchcheck">请至少选择一个数学运算！</string>
+
+
 
 
 

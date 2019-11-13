@@ -76,10 +76,22 @@ For all inquiries please write to salginerdem@gmail.com.</string>
     <string name="leveldurumu"> points left for the next level! \n Keep Going!</string>
     <string name="levelyetersiz"> You dont have enough points for this level!</string>
     <string name="questionforoddeven">Pop the balloons which has even numbers results!</string>
+
     <string name="timechallenge">Time Challenge</string>
+    <string name="timechallenge_exp">race against time</string>
     <string name="fouroperations">4 Operations</string>
-    <string name="twoplayers">2 Players</string>
-    <string name="mathgames">Math Games</string>
+    <string name="fouroperationsexp">lets do 4 operations!</string>
+    <string name="twoplayers">Math-ball</string>
+    <string name="twoplayersexp">maths and football!</string>
+    <string name="mathgames">Mental Games</string>
+    <string name="mathgamesexp">play math games!</string>
+    <string name="removeads">Remove Ads</string>
+    <string name="removeadsexp">enjoy without ads!</string>
+    <string name="otherapps">other apps</string>
+    <string name="otherappsexp">you will like them!</string>
+
+
+
     <string name="pause">pause</string>
     <string name="go">go</string>
     <string name="level">level</string>
@@ -94,7 +106,7 @@ For all inquiries please write to salginerdem@gmail.com.</string>
     \n "    " If you like this application, please make comment and give 5 stars! Thank you in advance for the nice comments you will make. \n
     "    " It took me 60 days to prepare Smart Kids. During these 60 days I worked in a very intense tempo and had sleepless nights. Because of huge working and spending time I had to add ads to my application, even if I did not want to. I apologize for the ads and thank you for your understanding. \n
     "    "Very special thanks to my wife Nilay, my colleague Barış and the android application testing guru Volkan and other friends for their support in the process of developing the Smart Kids!
-    "    "See you in new applications! I ll be looking forward to see your comments and offers...</string>
+    "    "See you in new applications! I ll be looking forward to see your comments and offers!</string>
     <string name="simetrierror">You have to select correct number of boxes!</string>
     <string name="toplamapuan">Summation Points:</string>
     <string name="cikarmapuan">Subraction Points:</string>
@@ -109,14 +121,21 @@ For all inquiries please write to salginerdem@gmail.com.</string>
     <string name="levelsayisi">Your Level:</string>
     <string name="nextlevelpts">Points For Next Level:</string>
     <string name="skortablosu">Score Sheet</string>
-
-
-
-
-
-
-
-
+    <string name="tebrikler">Congratulations, you win!</string>
+    <string name="teselli">You lose, try again!</string>
+    <string name="points">Points</string>
+    <string name="time">Time</string>
+    <string name="draw">Draw :)</string>
+    <string name="question">question</string>
+    <string name="twoplayersinfo">Welcome to Smart Kids Two Players \n Find the correct answer as soon as possible!</string>
+    <string name="sharebody">Do you trust your math? \n https://play.google.com/store/apps/details?id=com.smartkids.akillicocuklar2</string>
+    <string name="sharesub">I have found great Math Application!</string>
+    <string name="switchcheck">Please choose at least one Math operator!</string>
+    <string name="noadinfo">How about playing Smart Kids without Advertisement?</string>
+    <string name="buysmartkidsinfo">You can buy Smart Kids No Ad version!</string>
+    <string name="playgamesmassage">Please install Google Play Games to get your scores recorded.</string>
+    <string name="filter_title">Smart Kids Math for kids. Math tests, summation, extraction, multiplication, division, 4 operation</string>
+    <string name="content_description">header</string>
 
 
 </resources>

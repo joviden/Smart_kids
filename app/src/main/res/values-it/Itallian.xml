@@ -60,10 +60,28 @@
     <string name="bolumbasari">Successo: %</string>
     <string name="leveldurumu"> punti rimasti per il livello successivo! \n Continua così!</string>
     <string name="levelyetersiz"> Non hai abbastanza punti per questo livello!</string>
+
+
+
+
+
+
     <string name="timechallenge">Sfida del tempo</string>
-    <string name="fouroperations">4 Funzionamento</string>
-    <string name="twoplayers">2 Giocatori</string>
-    <string name="mathgames">Giochi di Matematica</string>
+    <string name="timechallenge_exp">corsa contro il tempo</string>
+    <string name="fouroperations">4 Operazioni</string>
+    <string name="fouroperationsexp">lascia fare 4 operazioni!</string>
+    <string name="twoplayers">Math-ball</string>
+    <string name="twoplayersexp">matematica e calcio!</string>
+    <string name="mathgames">Giochi di Math</string>
+    <string name="mathgamesexp">gioca ai giochi di matematica!</string>
+    <string name="removeads">Rimuovi Annunci</string>
+    <string name="removeadsexp">divertiti senza pubblicità!</string>
+    <string name="otherapps">altre app</string>
+    <string name="otherappsexp">ti piaceranno!</string>
+
+
+
+
     <string name="pause">pausa</string>
     <string name="go">partire</string>
     <string name="level">livello</string>
@@ -71,7 +89,6 @@
     <string name="exit">uscire</string>
     <string name="cliktoreturn">gioco di ritorno</string>
     <string name="levelpass">Complimenti! Hai superato il nuovo livello!  \n Puoi scegliere un nuovo personaggio! </string>
-
     <string name="comingsoon">Il gioco per due giocatori arriverà presto!</string>
     <string name="disclaim">nota</string>
     <string name="infotxt">"    " Ciao! Grazie mille per l installazione e l utilizzo della mia applicazione. Spero che con questa pratica tu o il bambino sia insegnato e risolto le domande di matematica.
@@ -95,6 +112,18 @@
     <string name="levelsayisi">Il Tuo Livello:</string>
     <string name="nextlevelpts">Punti per il Prossimo Livello:</string>
     <string name="skortablosu">Scheda del Dunteggio</string>
+    <string name="tebrikler">Congratulazioni, hai vinto!</string>
+    <string name="teselli">Perdi, riprova!</string>
+    <string name="points">Punto</string>
+    <string name="time">Tempo</string>
+    <string name="draw">disegnato:)</string>
+    <string name="question">domanda</string>
+    <string name="twoplayersinfo">Benvenuto su Smart Kids Due giocatori! \n Trova la risposta corretta il prima possibile!</string>
+    <string name="sharebody">Ti fidi della tua matematica? \n https://play.google.com/store/apps/details?id=com.smartkids.akillicocuklar2</string>
+    <string name="sharesub">Ho trovato un ottima applicazione matematica!</string>
+    <string name="switchcheck">Si prega di selezionare almeno una operazione matematica!</string>
+
+
 
 
 

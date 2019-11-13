@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Smart Kids</string>
+    <string name="girisBtn">entrer</string>
+    <string name="karsilamametin">SmArT KiDs StaRtiNg!!!</string>
+    <string name="konulartoplama">addition</string>
+    <string name="konularcikarma">soustraction</string>
+    <string name="konularcarpma">multiplication</string>
+    <string name="konularbolme">division</string>
+    <string name="konularbuyukkucuk">plus / moins</string>
+    <string name="questionfordivision">Trouvez la bonne réponse pour la division.</string>
+    <string name="totalquestion">Question Totale:</string>
+    <string name="rightanswers">Bonnes Réponses:</string>
+    <string name="wronganswers">Mauvaises Réponses:</string>
+    <string name="unanswered">Sans Réponse:</string>
+    <string name="totalpoints">Points totaux:</string>
+    <string name="choosedifficulty">Choisissez le niveau de difficulté</string>
+    <string name="easy">facile</string>
+    <string name="moderate">modérer</string>
+    <string name="hard">difficile</string>
+    <string name="testibitir">test de fin</string>
+    <string name="skor">but</string>
+    <string name="sonrakisoru">prochain</string>
+    <string name="questionformultipication">Trouvez la bonne réponse pour la multiplication.</string>
+    <string name="questionforaddition">Trouvez la bonne réponse pour la sommation.</string>
+    <string name="questionforsubtraction">Trouvez la bonne réponse pour la soustraction.</string>
+    <string name="questionforbuyukkucuk">Faites glisser ces nombres dans l ordre décroissant.</string>
+    <string name="cevapla">répondre</string>
+    <string name="questionforritmik">Remplissez le blanc avec le bon numéro.</string>
+    <string name="eksilt">diminution</string>
+    <string name="artır">augmenter</string>
+
+    <string name="toplambalon">Total des Ballons:</string>
+    <string name="patlatilanbalon">Ballons Sautés </string>
+    <string name="dogrubalon">Ballons Corrects: </string>
+    <string name="hatalibalon">Mauvais Ballons: </string>
+    <string name="tekraroyna">rejouer</string>
+    <string name="basla">début</string>
+    <string name="cikis">sortie</string>
+    <string name="sure">temps</string>
+    <string name="toasttumsayılarıyerlestir">Faites glisser tous les chiffres sur les boîtes!</string>
+    <string name="toasthicsorucevaplamadın">Vous n avez encore marqué aucune question!</string>
+    <string name="exitapp">quitter</string>
+    <string name="totalquestionh">Question:</string>
+    <string name="rightanswersh">Vrai:</string>
+    <string name="wronganswersh">Faux:</string>
+    <string name="patlatilanbalonh">Des ballons:</string>
+    <string name="dogrubalonh">Correct: </string>
+    <string name="hatalibalonh">Faux: </string>
+    <string name="konularritmik">séries</string>
+    <string name="konularbaslik">Mathématiques drôles</string>
+    <string name="konulartekcift">impair / pair </string>
+    <string name="basari">Succès</string>
+    <string name="bolumpuani">But:</string>
+    <string name="simetrysoru">Dessinez la symétrie de la forme indiquée sur le côté gauche du côté droit, selon l\'axe de symétrie.</string>
+    <string name="questionleft">question</string>
+    <string name="quittoast">Veuillez cliquer sur Terminer le test pour quitter!</string>
+    <string name="simetry">symétrie</string>
+    <string name="disclaimer">Disclaimer
+FAIR USE NOTICE. \n The Application of SmartKids may contain copyrighted material (images,gifs, videos etc.) the use of which may not always be specifically authorized by the copyright owner. \n
+        This constitutes a “fair use” of any such copyrighted material as we are providing small and insignificant proportion of the works available for math learning (Educational) purposes within the scope of United States Copyright Law, Section 107. \n
+
+All original works belong to their respective owners. This application was established solely for transformative, educational purposes, and no way intends to infringe on the copyrights or business of any individual or corporation. SmartKids do not sell these materials or distribute them, and access to all learning content is completely free of charge.  SmartKids use a comparatively small proportion of the original works and our service does not impinge on the potential market for or value of the works. Furthermore, by using content for instruction, SmartKidsbenefits the entitled parties and their distributors and provides links to where the original content can be purchased in its entirety from legitimate sources.
+
+The appropriate accreditation is given to respective owners. Copying or redistributing any of the copyrighted material on this website is strictly forbidden. \n
+
+If you have a complaint about something or believe your content is being used incorrectly, Please contact with developer. \n
+
+For more information on “fair use”, please refer to: United States Code: Title 17, Section 107, http://www.copyright.gov/title17/92chap1.html#107. \n
+
+For all inquiries please write to salginerdem@gmail.com.</string>
+    <string name="rateapp">S il vous plaît noter cette application en appuyant sur ce bouton! Ce serait une grande motivation pour moi de concevoir de meilleures applications!!! Je vous remercie!</string>
+    <string name="bolumbasari">Succès: %</string>
+    <string name="backtokonular">arrière</string>
+    <string name="leveldurumu"> points restants pour le prochain niveau! \nContinue!</string>
+    <string name="levelyetersiz"> Vous n avez pas assez de points pour ce niveau!</string>
+    <string name="questionforoddeven">Pop les ballons qui a des nombres pairs!</string>
+
+
+
+
+
+
+
+
+    <string name="timechallenge">Défi de Temps</string>
+    <string name="fouroperations">4 Opération</string>
+    <string name="twoplayers">Math-ball</string>
+    <string name="mathgames">Jeux de maths</string>
+    <string name="removeads">pas d annonces</string>
+    <string name="otherapps">autres apps</string>
+
+
+    <string name="timechallenge_exp">course contre le temps</string>
+    <string name="fouroperationsexp">laisse faire 4 opérations!</string>
+    <string name="twoplayersexp">mathématiques et football!</string>
+    <string name="mathgamesexp">jouer à des jeux de maths!</string>
+    <string name="removeadsexp">profiter sans publicité!</string>
+    <string name="otherappsexp">vous les aimerez!</string>
+
+    <string name="pause">pause</string>
+    <string name="go">début</string>
+    <string name="level">niveau</string>
+    <string name="leave">vouloir partir?</string>
+    <string name="exit">sortie</string>
+    <string name="cliktoreturn">retourner le jeu</string>
+    <string name="levelpass">Toutes nos félicitations! Vous avez réussi un nouveau niveau!  \n Vous pouvez choisir un nouveau personnage! </string>
+    <string name="disclaim">note de désistement</string>
+    <string name="infotxt">"     "Bonjour là-bas! Merci beaucoup d avoir installé et utilisé mon application. J espère qu avec cette application vous ou votre enfant sera enseigné et résolu les questions de maths. \n
+    J ai développé l application moi-même et mon fils de 8 ans pour Ege. Ege a adoré cette application et a réalisé une meilleure amélioration des cours de mathématiques! Je suis sûr que vous ou votre enfant aussi.\n
+        "    " Si vous aimez cette application, s il vous plaît commenter et donner 5 étoiles! Merci d avance pour vos gentils commentaires. \n
+    "    " Il m a fallu 60 jours pour préparer Smart Kids. Pendant ces 60 jours, j\'ai travaillé dans un rythme très intense et j\'ai passé des nuits blanches. Je ne veux pas, je ne veux pas. Je m\'excuse pour les publicités et je vous remercie de votre compréhension. \n
+    "    "Très spécial merci à ma femme Nilay, mon collègue Barış et le gourou test de l\'application android Volkan et d\'autres amis pour leur soutien dans le processus de développement des Smart Kids!
+    "    "A bientôt dans de nouvelles applications! Je me réjouis de vos commentaires et de vos offres!</string>
+    <string name="simetrierror">Vous devez sélectionner le nombre correct de boîtes!</string>
+    <string name="toplamapuan">Points de Sommation:</string>
+    <string name="cikarmapuan">Points de Soustraction:</string>
+    <string name="carpmapuan">Points de Multiplication:</string>
+    <string name="bolmepuan">Points de Division:</string>
+    <string name="simetripuan">Points de Symétrie:</string>
+    <string name="ritmikpuan">Points de Série:</string>
+    <string name="buyukkucukpuan">Points de Plus/Moins:</string>
+    <string name="tekciftpuan">Points Impairs/Pairs:</string>
+    <string name="timechallengepuan">Points de Défi de Temps:</string>
+    <string name="totalsmartpuan">Nombre Total de Points Smart Kids:</string>
+    <string name="levelsayisi">Votre niveau:</string>
+    <string name="nextlevelpts">Points Pour le Niveau Suivant:</string>
+    <string name="skortablosu">Feuille de Résultats</string>
+    <string name="tebrikler">Félicitations, vous gagnez!</string>
+    <string name="teselli">Vous perdez, essayez encore!</string>
+    <string name="points">But</string>
+    <string name="time">Temps</string>
+    <string name="draw">Tiré :)</string>
+    <string name="question">question</string>
+    <string name="twoplayersinfo">Bienvenue à Smart Kids Two Players! \n Trouvez la bonne réponse dès que possible!</string>
+    <string name="sharebody">Avez-vous confiance en vos maths? \n https://play.google.com/store/apps/details?id=com.smartkids.akillicocuklar2</string>
+    <string name="sharesub">J ai trouvé une bonne application de maths!</string>
+    <string name="switchcheck">Veuillez sélectionner au moins une opération mathématique!</string>
+
+
+
+
+</resources>

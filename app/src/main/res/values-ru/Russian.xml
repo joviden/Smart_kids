@@ -4,7 +4,6 @@
     <string name="app_name">Умные дети</string>
     <string name="girisBtn">входить</string>
     <string name="karsilamametin">умные дети начинают!!!</string>
-
     <string name="konulartoplama">суммирование</string>
     <string name="konularcikarma">вычитание</string>
     <string name="konularcarpma">умножение</string>
@@ -61,10 +60,26 @@
     <string name="leveldurumu"> очки оставлены на следующий уровень! \n Продолжать!</string>
     <string name="levelyetersiz"> Non hai abbastanza punti per questo livello!</string>
     <string name="questionforoddeven">Поп воздушные шары, у которых есть даже цифры!</string>
-    <string name="timechallenge">Время Вызов</string>
-    <string name="fouroperations">4 Эксплуатация</string>
-    <string name="twoplayers">2 игрока</string>
-    <string name="mathgames">игры</string>
+
+
+
+
+
+
+    <string name="timechallenge">Time Challenge</string>
+    <string name="fouroperations">4 Operations</string>
+    <string name="twoplayers">Math-ball</string>
+    <string name="mathgames">Mental Games</string>
+    <string name="timechallenge_exp">гонка со временем</string>
+    <string name="fouroperationsexp">4 операции!</string>
+    <string name="twoplayersexp">математика и футбол!</string>
+    <string name="mathgamesexp">математические игры!</string>
+    <string name="removeads">Удалить Pекламу</string>
+    <string name="removeadsexp">без рекламы</string>
+    <string name="otherapps">Другие приложения</string>
+    <string name="otherappsexp">вам понравятся!</string>
+
+
     <string name="pause">Пауза</string>
     <string name="go">идти</string>
     <string name="level">уровень</string>
@@ -72,7 +87,6 @@
     <string name="exit">Выход</string>
     <string name="cliktoreturn">вернуть игру</string>
     <string name="levelpass">Поздравления! Вы достигли нового уровня!  \n Вы можете выбрать нового персонажа! </string>
-
     <string name="comingsoon">Игра двух игроков скоро появится!</string>
     <string name="disclaim">заметка</string>
     <string name="infotxt">"    "Привет! Большое спасибо за установку и использование моего приложения. Надеюсь, что с этой практикой вы или ваш ребенок научатся и решаете математические вопросы.
@@ -96,6 +110,18 @@
     <string name="levelsayisi">Ваш уровень:</string>
     <string name="nextlevelpts">Очки для следующего уровня:</string>
     <string name="skortablosu">Лист оценки</string>
+    <string name="tebrikler">Поздравляем, вы побеждаете!</string>
+    <string name="teselli">Ты проиграешь, попробуй еще раз!</string>
+    <string name="points">Гол</string>
+    <string name="time">Время</string>
+    <string name="draw">вничью :)</string>
+    <string name="question">вопрос</string>
+    <string name="twoplayersinfo">Добро пожаловать в Smart Kids Two Players \n Найдите правильный ответ как можно скорее!</string>
+    <string name="sharebody">Вы доверяете своей математике? \n https://play.google.com/store/apps/details?id=com.smartkids.akillicocuklar2</string>
+    <string name="sharesub">Я нашел отличное математическое приложение!</string>
+    <string name="switchcheck">Выберите хотя бы одну математическую операцию!</string>
+
+
 
 
 

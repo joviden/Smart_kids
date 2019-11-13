@@ -1,6 +1,1082 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-</android.support.constraint.ConstraintLayout>
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/footballback">
+
+        <RelativeLayout
+            android:id="@+id/twoplayergirislayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible">
+
+            <ImageView
+                android:id="@+id/smartheader"
+                android:layout_width="350dp"
+                android:layout_height="100dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/smartkidsfootball"
+                android:padding="15sp"/>
+
+            <ImageView
+                android:id="@+id/twoplayerheader"
+                android:layout_width="250dp"
+                android:layout_height="80dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/smartheader"
+                android:background="@drawable/twoplayersheader"
+                android:padding="15sp"/>
+
+
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/playingboygif"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:background="@drawable/ballgif"
+                android:layout_gravity="center_horizontal"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
+
+            <Button
+                android:id="@+id/twoplayersinfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_marginBottom="10dp"
+                android:layout_above="@id/seceneklerlayout"
+                android:background="@android:color/transparent"
+                android:text="@string/twoplayersinfo"
+                android:textAlignment="center"
+                android:textSize="14sp"
+                android:textAllCaps="false"
+                android:fontFamily="@font/comic"
+                android:textStyle="bold"/>
+
+            <LinearLayout
+                android:id="@+id/countdownlayout"
+                android:layout_width="85dp"
+                android:layout_height="75dp"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/edittext"
+                android:layout_above="@+id/girisbtnlayout"
+                android:layout_marginBottom="10dp"
+                android:visibility="visible"
+                android:gravity="center_vertical|center_horizontal">
+
+                <Button
+                    android:id="@+id/gerisayimbtn"
+                    android:layout_width="75dp"
+                    android:layout_height="65dp"
+                    android:background="@drawable/hatalisik"
+                    android:text="3"
+                    android:textAlignment="center"
+                    android:textSize="45sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/seceneklerlayout"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:orientation="horizontal"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_above="@id/girisbtnlayout"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="center_vertical"
+                android:background="@drawable/edittext"
+                android:layout_centerHorizontal="true"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/toplamaswitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text=" + "
+                    android:textSize="30sp"/>
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/cikarmaswitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text=" - "
+                    android:textStyle="bold"
+                    android:textSize="30sp"/>
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/carpmaswitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:text=" x "
+                    android:textSize="25sp"
+                    android:textAlignment="center"/>
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/bolmeswitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text=" ÷ "
+                    android:textSize="30sp"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/girisbtnlayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="20dp"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal|center_vertical">
+
+                <Button
+                    android:id="@+id/girisBtn"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/siklarclicked"
+                    android:fontFamily="@font/comic"
+                    android:text="@string/go"
+                    android:textAllCaps="false"
+                    android:layout_marginRight="8dp"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+                <Button
+                    android:id="@+id/cikisBtn"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/hatalisik"
+                    android:fontFamily="@font/comic"
+                    android:layout_marginLeft="8dp"
+                    android:onClick="cikis"
+                    android:text="@string/exit"
+                    android:textAllCaps="false"
+                    android:textColor="#000"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+
+
+
+
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/sorugovdelayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/footballback"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/dividerbar"
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                app:srcCompat="@drawable/dividebar"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"/>
+
+            <RelativeLayout
+                android:id="@+id/mavitakimlayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/dividerbar"
+                android:layout_above="@id/adViewalt">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/sorunumarasıTxtv">
+
+                    <LinearLayout
+                        android:id="@+id/lifelayoutmavi"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:orientation="horizontal"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_toLeftOf="@+id/surelayout"
+                        android:gravity="right"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginLeft="2dp">
+
+
+
+
+                        <Button
+                            android:id="@+id/sorusayisiView1"
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="15dp"
+                            android:background="@android:color/transparent"
+                            android:text="1/10"
+                            android:textSize="25dp"
+                            android:textStyle="bold"
+                            android:textColor="@android:color/white"
+                            android:visibility="visible"/>
+
+                        <Button
+                            android:id="@+id/skormavi1Btn"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:text="9"
+                            android:textColor="@android:color/white"
+                            android:layout_gravity="right"
+                            android:background="@drawable/twoplayerskormavi"
+                            android:textSize="35dp"
+                            android:textAlignment="gravity"/>
+
+
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/surelayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="2dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:layout_width="60dp"
+                            android:layout_height="20dp"
+                            android:background="@drawable/simetrydef"
+                            android:text="@string/time"
+                            android:textAllCaps="false"
+                            android:textSize="14sp" />
+
+                        <Button
+                            android:id="@+id/suremaviBtn"
+                            android:layout_width="60dp"
+                            android:layout_height="25dp"
+                            android:background="@drawable/simetrydef"
+                            android:text="14"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+                    <RelativeLayout
+                        android:id="@+id/sorunumberlayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:orientation="horizontal"
+                        android:layout_alignParentTop="true"
+                        android:layout_toRightOf="@+id/surelayout"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginRight="2sp">
+
+
+
+                        <Button
+                            android:id="@+id/skorkirmizi1Btn"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:text="9"
+                            android:textColor="@android:color/white"
+                            android:layout_gravity="right"
+                            android:background="@drawable/twoplayerskorkirmizi"
+                            android:textSize="35dp"
+                            android:textAlignment="gravity"/>
+
+                        <LinearLayout
+                            android:layout_width="45dp"
+                            android:layout_height="match_parent"
+                            android:onClick="exitintent"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="10dp">
+
+                            <Button
+                                android:id="@+id/exitmenu1Btn"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_gravity="center_vertical|right"
+                                android:onClick="exitintent"
+                                android:background="@drawable/exit"/>
+
+                        </LinearLayout>
+
+
+
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/sorusayilarmavilayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_below="@id/lifelayoutmavi"
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/sayi1Btn"
+                            android:layout_width="60dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@drawable/skortabelamavi"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:text="36"
+                            android:textColor="@android:color/white"
+                            android:textSize="28sp"
+                            android:textStyle="bold" />
+
+                        <Button
+                            android:id="@+id/islmesembol1"
+                            android:layout_width="30dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@android:color/transparent"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:text=" ÷ "
+                            android:textSize="30sp"
+                            android:textAllCaps="false"/>
+
+                        <Button
+                            android:id="@+id/sayi2Btn"
+                            android:layout_width="60dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@drawable/skortabelamavi"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:text="36"
+                            android:textColor="@android:color/white"
+                            android:textSize="28sp"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/siklarmavilayout1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@id/siklarmavilayout2"
+                        android:layout_centerHorizontal="true"
+                        android:orientation="horizontal">
+
+
+                        <Button
+                            android:id="@+id/sika1Btn"
+                            android:layout_width="50dp"
+                            android:layout_height="35dp"
+                            android:layout_marginVertical="4dp"
+                            android:background="@drawable/skortabelamavi"
+                            android:textColor="@android:color/white"
+                            android:onClick="sonucdegelendirMavi"
+                            android:text="20"
+                            android:textSize="22sp" />
+
+                        <Button
+                            android:id="@+id/sikb1Btn"
+                            android:layout_width="50dp"
+                            android:layout_height="35dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginVertical="4dp"
+                            android:background="@drawable/skortabelamavi"
+                            android:textColor="@android:color/white"
+                            android:onClick="sonucdegelendirMavi"
+                            android:text="18"
+                            android:textSize="22sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/siklarmavilayout2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="4dp"
+                        android:layout_centerHorizontal="true"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/sikc1Btn"
+                            android:layout_width="50dp"
+                            android:layout_height="35dp"
+                            android:layout_marginHorizontal="2dp"
+                            android:background="@drawable/skortabelamavi"
+                            android:textColor="@android:color/white"
+                            android:onClick="sonucdegelendirMavi"
+                            android:text="26"
+                            android:textSize="22sp" />
+
+                        <Button
+                            android:id="@+id/sikd1Btn"
+                            android:layout_width="50dp"
+                            android:layout_height="35dp"
+                            android:layout_marginHorizontal="2dp"
+                            android:background="@drawable/skortabelamavi"
+                            android:textColor="@android:color/white"
+                            android:onClick="sonucdegelendirMavi"
+                            android:text="24"
+                            android:textSize="22sp" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/goalView1"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/goal"
+                        android:visibility="gone"/>
+
+                </RelativeLayout>
+                <LinearLayout
+                    android:id="@+id/maviresultlayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:visibility="gone">
+
+                    <Button
+                        android:id="@+id/maviresultBtn"
+                        android:layout_width="250dp"
+                        android:layout_height="35dp"
+                        android:background="@drawable/twoplayerskormavi"
+                        android:text="@string/tebrikler"
+                        android:textColor="@android:color/white"
+                        android:textAllCaps="false"
+                        android:textSize="14sp" />
+
+                    <pl.droidsonroids.gif.GifImageView
+                        android:id="@+id/maviresultgif"
+                        android:layout_width="250dp"
+                        android:layout_height="100dp"
+                        android:background="@drawable/win"
+                        android:layout_gravity="center_horizontal"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/playagain1Btn"
+                            android:layout_width="110dp"
+                            android:layout_height="35dp"
+                            android:background="@drawable/siklarclicked"
+                            android:text="@string/tekraroyna"
+                            android:textColor="@android:color/black"
+                            android:textAllCaps="false"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/comic"
+                            android:textStyle="bold"
+                            android:layout_marginTop="2dp"/>
+                        <Button
+                            android:id="@+id/cikis1Btn"
+                            android:layout_width="110dp"
+                            android:layout_height="35dp"
+                            android:background="@drawable/hatalisik"
+                            android:text="@string/exit"
+                            android:textColor="@android:color/white"
+                            android:textAllCaps="false"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/comic"
+                            android:textStyle="bold"
+                            android:layout_marginTop="2dp"/>
+
+
+                    </LinearLayout>
+
+
+
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/kirmizitakimlayout"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_above="@id/dividerbar"
+                android:rotation="-180">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/sorunumarasıTxtv"
+                    android:layout_marginBottom="50dp">
+
+                    <LinearLayout
+                        android:id="@+id/skorlayoutkirmizi"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:orientation="horizontal"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_toLeftOf="@+id/surekirmizilayout"
+                        android:gravity="right"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginLeft="2dp">
+
+                        <Button
+                            android:id="@+id/sorusayisiView2"
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="15dp"
+                            android:background="@android:color/transparent"
+                            android:text="1/10"
+                            android:textSize="25dp"
+                            android:textStyle="bold"
+                            android:textColor="@android:color/white"
+                            android:visibility="visible"/>
+
+                        <Button
+                            android:id="@+id/skorkirmizi2Btn"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:text="9"
+                            android:textColor="@android:color/white"
+                            android:layout_gravity="right"
+                            android:background="@drawable/twoplayerskorkirmizi"
+                            android:textSize="35dp"
+                            android:textAlignment="gravity"/>
+
+
+
+
+
+
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/surekirmizilayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="2dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:layout_width="60dp"
+                            android:layout_height="20dp"
+                            android:background="@drawable/simetrydef"
+                            android:text="@string/time"
+                            android:textAllCaps="false"
+                            android:textSize="14sp" />
+
+                        <Button
+                            android:id="@+id/surekirmiziBtn"
+                            android:layout_width="60dp"
+                            android:layout_height="25dp"
+                            android:background="@drawable/simetrydef"
+                            android:text="14"
+                            android:textSize="16sp" />
+
+
+
+                    </LinearLayout>
+                    <RelativeLayout
+                        android:id="@+id/sorunumberlayoutkirmizi"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:orientation="horizontal"
+                        android:layout_alignParentTop="true"
+                        android:layout_toRightOf="@+id/surekirmizilayout"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginRight="2sp">
+
+                        <Button
+                            android:id="@+id/skormavi2Btn"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:text="9"
+                            android:textColor="@android:color/white"
+                            android:background="@drawable/twoplayerskormavi"
+                            android:textSize="35dp"
+                            android:textAlignment="gravity"/>
+
+
+
+                        <LinearLayout
+                            android:layout_width="45dp"
+                            android:layout_height="match_parent"
+                            android:onClick="exitintent"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="10dp">
+
+                            <Button
+                                android:id="@+id/exitmenu2Btn"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:onClick="exitintent"
+                                android:layout_gravity="center_vertical"
+                                android:background="@drawable/exit"/>
+
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/sorusayilarkırmızılayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_below="@id/sorunumberlayoutkirmizi"
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/sayi3Btn"
+                            android:layout_width="60dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@drawable/skortabelakirmizi"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:text="36"
+                            android:textColor="@android:color/white"
+                            android:textSize="28sp"
+                            android:textStyle="bold" />
+
+                        <Button
+                            android:id="@+id/islmesembol2"
+                            android:layout_width="30dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@android:color/transparent"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:text=" ÷ "
+                            android:textSize="30sp"
+                            android:textAllCaps="false"/>
+
+                        <Button
+                            android:id="@+id/sayi4Btn"
+                            android:layout_width="60dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@drawable/skortabelakirmizi"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:text="28"
+                            android:textColor="@android:color/white"
+                            android:textSize="32sp"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/siklarkirmizilayout1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/siklarkirmizilayout2"
+                        android:layout_centerHorizontal="true"
+                        android:orientation="horizontal">
+
+
+                        <Button
+                            android:id="@+id/sika2Btn"
+                            android:layout_width="50dp"
+                            android:layout_height="35dp"
+                            android:layout_marginVertical="4dp"
+                            android:background="@drawable/skortabelakirmizi"
+                            android:textColor="@android:color/white"
+                            android:onClick="sonucdegelendirKirmizi"
+                            android:text="20"
+                            android:textSize="22sp" />
+
+                        <Button
+                            android:id="@+id/sikb2Btn"
+                            android:layout_width="50dp"
+                            android:layout_height="35dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginVertical="4dp"
+                            android:background="@drawable/skortabelakirmizi"
+                            android:textColor="@android:color/white"
+                            android:onClick="sonucdegelendirKirmizi"
+                            android:text="18"
+                            android:textSize="22sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/siklarkirmizilayout2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="4dp"
+                        android:layout_centerHorizontal="true"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/sikc2Btn"
+                            android:layout_width="50dp"
+                            android:layout_height="35dp"
+                            android:layout_marginHorizontal="2dp"
+                            android:background="@drawable/skortabelakirmizi"
+                            android:textColor="@android:color/white"
+                            android:onClick="sonucdegelendirKirmizi"
+                            android:text="26"
+                            android:textSize="22sp" />
+
+                        <Button
+                            android:id="@+id/sikd2Btn"
+                            android:layout_width="50dp"
+                            android:layout_height="35dp"
+                            android:layout_marginHorizontal="2dp"
+                            android:background="@drawable/skortabelakirmizi"
+                            android:textColor="@android:color/white"
+                            android:onClick="sonucdegelendirKirmizi"
+                            android:text="24"
+                            android:textSize="22sp" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/goalView2"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/goal"
+                        android:visibility="gone"/>
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/kirmiziresultlayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:visibility="visible">
+
+                    <Button
+                        android:id="@+id/kirmiziresultBtn"
+                        android:layout_width="250dp"
+                        android:layout_height="35dp"
+                        android:background="@drawable/twoplayerskorkirmizi"
+                        android:text="@string/tebrikler"
+                        android:textColor="@android:color/white"
+                        android:textAllCaps="false"
+                        android:textSize="14sp" />
+
+                    <pl.droidsonroids.gif.GifImageView
+                        android:id="@+id/kirmiziresultgif"
+                        android:layout_width="250dp"
+                        android:layout_height="100dp"
+                        android:background="@drawable/win"
+                        android:layout_gravity="center_horizontal"
+                        android:visibility="gone" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/playagain2Btn"
+                            android:layout_width="110dp"
+                            android:layout_height="35dp"
+                            android:background="@drawable/siklarclicked"
+                            android:text="@string/tekraroyna"
+                            android:textColor="@android:color/black"
+                            android:textAllCaps="false"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/comic"
+                            android:textStyle="bold"
+                            android:layout_marginTop="2dp"/>
+                        <Button
+                            android:id="@+id/cikis2Btn"
+                            android:layout_width="110dp"
+                            android:layout_height="35dp"
+                            android:background="@drawable/hatalisik"
+                            android:text="@string/cikis"
+                            android:textColor="@android:color/white"
+                            android:textAllCaps="false"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/comic"
+                            android:textStyle="bold"
+                            android:layout_marginTop="2dp"/>
+
+
+                    </LinearLayout>
+
+
+
+
+
+                </LinearLayout>
+
+                <com.google.android.gms.ads.AdView
+                    xmlns:ads="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/adViewust"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentBottom="true"
+                    ads:adSize="SMART_BANNER"
+                    ads:adUnitId="ca-app-pub-4100535460120599/3198494746">
+                </com.google.android.gms.ads.AdView>
+
+        </RelativeLayout>
+
+
+
+            <com.google.android.gms.ads.AdView
+                xmlns:ads="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/adViewalt"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                ads:adSize="SMART_BANNER"
+                ads:adUnitId="ca-app-pub-4100535460120599/3198494746">
+            </com.google.android.gms.ads.AdView>
+
+        <LinearLayout
+            android:id="@+id/sonuclarlayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="20dp"
+            android:layout_alignParentTop="true"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="400dp"
+                android:layout_height="80dp"
+                android:src="@drawable/scores"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"/>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@drawable/frame4"
+                android:layout_marginHorizontal="20dp"
+                android:gravity="center_vertical"
+                android:layout_gravity="center_horizontal|center_vertical">
+
+
+
+                <Button
+                    android:id="@+id/sorusayisiTxtv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/totalquestion"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/comic"
+                    android:background="@android:color/transparent"
+                    android:textAllCaps="false"
+                    />
+
+                <Button
+                    android:id="@+id/dogrusayisiTxtv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:gravity="center_vertical"
+                    android:padding="4dp"
+                    android:text="@string/rightanswers"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/comic"
+                    android:background="@android:color/transparent"
+                    android:textAllCaps="false"/>
+
+                <Button
+                    android:id="@+id/yanlissayisiTxtv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:gravity="center_vertical"
+                    android:padding="4dp"
+                    android:text="@string/wronganswers"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/comic"
+                    android:background="@android:color/transparent"
+                    android:textAllCaps="false"/>
+
+
+
+                <Button
+                    android:id="@+id/toplampuanTxtv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:gravity="center_vertical"
+                    android:padding="4dp"
+                    android:text="@string/totalquestion"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/comic"
+                    android:background="@android:color/transparent"
+                    android:textAllCaps="false"/>
+                <Button
+                    android:id="@+id/testcikisBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/siklar"
+                    android:fontFamily="@font/comic"
+                    android:onClick="cikis"
+                    android:paddingHorizontal="8dp"
+                    android:text="@string/backtokonular"
+                    android:textAllCaps="false"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/cikislayout"
+            android:layout_width="250dp"
+            android:layout_height="110dp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_vertical"
+            android:background="@drawable/siklar"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:rotation="-180"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="1dp">
+
+                <Button
+                    android:id="@+id/exitBtn1"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/hatalisik"
+                    android:textAllCaps="false"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/comic"
+                    android:textAlignment="center"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginRight="5dp"
+                    android:text="@string/exit"/>
+                <Button
+                    android:id="@+id/geridonBtn1"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/siklarclicked"
+                    android:textAllCaps="false"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/comic"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/cliktoreturn"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="1dp">
+
+                <Button
+                    android:id="@+id/exitBtn2"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:textAlignment="center"
+                    android:background="@drawable/hatalisik"
+                    android:textAllCaps="false"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/comic"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginRight="5dp"
+                    android:text="@string/exit"/>
+                <Button
+                    android:id="@+id/geridonBtn2"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:textAlignment="center"
+                    android:background="@drawable/siklarclicked"
+                    android:textAllCaps="false"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/comic"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/cliktoreturn"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+
+
+    </RelativeLayout>
+
+
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

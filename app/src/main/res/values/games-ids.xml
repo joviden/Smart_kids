@@ -95,6 +95,8 @@ Save this file as res/values/games-ids.xml in your project.
     <!-- achievement Odd or Even Proffessor -->
     <string name="achievement_odd_or_even_proffessor" translatable="false">CgkInciNzooaEAIQOQ</string>
     <!-- leaderboard Smart Kids Kings -->
+
+
     <string name="leaderboard_smart_kids_kings" translatable="false">CgkInciNzooaEAIQGQ</string>
     <!-- leaderboard Summation Stars -->
     <string name="leaderboard_summation_stars" translatable="false">CgkInciNzooaEAIQGg</string>

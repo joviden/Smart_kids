@@ -3,4 +3,95 @@
     <color name="colorPrimary">#001481</color>
     <color name="colorPrimaryDark">#d9a30000</color>
     <color name="colorAccent">#fb0d00</color>
+    <color name="lightblue">#2AB9E7</color>
+    <color name="darkblue">#020049</color>
+    <color name="green">#00ab48</color>
+    <color name="lightgreen">#00ff6b</color>
+    <color name="pink">#ff00f4</color>
+    <color name="black">#000000</color>
+    <color name="red">#ff0000</color>
+    <color name="yellow">#f0ff00</color>
+    <color name="grey">#9a8c98</color>
+    <color name="blue">#391240</color>
+    <color name="brown">#5a4646</color>
+    <color name="purple">#7c009c</color>
+    <color name="darkred">#831a00</color>
+    <color name="darkerblue">#333249</color>
+    <color name="lightblack">#424249</color>
+    <color name="orange">#ffff8800</color>
+    <color name="petrol">#4d6c9c</color>
+
+
+    <color name="colorPrimaryLight">#e7f0ff</color>
+    <color name="colorSecondary">#b6dcfe</color>
+    <color name="colorPrimaryVeryLight">#a4ccf0</color>
+
+    <color name="iconcolor">#2962FF</color>
+    <color name="colorError">#f50057</color>
+    <color name="buttonBackground">#f50057</color>
+    <color name="card">#efebe9</color>
+    <color name="textdark">#424242</color>
+    <color name="alertbackground">#eeeeee</color>
+
+
+    <color name="theme3primary">#feb8ff</color>
+    <color name="theme3dark">#b17bb2</color>
+    <color name="theme3light">#feefff</color>
+    <color name="theme3lightdark">#feefff</color>
+    <color name="theme3accent">#ff4a4a</color>
+
+    <color name="theme4primary">#f2a738</color>
+    <color name="theme4dark">#c1852c</color>
+    <color name="theme4light">#fcedd7</color>
+    <color name="theme4lightdark">#f4b85f</color>
+    <color name="theme4accent">#ff4a4a</color>
+
+
+    <color name="blackthemeprimary">#444444</color>
+    <color name="blackthemedark">#333333</color>
+    <color name="blackthemelight">#565656</color>
+
+
+    <color name="white">#ffffff</color>
+
+    <color name="darkgrey">#6c6c6c</color>
+    <color name="sutlukave">#eeebeb</color>
+    <color name="erdem">#2f333f</color>
+    <color name="erdemacik">#343d46</color>
+    <color name="menucolor">#143d66</color>
+    <color name="cardframecolor">#817d7d</color>
+    <color name="koyukave">#d8d5d5</color>
+    <color name="textsari">#ffde57</color>
+    <color name="yesil">#00d22e</color>
+    <color name="acikyesil2">#00f436</color>
+    <color name="koyuyesil">#2db24f</color>
+
+    <color name="acikyesil">#b2dd97</color>
+
+    <color name="menu1">#ffdbac</color>
+    <color name="menu2">#f1c27d</color>
+    <color name="menu3">#f2a738</color>
+    <color name="menu4">#969696</color>
+    <color name="menu5">#ac956a</color>
+    <color name="menu6">#eabe1e</color>
+    <color name="menu8">#1c121a</color>
+    <color name="baslik">#59232b</color>
+    <color name="altbaslik">#6b3b42</color>
+    <color name="laci">#001683</color>
+    <color name="checklistimg">#7e5d4f</color>
+    <color name="koyuturuncu">#a56400</color>
+    <color name="kirlibeyaz">#f7efed</color>
+    <color name="dahakirlibeyaz">#ded2cf</color>
+
+    <color name="transparent">#00000000</color>
+
+    <color name="color_line">#afb5b9</color>
+    <color name="color_bottom_line">#E4F0F8</color>
+    <color name="test">#e9edf6</color>
+    <color name="test_line">#cde1ff</color>
+    <color name="gray50transparent">#1A6eb2ee</color>
+
+    <color name="header_back">#F1F1E3</color>
+
+
 </resources>

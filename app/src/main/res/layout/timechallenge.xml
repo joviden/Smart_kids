@@ -1,374 +1,446 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
 
 
 
+    <RelativeLayout
+        android:id="@+id/background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/holo_orange_dark">
+
         <RelativeLayout
+            android:id="@+id/timegirislayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@android:color/holo_orange_dark">
+            android:layout_above="@id/adView"
+            android:visibility="visible">
+
+            <ImageView
+                android:id="@+id/smartheader"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/timechallengeheader"
+                android:padding="15sp"/>
+
 
             <RelativeLayout
-                android:id="@+id/timegirislayout"
+                android:id="@+id/picslayout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:visibility="gone">
+                android:layout_height="200dp"
+                android:layout_above="@id/countdownlayout"
+                android:layout_marginBottom="25dp"
+                android:background="@drawable/star">
 
-                <ImageView
-                    android:id="@+id/smartheader"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_above="@id/pointsbarlayout"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginHorizontal="10dp"
+
+            <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="180dp"
+                    android:background="@drawable/rocketman"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="130dp"/>
+
+                <pl.droidsonroids.gif.GifImageView
+                    android:id="@+id/rocketgif"
+                    android:layout_width="180dp"
+                    android:layout_height="200dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/rocket"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="30dp"
+                    android:visibility="visible" />
+            </RelativeLayout>
+
+
+
+
+
+            <LinearLayout
+                android:id="@+id/btngrp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:layout_centerHorizontal="true"
+                android:layout_above="@id/seceneklerlayout"
+                android:layout_marginBottom="8dp">
+
+                <Button
+                    android:id="@+id/leader"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/leaderboardcup" />
+                <Button
+                    android:id="@+id/achievement"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/achievement" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/seceneklerlayout"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                android:layout_above="@id/girisbtnlayout"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:background="@drawable/edittext"
+                android:layout_centerHorizontal="true"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+
+
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/toplamaswitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text=" + "
+                    android:textSize="30sp"/>
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/cikarmaswitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text=" - "
+                    android:textStyle="bold"
+                    android:textSize="30sp"/>
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/carpmaswitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:text=" x "
+                    android:textSize="25sp"
+                    android:textAlignment="center"/>
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/bolmeswitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text=" ÷ "
+                    android:textSize="30sp"/>
+
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/countdownlayout"
+                android:layout_width="80dp"
+                android:layout_height="67dp"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/edittext"
+                android:layout_above="@+id/girisbtnlayout"
+                android:layout_marginBottom="5dp"
+                android:visibility="visible"
+                android:gravity="center_vertical|center_horizontal">
+
+                <Button
+                    android:id="@+id/gerisayimbtn"
+                    android:layout_width="70dp"
+                    android:layout_height="57dp"
+                    android:background="@drawable/hatalisik"
+                    android:text="3"
+                    android:textAlignment="center"
+                    android:textSize="40sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/girisbtnlayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal|center_vertical">
+
+                <Button
+                    android:id="@+id/girisBtn"
+                    android:layout_width="110dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/siklarclicked"
+                    android:fontFamily="@font/comic"
+                    android:text="@string/go"
+                    android:textAllCaps="false"
+                    android:layout_marginRight="8dp"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+                <Button
+                    android:id="@+id/cikisBtn"
+                    android:layout_width="110dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/hatalisik"
+                    android:fontFamily="@font/comic"
+                    android:layout_marginLeft="8dp"
+                    android:onClick="cikis"
+                    android:text="@string/exit"
+                    android:textAllCaps="false"
+                    android:textColor="#000"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+
+
+
+
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/sorugovdelayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="@android:color/holo_orange_dark"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:layout_above="@id/adView"
+            android:visibility="gone">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:id="@+id/sorunumarasıTxtv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerInParent="true"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/timechallengeheader"
-                    android:padding="15sp"/>
+                    android:background="@drawable/sorunumarasi"
+                    android:fontFamily="@font/comic"
+                    android:paddingRight="60dp"
+                    android:paddingLeft="60dp"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:text="@string/level"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+
+
+
 
 
                 <RelativeLayout
-                    android:id="@+id/picslayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="280dp"
-                    android:layout_above="@id/btngrp"
-                    android:background="@drawable/star">
-
-                    <ImageView
-                        android:layout_width="175dp"
-                        android:layout_height="180dp"
-                        android:background="@drawable/rocketman"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginLeft="130dp"/>
-
-                    <pl.droidsonroids.gif.GifImageView
-                        android:id="@+id/rocketgif"
-                        android:layout_width="220dp"
-                        android:layout_height="250dp"
-                        android:layout_marginLeft="10dp"
-                        android:background="@drawable/rocket"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginBottom="30dp"
-                        android:visibility="visible" />
-                </RelativeLayout>
-
-
-
-
-
-
-
-
-
-
-
-                <LinearLayout
-                    android:id="@+id/btngrp"
+                    android:id="@+id/alphalayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="40dp"
-                    android:layout_above="@id/girisbtnlayout"
-                    android:layout_marginBottom="10dp">
+                    android:layout_below="@id/sorunumarasıTxtv">
+
+
+                    <LinearLayout
+                        android:id="@+id/sorusayilarlayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/sayi1Txtv"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@drawable/edittext"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:text="36"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="30sp"
+                            android:textStyle="bold" />
+
+                        <Button
+                            android:id="@+id/islmesembol"
+                            android:layout_width="30dp"
+                            android:layout_height="70dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@android:color/transparent"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:text=" x "
+                            android:textAllCaps="false"
+                            android:textSize="30sp" />
+
+                        <TextView
+                            android:id="@+id/sayi2Txtv"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@drawable/edittext"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:text="36"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="30sp"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+
+
+
+                    <ProgressBar
+                        android:id="@+id/timebar"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="22dip"
+                        android:layout_below="@id/sorusayilarlayout"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:indeterminateOnly="false"
+                        android:max="100"
+                        android:progressDrawable="@drawable/horizontal_progress_bar"> </ProgressBar>
 
                     <Button
-                        android:id="@+id/leader"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/leaderboardcup" />
-                    <Button
-                        android:id="@+id/achievement"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_marginHorizontal="5dp"
-                        android:background="@drawable/achievement" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/countdownlayout"
-                    android:layout_width="100dp"
-                    android:layout_height="90dp"
-                    android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true"
-                    android:background="@drawable/edittext"
-                    android:layout_above="@+id/girisbtnlayout"
-                    android:layout_marginBottom="10dp"
-                    android:visibility="gone"
-                    android:gravity="center_vertical|center_horizontal">
-
-                    <Button
-                        android:id="@+id/gerisayimbtn"
-                        android:layout_width="90dp"
-                        android:layout_height="80dp"
-                        android:background="@drawable/hatalisik"
-                        android:text="3"
+                        android:id="@+id/progressTxt"
+                        android:layout_height="22dip"
+                        android:layout_width="fill_parent"
+                        android:layout_below="@id/sorusayilarlayout"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="20dp"
                         android:textAlignment="center"
-                        android:textSize="50sp"
-                        android:textStyle="bold"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/girisbtnlayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginBottom="10dp"
-                    android:orientation="horizontal"
-                    android:gravity="center_horizontal|center_vertical">
-
-                    <Button
-                        android:id="@+id/girisBtn"
-                        android:layout_width="120dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/siklarclicked"
-                        android:fontFamily="@font/annie_use_your_telescope"
-                        android:text="@string/go"
-                        android:textAllCaps="false"
-                        android:layout_marginRight="8dp"
-                        android:textSize="24sp"
-                        android:textStyle="bold" />
-                    <Button
-                        android:id="@+id/cikisBtn"
-                        android:layout_width="120dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/hatalisik"
-                        android:fontFamily="@font/annie_use_your_telescope"
-                        android:layout_marginLeft="8dp"
-                        android:onClick="cikis"
-                        android:text="@string/exit"
-                        android:textAllCaps="false"
-                        android:textColor="#000"
-                        android:textSize="24sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/comic"
+                        android:background="@android:color/transparent"/>
 
 
 
+                    <LinearLayout
+                        android:id="@+id/lifelayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/timebar"
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal">
 
+                        <ImageView
+                            android:id="@+id/life1"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:background="@drawable/heart01" />
+
+                        <ImageView
+                            android:id="@+id/life2"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:background="@drawable/heart01" />
+
+                        <ImageView
+                            android:id="@+id/life3"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:background="@drawable/heart01" />
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                        android:id="@+id/siklarlayout1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/timebar"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="40dp"
+                        android:orientation="horizontal">
+
+
+                        <Button
+                            android:id="@+id/sikaBtn"
+                            android:layout_width="90dp"
+                            android:layout_height="60dp"
+                            android:layout_marginVertical="4dp"
+                            android:background="@drawable/siklar"
+                            android:onClick="cevapla"
+                            android:text="20"
+                            android:textSize="22sp" />
+
+                        <Button
+                            android:id="@+id/sikbBtn"
+                            android:layout_width="90dp"
+                            android:layout_height="60dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginVertical="4dp"
+                            android:background="@drawable/siklar"
+                            android:onClick="cevapla"
+                            android:text="18"
+                            android:textSize="22sp" />
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                        android:id="@+id/siklarlayout2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/siklarlayout1"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/sikcBtn"
+                            android:layout_width="90dp"
+                            android:layout_height="60dp"
+                            android:layout_marginHorizontal="2dp"
+                            android:layout_marginVertical="4dp"
+                            android:background="@drawable/siklar"
+                            android:onClick="cevapla"
+                            android:text="26"
+                            android:textSize="22sp" />
+
+                        <Button
+                            android:id="@+id/sikdBtn"
+                            android:layout_width="90dp"
+                            android:layout_height="60dp"
+                            android:layout_marginHorizontal="2dp"
+                            android:layout_marginVertical="4dp"
+                            android:background="@drawable/siklar"
+                            android:onClick="cevapla"
+                            android:text="24"
+                            android:textSize="22sp" />
+                    </LinearLayout>
+
+
+                </RelativeLayout>
 
 
             </RelativeLayout>
 
 
-            <RelativeLayout
-                android:id="@+id/sorugovdelayout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:background="@android:color/holo_orange_dark"
-                android:gravity="center_horizontal"
-                android:orientation="vertical"
-                android:visibility="visible">
 
-                <RelativeLayout
-                    android:id="@+id/alphalayout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/sorunumarasıTxtv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:visibility="visible"
-                        android:layout_alignParentTop="true"
-                        android:layout_centerInParent="true"
-                        android:layout_marginTop="10dp"
-                        android:background="@drawable/sorunumarasi"
-                        android:fontFamily="casual"
-                        android:paddingHorizontal="60dp"
-                        android:paddingVertical="12dp"
-                        android:text="@string/level"
-                        android:textAlignment="center"
-                        android:textColor="@android:color/black"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
-
-
-
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_below="@+id/sorunumarasıTxtv">
-
-                        <LinearLayout
-                            android:id="@+id/sorusayilarlayout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="30dp"
-                            android:gravity="center_horizontal"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/sayi1Txtv"
-                                android:layout_width="80dp"
-                                android:layout_height="80dp"
-                                android:layout_gravity="center_vertical"
-                                android:background="@drawable/edittext"
-                                android:gravity="center_horizontal|center_vertical"
-                                android:text="36"
-                                android:textColor="@color/colorPrimaryDark"
-                                android:textSize="30sp"
-                                android:textStyle="bold" />
-
-                            <Button
-                                android:id="@+id/islmesembol"
-                                android:layout_width="30dp"
-                                android:layout_height="70dp"
-                                android:layout_gravity="center_vertical"
-                                android:background="@android:color/transparent"
-                                android:gravity="center_horizontal|center_vertical"
-                                android:text=" ÷ "
-                                android:textSize="36sp"
-                                android:textAllCaps="false"/>
-
-                            <TextView
-                                android:id="@+id/sayi2Txtv"
-                                android:layout_width="80dp"
-                                android:layout_height="80dp"
-                                android:layout_gravity="center_vertical"
-                                android:background="@drawable/edittext"
-                                android:gravity="center_horizontal|center_vertical"
-                                android:text="36"
-                                android:textColor="@color/colorPrimaryDark"
-                                android:textSize="30sp"
-                                android:textStyle="bold" />
-
-
-                        </LinearLayout>
-
-
-                        <ProgressBar
-                            android:id="@+id/timebar"
-                            style="?android:attr/progressBarStyleHorizontal"
-                            android:layout_width="fill_parent"
-                            android:layout_height="22dip"
-                            android:layout_below="@id/sorusayilarlayout"
-                            android:layout_marginHorizontal="6dp"
-                            android:layout_marginTop="20dp"
-                            android:indeterminateOnly="false"
-                            android:max="100"
-                            android:progressDrawable="@drawable/horizontal_progress_bar"> </ProgressBar>
-
-                        <Button
-                            android:id="@+id/progressTxt"
-                            android:layout_height="22dip"
-                            android:layout_width="fill_parent"
-                            android:layout_below="@id/sorusayilarlayout"
-                            android:layout_marginHorizontal="6dp"
-                            android:layout_marginTop="20dp"
-                            android:layout_marginLeft="10dp"
-                            android:textAlignment="center"
-                            android:textStyle="bold"
-                            android:textSize="16sp"
-                            android:fontFamily="casual"
-                            android:background="@android:color/transparent"/>
-
-                        <LinearLayout
-                            android:id="@+id/lifelayout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_below="@+id/timebar"
-                            android:gravity="center_horizontal">
-
-                            <ImageView
-                                android:id="@+id/life1"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:background="@drawable/heart01"/>
-                            <ImageView
-                                android:id="@+id/life2"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:background="@drawable/heart01"/>
-                            <ImageView
-                                android:id="@+id/life3"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:background="@drawable/heart01"/>
-                        </LinearLayout>
-
-
-                        <LinearLayout
-                            android:id="@+id/siklarlayout1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/timebar"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginTop="65dp"
-                            android:orientation="horizontal">
-
-
-                            <Button
-                                android:id="@+id/sikaBtn"
-                                android:layout_width="110dp"
-                                android:layout_height="60dp"
-                                android:layout_marginVertical="4dp"
-                                android:background="@drawable/siklar"
-                                android:onClick="clicksika"
-                                android:text="20"
-                                android:textSize="22sp" />
-
-                            <Button
-                                android:id="@+id/sikbBtn"
-                                android:layout_width="110dp"
-                                android:layout_height="60dp"
-                                android:layout_marginLeft="5dp"
-                                android:layout_marginVertical="4dp"
-                                android:background="@drawable/siklar"
-                                android:onClick="clicksikb"
-                                android:text="18"
-                                android:textSize="22sp" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/siklarlayout2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/siklarlayout1"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginTop="10dp"
-                            android:orientation="horizontal">
-
-                            <Button
-                                android:id="@+id/sikcBtn"
-                                android:layout_width="110dp"
-                                android:layout_height="60dp"
-                                android:layout_marginHorizontal="2dp"
-                                android:layout_marginVertical="4dp"
-                                android:background="@drawable/siklar"
-                                android:onClick="clicksikc"
-                                android:text="26"
-                                android:textSize="22sp" />
-
-                            <Button
-                                android:id="@+id/sikdBtn"
-                                android:layout_width="110dp"
-                                android:layout_height="60dp"
-                                android:layout_marginHorizontal="2dp"
-                                android:layout_marginVertical="4dp"
-                                android:background="@drawable/siklar"
-                                android:onClick="clicksikd"
-                                android:text="24"
-                                android:textSize="22sp" />
-                        </LinearLayout>
-
-
-
-
-
-
-                    </RelativeLayout>
-
-
-                </RelativeLayout>
 
 
 
@@ -380,10 +452,10 @@
                 <RelativeLayout
                     android:id="@+id/nextbutonslayout"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_above="@id/adView"
+                    android:layout_height="50dp"
                     android:layout_marginBottom="5dp"
                     android:gravity="center_horizontal|center_vertical"
+                    android:layout_alignParentBottom="true"
                     android:orientation="horizontal"
                     android:visibility="visible">
 
@@ -395,7 +467,7 @@
                         android:layout_margin="5dp"
                         android:layout_toLeftOf="@id/skorTxv"
                         android:background="@drawable/nextbuttongroup"
-                        android:fontFamily="casual"
+                        android:fontFamily="@font/comic"
                         android:onClick="tamamla"
                         android:padding="5dp"
                         android:text="@string/testibitir"
@@ -406,10 +478,10 @@
                     <TextView
                         android:id="@+id/skorTxv"
                         android:layout_width="100dp"
-                        android:layout_height="60dp"
+                        android:layout_height="50dp"
                         android:layout_centerHorizontal="true"
                         android:background="@drawable/siklarclicked"
-                        android:fontFamily="casual"
+                        android:fontFamily="@font/comic"
                         android:gravity="center_vertical"
                         android:text="@string/skor"
                         android:textAlignment="center"
@@ -418,14 +490,14 @@
                         android:textStyle="bold" />
 
                     <Button
-                        android:id="@+id/cevapBtn"
+                        android:id="@+id/nextquestionBtn"
                         android:layout_width="120dp"
                         android:layout_height="40dp"
                         android:layout_centerVertical="true"
                         android:layout_margin="5dp"
                         android:layout_toRightOf="@id/skorTxv"
                         android:background="@drawable/nextbuttongroup"
-                        android:fontFamily="casual"
+                        android:fontFamily="@font/comic"
                         android:onClick="pause"
                         android:padding="5dp"
                         android:text="@string/pause"
@@ -434,198 +506,191 @@
                         android:textStyle="bold" />
                 </RelativeLayout>
 
-                <com.google.android.gms.ads.AdView
-                    xmlns:ads="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/adView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_alignParentBottom="true"
-                    ads:adSize="SMART_BANNER"
-                    ads:adUnitId="ca-app-pub-4100535460120599/3198494746">
-                </com.google.android.gms.ads.AdView>
+
+
 
             </RelativeLayout>
 
+        <LinearLayout
+            android:id="@+id/sonuclarlayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/frame4"
+            android:layout_margin="10dp"
+            android:layout_alignParentTop="true"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="280dp"
+                android:layout_height="50dp"
+                android:src="@drawable/scores"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="110dp"/>
+
+
+
             <LinearLayout
-                android:id="@+id/sonuclarlayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="20dp"
-                android:layout_alignParentTop="true"
                 android:orientation="vertical"
-                android:visibility="gone">
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_gravity="center_horizontal">
 
-                <ImageView
-                    android:layout_width="400dp"
-                    android:layout_height="80dp"
-                    android:src="@drawable/scores"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="5dp"/>
-
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:background="@drawable/frame4"
-                    android:layout_marginHorizontal="20dp"
-                    android:gravity="center_vertical"
-                    android:layout_gravity="center_horizontal|center_vertical">
-
-
-
-                    <Button
-                        android:id="@+id/sorusayisiTxtv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
-                        android:gravity="center_vertical"
-                        android:text="@string/totalquestion"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:fontFamily="casual"
-                        android:background="@android:color/transparent"
-                        android:textAllCaps="false"
-                        />
-
-                    <Button
-                        android:id="@+id/dogrusayisiTxtv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
-                        android:gravity="center_vertical"
-                        android:padding="4dp"
-                        android:text="@string/rightanswers"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:fontFamily="casual"
-                        android:background="@android:color/transparent"
-                        android:textAllCaps="false"/>
-
-                    <Button
-                        android:id="@+id/yanlissayisiTxtv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
-                        android:gravity="center_vertical"
-                        android:padding="4dp"
-                        android:text="@string/wronganswers"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:fontFamily="casual"
-                        android:background="@android:color/transparent"
-                        android:textAllCaps="false"/>
-
-
-
-                    <Button
-                        android:id="@+id/toplampuanTxtv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
-                        android:gravity="center_vertical"
-                        android:padding="4dp"
-                        android:text="@string/totalquestion"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:fontFamily="casual"
-                        android:background="@android:color/transparent"
-                        android:textAllCaps="false"/>
-                    <Button
-                        android:id="@+id/testcikisBtn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/siklar"
-                        android:fontFamily="casual"
-                        android:onClick="cikis"
-                        android:paddingHorizontal="8dp"
-                        android:text="@string/backtokonular"
-                        android:textAllCaps="false"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_gravity="center"
-                        />
-
-
-                </LinearLayout>
-
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/cikislayout"
-                android:layout_width="wrap_content"
-                android:layout_height="120dp"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="55dp"
-                android:background="@drawable/siklar"
-                android:orientation="vertical"
-                android:visibility="gone">
 
                 <Button
+                    android:id="@+id/sorusayisiTxtv"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    android:textAllCaps="false"
-                    android:fontFamily="casual"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/totalquestion"
+                    android:textSize="14sp"
                     android:textStyle="bold"
-                    android:text="@string/leave"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:paddingHorizontal="100dp" />
-                <LinearLayout
+                    android:fontFamily="@font/comic"
+                    android:background="@android:color/transparent"
+                    android:textAllCaps="false"/>
+
+                <Button
+                    android:id="@+id/dogrusayisiTxtv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/rightanswers"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/comic"
+                    android:background="@android:color/transparent"
+                    android:textAllCaps="false"/>
+
+                <Button
+                    android:id="@+id/yanlissayisiTxtv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/wronganswers"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/comic"
+                    android:background="@android:color/transparent"
+                    android:textAllCaps="false"/>
+
+
+
+                <Button
+                    android:id="@+id/toplampuanTxtv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/totalquestion"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/comic"
+                    android:background="@android:color/transparent"
+                    android:textAllCaps="false"/>
+
+                <Button
+                    android:id="@+id/testcikisBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_gravity="center_horizontal">
-
-                    <Button
-                        android:id="@+id/exitBtn"
-                        android:layout_width="120dp"
-                        android:layout_height="60dp"
-                        android:background="@drawable/sorunumarasi"
-                        android:textAllCaps="false"
-                        android:textStyle="bold"
-                        android:fontFamily="casual"
-                        android:onClick="backmenu"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginRight="5dp"
-                        android:text="@string/exit"/>
-                    <Button
-                        android:id="@+id/geridonBtn"
-                        android:layout_width="120dp"
-                        android:layout_height="60dp"
-                        android:background="@drawable/siklarclicked"
-                        android:textAllCaps="false"
-                        android:textStyle="bold"
-                        android:fontFamily="casual"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginLeft="5dp"
-                        android:text="@string/cliktoreturn"/>
-
-                </LinearLayout>
+                    android:background="@drawable/siklar"
+                    android:layout_marginTop="30dp"
+                    android:fontFamily="@font/comic"
+                    android:onClick="cikis"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="30dp"
+                    android:text="@string/backtokonular"
+                    android:textAllCaps="false"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"/>
 
 
             </LinearLayout>
 
 
-
-        </RelativeLayout>
-
+        </LinearLayout>
 
 
+        <LinearLayout
+            android:id="@+id/cikislayout"
+            android:layout_width="wrap_content"
+            android:layout_height="110dp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="55dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:background="@drawable/siklar"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:textAllCaps="false"
+                android:fontFamily="@font/comic"
+                android:textStyle="bold"
+                android:text="@string/leave"
+                android:textSize="16sp"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:paddingHorizontal="20dp" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal">
+
+                <Button
+                    android:id="@+id/exitBtn"
+                    android:layout_width="110dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/sorunumarasi"
+                    android:textAllCaps="false"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/comic"
+                    android:onClick="backmenu"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginRight="5dp"
+                    android:text="@string/exit"/>
+                <Button
+                    android:id="@+id/geridonBtn"
+                    android:layout_width="110dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/siklarclicked"
+                    android:textAllCaps="false"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/comic"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/cliktoreturn"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
 
 
 
+        <com.google.android.gms.ads.AdView
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            ads:adSize="SMART_BANNER"
+            ads:adUnitId="ca-app-pub-4100535460120599/3198494746">
+        </com.google.android.gms.ads.AdView>
 
 
-    </android.support.constraint.ConstraintLayout>
 
+    </RelativeLayout>
 
-
-
-
-
+</androidx.constraintlayout.widget.ConstraintLayout>

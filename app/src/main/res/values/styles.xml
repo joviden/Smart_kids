@@ -8,6 +8,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="customfontstyle" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/comic</item>
+    </style>
+
     <style name="Widget">
     </style>
     <style name="Widget.ProgressBar">

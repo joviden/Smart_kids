@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">スマートキッズ</string>
+
     <string name="girisBtn">入る</string>
     <string name="karsilamametin">SmArT KiDs StaRtiNg!!!</string>
     <string name="konulartoplama">総和</string>
@@ -19,7 +20,7 @@
     <string name="moderate">中程度の</string>
     <string name="hard">ハード</string>
     <string name="testibitir">仕上げ</string>
-        <string name="skor">スコア</string>
+    <string name="skor">スコア</string>
     <string name="sonrakisoru">次</string>
     <string name="questionformultipication">乗算の正解を見つけてください。</string>
     <string name="questionforaddition">合計の正解を見つけてください。</string>
@@ -60,10 +61,25 @@
     <string name="leveldurumu"> ポイントは次のレベルのために残った！ \n 立ち止まるな！</string>
     <string name="levelyetersiz"> このレベルには十分なポイントがありません！</string>
     <string name="questionforoddeven">結果が偶数のバルーンをポップしてください！</string>
-    <string name="timechallenge">時間の挑戦</string>
-    <string name="fouroperations">4操作</string>
-    <string name="twoplayers">2人のプレーヤー</string>
-    <string name="mathgames">数学ゲーム</string>
+
+
+
+
+    <string name="timechallenge">Time Challenge</string>
+    <string name="fouroperations">4 Operations</string>
+    <string name="twoplayers">Math-ball</string>
+    <string name="mathgames">Mental Games</string>
+
+    <string name="timechallenge_exp">時間との競争</string>
+    <string name="fouroperationsexp">4つの操作を調べる!</string>
+    <string name="twoplayersexp">数学とサッカー!</string>
+    <string name="mathgamesexp">数学ゲームをプレイ！</string>
+    <string name="removeads">広告を削除する</string>
+    <string name="removeadsexp">広告なしで楽しむ</string>
+    <string name="otherapps">他のアプリ</string>
+    <string name="otherappsexp">あなたは気に入るでしょう!</string>
+
+
     <string name="pause">一時停止する</string>
     <string name="go">行く</string>
     <string name="level">レベル</string>
@@ -71,8 +87,6 @@
     <string name="exit">出口</string>
     <string name="cliktoreturn">リターンゲーム</string>
     <string name="levelpass">おめでとう！ あなたは新しいレベルに成功しました！  \n あなたは新しいキャラクターを選ぶことができます！ </string>
-
-
     <string name="comingsoon">2人のプレーヤーのゲームがまもなく登場です！</string>
     <string name="disclaim">注意</string>
     <string name="infotxt">"    "こんにちは！私のアプリケーションをインストールして使用していただきありがとうございます。私はこの練習であなたまたはあなたの子供が両方とも教えられ、数学の問題を解決することを願っています。
@@ -96,6 +110,18 @@
     <string name="levelsayisi">あなたのレベル:</string>
     <string name="nextlevelpts">次のレベルのポイント:</string>
     <string name="skortablosu">得点表</string>
+    <string name="tebrikler">おめでとう、あなたが勝つ！</string>
+    <string name="teselli">失う、もう一度やり直してください！</string>
+    <string name="points">ポイント</string>
+    <string name="time">時間</string>
+    <string name="draw">描かれました :)</string>
+    <string name="question">質問</string>
+    <string name="twoplayersinfo">Smart Kids Two Playersへようこそ！ \n できるだけ早く正しい答えを見つけてください！</string>
+    <string name="sharebody">あなたはあなたの数学を信じますか？ \n https://play.google.com/store/apps/details?id=com.smartkids.akillicocuklar2</string>
+    <string name="sharesub">私は偉大な数学のアプリケーションを見つけた！</string>
+    <string name="switchcheck">少なくとも1つの数学演算を選択してください！</string>
+
+
 
 
 

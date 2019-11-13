@@ -5,9 +5,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -18,23 +17,32 @@ import android.widget.Toast;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.games.Games;
-
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 
 
 /**
  * Created by joviden on 03.12.2017.
  */
 
-public class TrainingActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener  {
+public class TrainingActivity extends AppCompatActivity  {
 
     private AdView mAdView;
     private ProgressBar toplamabar = null; private ProgressBar cikarmabar = null;private ProgressBar carpmabar = null;private ProgressBar bolmebar = null;private ProgressBar ritmikbar = null;
     private ProgressBar buyukkucukbar= null;private ProgressBar tekciftbar = null;private ProgressBar simetribar= null;
 
-    private GoogleApiClient mGoogleApiClient;
+    private static final int RC_SIGN_IN = 9001;
+    private static final int RC_LEADERBOARD_UI = 9004;
+
+
     float topbasari;
     Integer intboldogru;
 
@@ -47,38 +55,21 @@ public class TrainingActivity extends AppCompatActivity implements GoogleApiClie
         setContentView(R.layout.traininglayout);
 
 
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this)
-                .addApi(Games.API).addScope(Games.SCOPE_GAMES)
-                .enableAutoManage(this, new GoogleApiClient.OnConnectionFailedListener() {
-                    @Override
-                    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-                      // Toast.makeText(getApplicationContext(),"sorunvar",Toast.LENGTH_SHORT).show();
-                    }
-                }).build();
+        signInSilently();
 
+
+
+/*
         Button topleaderbtn = (Button)findViewById(R.id.toplamaleader);
         topleaderbtn.setOnClickListener(new View.OnClickListener() {
           @Override
         public void onClick(View view) {
 
-              if (mGoogleApiClient.isConnected()){
-                 // Toast.makeText(getApplicationContext(),"baglı",Toast.LENGTH_SHORT).show();
-                    // Games.Leaderboards.submitScore(mGoogleApiClient,getString(R.string.leaderboard_score_table),50);
-                  startActivityForResult(Games.Leaderboards.getLeaderboardIntent(mGoogleApiClient,getString(R.string.leaderboard_summation_stars)),0);
-              }else {
-                  mGoogleApiClient.connect();
-                 // Toast.makeText(getApplicationContext(),"baglı degil",Toast.LENGTH_SHORT).show();
-
-              }
 
         }
         });
 
-
-
-
+*/
 
         MobileAds.initialize(this, "ca-app-pub-4100535460120599~1018273710");
         mAdView = findViewById(R.id.adView);
@@ -112,21 +103,6 @@ public class TrainingActivity extends AppCompatActivity implements GoogleApiClie
         TextView cikarmadogrusayisi =(TextView)findViewById(R.id.cikramadogrusoruTxt);
         TextView cikarmayanlissayisi =(TextView)findViewById(R.id.cikarmayanlissoruTxt);
         TextView cikarmabos =(TextView)findViewById(R.id.cikarmabossoruTxt);
-        TextView buyukkucuktoplamsoru =(TextView)findViewById(R.id.buyukkucuktoplamsoruTxt);
-        TextView buyukkucukdogrusayisi =(TextView)findViewById(R.id.buyukkucukdogrusoruTxt);
-        TextView buyukkucukyanlissayisi =(TextView)findViewById(R.id.buyukkucukyanlissoruTxt);
-        TextView buyukkucukbos =(TextView)findViewById(R.id.buyukkucukbossoruTxt);
-        TextView ritmiktoplamsoru =(TextView)findViewById(R.id.ritmiktoplamsoruTxt);
-        TextView ritmikdogrusayisi =(TextView)findViewById(R.id.ritmikdogrusoruTxt);
-        TextView ritmikyanlissayisi =(TextView)findViewById(R.id.ritmikyanlissoruTxt);
-        TextView ritmikbos =(TextView)findViewById(R.id.ritmikbossoruTxt);
-        TextView simetritoplamsoru =(TextView)findViewById(R.id.simetritoplamsoruTxt);
-        TextView simetridogrusayisi =(TextView)findViewById(R.id.simetridogrusoruTxt);
-        TextView simetriyanlissayisi =(TextView)findViewById(R.id.simetriyanlissoruTxt);
-        TextView simetribos =(TextView)findViewById(R.id.simetribossoruTxt);
-        TextView toplambalon =(TextView)findViewById(R.id.toplambalonTxt);
-        TextView dogrubalon =(TextView)findViewById(R.id.dogrubalonTxt);
-        TextView yanlisbalon =(TextView)findViewById(R.id.yanlisbalonTxt);
 
 
 
@@ -171,11 +147,6 @@ public class TrainingActivity extends AppCompatActivity implements GoogleApiClie
         cikarmadogrusayisi.setText(getString(R.string.rightanswersh)+String.valueOf(intcikarmadogru));
         cikarmayanlissayisi.setText(getString(R.string.wronganswersh)+String.valueOf(intcikarmayanlis));
         cikarmabos.setText(getString(R.string.unanswered)+String.valueOf(intcikarmabos));
-
-
-
-
-
 
 
 
@@ -349,8 +320,6 @@ public class TrainingActivity extends AppCompatActivity implements GoogleApiClie
         }
 
 
-
-
         if (bolmebasari<20){
             bolmeyildiz1.setVisibility(View.VISIBLE);
             bolmeyildiz2.setVisibility(View.INVISIBLE);
@@ -386,8 +355,6 @@ public class TrainingActivity extends AppCompatActivity implements GoogleApiClie
             bolmeyildiz4.setVisibility(View.VISIBLE);
             bolmeyildiz5.setVisibility(View.VISIBLE);
         }
-
-
 
         if (carpmabasari<20){
             carpmayildiz1.setVisibility(View.VISIBLE);
@@ -429,7 +396,7 @@ public class TrainingActivity extends AppCompatActivity implements GoogleApiClie
     @Override
     protected void onStart() {
         super.onStart();
-        mGoogleApiClient.connect();
+
     }
 
 
@@ -501,14 +468,23 @@ public class TrainingActivity extends AppCompatActivity implements GoogleApiClie
             @Override
             public void onClick(View view) {
 
-                if (mGoogleApiClient.isConnected()){
-                    //Toast.makeText(getApplicationContext(),"baglı",Toast.LENGTH_SHORT).show();
-                    Games.Leaderboards.submitScore(mGoogleApiClient,getString(R.string.leaderboard_summation_stars),inttoplamaleader);
-                    startActivityForResult(Games.Leaderboards.getLeaderboardIntent(mGoogleApiClient,getString(R.string.leaderboard_summation_stars)),0);
+                if (isSignedIn()) {
+                    Games.getLeaderboardsClient(getApplicationContext(), GoogleSignIn.getLastSignedInAccount(getApplicationContext()))
+                            .getLeaderboardIntent(getString(R.string.leaderboard_summation_stars))
+                            .addOnSuccessListener(new OnSuccessListener<Intent>() {
+                                @Override
+                                public void onSuccess(Intent intent) {
+                                    startActivityForResult(intent, RC_LEADERBOARD_UI);
+                                }
+                            });
                 }else {
-                    mGoogleApiClient.connect();
-                    //Toast.makeText(getApplicationContext(),"baglı degil",Toast.LENGTH_SHORT).show();
+                    startSignInIntent();
+
+                    Toast.makeText(getApplicationContext(),"Google play is not connected or installed!",Toast.LENGTH_SHORT).show();
+
                 }
+
+
 
             }
         });
@@ -536,15 +512,24 @@ public class TrainingActivity extends AppCompatActivity implements GoogleApiClie
         cikarmaleaderbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mGoogleApiClient.isConnected()){
-                  //  Toast.makeText(getApplicationContext(),"baglı",Toast.LENGTH_SHORT).show();
-                    Games.Leaderboards.submitScore(mGoogleApiClient,getString(R.string.leaderboard_subtraction_stars),intcikarmaleader);
-                    startActivityForResult(Games.Leaderboards.getLeaderboardIntent(mGoogleApiClient,getString(R.string.leaderboard_subtraction_stars)),0);
+                if (isSignedIn()) {
+                    Games.getLeaderboardsClient(getApplicationContext(), GoogleSignIn.getLastSignedInAccount(getApplicationContext()))
+                            .getLeaderboardIntent(getString(R.string.leaderboard_subtraction_stars))
+                            .addOnSuccessListener(new OnSuccessListener<Intent>() {
+                                @Override
+                                public void onSuccess(Intent intent) {
+                                    startActivityForResult(intent, RC_LEADERBOARD_UI);
+                                }
+                            });
                 }else {
-                    mGoogleApiClient.connect();
-                 //   Toast.makeText(getApplicationContext(),"baglı degil",Toast.LENGTH_SHORT).show();
+                    startSignInIntent();
 
-                }}
+                    Toast.makeText(getApplicationContext(),"Google play is not connected or installed!",Toast.LENGTH_SHORT).show();
+
+                }
+
+
+               }
         });
 
 
@@ -569,15 +554,23 @@ public class TrainingActivity extends AppCompatActivity implements GoogleApiClie
         carpmaleaderbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mGoogleApiClient.isConnected()){
-        //            Toast.makeText(getApplicationContext(),"baglı",Toast.LENGTH_SHORT).show();
-                    Games.Leaderboards.submitScore(mGoogleApiClient,getString(R.string.leaderboard_multiplication_stars),intcarpmaleader);
-                    startActivityForResult(Games.Leaderboards.getLeaderboardIntent(mGoogleApiClient,getString(R.string.leaderboard_multiplication_stars)),0);
-                }else {
-                    mGoogleApiClient.connect();
-         //           Toast.makeText(getApplicationContext(),"baglı degil",Toast.LENGTH_SHORT).show();
 
-                }}
+                if (isSignedIn()) {
+                    Games.getLeaderboardsClient(getApplicationContext(), GoogleSignIn.getLastSignedInAccount(getApplicationContext()))
+                            .getLeaderboardIntent(getString(R.string.leaderboard_multiplication_stars))
+                            .addOnSuccessListener(new OnSuccessListener<Intent>() {
+                                @Override
+                                public void onSuccess(Intent intent) {
+                                    startActivityForResult(intent, RC_LEADERBOARD_UI);
+                                }
+                            });
+                }else {
+                    startSignInIntent();
+
+                    Toast.makeText(getApplicationContext(),"Google play is not connected or installed!",Toast.LENGTH_SHORT).show();
+
+                }
+                }
         });
 
 
@@ -601,15 +594,22 @@ public class TrainingActivity extends AppCompatActivity implements GoogleApiClie
         bolmeleaderbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mGoogleApiClient.isConnected()){
-           //         Toast.makeText(getApplicationContext(),"baglı",Toast.LENGTH_SHORT).show();
-                    Games.Leaderboards.submitScore(mGoogleApiClient,getString(R.string.leaderboard_division_stars),intbolmeleader);
-                    startActivityForResult(Games.Leaderboards.getLeaderboardIntent(mGoogleApiClient,getString(R.string.leaderboard_division_stars)),0);
+                if (isSignedIn()) {
+                    Games.getLeaderboardsClient(getApplicationContext(), GoogleSignIn.getLastSignedInAccount(getApplicationContext()))
+                            .getLeaderboardIntent(getString(R.string.leaderboard_division_stars))
+                            .addOnSuccessListener(new OnSuccessListener<Intent>() {
+                                @Override
+                                public void onSuccess(Intent intent) {
+                                    startActivityForResult(intent, RC_LEADERBOARD_UI);
+                                }
+                            });
                 }else {
-                    mGoogleApiClient.connect();
-            //        Toast.makeText(getApplicationContext(),"baglı degil",Toast.LENGTH_SHORT).show();
+                    startSignInIntent();
 
-                }}
+                    Toast.makeText(getApplicationContext(),"Google play is not connected or installed!",Toast.LENGTH_SHORT).show();
+
+                }
+               }
         });
 
         //////////////BÖLME BİTTİ////////////////////
@@ -880,6 +880,8 @@ public class TrainingActivity extends AppCompatActivity implements GoogleApiClie
 
 /////////////////////////////////////
 
+        System.gc();
+
     }
 
 
@@ -902,26 +904,69 @@ public class TrainingActivity extends AppCompatActivity implements GoogleApiClie
     }
 
 
-    @Override
-    public void onConnected(@Nullable Bundle bundle) {
+    private void signInSilently() {
+        GoogleSignInClient signInClient = GoogleSignIn.getClient(this,
+                GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN);
+        signInClient.silentSignIn().addOnCompleteListener(this,
+                new OnCompleteListener<GoogleSignInAccount>() {
+                    @Override
+                    public void onComplete(@NonNull Task<GoogleSignInAccount> task) {
+                        if (task.isSuccessful()) {
+                            // The signed in account is stored in the task's result.
+                            GoogleSignInAccount signedInAccount = task.getResult();
+                        } else {
+                            // Player will need to sign-in explicitly using via UI
+                        }
+                    }
+                });
+    }
+
+    private void startSignInIntent() {
+        GoogleSignInClient signInClient = GoogleSignIn.getClient(this,
+                GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN);
+        Intent intent = signInClient.getSignInIntent();
+        startActivityForResult(intent, RC_SIGN_IN);
     }
 
     @Override
-    public void onConnectionSuspended(int i) {
-
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == RC_SIGN_IN) {
+            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+            if (result.isSuccess()) {
+                // The signed in account is stored in the result.
+                GoogleSignInAccount signedInAccount = result.getSignInAccount();
+            } else {
+                /*
+                String message = result.getStatus().getStatusMessage();
+                if (message == null || message.isEmpty()) {
+                    message = getString(R.string.playgamesmassage);
+                }
+                new AlertDialog.Builder(this).setMessage(message)
+                        .setNeutralButton(android.R.string.ok, null).show();
+                */
+            }
+        }
     }
 
-    @Override
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
+    private boolean isSignedIn () {
+        return GoogleSignIn.getLastSignedInAccount(this) != null;
     }
+
 
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(TrainingActivity.this, MainmenuActivity.class);startActivity(i);
+        Intent i = new Intent(TrainingActivity.this, MainmenuActivity.class);startActivity(i);this.finish();
 
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        System.gc();
+
+    }
 
 
 }

@@ -14,7 +14,6 @@
     <string name="wronganswers">"Falsche Antworten:"</string>
     <string name="unanswered">"Unbeantwortet: "</string>
     <string name="totalpoints">"Gesamtpunktzahl:"</string>
-
     <string name="choosedifficulty">Wählen Sie Schwierigkeitsgrad</string>
     <string name="easy">einfach</string>
     <string name="moderate">mäßig</string>
@@ -30,7 +29,6 @@
     <string name="questionforritmik">Füllen Sie das Feld mit der richtigen Nummer aus.</string>
     <string name="eksilt">verringern</string>
     <string name="artır">erhöhen</string>
-
     <string name="toplambalon">Gesamtballons: </string>
     <string name="patlatilanbalon">Gestrahlte Luftballons: </string>
     <string name="dogrubalon">Korrekte Ballons: </string>
@@ -62,10 +60,30 @@
     <string name="leveldurumu"> Punkte für das nächste Level! \n Mach weiter!</string>
     <string name="levelyetersiz"> Du hast nicht genug Punkte für dieses Level!</string>
     <string name="questionforoddeven">Pop die Ballons mit geraden Zahlen!</string>
-    <string name="timechallenge">Zeit Herausforderung</string>
+
+
+
+
+
+
+
+
+    <string name="timechallenge">Zeitrennen</string>
     <string name="fouroperations">4 Bedienung</string>
-    <string name="twoplayers">2 Spieler</string>
+    <string name="twoplayers">Math-ball</string>
     <string name="mathgames">Mathe-Spiele</string>
+    <string name="removeads">Entfernen sie Anzeigen</string>
+    <string name="otherapps">andere apps</string>
+
+
+    <string name="mathgamesexp">keine Werbung!</string>
+    <string name="timechallenge_exp">das Rennen gegen die Zeit</string>
+    <string name="fouroperationsexp">machen wir 4 operationen!</string>
+    <string name="twoplayersexp">mathematik und fußball!</string>
+    <string name="otherappsexp">du wirst sie mögen!</string>
+    <string name="removeadsexp">genieße SmartKids!</string>
+
+
     <string name="pause">pause</string>
     <string name="go">gehen</string>
     <string name="level">ebene</string>
@@ -73,8 +91,6 @@
     <string name="exit">verlassen</string>
     <string name="cliktoreturn">spiel zurückgeben</string>
     <string name="levelpass">Herzliche Glückwünsche! Sie haben ein neues Level erreicht  \n Du kannst einen neuen Charakter wählen! </string>
-
-
     <string name="comingsoon">Zwei Spieler Spiel kommt bald!</string>
     <string name="disclaim">Hinweis</string>
     <string name="infotxt">"     "Hallo! Vielen Dank für die Installation und Verwendung meiner Anwendung. Ich hoffe, dass Sie oder Ihr Kind mit dieser Übung die mathematischen Fragen lernen und lösen können.
@@ -98,6 +114,18 @@
     <string name="levelsayisi">Dein Niveau:</string>
     <string name="nextlevelpts">Punkte für das nächste Level:</string>
     <string name="skortablosu">Bewertungsbogen</string>
+    <string name="tebrikler">Herzlichen Glückwunsch, Sie gewinnen!</string>
+    <string name="teselli">Sie verlieren, versuchen Sie es erneut!</string>
+    <string name="points">Ergebnis</string>
+    <string name="time">Zeit</string>
+    <string name="draw">Unentschieden :)</string>
+    <string name="question">Frage</string>
+    <string name="twoplayersinfo">Willkommen bei Smart Kids Zwei Spieler! \n Finden Sie die richtige Antwort so schnell wie möglich!</string>
+    <string name="sharebody">Vertraust du deiner Mathematik? \n https://play.google.com/store/apps/details?id=com.smartkids.akillicocuklar2</string>
+    <string name="sharesub">Ich habe tolle Math-Anwendung gefunden!</string>
+    <string name="switchcheck">Bitte wählen Sie mindestens eine mathematische Operation aus!</string>
+
+
 
 
 

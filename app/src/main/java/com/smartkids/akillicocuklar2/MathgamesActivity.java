@@ -9,9 +9,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -22,38 +22,22 @@ import android.widget.Toast;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.games.Games;
-
-import android.app.Activity;
-import android.content.ActivityNotFoundException;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.net.Uri;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.ScrollView;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.games.Games;
 
 
+
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 
 
 public class MathgamesActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener  {
@@ -62,9 +46,12 @@ public class MathgamesActivity extends AppCompatActivity implements GoogleApiCli
     private ProgressBar toplamabar = null; private ProgressBar cikarmabar = null;private ProgressBar carpmabar = null;private ProgressBar bolmebar = null;private ProgressBar ritmikbar = null;
     private ProgressBar buyukkucukbar= null;private ProgressBar tekciftbar = null;private ProgressBar simetribar= null;
 
-    private GoogleApiClient mGoogleApiClient;
+
     float topbasari;
     Integer intboldogru;
+
+    private static final int RC_SIGN_IN = 9001;
+    private static final int RC_LEADERBOARD_UI = 9004;
 
 
 
@@ -74,17 +61,13 @@ public class MathgamesActivity extends AppCompatActivity implements GoogleApiCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mathgameslayout);
 
+        signInSilently();
 
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this)
-                .addApi(Games.API).addScope(Games.SCOPE_GAMES)
-                .enableAutoManage(this, new GoogleApiClient.OnConnectionFailedListener() {
-                    @Override
-                    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-                        //Toast.makeText(getApplicationContext(),"sorunvar",Toast.LENGTH_SHORT).show();
-                    }
-                }).build();
+
+
+
+
+
 
 
 
@@ -120,9 +103,7 @@ public class MathgamesActivity extends AppCompatActivity implements GoogleApiCli
         TextView simetridogrusayisi =(TextView)findViewById(R.id.simetridogrusoruTxt);
         TextView simetriyanlissayisi =(TextView)findViewById(R.id.simetriyanlissoruTxt);
         TextView simetribos =(TextView)findViewById(R.id.simetribossoruTxt);
-        TextView toplambalon =(TextView)findViewById(R.id.toplambalonTxt);
-        TextView dogrubalon =(TextView)findViewById(R.id.dogrubalonTxt);
-        TextView yanlisbalon =(TextView)findViewById(R.id.yanlisbalonTxt);
+
 
 
 
@@ -162,9 +143,7 @@ public class MathgamesActivity extends AppCompatActivity implements GoogleApiCli
         simetridogrusayisi.setText(getString(R.string.rightanswersh)+String.valueOf(intsimetridogru));
         simetriyanlissayisi.setText(getString(R.string.wronganswersh)+String.valueOf(intsimetriyanlis));
         simetribos.setText(getString(R.string.unanswered)+String.valueOf(intsimetribos));
-        toplambalon.setText(getString(R.string.patlatilanbalonh)+String.valueOf(inttoplambalon));
-        dogrubalon.setText(getString(R.string.dogrubalonh)+String.valueOf(intdogrubalon));
-        yanlisbalon.setText(getString(R.string.hatalibalonh)+String.valueOf(intyanlisbalon));
+
 
 
 
@@ -189,21 +168,7 @@ public class MathgamesActivity extends AppCompatActivity implements GoogleApiCli
         TextView ritmikscore = (TextView)findViewById(R.id.scoreritmikTxt);
         ritmikscore.setText(getString(R.string.bolumbasari)+String.valueOf((int)ritmikbasari));
         /////////////////////////////////////////////////
-        tekciftbar = (ProgressBar)findViewById(R.id.tekciftBar);
-        tekciftbar.getIndeterminateDrawable().setColorFilter(Color.parseColor("#1aff05"), android.graphics.PorterDuff.Mode.SRC_ATOP);
-        int xtekcift = sp.getInt("dogrubalon",0);
-        int ytekcift = sp.getInt("toplambalon",0);
-        float tekciftbasari;
-        if (ytekcift ==0) {
-            tekciftbasari= 0;
-        }else{
-            tekciftbasari = xtekcift*100/ytekcift;
-        }
-        tekciftbar.setMax(100);
-        tekciftbar.setProgress((int)tekciftbasari);
 
-        TextView tekciftscore = (TextView)findViewById(R.id.scoretekciftTxt);
-        tekciftscore.setText(getString(R.string.bolumbasari)+String.valueOf((int)tekciftbasari));
         /////////////////////////////////////////////////
         simetribar = (ProgressBar)findViewById(R.id.simetriBar);
         simetribar.getIndeterminateDrawable().setColorFilter(Color.parseColor("#1aff05"), android.graphics.PorterDuff.Mode.SRC_ATOP);
@@ -251,11 +216,7 @@ public class MathgamesActivity extends AppCompatActivity implements GoogleApiCli
         ImageView buyukkucukyildiz4 = (ImageView)findViewById(R.id.gifRandom64);
         ImageView buyukkucukyildiz5 = (ImageView)findViewById(R.id.gifRandom65);
 
-        ImageView tekciftyildiz1 = (ImageView)findViewById(R.id.gifRandom71);
-        ImageView tekciftyildiz2 = (ImageView)findViewById(R.id.gifRandom72);
-        ImageView tekciftyildiz3 = (ImageView)findViewById(R.id.gifRandom73);
-        ImageView tekciftyildiz4 = (ImageView)findViewById(R.id.gifRandom74);
-        ImageView tekciftyildiz5 = (ImageView)findViewById(R.id.gifRandom75);
+
 
         ImageView simetriyildiz1 = (ImageView)findViewById(R.id.gifRandom81);
         ImageView simetriyildiz2 = (ImageView)findViewById(R.id.gifRandom82);
@@ -340,41 +301,7 @@ public class MathgamesActivity extends AppCompatActivity implements GoogleApiCli
             ritmikyildiz5.setVisibility(View.VISIBLE);
         }
 
-        if (tekciftbasari<20){
-            tekciftyildiz1.setVisibility(View.VISIBLE);
-            tekciftyildiz2.setVisibility(View.INVISIBLE);
-            tekciftyildiz3.setVisibility(View.INVISIBLE);
-            tekciftyildiz4.setVisibility(View.INVISIBLE);
-            tekciftyildiz5.setVisibility(View.INVISIBLE);
-        }
-        if (tekciftbasari>20 && tekciftbasari<40){
-            tekciftyildiz1.setVisibility(View.VISIBLE);
-            tekciftyildiz2.setVisibility(View.VISIBLE);
-            tekciftyildiz3.setVisibility(View.INVISIBLE);
-            tekciftyildiz4.setVisibility(View.INVISIBLE);
-            tekciftyildiz5.setVisibility(View.INVISIBLE);
-        }
-        if (tekciftbasari>40 && tekciftbasari<60){
-            tekciftyildiz1.setVisibility(View.VISIBLE);
-            tekciftyildiz2.setVisibility(View.VISIBLE);
-            tekciftyildiz3.setVisibility(View.VISIBLE);
-            tekciftyildiz4.setVisibility(View.INVISIBLE);
-            tekciftyildiz5.setVisibility(View.INVISIBLE);
-        }
-        if (tekciftbasari>60 && tekciftbasari<80){
-            tekciftyildiz1.setVisibility(View.VISIBLE);
-            tekciftyildiz2.setVisibility(View.VISIBLE);
-            tekciftyildiz3.setVisibility(View.VISIBLE);
-            tekciftyildiz4.setVisibility(View.VISIBLE);
-            tekciftyildiz5.setVisibility(View.INVISIBLE);
-        }
-        if (tekciftbasari>80){
-            tekciftyildiz1.setVisibility(View.VISIBLE);
-            tekciftyildiz2.setVisibility(View.VISIBLE);
-            tekciftyildiz3.setVisibility(View.VISIBLE);
-            tekciftyildiz4.setVisibility(View.VISIBLE);
-            tekciftyildiz5.setVisibility(View.VISIBLE);
-        }
+
         if (simetribasari<20){
             simetriyildiz1.setVisibility(View.VISIBLE);
             simetriyildiz2.setVisibility(View.INVISIBLE);
@@ -419,7 +346,7 @@ public class MathgamesActivity extends AppCompatActivity implements GoogleApiCli
     @Override
     protected void onStart() {
         super.onStart();
-        mGoogleApiClient.connect();
+
     }
 
 
@@ -462,9 +389,7 @@ public class MathgamesActivity extends AppCompatActivity implements GoogleApiCli
         TextView simetridogrusayisi =(TextView)findViewById(R.id.simetridogrusoruTxt);
         TextView simetriyanlissayisi =(TextView)findViewById(R.id.simetriyanlissoruTxt);
         TextView simetribos =(TextView)findViewById(R.id.simetribossoruTxt);
-        TextView toplambalon =(TextView)findViewById(R.id.toplambalonTxt);
-        TextView dogrubalon =(TextView)findViewById(R.id.dogrubalonTxt);
-        TextView yanlisbalon =(TextView)findViewById(R.id.yanlisbalonTxt);
+
 
 
 
@@ -492,15 +417,26 @@ public class MathgamesActivity extends AppCompatActivity implements GoogleApiCli
         ritmikleaderbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mGoogleApiClient.isConnected()){
-                    //         Toast.makeText(getApplicationContext(),"baglı",Toast.LENGTH_SHORT).show();
-                    Games.Leaderboards.submitScore(mGoogleApiClient,getString(R.string.leaderboard_serials_stars),intritmikleader);
-                    startActivityForResult(Games.Leaderboards.getLeaderboardIntent(mGoogleApiClient,getString(R.string.leaderboard_serials_stars)),0);
-                }else {
-                    mGoogleApiClient.connect();
-                    //         Toast.makeText(getApplicationContext(),"baglı degil",Toast.LENGTH_SHORT).show();
 
-                }}
+
+                if (isSignedIn()) {
+                    Games.getLeaderboardsClient(getApplicationContext(), GoogleSignIn.getLastSignedInAccount(getApplicationContext()))
+                            .getLeaderboardIntent(getString(R.string.leaderboard_serials_stars))
+                            .addOnSuccessListener(new OnSuccessListener<Intent>() {
+                                @Override
+                                public void onSuccess(Intent intent) {
+                                    startActivityForResult(intent, RC_LEADERBOARD_UI);
+                                }
+                            });
+                }else {
+                    startSignInIntent();
+
+                    Toast.makeText(getApplicationContext(),"Google play is not connected or installed!",Toast.LENGTH_SHORT).show();
+
+                }
+
+
+            }
         });
 
 
@@ -525,15 +461,22 @@ public class MathgamesActivity extends AppCompatActivity implements GoogleApiCli
         buyukkucukleaderbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mGoogleApiClient.isConnected()){
-                    //        Toast.makeText(getApplicationContext(),"baglı",Toast.LENGTH_SHORT).show();
-                    Games.Leaderboards.submitScore(mGoogleApiClient,getString(R.string.leaderboard_greater__lesser_stars),intbuyukkucukleader);
-                    startActivityForResult(Games.Leaderboards.getLeaderboardIntent(mGoogleApiClient,getString(R.string.leaderboard_greater__lesser_stars)),0);
+                if (isSignedIn()) {
+                    Games.getLeaderboardsClient(getApplicationContext(), GoogleSignIn.getLastSignedInAccount(getApplicationContext()))
+                            .getLeaderboardIntent(getString(R.string.leaderboard_greater__lesser_stars))
+                            .addOnSuccessListener(new OnSuccessListener<Intent>() {
+                                @Override
+                                public void onSuccess(Intent intent) {
+                                    startActivityForResult(intent, RC_LEADERBOARD_UI);
+                                }
+                            });
                 }else {
-                    mGoogleApiClient.connect();
-                    //           Toast.makeText(getApplicationContext(),"baglı degil",Toast.LENGTH_SHORT).show();
+                    startSignInIntent();
 
-                }}
+                    Toast.makeText(getApplicationContext(),"Google play is not connected or installed!",Toast.LENGTH_SHORT).show();
+
+                }
+            }
         });
 
 
@@ -541,37 +484,7 @@ public class MathgamesActivity extends AppCompatActivity implements GoogleApiCli
 
         //////////////////BÜYÜKKÜCÜK  BİTTİ//////////////////
 
-//////////////////TEK ÇİFT SKOR BİLGİLERİ//////////////////
 
-        inttoplambalon = sp.getInt("toplambalon",0);
-        intdogrubalon= sp.getInt("dogrubalon",0);
-        intyanlisbalon = sp.getInt("yanlisbalon",0);
-        inttekciftleader = sp.getInt("balonleader",0);
-
-
-        toplambalon.setText(getString(R.string.patlatilanbalonh)+String.valueOf(inttoplambalon));
-        dogrubalon.setText(getString(R.string.dogrubalonh)+String.valueOf(intdogrubalon));
-        yanlisbalon.setText(getString(R.string.hatalibalonh)+String.valueOf(intyanlisbalon));
-
-        /////////////////leader board
-        Button tekciftleaderbtn = (Button)findViewById(R.id.tekciftleader);
-        tekciftleaderbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (mGoogleApiClient.isConnected()){
-                    //           Toast.makeText(getApplicationContext(),"baglı",Toast.LENGTH_SHORT).show();
-                    Games.Leaderboards.submitScore(mGoogleApiClient,getString(R.string.leaderboard_odd__even_stars),inttekciftleader);
-                    startActivityForResult(Games.Leaderboards.getLeaderboardIntent(mGoogleApiClient,getString(R.string.leaderboard_odd__even_stars)),0);
-                }else {
-                    mGoogleApiClient.connect();
-                    //            Toast.makeText(getApplicationContext(),"baglı degil",Toast.LENGTH_SHORT).show();
-
-                }}
-        });
-
-
-
-        //////////////////TEK ÇİFT  BİTTİ//////////////////
 
         //////////////////SİMETRİ SKOR BİLGİLERİ//////////////////
 
@@ -593,15 +506,22 @@ public class MathgamesActivity extends AppCompatActivity implements GoogleApiCli
         simetrileaderbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mGoogleApiClient.isConnected()){
-                    //          Toast.makeText(getApplicationContext(),"baglı",Toast.LENGTH_SHORT).show();
-                    Games.Leaderboards.submitScore(mGoogleApiClient,getString(R.string.leaderboard_symmetry_stars),intsimetrileader);
-                    startActivityForResult(Games.Leaderboards.getLeaderboardIntent(mGoogleApiClient,getString(R.string.leaderboard_symmetry_stars)),0);
+                if (isSignedIn()) {
+                    Games.getLeaderboardsClient(getApplicationContext(), GoogleSignIn.getLastSignedInAccount(getApplicationContext()))
+                            .getLeaderboardIntent(getString(R.string.leaderboard_symmetry_stars))
+                            .addOnSuccessListener(new OnSuccessListener<Intent>() {
+                                @Override
+                                public void onSuccess(Intent intent) {
+                                    startActivityForResult(intent, RC_LEADERBOARD_UI);
+                                }
+                            });
                 }else {
-                    mGoogleApiClient.connect();
-                    //          Toast.makeText(getApplicationContext(),"baglı degil",Toast.LENGTH_SHORT).show();
+                    startSignInIntent();
 
-                }}
+                    Toast.makeText(getApplicationContext(),"Google play is not connected or installed!",Toast.LENGTH_SHORT).show();
+
+                }
+            }
         });
 
 
@@ -629,21 +549,7 @@ public class MathgamesActivity extends AppCompatActivity implements GoogleApiCli
         TextView ritmikscore = (TextView)findViewById(R.id.scoreritmikTxt);
         ritmikscore.setText(getString(R.string.bolumbasari)+String.valueOf((int)ritmikbasari));
         /////////////////////////////////////////////////
-        tekciftbar = (ProgressBar)findViewById(R.id.tekciftBar);
-        tekciftbar.getIndeterminateDrawable().setColorFilter(Color.parseColor("#1aff05"), android.graphics.PorterDuff.Mode.SRC_ATOP);
-        int xtekcift = sp.getInt("dogrubalon",0);
-        int ytekcift = sp.getInt("toplambalon",0);
-        float tekciftbasari;
-        if (ytekcift ==0) {
-            tekciftbasari= 0;
-        }else{
-            tekciftbasari = xtekcift*100/ytekcift;
-        }
-        tekciftbar.setMax(100);
-        tekciftbar.setProgress((int)tekciftbasari);
 
-        TextView tekciftscore = (TextView)findViewById(R.id.scoretekciftTxt);
-        tekciftscore.setText(getString(R.string.bolumbasari)+String.valueOf((int)tekciftbasari));
         /////////////////////////////////////////////////
         simetribar = (ProgressBar)findViewById(R.id.simetriBar);
         simetribar.getIndeterminateDrawable().setColorFilter(Color.parseColor("#1aff05"), android.graphics.PorterDuff.Mode.SRC_ATOP);
@@ -691,11 +597,7 @@ public class MathgamesActivity extends AppCompatActivity implements GoogleApiCli
         ImageView buyukkucukyildiz4 = (ImageView)findViewById(R.id.gifRandom64);
         ImageView buyukkucukyildiz5 = (ImageView)findViewById(R.id.gifRandom65);
 
-        ImageView tekciftyildiz1 = (ImageView)findViewById(R.id.gifRandom71);
-        ImageView tekciftyildiz2 = (ImageView)findViewById(R.id.gifRandom72);
-        ImageView tekciftyildiz3 = (ImageView)findViewById(R.id.gifRandom73);
-        ImageView tekciftyildiz4 = (ImageView)findViewById(R.id.gifRandom74);
-        ImageView tekciftyildiz5 = (ImageView)findViewById(R.id.gifRandom75);
+
 
         ImageView simetriyildiz1 = (ImageView)findViewById(R.id.gifRandom81);
         ImageView simetriyildiz2 = (ImageView)findViewById(R.id.gifRandom82);
@@ -780,41 +682,7 @@ public class MathgamesActivity extends AppCompatActivity implements GoogleApiCli
             ritmikyildiz5.setVisibility(View.VISIBLE);
         }
 
-        if (tekciftbasari<20){
-            tekciftyildiz1.setVisibility(View.VISIBLE);
-            tekciftyildiz2.setVisibility(View.INVISIBLE);
-            tekciftyildiz3.setVisibility(View.INVISIBLE);
-            tekciftyildiz4.setVisibility(View.INVISIBLE);
-            tekciftyildiz5.setVisibility(View.INVISIBLE);
-        }
-        if (tekciftbasari>20 && tekciftbasari<40){
-            tekciftyildiz1.setVisibility(View.VISIBLE);
-            tekciftyildiz2.setVisibility(View.VISIBLE);
-            tekciftyildiz3.setVisibility(View.INVISIBLE);
-            tekciftyildiz4.setVisibility(View.INVISIBLE);
-            tekciftyildiz5.setVisibility(View.INVISIBLE);
-        }
-        if (tekciftbasari>40 && tekciftbasari<60){
-            tekciftyildiz1.setVisibility(View.VISIBLE);
-            tekciftyildiz2.setVisibility(View.VISIBLE);
-            tekciftyildiz3.setVisibility(View.VISIBLE);
-            tekciftyildiz4.setVisibility(View.INVISIBLE);
-            tekciftyildiz5.setVisibility(View.INVISIBLE);
-        }
-        if (tekciftbasari>60 && tekciftbasari<80){
-            tekciftyildiz1.setVisibility(View.VISIBLE);
-            tekciftyildiz2.setVisibility(View.VISIBLE);
-            tekciftyildiz3.setVisibility(View.VISIBLE);
-            tekciftyildiz4.setVisibility(View.VISIBLE);
-            tekciftyildiz5.setVisibility(View.INVISIBLE);
-        }
-        if (tekciftbasari>80){
-            tekciftyildiz1.setVisibility(View.VISIBLE);
-            tekciftyildiz2.setVisibility(View.VISIBLE);
-            tekciftyildiz3.setVisibility(View.VISIBLE);
-            tekciftyildiz4.setVisibility(View.VISIBLE);
-            tekciftyildiz5.setVisibility(View.VISIBLE);
-        }
+
         if (simetribasari<20){
             simetriyildiz1.setVisibility(View.VISIBLE);
             simetriyildiz2.setVisibility(View.INVISIBLE);
@@ -878,6 +746,8 @@ public class MathgamesActivity extends AppCompatActivity implements GoogleApiCli
 
 /////////////////////////////////////
 
+        System.gc();
+
     }
 
 
@@ -887,17 +757,15 @@ public class MathgamesActivity extends AppCompatActivity implements GoogleApiCli
 
 
     public void ritmikact(View view) {
-        Intent i = new Intent(MathgamesActivity.this, RitmiksaymaActivity.class);startActivity(i);
+        Intent i = new Intent(MathgamesActivity.this, RitmiksaymaActivity.class);startActivity(i);this.finish();
     }
 
     public void buyukkucuk(View view) {
-        Intent i = new Intent(MathgamesActivity.this, BuyukKucukActivity.class);startActivity(i);
+        Intent i = new Intent(MathgamesActivity.this, BuyukKucukActivity.class);startActivity(i);this.finish();
     }
-    public void tekcift(View view) {
-        Intent i = new Intent(MathgamesActivity.this, TekCiftActivity.class);startActivity(i);
-    }
+
     public void simetry(View view) {
-        Intent i = new Intent(MathgamesActivity.this, SimetryActivity.class);startActivity(i);
+        Intent i = new Intent(MathgamesActivity.this, SimetryActivity.class);startActivity(i);this.finish();
     }
 
 
@@ -926,7 +794,65 @@ public class MathgamesActivity extends AppCompatActivity implements GoogleApiCli
 
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(MathgamesActivity.this, MainmenuActivity.class);startActivity(i);
+        Intent i = new Intent(MathgamesActivity.this, MainmenuActivity.class);startActivity(i);this.finish();
+
+    }
+
+    private void signInSilently() {
+        GoogleSignInClient signInClient = GoogleSignIn.getClient(this,
+                GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN);
+        signInClient.silentSignIn().addOnCompleteListener(this,
+                new OnCompleteListener<GoogleSignInAccount>() {
+                    @Override
+                    public void onComplete(@NonNull Task<GoogleSignInAccount> task) {
+                        if (task.isSuccessful()) {
+                            // The signed in account is stored in the task's result.
+                            GoogleSignInAccount signedInAccount = task.getResult();
+                        } else {
+                            // Player will need to sign-in explicitly using via UI
+                        }
+                    }
+                });
+    }
+
+    private void startSignInIntent() {
+        GoogleSignInClient signInClient = GoogleSignIn.getClient(this,
+                GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN);
+        Intent intent = signInClient.getSignInIntent();
+        startActivityForResult(intent, RC_SIGN_IN);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == RC_SIGN_IN) {
+            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+            if (result.isSuccess()) {
+                // The signed in account is stored in the result.
+                GoogleSignInAccount signedInAccount = result.getSignInAccount();
+            } else {
+                /*
+                String message = result.getStatus().getStatusMessage();
+                if (message == null || message.isEmpty()) {
+                    message = getString(R.string.playgamesmassage);
+                }
+                new AlertDialog.Builder(this).setMessage(message)
+                        .setNeutralButton(android.R.string.ok, null).show();
+                        */
+            }
+        }
+    }
+
+    private boolean isSignedIn () {
+        return GoogleSignIn.getLastSignedInAccount(this) != null;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        System.gc();
+
 
     }
 

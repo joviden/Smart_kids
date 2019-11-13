@@ -60,10 +60,25 @@
     <string name="bolumbasari">सफलता: %</string>
     <string name="leveldurumu"> अगले स्तर के लिए छोड़ दिया अंक! \n बढ़ते रहें!</string>
     <string name="levelyetersiz"> आपके पास इस स्तर के लिए पर्याप्त अंक नहीं हैं!</string>
-    <string name="timechallenge">समय चैलेंज</string>
-    <string name="fouroperations">4 ऑपरेशन</string>
-    <string name="twoplayers">2 खिलाड़ी</string>
-    <string name="mathgames">गणित खेलों</string>
+
+
+
+
+
+    <string name="timechallenge">Time Challenge</string>
+    <string name="fouroperations">4 Operations</string>
+    <string name="twoplayers">Math-ball</string>
+    <string name="mathgames">Mental Games</string>
+    <string name="timechallenge_exp">समय के खिलाफ दौड़</string>
+    <string name="fouroperationsexp">चलो 4 संचालन करते हैं!</string>
+    <string name="twoplayersexp">गणित और फुटबॉल!</string>
+    <string name="mathgamesexp">गणित खेल खेलें!</string>
+    <string name="removeads">विज्ञापन निकालें।</string>
+    <string name="otherapps">दूसरे एप्लिकेशन</string>
+    <string name="otherappsexp">आप उन्हें पसंद करेंगे!</string>
+    <string name="removeadsexp">SmartKids का आनंद लें!</string>
+
+
     <string name="pause">ठहराव</string>
     <string name="go">चले जाओ</string>
     <string name="level">स्तर</string>
@@ -94,6 +109,18 @@
     <string name="levelsayisi">आपका स्तर:</string>
     <string name="nextlevelpts">अगले स्तर के लिए अंक:</string>
     <string name="skortablosu">स्कोर पत्रक</string>
+    <string name="tebrikler">बधाई हो, आप जीत गए!</string>
+    <string name="teselli">आप हार गए, पुनः प्रयास करें!</string>
+    <string name="points">स्कोर</string>
+    <string name="time">पहर</string>
+    <string name="draw">तैयार :)</string>
+    <string name="question">सवाल</string>
+    <string name="twoplayersinfo">स्मार्ट बच्चों के दो खिलाड़ियों में आपका स्वागत है! \n जितनी जल्दी हो सके सही उत्तर प्राप्त करें!</string>
+    <string name="sharebody">क्या आप अपने गणित पर भरोसा करते हैं? \n https://play.google.com/store/apps/details?id=com.smartkids.akillicocuklar2</string>
+    <string name="sharesub">मुझे महान गणित अनुप्रयोग मिला है!</string>
+    <string name="switchcheck">कृपया कम से कम एक गणितीय ऑपरेशन का चयन करें!</string>
+
+
 
 
 </resources>

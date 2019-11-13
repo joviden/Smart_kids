@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context="com.smartkids.akillicocuklar2.RitmiksaymaActivity">
 
 
 
@@ -30,8 +31,9 @@ android:background="@android:color/holo_orange_dark">
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/sorunumarasi"
-            android:fontFamily="casual"
-            android:paddingHorizontal="90dp"
+            android:fontFamily="@font/comic"
+            android:paddingLeft="90dp"
+            android:paddingRight="90dp"
             android:paddingVertical="2dp"
             android:text="@string/questionleft"
             android:textAlignment="center"
@@ -165,7 +167,7 @@ android:background="@android:color/holo_orange_dark">
         android:text="@string/questionforritmik"
         android:background="@android:color/transparent"
         android:textAlignment="viewStart"
-        android:fontFamily="casual"
+        android:fontFamily="@font/comic"
         android:textAllCaps="false"
         android:textSize="16sp"
         android:textStyle="bold" />
@@ -184,12 +186,11 @@ android:background="@android:color/holo_orange_dark">
         <Button
             android:id="@+id/eksiltBtn"
             android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="4dp"
+            android:layout_height="55dp"
+            android:layout_marginLeft="5dp"
             android:background="@drawable/hatalisik"
-            android:fontFamily="casual"
+            android:fontFamily="@font/comic"
             android:onClick="eksilt"
-            android:paddingVertical="20dp"
             android:text="@string/eksilt"
             android:textAllCaps="false"
             android:textSize="16sp"
@@ -197,13 +198,11 @@ android:background="@android:color/holo_orange_dark">
 
         <TextView
             android:id="@+id/cevapTxtv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="45dp"
             android:gravity="center_horizontal|center_vertical"
-            android:paddingHorizontal="25dp"
-            android:paddingVertical="10dp"
-            android:layout_marginHorizontal="25dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:text="12"
             android:textColor="@color/colorPrimaryDark"
             android:background="@drawable/siklar"
@@ -213,12 +212,11 @@ android:background="@android:color/holo_orange_dark">
         <Button
             android:id="@+id/artitBtn"
             android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="4dp"
+            android:layout_height="55dp"
+            android:layout_marginRight="5dp"
             android:background="@drawable/siklarclicked"
-            android:fontFamily="casual"
+            android:fontFamily="@font/comic"
             android:onClick="artir"
-            android:paddingVertical="20dp"
             android:text="@string/artır"
             android:textAllCaps="false"
             android:textSize="16sp"
@@ -237,7 +235,7 @@ android:background="@android:color/holo_orange_dark">
             android:layout_marginHorizontal="2dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/siklar"
-            android:fontFamily="casual"
+            android:fontFamily="@font/comic"
             android:onClick="cevapla"
             android:paddingHorizontal="50dp"
             android:layout_centerHorizontal="true"
@@ -250,7 +248,8 @@ android:background="@android:color/holo_orange_dark">
     <RelativeLayout
         android:id="@+id/nextbutonslayout"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="5dp"
         android:layout_above="@+id/adView"
         android:layout_alignParentStart="true"
         android:gravity="center_horizontal|center_vertical"
@@ -259,27 +258,26 @@ android:background="@android:color/holo_orange_dark">
 
         <Button
             android:id="@+id/tamamlaBtn"
-            android:layout_width="120dp"
+            android:layout_width="130dp"
             android:layout_height="40dp"
             android:layout_centerVertical="true"
             android:layout_margin="5dp"
             android:layout_toLeftOf="@id/skorTxv"
             android:background="@drawable/nextbuttongroup"
-            android:fontFamily="casual"
+            android:fontFamily="@font/comic"
             android:onClick="tamamla"
-            android:padding="5dp"
             android:text="@string/testibitir"
             android:textAllCaps="false"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/skorTxv"
-            android:layout_width="100dp"
-            android:layout_height="60dp"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
             android:layout_centerHorizontal="true"
             android:background="@drawable/siklarclicked"
-            android:fontFamily="casual"
+            android:fontFamily="@font/comic"
             android:gravity="center_vertical"
             android:text="@string/skor"
             android:textAlignment="center"
@@ -288,19 +286,18 @@ android:background="@android:color/holo_orange_dark">
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/cevapBtn"
-            android:layout_width="120dp"
+            android:id="@+id/nextquestionBtn"
+            android:layout_width="130dp"
             android:layout_height="40dp"
             android:layout_centerVertical="true"
             android:layout_margin="5dp"
             android:layout_toRightOf="@id/skorTxv"
             android:background="@drawable/nextbuttongroup"
-            android:fontFamily="casual"
+            android:fontFamily="@font/comic"
             android:onClick="nextquestion"
-            android:padding="5dp"
             android:text="@string/sonrakisoru"
             android:textAllCaps="false"
-            android:textSize="16dp"
+            android:textSize="14dp"
             android:textStyle="bold" />
     </RelativeLayout>
 
@@ -325,17 +322,18 @@ android:background="@android:color/holo_orange_dark">
         android:id="@+id/sonuclarlayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="20dp"
+        android:background="@drawable/frame4"
+        android:layout_margin="10dp"
         android:layout_alignParentTop="true"
         android:orientation="vertical"
         android:visibility="gone">
 
         <ImageView
-            android:layout_width="400dp"
-            android:layout_height="80dp"
+            android:layout_width="280dp"
+            android:layout_height="50dp"
             android:src="@drawable/scores"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="5dp"/>
+            android:layout_marginTop="90dp"/>
 
 
 
@@ -343,96 +341,92 @@ android:background="@android:color/holo_orange_dark">
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:background="@drawable/frame4"
-            android:layout_marginHorizontal="20dp"
-            android:gravity="center_vertical"
-            android:layout_gravity="center_horizontal|center_vertical">
-
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_gravity="center_horizontal">
 
 
             <Button
                 android:id="@+id/sorusayisiTxtv"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
                 android:gravity="center_vertical"
                 android:text="@string/totalquestion"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:textStyle="bold"
-                android:fontFamily="casual"
+                android:fontFamily="@font/comic"
                 android:background="@android:color/transparent"
-                android:textAllCaps="false"
-                />
+                android:textAllCaps="false"/>
 
             <Button
                 android:id="@+id/dogrusayisiTxtv"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="30dp"
                 android:gravity="center_vertical"
-                android:padding="4dp"
                 android:text="@string/rightanswers"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:textStyle="bold"
-                android:fontFamily="casual"
+                android:fontFamily="@font/comic"
                 android:background="@android:color/transparent"
                 android:textAllCaps="false"/>
 
             <Button
                 android:id="@+id/yanlissayisiTxtv"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="30dp"
                 android:gravity="center_vertical"
-                android:padding="4dp"
                 android:text="@string/wronganswers"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:textStyle="bold"
-                android:fontFamily="casual"
+                android:fontFamily="@font/comic"
                 android:background="@android:color/transparent"
                 android:textAllCaps="false"/>
 
             <Button
                 android:id="@+id/bossayisiTxtv"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="30dp"
                 android:gravity="center_vertical"
-                android:padding="4dp"
                 android:text="@string/unanswered"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:textStyle="bold"
-                android:fontFamily="casual"
+                android:fontFamily="@font/comic"
                 android:background="@android:color/transparent"
                 android:textAllCaps="false"/>
 
             <Button
                 android:id="@+id/toplampuanTxtv"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="30dp"
                 android:gravity="center_vertical"
-                android:padding="4dp"
                 android:text="@string/totalquestion"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:textStyle="bold"
-                android:fontFamily="casual"
+                android:fontFamily="@font/comic"
                 android:background="@android:color/transparent"
                 android:textAllCaps="false"/>
+
             <Button
                 android:id="@+id/testcikisBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/siklar"
-                android:fontFamily="casual"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/comic"
                 android:onClick="cikis"
-                android:paddingHorizontal="8dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
                 android:text="@string/backtokonular"
                 android:textAllCaps="false"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:textStyle="bold"
-                android:layout_gravity="center"
-                />
+                android:layout_gravity="center"/>
 
 
         </LinearLayout>
@@ -445,5 +439,5 @@ android:background="@android:color/holo_orange_dark">
 
 
 </RelativeLayout>
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
