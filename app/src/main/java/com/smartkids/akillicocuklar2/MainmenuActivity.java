@@ -11,6 +11,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
@@ -38,10 +41,14 @@ import com.google.android.gms.games.Games;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.smartkids.akillicocuklar2.adapters.CharChooseAdapter;
 import com.smartkids.akillicocuklar2.adapters.PagerAdapter;
+import com.smartkids.akillicocuklar2.models.Character;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -69,6 +76,12 @@ public class MainmenuActivity extends AppCompatActivity {
     private static final int RC_ACHIEVEMENT_UI = 9003;
     private static final int RC_SIGN_IN = 9001;
 
+    private CharChooseAdapter chooseAdapter;
+    private  List<Character> characters;
+    private RecyclerView char_recyclerView;
+
+    private ConstraintLayout mainmenu_layout,charchooselayout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,6 +106,11 @@ public class MainmenuActivity extends AppCompatActivity {
             }
 
         });
+
+        mainmenu_layout = findViewById(R.id.mainmenu_layout);
+        charchooselayout = findViewById(R.id.charchooselayout);
+        mainmenu_layout.setVisibility(View.VISIBLE);
+        charchooselayout.setVisibility(View.GONE);
 
 
 
@@ -141,18 +159,19 @@ public class MainmenuActivity extends AppCompatActivity {
 
 
         inflatePager();
+        setCharAdapter();
 
 
 
 
 
         ////////////////////info button////////////////////////////////
-        final ConstraintLayout welcomelayout = findViewById(R.id.welcomelayout);
+
         final LinearLayout sonuclarlayout = findViewById(R.id.sonuclarlayout);
         final Button infoBtn = findViewById(R.id.infoBtn);Button disclaimundstand = findViewById(R.id.understanddisclaim);
         final RelativeLayout infolayout = findViewById(R.id.infolayout);
         final RelativeLayout byebyelayout = findViewById(R.id.byebyelayout);
-        final RelativeLayout charchooselayout = findViewById(R.id.charchooselayout);
+
 
         final ScrollView disclaimTxt = findViewById(R.id.disclaimView);
         final ScrollView infoTxt = findViewById(R.id.infoView);
@@ -163,7 +182,7 @@ public class MainmenuActivity extends AppCompatActivity {
         sonuclarlayout.setVisibility(View.GONE);
         byebyelayout.setVisibility(View.GONE);
         // charchooselayout.setVisibility(View.GONE);
-        welcomelayout.setVisibility(View.VISIBLE);
+
 
         infoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -172,7 +191,6 @@ public class MainmenuActivity extends AppCompatActivity {
                 infoTxt.setVisibility(View.VISIBLE);
                 geriBtn.setVisibility(View.VISIBLE);
                 disclaimreadBtn.setVisibility(View.VISIBLE);
-                welcomelayout.setVisibility(View.GONE);
                 byebyelayout.setVisibility(View.GONE);
                 disclaimTxt.setVisibility(View.GONE);
 
@@ -183,7 +201,6 @@ public class MainmenuActivity extends AppCompatActivity {
         geriBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                welcomelayout.setVisibility(View.VISIBLE);
                 infolayout.setVisibility(View.GONE);
                 geriBtn.setVisibility(View.GONE);
                 disclaimreadBtn.setVisibility(View.GONE);
@@ -246,10 +263,8 @@ public class MainmenuActivity extends AppCompatActivity {
 
 
         if (i==0) {
-            welcomelayout.setVisibility(View.GONE);
             charchooselayout.setVisibility(View.VISIBLE);
         }else {
-            welcomelayout.setVisibility(View.VISIBLE);
             charchooselayout.setVisibility(View.GONE);
             characterview.setImageResource(z);
         }
@@ -331,7 +346,6 @@ public class MainmenuActivity extends AppCompatActivity {
 
 
                 sonuclarlayout.setVisibility(View.VISIBLE);
-                welcomelayout.setVisibility(View.GONE);
                 skoraktar();
 
             }
@@ -345,7 +359,6 @@ public class MainmenuActivity extends AppCompatActivity {
                     mInterstitialAd.show();
                 }
                 sonuclarlayout.setVisibility(View.GONE);
-                welcomelayout.setVisibility(View.VISIBLE);
 
             }
         });
@@ -453,6 +466,31 @@ public class MainmenuActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
+    private void setCharAdapter() {
+
+        characters = new ArrayList<>();
+        characters.add(new Character(Arrays.asList("Jack","Rooney","Ali","Sebastian"),"Level 1",Arrays.asList(R.drawable.icon1n1,R.drawable.icon1n2,R.drawable.icon1n3,R.drawable.icon1n4)));
+        characters.add(new Character(Arrays.asList("Jack","Rooney","Ali","Sebastian"),"Level 2",Arrays.asList(R.drawable.icon2n1,R.drawable.icon2n2,R.drawable.icon2n3,R.drawable.icon2n4)));
+        characters.add(new Character(Arrays.asList("Jack","Rooney","Ali","Sebastian"),"Level 3",Arrays.asList(R.drawable.icon3n1,R.drawable.icon3n2,R.drawable.icon3n3,R.drawable.icon3n4)));
+        characters.add(new Character(Arrays.asList("Jack","Rooney","Ali","Sebastian"),"Level 4",Arrays.asList(R.drawable.icon4n1,R.drawable.icon4n2,R.drawable.icon4n3,R.drawable.icon4n4)));
+        characters.add(new Character(Arrays.asList("Jack","Rooney","Ali","Sebastian"),"Level 5",Arrays.asList(R.drawable.icon5n1,R.drawable.icon5n2,R.drawable.icon5n3,R.drawable.icon5n4)));
+        characters.add(new Character(Arrays.asList("Jack","Rooney","Ali","Sebastian"),"Level 6",Arrays.asList(R.drawable.icon6n1,R.drawable.icon6n2,R.drawable.icon6n3,R.drawable.icon6n4)));
+        characters.add(new Character(Arrays.asList("Jack","Rooney","Ali","Sebastian"),"Level 7",Arrays.asList(R.drawable.icon7n1,R.drawable.icon7n2,R.drawable.icon7n3,R.drawable.icon7n4)));
+        characters.add(new Character(Arrays.asList("Jack","Rooney","Ali","Sebastian"),"Level 8",Arrays.asList(R.drawable.icon8n1,R.drawable.icon8n2,R.drawable.icon8n3,R.drawable.icon8n4)));
+        characters.add(new Character(Arrays.asList("Jack","Rooney","Ali","Sebastian"),"Level 9",Arrays.asList(R.drawable.icon9n1,R.drawable.icon9n2,R.drawable.icon9n3,R.drawable.icon9n4)));
+        chooseAdapter = new CharChooseAdapter(this,characters);
+        char_recyclerView = findViewById(R.id.char_recyclerView);
+
+        LinearLayoutManager mlayoutManager = new LinearLayoutManager(this);
+        mlayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        char_recyclerView.setLayoutManager(mlayoutManager);
+        char_recyclerView.setItemAnimator(new DefaultItemAnimator());
+        char_recyclerView.setAdapter(chooseAdapter);
+
+
+    }
+
     public void skoraktar(){
         LinearLayout sonuclarlayout = findViewById(R.id.sonuclarlayout);
         Button toplamapuanTxtv = findViewById(R.id.toplamapuanTxtv); Button cikarmapuanTxtv = findViewById(R.id.cikarmapuanTxtv); Button carpmapuanTxtv = findViewById(R.id.carpmapuanTxtv);
@@ -507,12 +545,9 @@ public class MainmenuActivity extends AppCompatActivity {
 
         ImageView characterview;
 
-        final ConstraintLayout welcomelayout = findViewById(R.id.welcomelayout);
-        final RelativeLayout charchooselayout = findViewById(R.id.charchooselayout);
         characterview=findViewById(R.id.characterview);
 
         charchooselayout.setVisibility(View.GONE);
-        welcomelayout.setVisibility(View.VISIBLE);
 
         final SharedPreferences sp = getSharedPreferences("skorbilgiler", Activity.MODE_PRIVATE);
         final SharedPreferences.Editor spEditor = sp.edit();
@@ -591,10 +626,8 @@ public class MainmenuActivity extends AppCompatActivity {
 
 
         if (i==0) {
-            welcomelayout.setVisibility(View.GONE);
             charchooselayout.setVisibility(View.VISIBLE);
         }else {
-            welcomelayout.setVisibility(View.VISIBLE);
             charchooselayout.setVisibility(View.GONE);
             characterview.setImageResource(z);
         }
@@ -606,7 +639,7 @@ public class MainmenuActivity extends AppCompatActivity {
         Button progrestxt = (Button) findViewById(R.id.progressTxt);
         toplamscorebar.getIndeterminateDrawable().setColorFilter(Color.parseColor("#43ff50"), android.graphics.PorterDuff.Mode.SRC_ATOP);
 
-        icon1n1 = findViewById(R.id.icon1n1);icon1n2 = findViewById(R.id.icon1n2);icon1n3 = findViewById(R.id.icon1n3);icon1n4 = findViewById(R.id.icon1n4);
+      /*  icon1n1 = findViewById(R.id.icon1n1);icon1n2 = findViewById(R.id.icon1n2);icon1n3 = findViewById(R.id.icon1n3);icon1n4 = findViewById(R.id.icon1n4);
         icon2n1 = findViewById(R.id.icon2n1);icon2n2 = findViewById(R.id.icon2n2);icon2n3 = findViewById(R.id.icon2n3);icon2n4 = findViewById(R.id.icon2n4);
         icon3n1 = findViewById(R.id.icon3n1);icon3n2 = findViewById(R.id.icon3n2);icon3n3 = findViewById(R.id.icon3n3);icon3n4 = findViewById(R.id.icon3n4);
         icon4n1 = findViewById(R.id.icon4n1);icon4n2 = findViewById(R.id.icon4n2);icon4n3 = findViewById(R.id.icon4n3);icon4n4 = findViewById(R.id.icon4n4);
@@ -616,7 +649,7 @@ public class MainmenuActivity extends AppCompatActivity {
         icon8n1 = findViewById(R.id.icon8n1);icon8n2 = findViewById(R.id.icon8n2);icon8n3 = findViewById(R.id.icon8n3);icon8n4 = findViewById(R.id.icon8n4);
         icon9n1 = findViewById(R.id.icon9n1);icon9n2 = findViewById(R.id.icon9n2);icon9n3 = findViewById(R.id.icon9n3);icon9n4 = findViewById(R.id.icon9n4);
         icon10n1 = findViewById(R.id.icon10n1);icon10n2 = findViewById(R.id.icon10n2);
-        icon11n1 = findViewById(R.id.icon11n1);
+        icon11n1 = findViewById(R.id.icon11n1);*/
 
 
 
@@ -626,14 +659,13 @@ public class MainmenuActivity extends AppCompatActivity {
             //    if (mInterstitialAd.isLoaded()) {
             //        mInterstitialAd.show();
             //    }
-                welcomelayout.setVisibility(View.GONE);
                 charchooselayout.setVisibility(View.VISIBLE);
 
             }
         });
 
 
-
+/*
         if (kumulatiftoplamscore <1000) {
             toplamscorebar.setMax(1000);
             toplamscorebar.setProgress((int) kumulatiftoplamscore);
@@ -1051,7 +1083,7 @@ public class MainmenuActivity extends AppCompatActivity {
             icon10n1.setAlpha((float) 1);icon10n2.setAlpha((float) 1);
             icon11n1.setAlpha((float) 1);
 
-        }
+        }*/
 
         // level = sp.getInt("level",0);
 
@@ -1283,15 +1315,19 @@ public class MainmenuActivity extends AppCompatActivity {
 
 
 
-        ConstraintLayout welcomelayout = findViewById(R.id.welcomelayout);
         final RelativeLayout byebyelayout = findViewById(R.id.byebyelayout);
 
         final RelativeLayout gulegulelayout = findViewById(R.id.gulegulelayout);
-        RelativeLayout charchooselayout = findViewById(R.id.charchooselayout);
+
         final RelativeLayout infolayout = findViewById(R.id.infolayout);
         infolayout.setVisibility(View.GONE);
 
-        if (welcomelayout.getVisibility()==View.VISIBLE) {
+        if (charchooselayout.getVisibility()==View.VISIBLE){
+            charchooselayout.setVisibility(View.GONE);
+            mainmenu_layout.setVisibility(View.VISIBLE);
+        }
+
+      /*  if (welcomelayout.getVisibility()==View.VISIBLE) {
 
             welcomelayout.setVisibility(View.GONE);
             byebyelayout.setVisibility(View.VISIBLE);
@@ -1313,7 +1349,7 @@ public class MainmenuActivity extends AppCompatActivity {
         }else {
             charchooselayout.setVisibility(View.GONE);
             welcomelayout.setVisibility(View.VISIBLE);
-        }
+        }*/
 
 
 
@@ -1349,9 +1385,7 @@ public class MainmenuActivity extends AppCompatActivity {
 
     public void charchoose (View view) {
 
-        final RelativeLayout charchooselayout = findViewById(R.id.charchooselayout);
-        final ConstraintLayout welcomegovdelayout = findViewById(R.id.welcomelayout);
-        final RelativeLayout welcomelayout = findViewById(R.id.welcomelayout);
+
 
         ImageView characterview = findViewById(R.id.characterview);
 
@@ -1379,8 +1413,6 @@ public class MainmenuActivity extends AppCompatActivity {
             spEditor.commit();
 
             charchooselayout.setVisibility(View.GONE);
-            welcomelayout.setVisibility(View.VISIBLE);
-            welcomegovdelayout.setVisibility(View.VISIBLE);
 
 
         }

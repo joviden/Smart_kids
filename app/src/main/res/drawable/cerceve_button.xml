@@ -5,13 +5,13 @@
     android:shape="rectangle">
     <gradient
 
-        android:startColor="@color/transparent"
-        android:endColor="@color/transparent"
+        android:startColor="@color/textdark"
+        android:endColor="@color/textdark"
         />
     <corners android:radius="5dp" />
 
-    <stroke android:width="4dp"
-        android:color="@color/textsari"/>
+    <stroke android:width="2dp"
+        android:color="@color/black"/>
 
 
 
