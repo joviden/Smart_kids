@@ -54,7 +54,7 @@
     <string name="questionleft">Frage</string>
     <string name="quittoast">Bitte klicken Sie auf Test beenden um zu beenden!</string>
     <string name="simetry">symmetrie</string>
-    <string name="rateapp">Bitte bewerten Sie diese App, wenn es Ihnen gefallen hat! Es wäre eine große Motivation für mich, bessere Apps zu entwickeln !!! Vielen Dank!</string>
+    <string name="rateapp">Bitte bewerten Sie diese App, wenn es Ihnen gefallen hat!\n Es wäre eine große Motivation für mich, bessere Apps zu entwickeln !!! Vielen Dank!</string>
     <string name="bolumbasari">Erfolg: %</string>
     <string name="backtokonular">zurück</string>
     <string name="leveldurumu"> Punkte für das nächste Level! \n Mach weiter!</string>

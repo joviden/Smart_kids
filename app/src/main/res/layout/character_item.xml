@@ -97,7 +97,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.82" />
+            app:layout_constraintGuide_percent="0.80" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_horizontal98"
@@ -121,7 +121,7 @@
             android:text="Level 1"
             android:textSize="@dimen/header_big"
             android:textStyle="bold"
-            android:textColor="@color/white"
+            android:textColor="@color/textsari"
             android:background="@drawable/cerceve_button"
             android:fontFamily="@font/justsay"
             />
@@ -152,9 +152,12 @@
 
     <TextView
         android:id="@+id/name1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/card1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:textColor="@color/white"
+        android:background="@drawable/cerceve_button"
+        app:layout_constraintTop_toBottomOf="@id/guideline_horizontal85"
         app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal98"
         app:layout_constraintStart_toStartOf="@id/guideline_vertical02"
         app:layout_constraintEnd_toEndOf="@id/guideline_vertical25"
@@ -187,9 +190,12 @@
 
     <TextView
         android:id="@+id/name2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/card2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:background="@drawable/cerceve_button"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/guideline_horizontal85"
         app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal98"
         app:layout_constraintStart_toStartOf="@id/guideline_vertical275"
         app:layout_constraintEnd_toEndOf="@id/guideline_vertical495"
@@ -221,9 +227,12 @@
 
     <TextView
         android:id="@+id/name3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/card3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:background="@drawable/cerceve_button"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/guideline_horizontal85"
         app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal98"
         app:layout_constraintStart_toStartOf="@id/guideline_vertical525"
         app:layout_constraintEnd_toEndOf="@id/guideline_vertical745"
@@ -255,9 +264,12 @@
 
     <TextView
         android:id="@+id/name4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/card4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:background="@drawable/cerceve_button"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/guideline_horizontal85"
         app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal98"
         app:layout_constraintStart_toStartOf="@id/guideline_vertical77"
         app:layout_constraintEnd_toEndOf="@id/guideline_vertical98"

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Smart Kids</string>
+
+
+
+
     <string name="girisBtn">enter</string>
     <string name="karsilamametin">SmArT KiDs StaRtiNg!!!</string>
 
@@ -70,7 +74,7 @@ If you have a complaint about something or believe your content is being used in
 For more information on “fair use”, please refer to: United States Code: Title 17, Section 107, http://www.copyright.gov/title17/92chap1.html#107. \n
 
 For all inquiries please write to salginerdem@gmail.com.</string>
-    <string name="rateapp">Please rate this app by tapping this button! It would be a great motivation for me to design better apps!!! Thank you!</string>
+    <string name="rateapp">Please rate this app by tapping this button!\n It would be a great motivation for me to design better apps!!! Thank you!</string>
     <string name="bolumbasari">Success: %</string>
     <string name="backtokonular">back</string>
     <string name="leveldurumu"> points left for the next level! \n Keep Going!</string>
@@ -136,6 +140,7 @@ For all inquiries please write to salginerdem@gmail.com.</string>
     <string name="playgamesmassage">Please install Google Play Games to get your scores recorded.</string>
     <string name="filter_title">Smart Kids Math for kids. Math tests, summation, extraction, multiplication, division, 4 operation</string>
     <string name="content_description">header</string>
+
 
 
 </resources>
