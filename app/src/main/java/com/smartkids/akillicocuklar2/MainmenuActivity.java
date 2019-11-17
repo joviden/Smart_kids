@@ -1,5 +1,9 @@
 package com.smartkids.akillicocuklar2;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -25,8 +29,11 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
 import android.view.View;
+import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -139,14 +146,17 @@ public class MainmenuActivity extends AppCompatActivity {
 
         if (sharedPrefManager.getIntegerFromSP("avatar_chosen", 100) == 100) {
             Log.i("check_Avatar","Avatar:"+sharedPrefManager.getIntegerFromSP("avatar_chosen", 100));
-            charchooselayout.setVisibility(View.VISIBLE);
-            mainmenu_layout.setVisibility(View.GONE);
+            fadeIn_fadeOut_Animation(charchooselayout,mainmenu_layout);
+
         } else {
             Log.i("check_Avatar","Avatar2:"+sharedPrefManager.getIntegerFromSP("avatar_chosen", 100));
-
-            charchooselayout.setVisibility(View.GONE);
-            mainmenu_layout.setVisibility(View.VISIBLE);
+            fadeIn_fadeOut_Animation(mainmenu_layout,charchooselayout);
             characterview.setImageResource(characters.get(user_level - 1).getImages().get(sharedPrefManager.getIntegerFromSP("avatar_chosen", 100)));
+
+
+
+
+
         }
 
 
@@ -213,8 +223,9 @@ public class MainmenuActivity extends AppCompatActivity {
         characterview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mainmenu_layout.setVisibility(View.GONE);
-                charchooselayout.setVisibility(View.VISIBLE);
+                fadeIn_fadeOut_Animation(charchooselayout,mainmenu_layout);
+            //    mainmenu_layout.setVisibility(View.GONE);
+            //    charchooselayout.setVisibility(View.VISIBLE);
             }
         });
 
@@ -479,10 +490,9 @@ public class MainmenuActivity extends AppCompatActivity {
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            charchooselayout.setVisibility(View.GONE);
-                            mainmenu_layout.setVisibility(View.VISIBLE);
+                            fadeIn_fadeOut_Animation(mainmenu_layout,charchooselayout);
                             if (mInterstitialAd.isLoaded()) {
-                                 mInterstitialAd.show();
+                               //  mInterstitialAd.show();
                             }
                         }
                     },1500);
@@ -1427,6 +1437,41 @@ Media
 
     }
 
+    private void fadeIn_fadeOut_Animation(final View fadein, final View fadeout) {
+
+        fadein.setAlpha(0f);
+        fadein.setVisibility(View.VISIBLE);
+
+        ObjectAnimator fadeOutAnim = ObjectAnimator.ofFloat(fadeout, View.ALPHA,  1f, 0f);
+
+        ObjectAnimator fadeInAnim = ObjectAnimator.ofFloat(fadein, View.ALPHA,  0f, 1f);
+        fadeInAnim.setInterpolator(new DecelerateInterpolator());
+        fadeOutAnim.setInterpolator(new AccelerateInterpolator());
+
+        AnimatorSet mAnimationSet = new AnimatorSet();
+
+        mAnimationSet.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                fadeout.setVisibility(View.GONE);
+                fadein.setVisibility(View.VISIBLE);
+            }
+        });
+
+
+        mAnimationSet.setDuration(500);
+        mAnimationSet.playTogether(fadeOutAnim, fadeInAnim);
+        mAnimationSet.start();
+
+
+
+
+
+
+
+    }
+
 
     @Override
     public void onBackPressed() {
@@ -1435,9 +1480,8 @@ Media
         if (byebyeLayout.getVisibility() == View.VISIBLE) {
             exitApp();
         } else if (charchooselayout.getVisibility() == View.VISIBLE) {
-            mainmenu_layout.setVisibility(View.VISIBLE);
-            byebyeLayout.setVisibility(View.GONE);
-            charchooselayout.setVisibility(View.GONE);
+            fadeIn_fadeOut_Animation(mainmenu_layout,charchooselayout);
+
         } else {
             showByeScreen();
         }
