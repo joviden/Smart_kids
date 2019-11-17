@@ -6,28 +6,34 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
@@ -64,6 +70,7 @@ public class MainmenuActivity extends AppCompatActivity {
     private AdView mAdView;
     private InterstitialAd mInterstitialAd;
     private SharedPrefManager sharedPrefManager;
+    private int user_level;
 
     Integer kumulatiftoplamscore, toplamascore, cikarmascore, carpmascore, bolmescore, ritmikscore, buyukkucukscore, simetriscore, totalscore,
             toplamaskorkumulatif, cikarmaskorkumulatif, carpmaskorkumulatif, bolmeskorkumulatif, ritmikskorkumulatif, buyukkucukskorkumulatif, simetriskorkumulatif,
@@ -86,11 +93,12 @@ public class MainmenuActivity extends AppCompatActivity {
     private List<Character> characters;
     private RecyclerView char_recyclerView;
 
-    private ConstraintLayout mainmenu_layout, charchooselayout, byebyeLayout;
+    private ConstraintLayout mainmenu_layout, charchooselayout, byebyeLayout, sonuclarlayout;
+    private ImageView characterview;
 
-    private AppCompatButton profileBtn,leaderboardBtn,achievementBtn,rateappBtn,shareBtn;
+    private AppCompatButton profileBtn, leaderboardBtn, achievementBtn, rateappBtn, shareBtn;
 
-    private  GoogleSignInAccount signedInAccount;
+    private GoogleSignInAccount signedInAccount;
 
 
     @Override
@@ -106,16 +114,20 @@ public class MainmenuActivity extends AppCompatActivity {
         mainmenu_layout = findViewById(R.id.mainmenu_layout);
         charchooselayout = findViewById(R.id.charchooselayout);
         byebyeLayout = findViewById(R.id.byebyeLayout);
+        sonuclarlayout = findViewById(R.id.sonuclarlayout);
         profileBtn = findViewById(R.id.profileBtn);
         leaderboardBtn = findViewById(R.id.leaderboardBtn);
         achievementBtn = findViewById(R.id.achievementBtn);
         rateappBtn = findViewById(R.id.rateappBtn);
         shareBtn = findViewById(R.id.shareBtn);
+        characterview = findViewById(R.id.characterview);
 
 
-        mainmenu_layout.setVisibility(View.VISIBLE);
-        charchooselayout.setVisibility(View.GONE);
+
         byebyeLayout.setVisibility(View.GONE);
+        sonuclarlayout.setVisibility(View.GONE);
+
+        user_level = sharedPrefManager.getIntegerFromSP("level", 1);
 
         setListeners();
         inflatePager();
@@ -125,58 +137,17 @@ public class MainmenuActivity extends AppCompatActivity {
 
 
 
-        ////////////////////info button////////////////////////////////
-
-         final ConstraintLayout sonuclarlayout = findViewById(R.id.sonuclarlayout);
-        sonuclarlayout.setVisibility(View.GONE);
-
-
-        ///////////////////share////////////////////////////////////
-
-
-
-
-        ////////////avatar choose once////////////////////
-
-        ImageView characterview = findViewById(R.id.characterview);
-
-        SharedPreferences spavatarilk = getSharedPreferences("avatarbilgiler", Activity.MODE_PRIVATE);
-        SharedPreferences.Editor spEditoravatarilk = spavatarilk.edit();
-        Integer i = spavatarilk.getInt("avatarsecildimi", 0);
-        Integer z = spavatarilk.getInt("secilenavatar", 0);
-
-        //    Log.i("resimsecil di mi ilk ",String.valueOf(i));
-        //    Log.i("secilen resim id",String.valueOf(z));
-
-
-        if (i == 0) {
+        if (sharedPrefManager.getIntegerFromSP("avatar_chosen", 100) == 100) {
+            Log.i("check_Avatar","Avatar:"+sharedPrefManager.getIntegerFromSP("avatar_chosen", 100));
             charchooselayout.setVisibility(View.VISIBLE);
+            mainmenu_layout.setVisibility(View.GONE);
         } else {
+            Log.i("check_Avatar","Avatar2:"+sharedPrefManager.getIntegerFromSP("avatar_chosen", 100));
+
             charchooselayout.setVisibility(View.GONE);
-            characterview.setImageResource(z);
+            mainmenu_layout.setVisibility(View.VISIBLE);
+            characterview.setImageResource(characters.get(user_level - 1).getImages().get(sharedPrefManager.getIntegerFromSP("avatar_chosen", 100)));
         }
-
-
-
-
-
-
-
-
-        Button backtomainBtn = findViewById(R.id.backtomainBtn);
-
-
-        backtomainBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if (mInterstitialAd.isLoaded()) {
-                    mInterstitialAd.show();
-                }
-                sonuclarlayout.setVisibility(View.GONE);
-
-            }
-        });
 
 
     }
@@ -193,7 +164,7 @@ public class MainmenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (isSignedIn()) {
-                   showLeaderBoard();
+                    showLeaderBoard();
                 } else {
                     connectGoogleGames();
 
@@ -239,12 +210,16 @@ public class MainmenuActivity extends AppCompatActivity {
             }
         });
 
-
+        characterview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mainmenu_layout.setVisibility(View.GONE);
+                charchooselayout.setVisibility(View.VISIBLE);
+            }
+        });
 
 
     }
-
-
 
     private void createAds() {
 
@@ -252,7 +227,7 @@ public class MainmenuActivity extends AppCompatActivity {
 
         FrameLayout ad_container = findViewById(R.id.ad_container);
         mAdView = new AdView(this);
-        mAdView.setAdUnitId(Constants.bannerTestId);
+        mAdView.setAdUnitId(Constants.bannerTestId);  //DEGISTIR
         ad_container.addView(mAdView);
 
         AdSize adSize = getAdSize();
@@ -264,7 +239,8 @@ public class MainmenuActivity extends AppCompatActivity {
         }
 
         mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId(Constants.interstitialId);
+        // mInterstitialAd.setAdUnitId(Constants.interstitialId);  DEGISTIR
+        mInterstitialAd.setAdUnitId(Constants.interstitialTestId);
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
 
         mInterstitialAd.setAdListener(new AdListener() {
@@ -427,7 +403,8 @@ public class MainmenuActivity extends AppCompatActivity {
         characters.add(new Character(Arrays.asList("Jack", "Rooney", "Ali", "Sebastian"), "Level 7", Arrays.asList(R.drawable.icon7n1, R.drawable.icon7n2, R.drawable.icon7n3, R.drawable.icon7n4)));
         characters.add(new Character(Arrays.asList("Jack", "Rooney", "Ali", "Sebastian"), "Level 8", Arrays.asList(R.drawable.icon8n1, R.drawable.icon8n2, R.drawable.icon8n3, R.drawable.icon8n4)));
         characters.add(new Character(Arrays.asList("Jack", "Rooney", "Ali", "Sebastian"), "Level 9", Arrays.asList(R.drawable.icon9n1, R.drawable.icon9n2, R.drawable.icon9n3, R.drawable.icon9n4)));
-        chooseAdapter = new CharChooseAdapter(this, characters);
+        characters.add(new Character(Arrays.asList("Jack", "Rooney", "Ali", "Sebastian"), "Level 10", Arrays.asList(R.drawable.icon10n1, R.drawable.icon10n2, R.drawable.icon9n3, R.drawable.icon11)));
+        chooseAdapter = new CharChooseAdapter(this, characters, user_level);
         char_recyclerView = findViewById(R.id.char_recyclerView);
 
         LinearLayoutManager mlayoutManager = new LinearLayoutManager(this);
@@ -437,6 +414,93 @@ public class MainmenuActivity extends AppCompatActivity {
         char_recyclerView.setAdapter(chooseAdapter);
 
 
+    }
+
+
+    public void selectCharacter(View view) {
+
+
+        if (view.getAlpha() != 1) {
+            Toast.makeText(getApplicationContext(), getString(R.string.levelyetersiz), Toast.LENGTH_SHORT).show();
+        } else {
+
+
+
+            Animation animBlink = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.blink);
+
+
+            RecyclerView.ViewHolder viewHolderX = char_recyclerView.findViewHolderForAdapterPosition(user_level - 1);
+            View viewX = viewHolderX.itemView;
+
+
+            ImageView avatar_icon_ex = viewX.findViewWithTag(String.valueOf(sharedPrefManager.getIntegerFromSP("avatar_chosen", 0)));
+            TextView avatar_name_ex = viewX.findViewWithTag(String.valueOf(sharedPrefManager.getIntegerFromSP("avatar_chosen", 0)) + "txt");
+            ImageView avatar_icon = viewX.findViewWithTag(view.getTag().toString());
+            TextView avatar_name = viewX.findViewWithTag(view.getTag().toString() + "txt");
+
+
+            avatar_name_ex.setBackgroundResource(R.drawable.cerceve_button);
+            avatar_name_ex.clearAnimation();
+            avatar_icon_ex.setBackgroundResource(R.drawable.cerceve_button);
+            avatar_icon_ex.clearAnimation();
+
+
+            avatar_name.setBackgroundResource(R.drawable.cerceve_button_selected);
+            avatar_icon.setBackgroundResource(R.drawable.cerceve_button_selected);
+
+
+
+            sharedPrefManager.putIntegertoSP("avatar_chosen", Integer.parseInt(view.getTag().toString()));
+
+            characterview.setImageResource(characters.get(user_level - 1).getImages().get(sharedPrefManager.getIntegerFromSP("avatar_chosen", 0)));
+
+            final MediaPlayer selectAvatarSound = MediaPlayer.create(this,R.raw.levelup);
+            selectAvatarSound.start();
+            selectAvatarSound.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    selectAvatarSound.release();
+                }
+            });
+
+
+
+            animBlink.setAnimationListener(new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation animation) {
+
+                }
+
+                @Override
+                public void onAnimationEnd(Animation animation) {
+
+                    Handler handler = new Handler();
+
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            charchooselayout.setVisibility(View.GONE);
+                            mainmenu_layout.setVisibility(View.VISIBLE);
+                            if (mInterstitialAd.isLoaded()) {
+                                 mInterstitialAd.show();
+                            }
+                        }
+                    },1500);
+
+
+
+                }
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {
+
+                }
+            });
+
+            avatar_name.startAnimation(animBlink);
+
+
+        }
     }
 
     public void skoraktar() {
@@ -452,7 +516,6 @@ public class MainmenuActivity extends AppCompatActivity {
         Button smarttotalpuanTxtv = findViewById(R.id.smarttotalpuanTxtv);
         Button levelTxtv = findViewById(R.id.levelTxtv);
         Button nextlevelptsTxtv = findViewById(R.id.nextlevelptsTxtv);
-        Button backtomainBtn = findViewById(R.id.backtomainBtn);
         Button progressTxt = findViewById(R.id.progressTxt);
 
         ProgressBar levelbar = findViewById(R.id.pointsbar);
@@ -477,28 +540,11 @@ public class MainmenuActivity extends AppCompatActivity {
 
     }
 
+
     public void onResume() {
         super.onResume();
 
-
-
-        /*
-
-        try{   signInSilently();
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
-*/
-
-
-        final ImageView icon1n1, icon1n2, icon1n3, icon1n4, icon2n1, icon2n2, icon2n3, icon2n4, icon3n1, icon3n2, icon3n3, icon3n4, icon4n1, icon4n2, icon4n3, icon4n4, icon5n1, icon5n2, icon5n3, icon5n4,
-                icon6n1, icon6n2, icon6n3, icon6n4, icon7n1, icon7n2, icon7n3, icon7n4, icon8n1, icon8n2, icon8n3, icon8n4, icon9n1, icon9n2, icon9n3, icon9n4, icon10n1, icon10n2, icon11n1;
-
-        ImageView characterview;
-
-        characterview = findViewById(R.id.characterview);
+/*
 
         charchooselayout.setVisibility(View.GONE);
 
@@ -526,6 +572,7 @@ public class MainmenuActivity extends AppCompatActivity {
         timescorekumulatif = sp.getInt("timescorekumulatif", 0);
         level = sp.getInt("level", 0);
 
+*/
 /*
         Log.i("toplamakumulatif",String.valueOf(toplamaskorkumulatif));
         Log.i("cikarmakumulatif",String.valueOf(cikarmaskorkumulatif));
@@ -545,7 +592,8 @@ public class MainmenuActivity extends AppCompatActivity {
         Log.i("skorbuyukkucuk",String.valueOf(buyukkucukscore));
         Log.i("skorsimetri",String.valueOf(simetriscore));
         Log.i("skortime",String.valueOf(timescore));
-*/
+*//*
+
 
         kumulatiftoplamscore = toplamaskorkumulatif + cikarmaskorkumulatif + carpmaskorkumulatif + bolmeskorkumulatif + ritmikskorkumulatif +
                 buyukkucukskorkumulatif + simetriskorkumulatif + timescorekumulatif;
@@ -582,29 +630,10 @@ public class MainmenuActivity extends AppCompatActivity {
         Button progrestxt = (Button) findViewById(R.id.progressTxt);
         toplamscorebar.getIndeterminateDrawable().setColorFilter(Color.parseColor("#43ff50"), android.graphics.PorterDuff.Mode.SRC_ATOP);
 
-      /*  icon1n1 = findViewById(R.id.icon1n1);icon1n2 = findViewById(R.id.icon1n2);icon1n3 = findViewById(R.id.icon1n3);icon1n4 = findViewById(R.id.icon1n4);
-        icon2n1 = findViewById(R.id.icon2n1);icon2n2 = findViewById(R.id.icon2n2);icon2n3 = findViewById(R.id.icon2n3);icon2n4 = findViewById(R.id.icon2n4);
-        icon3n1 = findViewById(R.id.icon3n1);icon3n2 = findViewById(R.id.icon3n2);icon3n3 = findViewById(R.id.icon3n3);icon3n4 = findViewById(R.id.icon3n4);
-        icon4n1 = findViewById(R.id.icon4n1);icon4n2 = findViewById(R.id.icon4n2);icon4n3 = findViewById(R.id.icon4n3);icon4n4 = findViewById(R.id.icon4n4);
-        icon5n1 = findViewById(R.id.icon5n1);icon5n2 = findViewById(R.id.icon5n2);icon5n3 = findViewById(R.id.icon5n3);icon5n4 = findViewById(R.id.icon5n4);
-        icon6n1 = findViewById(R.id.icon6n1);icon6n2 = findViewById(R.id.icon6n2);icon6n3 = findViewById(R.id.icon6n3);icon6n4 = findViewById(R.id.icon6n4);
-        icon7n1 = findViewById(R.id.icon7n1);icon7n2 = findViewById(R.id.icon7n2);icon7n3 = findViewById(R.id.icon7n3);icon7n4 = findViewById(R.id.icon7n4);
-        icon8n1 = findViewById(R.id.icon8n1);icon8n2 = findViewById(R.id.icon8n2);icon8n3 = findViewById(R.id.icon8n3);icon8n4 = findViewById(R.id.icon8n4);
-        icon9n1 = findViewById(R.id.icon9n1);icon9n2 = findViewById(R.id.icon9n2);icon9n3 = findViewById(R.id.icon9n3);icon9n4 = findViewById(R.id.icon9n4);
-        icon10n1 = findViewById(R.id.icon10n1);icon10n2 = findViewById(R.id.icon10n2);
-        icon11n1 = findViewById(R.id.icon11n1);*/
+
+*/
 
 
-        characterview.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //    if (mInterstitialAd.isLoaded()) {
-                //        mInterstitialAd.show();
-                //    }
-                charchooselayout.setVisibility(View.VISIBLE);
-
-            }
-        });
 
 
 /*
@@ -643,8 +672,8 @@ public class MainmenuActivity extends AppCompatActivity {
                 spEditor.commit();
 
 
-
-                final MediaPlayer victory = MediaPlayer.create(this,R.raw.trumpet);
+Media
+                final Player victory = MediaPlayer.create(this,R.raw.trumpet);
                 victory.start();
                 victory.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     @Override
@@ -1033,7 +1062,7 @@ public class MainmenuActivity extends AppCompatActivity {
 ///////////////////////////////////////
 
 
-        if (isSignedIn()) {
+      /*  if (isSignedIn()) {
 
 
             Games.getLeaderboardsClient(this, GoogleSignIn.getLastSignedInAccount(this))
@@ -1188,7 +1217,7 @@ public class MainmenuActivity extends AppCompatActivity {
                         .unlock(getString(R.string.achievement_150000_smart_points));
             }
 
-        }
+        }*/
 
 
     }
@@ -1315,24 +1344,21 @@ public class MainmenuActivity extends AppCompatActivity {
     private void showStats() {
 
 
-
-
-
     }
 
-    private void connectGoogleGames(){
+    private void connectGoogleGames() {
 
-        GoogleSignInClient signInClient = GoogleSignIn.getClient(this,GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN);
+        GoogleSignInClient signInClient = GoogleSignIn.getClient(this, GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN);
 
         signInClient.silentSignIn().addOnCompleteListener(new OnCompleteListener<GoogleSignInAccount>() {
             @Override
             public void onComplete(@NonNull Task<GoogleSignInAccount> task) {
                 if (task.isSuccessful()) {
-                    Log.i("SignDurum","OK");
+                    Log.i("SignDurum", "OK");
                     signedInAccount = task.getResult();
 
                 } else {
-                    Log.i("SignDurum","PROBLEM");
+                    Log.i("SignDurum", "PROBLEM");
                 }
 
             }
@@ -1344,7 +1370,6 @@ public class MainmenuActivity extends AppCompatActivity {
 
             }
         });
-
 
 
     }
@@ -1381,7 +1406,7 @@ public class MainmenuActivity extends AppCompatActivity {
         AppCompatButton rateBtn = findViewById(R.id.rateBtn);
 
 
-        if (sharedPrefManager.getBooleanFromSP("rateclick",false)){
+        if (sharedPrefManager.getBooleanFromSP("rateclick", false)) {
             rateBtn.setVisibility(View.GONE);
         }
 
@@ -1400,25 +1425,20 @@ public class MainmenuActivity extends AppCompatActivity {
         });
 
 
-
-
     }
-
-
 
 
     @Override
     public void onBackPressed() {
 
 
-
-        if (byebyeLayout.getVisibility()==View.VISIBLE){
+        if (byebyeLayout.getVisibility() == View.VISIBLE) {
             exitApp();
-        }else if (charchooselayout.getVisibility()==View.VISIBLE){
+        } else if (charchooselayout.getVisibility() == View.VISIBLE) {
             mainmenu_layout.setVisibility(View.VISIBLE);
             byebyeLayout.setVisibility(View.GONE);
             charchooselayout.setVisibility(View.GONE);
-        }else  {
+        } else {
             showByeScreen();
         }
 
@@ -1427,7 +1447,7 @@ public class MainmenuActivity extends AppCompatActivity {
 
     public void rateapp() {
 
-      sharedPrefManager.putBooleantoSP("rateclick",true);
+        sharedPrefManager.putBooleantoSP("rateclick", true);
 
 
         Uri uri = Uri.parse("market://details?id=" + getApplicationContext().getPackageName());
@@ -1445,41 +1465,6 @@ public class MainmenuActivity extends AppCompatActivity {
         }
     }
 
-
-    public void charchoose(View view) {
-
-
-        ImageView characterview = findViewById(R.id.characterview);
-
-
-        if (view.getAlpha() != 1) {
-            Toast.makeText(getApplicationContext(), getString(R.string.levelyetersiz), Toast.LENGTH_SHORT).show();
-        } else {
-
-            if (mInterstitialAd.isLoaded()) {
-                mInterstitialAd.show();
-            }
-
-            String imageid = "";
-            imageid = view.getResources().getResourceEntryName(view.getId());
-            //        Log.i("resimresourceid",imageid);
-            int selecteddrawable = getResources().getIdentifier(imageid, "drawable", "com.smartkids.akillicocuklar2");
-            //   Log.i("resimselecteddrawable",String.valueOf(selecteddrawable));
-            characterview.setImageResource(selecteddrawable);
-
-
-            SharedPreferences sp = getSharedPreferences("avatarbilgiler", Activity.MODE_PRIVATE);
-            SharedPreferences.Editor spEditor = sp.edit();
-
-            spEditor.putInt("avatarsecildimi", 1);
-            spEditor.putInt("secilenavatar", selecteddrawable);
-            spEditor.commit();
-
-            charchooselayout.setVisibility(View.GONE);
-
-
-        }
-    }
 
     public void appcikis(View view) {
 

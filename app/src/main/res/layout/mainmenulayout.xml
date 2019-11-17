@@ -66,7 +66,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toTopOf="@id/ad_container"
-        android:visibility="gone">
+        android:visibility="visible">
 
 
         <androidx.constraintlayout.widget.Guideline
@@ -1026,19 +1026,7 @@
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
-                    <Button
-                        android:id="@+id/backtomainBtn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:background="@drawable/siklar"
-                        android:fontFamily="@font/comic"
-                        android:onClick="cikis"
-                        android:paddingHorizontal="8dp"
-                        android:text="@string/backtokonular"
-                        android:textAllCaps="false"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+
                 </LinearLayout>
 
             </ScrollView>

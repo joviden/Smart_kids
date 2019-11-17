@@ -11,4 +11,6 @@ public class Constants {
     public static String bannerTestId = "ca-app-pub-3940256099942544/6300978111";
 
     public static String interstitialId = "ca-app-pub-4100535460120599/6760445164";
+
+    public static String interstitialTestId = "ca-app-pub-3940256099942544/1033173712";
 }
