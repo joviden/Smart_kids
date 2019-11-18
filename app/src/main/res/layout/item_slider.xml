@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/slider_item_height"
+    android:onClick="selectGame">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_vertical02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.02" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_vertical98"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.98" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_horizontal03"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.03" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_horizontal50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_horizontal97"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.97" />
+
+    <ImageView
+        android:id="@+id/iconImg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/guideline_horizontal03"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal50"
+        app:layout_constraintStart_toStartOf="@id/guideline_vertical02"
+        app:layout_constraintEnd_toEndOf="@id/guideline_vertical98"
+        app:layout_constraintDimensionRatio="W,1:1"
+        android:src="@drawable/icon_mental"/>
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_horizontal|center_vertical"
+        app:layout_constraintTop_toBottomOf="@id/iconImg"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal97"
+        app:layout_constraintStart_toStartOf="@id/guideline_vertical02"
+        app:layout_constraintEnd_toEndOf="@id/guideline_vertical98">
+
+        <TextView
+            android:id="@+id/konubaslikTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal|center_vertical"
+            android:fontFamily="@font/justsay"
+            android:textSize="@dimen/header_huge"
+            android:textColor="@color/blue"
+            android:onClick="selectGame"
+            android:textStyle="bold"
+            android:text="Mathball"/>
+
+        <TextView
+            android:id="@+id/konuaciklamaTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|center_horizontal"
+            android:fontFamily="@font/indie"
+            android:textSize="@dimen/header_big"
+            android:textColor="@color/blue"
+            android:textStyle="italic|bold"
+            android:onClick="selectGame"
+            android:text="math and football"/>
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

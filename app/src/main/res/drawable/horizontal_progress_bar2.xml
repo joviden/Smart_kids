@@ -3,16 +3,16 @@
     <item android:id="@android:id/background">
         <shape>
             <gradient
-                android:startColor="#ff0000"
-                android:centerColor="#ff0000"
+                android:startColor="@color/grey"
+                android:centerColor="@color/grey"
                 android:centerY="0.75"
-                android:endColor="#ff0000"
+                android:endColor="@color/grey"
                 android:angle="270"
                 />
-            <corners android:radius="4dp" />
+            <corners android:radius="60dp" />
             <stroke
                 android:width="2dp"
-                android:color="#000" />
+                android:color="@color/textdark" />
         </shape>
     </item>
 
@@ -26,10 +26,10 @@
                     android:endColor="#a24"
                     android:angle="270"
                     />
-                <corners android:radius="4dp" />
+                <corners android:radius="60dp" />
                 <stroke
                     android:width="2dp"
-                    android:color="#000" />
+                    android:color="@color/textdark" />
             </shape>
         </clip>
     </item>
@@ -44,10 +44,10 @@
                     android:endColor="#34ff38"
                     android:angle="270"
                     />
-                <corners android:radius="4dp" />
+                <corners android:radius="60dp" />
                 <stroke
                     android:width="2dp"
-                    android:color="#000" />
+                    android:color="@color/textdark" />
             </shape>
         </clip>
     </item>

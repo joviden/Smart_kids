@@ -153,7 +153,7 @@ public class TimechallengeActivity extends AppCompatActivity  {
                 }else {
                     startSignInIntent();
 
-                    Toast.makeText(getApplicationContext(),"Google Play Games is not connected or installed!",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Google Play SmartGames is not connected or installed!",Toast.LENGTH_SHORT).show();
 
                 }
 

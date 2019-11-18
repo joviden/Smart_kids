@@ -733,13 +733,13 @@ public class MathgamesActivity extends AppCompatActivity implements GoogleApiCli
 /////////////////////////////
 
         //if (topbasari>0) {
-        //   Games.Leaderboards.submitScore(apiClient,getString(R.string.leaderboard_score_table),(int)topbasari);
+        //   SmartGames.Leaderboards.submitScore(apiClient,getString(R.string.leaderboard_score_table),(int)topbasari);
 
         // Button topleaderbtn = (Button)findViewById(R.id.toplamaleader);
         //topleaderbtn.setOnClickListener(new View.OnClickListener() {
         //  @Override
         //public void onClick(View view) {
-        //  startActivityForResult(Games.Leaderboards.getLeaderboardIntent(apiClient,getString(R.string.leaderboard_score_table)),0);
+        //  startActivityForResult(SmartGames.Leaderboards.getLeaderboardIntent(apiClient,getString(R.string.leaderboard_score_table)),0);
         //}
         //});
         //}

@@ -12,9 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.smartkids.akillicocuklar2.R;
 import com.smartkids.akillicocuklar2.models.Character;
-import com.smartkids.akillicocuklar2.utils.SharedPrefManager;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class CharChooseAdapter extends RecyclerView.Adapter<CharChooseAdapter.ViewHolder> {
@@ -22,25 +19,31 @@ public class CharChooseAdapter extends RecyclerView.Adapter<CharChooseAdapter.Vi
     private Activity context;
     private List<Character> characters;
     private int level;
+    private int icon_choosen;
 
 
-    public CharChooseAdapter(Activity context, List<Character> characters, int level) {
+
+    public CharChooseAdapter(Activity context, List<Character> characters, int level, int icon_choosen) {
         this.context = context;
         this.characters = characters;
         this.level = level;
+        this.icon_choosen = icon_choosen;
+
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.character_item, parent, false);
+                .inflate(R.layout.item_character, parent, false);
 
         return new ViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
+        int tag = position*4;
 
 
         if (position < level) {
@@ -63,25 +66,45 @@ public class CharChooseAdapter extends RecyclerView.Adapter<CharChooseAdapter.Vi
             holder.name4.setAlpha(.6f);
         }
 
-        holder.icon1.setTag(String.valueOf(0));
-        holder.icon2.setTag(String.valueOf(1));
-        holder.icon3.setTag(String.valueOf(2));
-        holder.icon4.setTag(String.valueOf(3));
+        holder.icon1.setTag(String.valueOf(4*position));
+        holder.icon2.setTag(String.valueOf(4*position+1));
+        holder.icon3.setTag(String.valueOf(4*position+2));
+        holder.icon4.setTag(String.valueOf(4*position+3));
 
-        holder.name1.setTag(0 +"txt");
-        holder.name2.setTag(1 +"txt");
-        holder.name3.setTag(2 +"txt");
-        holder.name4.setTag(3 +"txt");
+        holder.name1.setTag(String.valueOf(4*position)+"txt");
+        holder.name2.setTag(String.valueOf(4*position+1)+"txt");
+        holder.name3.setTag(String.valueOf(4*position+2)+"txt");
+        holder.name4.setTag(String.valueOf(4*position+3)+"txt");
 
         holder.levelTxt.setText(characters.get(position).getLevel());
-        holder.name1.setText(characters.get(position).getNames().get(0));
-        holder.name2.setText(characters.get(position).getNames().get(1));
-        holder.name3.setText(characters.get(position).getNames().get(2));
-        holder.name4.setText(characters.get(position).getNames().get(3));
-        holder.icon1.setImageResource(characters.get(position).getImages().get(0));
-        holder.icon2.setImageResource(characters.get(position).getImages().get(1));
-        holder.icon3.setImageResource(characters.get(position).getImages().get(2));
-        holder.icon4.setImageResource(characters.get(position).getImages().get(3));
+        holder.name1.setText(characters.get(4*position).getNames());
+        holder.name2.setText(characters.get(4*position+1).getNames());
+        holder.name3.setText(characters.get(4*position+2).getNames());
+        holder.name4.setText(characters.get(4*position+3).getNames());
+
+
+        holder.icon1.setImageResource(characters.get(4*position).getImage());
+        holder.icon2.setImageResource(characters.get(4*position+1).getImage());
+        holder.icon3.setImageResource(characters.get(4*position+2).getImage());
+        holder.icon4.setImageResource(characters.get(4*position+3).getImage());
+
+        if (tag==icon_choosen) {
+            holder.icon1.setBackgroundResource(R.drawable.cerceve_button_selected);
+            holder.name1.setBackgroundResource(R.drawable.cerceve_button_selected);
+        }else if (tag+1==icon_choosen) {
+            holder.icon2.setBackgroundResource(R.drawable.cerceve_button_selected);
+            holder.name2.setBackgroundResource(R.drawable.cerceve_button_selected);
+        }else if (tag+2==icon_choosen) {
+            holder.icon3.setBackgroundResource(R.drawable.cerceve_button_selected);
+            holder.name3.setBackgroundResource(R.drawable.cerceve_button_selected);
+        }else if (tag+3==icon_choosen) {
+            holder.icon4.setBackgroundResource(R.drawable.cerceve_button_selected);
+            holder.name4.setBackgroundResource(R.drawable.cerceve_button_selected);
+        }
+
+
+
+
 
 
     }
@@ -89,7 +112,7 @@ public class CharChooseAdapter extends RecyclerView.Adapter<CharChooseAdapter.Vi
     @Override
     public int getItemCount() {
 
-        return characters.size();
+        return characters.size()/4;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

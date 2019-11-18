@@ -4,12 +4,9 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
-import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,7 +14,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -33,13 +29,10 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
-import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -63,12 +56,11 @@ import com.google.android.gms.tasks.Task;
 import com.smartkids.akillicocuklar2.adapters.CharChooseAdapter;
 import com.smartkids.akillicocuklar2.adapters.PagerAdapter;
 import com.smartkids.akillicocuklar2.models.Character;
+import com.smartkids.akillicocuklar2.models.SmartGames;
 import com.smartkids.akillicocuklar2.utils.Constants;
 import com.smartkids.akillicocuklar2.utils.SharedPrefManager;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 
@@ -78,18 +70,20 @@ public class MainmenuActivity extends AppCompatActivity {
     private InterstitialAd mInterstitialAd;
     private SharedPrefManager sharedPrefManager;
     private int user_level;
+    private boolean char_just_choosen = false;
+    private List<Character> characters;
+    private List<SmartGames> smartGames;
+    private int pagenumber;
+    List<ImageView> dots;
+
 
     Integer kumulatiftoplamscore, toplamascore, cikarmascore, carpmascore, bolmescore, ritmikscore, buyukkucukscore, simetriscore, totalscore,
             toplamaskorkumulatif, cikarmaskorkumulatif, carpmaskorkumulatif, bolmeskorkumulatif, ritmikskorkumulatif, buyukkucukskorkumulatif, simetriskorkumulatif,
             level, timescorekumulatif, timescore;
 
 
-    public static ArrayList<String> konuisimleri = new ArrayList<>();
-    public static ArrayList<String> konuaciklama = new ArrayList<>();
-    public static ArrayList<Integer> konuresimleri = new ArrayList<>();
     ViewPager viewPager;
     PagerAdapter pagerAdapter;
-    private int pagenumber;
 
 
     private static final int RC_LEADERBOARD_UI = 9004;
@@ -97,7 +91,7 @@ public class MainmenuActivity extends AppCompatActivity {
     private static final int RC_SIGN_IN = 9001;
 
     private CharChooseAdapter chooseAdapter;
-    private List<Character> characters;
+
     private RecyclerView char_recyclerView;
 
     private ConstraintLayout mainmenu_layout, charchooselayout, byebyeLayout, sonuclarlayout;
@@ -130,7 +124,6 @@ public class MainmenuActivity extends AppCompatActivity {
         characterview = findViewById(R.id.characterview);
 
 
-
         byebyeLayout.setVisibility(View.GONE);
         sonuclarlayout.setVisibility(View.GONE);
 
@@ -142,19 +135,14 @@ public class MainmenuActivity extends AppCompatActivity {
         connectGoogleGames();
 
 
-
-
         if (sharedPrefManager.getIntegerFromSP("avatar_chosen", 100) == 100) {
-            Log.i("check_Avatar","Avatar:"+sharedPrefManager.getIntegerFromSP("avatar_chosen", 100));
-            fadeIn_fadeOut_Animation(charchooselayout,mainmenu_layout);
+            Log.i("check_Avatar", "Avatar:" + sharedPrefManager.getIntegerFromSP("avatar_chosen", 100));
+            fadeIn_fadeOut_Animation(charchooselayout, mainmenu_layout);
 
         } else {
-            Log.i("check_Avatar","Avatar2:"+sharedPrefManager.getIntegerFromSP("avatar_chosen", 100));
-            fadeIn_fadeOut_Animation(mainmenu_layout,charchooselayout);
-            characterview.setImageResource(characters.get(user_level - 1).getImages().get(sharedPrefManager.getIntegerFromSP("avatar_chosen", 100)));
-
-
-
+            Log.i("check_Avatar", "Avatar2:" + sharedPrefManager.getIntegerFromSP("avatar_chosen", 100));
+            fadeIn_fadeOut_Animation(mainmenu_layout, charchooselayout);
+            characterview.setImageResource(characters.get(sharedPrefManager.getIntegerFromSP("avatar_chosen", 0)).getImage());
 
 
         }
@@ -193,7 +181,7 @@ public class MainmenuActivity extends AppCompatActivity {
                 } else {
                     connectGoogleGames();
 
-                    Toast.makeText(getApplicationContext(), "Google Play Games is not connected or installed!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Google Play SmartGames is not connected or installed!", Toast.LENGTH_SHORT).show();
 
                 }
 
@@ -223,9 +211,7 @@ public class MainmenuActivity extends AppCompatActivity {
         characterview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fadeIn_fadeOut_Animation(charchooselayout,mainmenu_layout);
-            //    mainmenu_layout.setVisibility(View.GONE);
-            //    charchooselayout.setVisibility(View.VISIBLE);
+                fadeIn_fadeOut_Animation(charchooselayout, mainmenu_layout);
             }
         });
 
@@ -267,48 +253,15 @@ public class MainmenuActivity extends AppCompatActivity {
     public void inflatePager() {
 
 
-        //////////////////////////////////////////
+        smartGames = new ArrayList<>();
 
-        konuisimleri.clear();
-        konuaciklama.clear();
-        konuresimleri.clear();
+        smartGames.add(new SmartGames(getString(R.string.twoplayers), getString(R.string.twoplayersexp), R.drawable.icon_ball));
+        smartGames.add(new SmartGames(getString(R.string.timechallenge), getString(R.string.timechallenge_exp), R.drawable.icon_clock));
+        smartGames.add(new SmartGames(getString(R.string.mathgames), getString(R.string.mathgamesexp), R.drawable.icon_mental));
+        smartGames.add(new SmartGames(getString(R.string.fouroperations), getString(R.string.fouroperationsexp), R.drawable.icon_maths));
+        smartGames.add(new SmartGames(getString(R.string.removeads), getString(R.string.removeadsexp), R.drawable.icon_unlock));
+        smartGames.add(new SmartGames(getString(R.string.otherapps), getString(R.string.otherappsexp), R.drawable.icon_market));
 
-        konuisimleri.add(getString(R.string.twoplayers));
-        konuisimleri.add(getString(R.string.timechallenge));
-        konuisimleri.add(getString(R.string.mathgames));
-        konuisimleri.add(getString(R.string.fouroperations));
-        konuisimleri.add(getString(R.string.removeads));
-        konuisimleri.add(getString(R.string.otherapps));
-
-        konuaciklama.add(getString(R.string.twoplayersexp));
-        konuaciklama.add(getString(R.string.timechallenge_exp));
-        konuaciklama.add(getString(R.string.mathgamesexp));
-        konuaciklama.add(getString(R.string.fouroperationsexp));
-        konuaciklama.add(getString(R.string.removeadsexp));
-        konuaciklama.add(getString(R.string.otherappsexp));
-
-
-        konuresimleri.add(R.drawable.emoji_1);
-        konuresimleri.add(R.drawable.emoji_2);
-        konuresimleri.add(R.drawable.emoji_3);
-        konuresimleri.add(R.drawable.emoji_4);
-        konuresimleri.add(R.drawable.emoji_5);
-        konuresimleri.add(R.drawable.emoji_6);
-        konuresimleri.add(R.drawable.emoji_7);
-        konuresimleri.add(R.drawable.emoji_8);
-        konuresimleri.add(R.drawable.emoji_9);
-        konuresimleri.add(R.drawable.emoji_10);
-        konuresimleri.add(R.drawable.emoji_11);
-        konuresimleri.add(R.drawable.emoji_12);
-        konuresimleri.add(R.drawable.emoji_13);
-        konuresimleri.add(R.drawable.emoji_14);
-        konuresimleri.add(R.drawable.emoji_15);
-        konuresimleri.add(R.drawable.emoji_16);
-        konuresimleri.add(R.drawable.emoji_17);
-        konuresimleri.add(R.drawable.emoji_18);
-        konuresimleri.add(R.drawable.emoji_19);
-        konuresimleri.add(R.drawable.emoji_20);
-        Collections.shuffle(konuresimleri);
 
         final ImageView dot1 = findViewById(R.id.dot1);
         final ImageView dot2 = findViewById(R.id.dot2);
@@ -317,15 +270,25 @@ public class MainmenuActivity extends AppCompatActivity {
         final ImageView dot5 = findViewById(R.id.dot5);
         final ImageView dot6 = findViewById(R.id.dot6);
 
+        dots = new ArrayList<>();
+        dots.add(dot1);
+        dots.add(dot2);
+        dots.add(dot3);
+        dots.add(dot4);
+        dots.add(dot5);
+        dots.add(dot6);
+
 
         try {
 
             viewPager = findViewById(R.id.viewpager);
 
 
-            pagerAdapter = new PagerAdapter(this, konuisimleri);
+            pagerAdapter = new PagerAdapter(this, smartGames);
             viewPager.setAdapter(pagerAdapter);
             viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
+
                 @Override
                 public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
@@ -334,60 +297,18 @@ public class MainmenuActivity extends AppCompatActivity {
 
                 @Override
                 public void onPageSelected(int position) {
-                    Log.i("position", String.valueOf(position));
+
                     pagenumber = position;
-                    switch (pagenumber) {
-                        case 0:
-                            dot1.setBackgroundResource(R.drawable.dot_selected);
-                            dot2.setBackgroundResource(R.drawable.dot_unselected);
-                            dot3.setBackgroundResource(R.drawable.dot_unselected);
-                            dot4.setBackgroundResource(R.drawable.dot_unselected);
-                            dot5.setBackgroundResource(R.drawable.dot_unselected);
-                            dot6.setBackgroundResource(R.drawable.dot_unselected);
-                            break;
-                        case 1:
-                            dot1.setBackgroundResource(R.drawable.dot_unselected);
-                            dot2.setBackgroundResource(R.drawable.dot_selected);
-                            dot3.setBackgroundResource(R.drawable.dot_unselected);
-                            dot4.setBackgroundResource(R.drawable.dot_unselected);
-                            dot5.setBackgroundResource(R.drawable.dot_unselected);
-                            dot6.setBackgroundResource(R.drawable.dot_unselected);
+                    Log.i("position", String.valueOf(pagenumber));
 
-                            break;
-                        case 2:
-                            dot1.setBackgroundResource(R.drawable.dot_unselected);
-                            dot2.setBackgroundResource(R.drawable.dot_unselected);
-                            dot3.setBackgroundResource(R.drawable.dot_selected);
-                            dot4.setBackgroundResource(R.drawable.dot_unselected);
-                            dot5.setBackgroundResource(R.drawable.dot_unselected);
-                            dot6.setBackgroundResource(R.drawable.dot_unselected);
-                            break;
-                        case 3:
-                            dot1.setBackgroundResource(R.drawable.dot_unselected);
-                            dot2.setBackgroundResource(R.drawable.dot_unselected);
-                            dot3.setBackgroundResource(R.drawable.dot_unselected);
-                            dot4.setBackgroundResource(R.drawable.dot_selected);
-                            dot5.setBackgroundResource(R.drawable.dot_unselected);
-                            dot6.setBackgroundResource(R.drawable.dot_unselected);
-                            break;
-                        case 4:
-                            dot1.setBackgroundResource(R.drawable.dot_unselected);
-                            dot2.setBackgroundResource(R.drawable.dot_unselected);
-                            dot3.setBackgroundResource(R.drawable.dot_unselected);
-                            dot4.setBackgroundResource(R.drawable.dot_unselected);
-                            dot5.setBackgroundResource(R.drawable.dot_selected);
-                            dot6.setBackgroundResource(R.drawable.dot_unselected);
-                            break;
-                        case 5:
-                            dot1.setBackgroundResource(R.drawable.dot_unselected);
-                            dot2.setBackgroundResource(R.drawable.dot_unselected);
-                            dot3.setBackgroundResource(R.drawable.dot_unselected);
-                            dot4.setBackgroundResource(R.drawable.dot_unselected);
-                            dot5.setBackgroundResource(R.drawable.dot_unselected);
-                            dot6.setBackgroundResource(R.drawable.dot_selected);
-
-                            break;
+                    for (int i = 0; i < smartGames.size(); i++) {
+                        if (pagenumber != i) {
+                            dots.get(i).setBackgroundResource(R.drawable.dot_unselected);
+                        } else {
+                            dots.get(i).setBackgroundResource(R.drawable.dot_selected);
+                        }
                     }
+
 
 
                 }
@@ -405,17 +326,58 @@ public class MainmenuActivity extends AppCompatActivity {
     private void setCharacterAdapter() {
 
         characters = new ArrayList<>();
-        characters.add(new Character(Arrays.asList("Jack", "Rooney", "Ali", "Sebastian"), "Level 1", Arrays.asList(R.drawable.icon1n1, R.drawable.icon1n2, R.drawable.icon1n3, R.drawable.icon1n4)));
-        characters.add(new Character(Arrays.asList("Jack", "Rooney", "Ali", "Sebastian"), "Level 2", Arrays.asList(R.drawable.icon2n1, R.drawable.icon2n2, R.drawable.icon2n3, R.drawable.icon2n4)));
-        characters.add(new Character(Arrays.asList("Jack", "Rooney", "Ali", "Sebastian"), "Level 3", Arrays.asList(R.drawable.icon3n1, R.drawable.icon3n2, R.drawable.icon3n3, R.drawable.icon3n4)));
-        characters.add(new Character(Arrays.asList("Jack", "Rooney", "Ali", "Sebastian"), "Level 4", Arrays.asList(R.drawable.icon4n1, R.drawable.icon4n2, R.drawable.icon4n3, R.drawable.icon4n4)));
-        characters.add(new Character(Arrays.asList("Jack", "Rooney", "Ali", "Sebastian"), "Level 5", Arrays.asList(R.drawable.icon5n1, R.drawable.icon5n2, R.drawable.icon5n3, R.drawable.icon5n4)));
-        characters.add(new Character(Arrays.asList("Jack", "Rooney", "Ali", "Sebastian"), "Level 6", Arrays.asList(R.drawable.icon6n1, R.drawable.icon6n2, R.drawable.icon6n3, R.drawable.icon6n4)));
-        characters.add(new Character(Arrays.asList("Jack", "Rooney", "Ali", "Sebastian"), "Level 7", Arrays.asList(R.drawable.icon7n1, R.drawable.icon7n2, R.drawable.icon7n3, R.drawable.icon7n4)));
-        characters.add(new Character(Arrays.asList("Jack", "Rooney", "Ali", "Sebastian"), "Level 8", Arrays.asList(R.drawable.icon8n1, R.drawable.icon8n2, R.drawable.icon8n3, R.drawable.icon8n4)));
-        characters.add(new Character(Arrays.asList("Jack", "Rooney", "Ali", "Sebastian"), "Level 9", Arrays.asList(R.drawable.icon9n1, R.drawable.icon9n2, R.drawable.icon9n3, R.drawable.icon9n4)));
-        characters.add(new Character(Arrays.asList("Jack", "Rooney", "Ali", "Sebastian"), "Level 10", Arrays.asList(R.drawable.icon10n1, R.drawable.icon10n2, R.drawable.icon9n3, R.drawable.icon11)));
-        chooseAdapter = new CharChooseAdapter(this, characters, user_level);
+        characters.add(new Character("Jack", "Level 1", R.drawable.icon1n1));
+        characters.add(new Character("Jack", "Level 1", R.drawable.icon1n2));
+        characters.add(new Character("Jack", "Level 1", R.drawable.icon1n3));
+        characters.add(new Character("Jack", "Level 1", R.drawable.icon1n4));
+
+        characters.add(new Character("Jack", "Level 1", R.drawable.icon2n1));
+        characters.add(new Character("Jack", "Level 1", R.drawable.icon2n2));
+        characters.add(new Character("Jack", "Level 1", R.drawable.icon2n3));
+        characters.add(new Character("Jack", "Level 1", R.drawable.icon2n4));
+
+        characters.add(new Character("Jack", "Level 1", R.drawable.icon3n1));
+        characters.add(new Character("Jack", "Level 1", R.drawable.icon3n2));
+        characters.add(new Character("Jack", "Level 1", R.drawable.icon3n3));
+        characters.add(new Character("Jack", "Level 1", R.drawable.icon3n4));
+
+        characters.add(new Character("Jack", "Level 1", R.drawable.icon4n1));
+        characters.add(new Character("Jack", "Level 1", R.drawable.icon4n2));
+        characters.add(new Character("Jack", "Level 1", R.drawable.icon4n3));
+        characters.add(new Character("Jack", "Level 1", R.drawable.icon4n4));
+
+        characters.add(new Character("Jack", "Level 1", R.drawable.icon5n1));
+        characters.add(new Character("Jack", "Level 1", R.drawable.icon5n2));
+        characters.add(new Character("Jack", "Level 1", R.drawable.icon5n3));
+        characters.add(new Character("Jack", "Level 1", R.drawable.icon5n4));
+
+        characters.add(new Character("Jack", "Level 1", R.drawable.icon6n1));
+        characters.add(new Character("Jack", "Level 1", R.drawable.icon6n2));
+        characters.add(new Character("Jack", "Level 1", R.drawable.icon6n3));
+        characters.add(new Character("Jack", "Level 1", R.drawable.icon6n4));
+
+        characters.add(new Character("Jack", "Level 1", R.drawable.icon7n1));
+        characters.add(new Character("Jack", "Level 1", R.drawable.icon7n2));
+        characters.add(new Character("Jack", "Level 1", R.drawable.icon7n3));
+        characters.add(new Character("Jack", "Level 1", R.drawable.icon7n4));
+
+        characters.add(new Character("Jack", "Level 1", R.drawable.icon8n1));
+        characters.add(new Character("Jack", "Level 1", R.drawable.icon8n2));
+        characters.add(new Character("Jack", "Level 1", R.drawable.icon8n3));
+        characters.add(new Character("Jack", "Level 1", R.drawable.icon8n4));
+
+        characters.add(new Character("Jack", "Level 1", R.drawable.icon9n1));
+        characters.add(new Character("Jack", "Level 1", R.drawable.icon9n2));
+        characters.add(new Character("Jack", "Level 1", R.drawable.icon9n3));
+        characters.add(new Character("Jack", "Level 1", R.drawable.icon9n4));
+
+        characters.add(new Character("Jack", "Level 1", R.drawable.icon10n1));
+        characters.add(new Character("Jack", "Level 1", R.drawable.icon10n2));
+        characters.add(new Character("Jack", "Level 1", R.drawable.icon11));
+        characters.add(new Character("Jack", "Level 1", R.drawable.icon10n2));
+
+
+        chooseAdapter = new CharChooseAdapter(this, characters, user_level, sharedPrefManager.getIntegerFromSP("avatar_chosen", 0));
         char_recyclerView = findViewById(R.id.char_recyclerView);
 
         LinearLayoutManager mlayoutManager = new LinearLayoutManager(this);
@@ -433,81 +395,88 @@ public class MainmenuActivity extends AppCompatActivity {
 
         if (view.getAlpha() != 1) {
             Toast.makeText(getApplicationContext(), getString(R.string.levelyetersiz), Toast.LENGTH_SHORT).show();
-        } else {
-
-
+        } else if (!char_just_choosen) {
 
             Animation animBlink = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.blink);
-
+            Animation vibrate = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.vibrate);
 
             RecyclerView.ViewHolder viewHolderX = char_recyclerView.findViewHolderForAdapterPosition(user_level - 1);
-            View viewX = viewHolderX.itemView;
+            View viewX = null;
+            if (viewHolderX != null) {
+                viewX = viewHolderX.itemView;
 
 
-            ImageView avatar_icon_ex = viewX.findViewWithTag(String.valueOf(sharedPrefManager.getIntegerFromSP("avatar_chosen", 0)));
-            TextView avatar_name_ex = viewX.findViewWithTag(String.valueOf(sharedPrefManager.getIntegerFromSP("avatar_chosen", 0)) + "txt");
-            ImageView avatar_icon = viewX.findViewWithTag(view.getTag().toString());
-            TextView avatar_name = viewX.findViewWithTag(view.getTag().toString() + "txt");
+                ImageView avatar_icon_ex = viewX.findViewWithTag(String.valueOf(sharedPrefManager.getIntegerFromSP("avatar_chosen", 0)));
+                TextView avatar_name_ex = viewX.findViewWithTag(String.valueOf(sharedPrefManager.getIntegerFromSP("avatar_chosen", 0)) + "txt");
+                ImageView avatar_icon = viewX.findViewWithTag(view.getTag().toString());
+                TextView avatar_name = viewX.findViewWithTag(view.getTag().toString() + "txt");
 
 
-            avatar_name_ex.setBackgroundResource(R.drawable.cerceve_button);
-            avatar_name_ex.clearAnimation();
-            avatar_icon_ex.setBackgroundResource(R.drawable.cerceve_button);
-            avatar_icon_ex.clearAnimation();
+                avatar_name_ex.setBackgroundResource(R.drawable.cerceve_button);
+                avatar_name_ex.clearAnimation();
+                avatar_icon_ex.setBackgroundResource(R.drawable.cerceve_button);
+                avatar_icon_ex.clearAnimation();
 
 
-            avatar_name.setBackgroundResource(R.drawable.cerceve_button_selected);
-            avatar_icon.setBackgroundResource(R.drawable.cerceve_button_selected);
+                avatar_name.setBackgroundResource(R.drawable.cerceve_button_selected);
+                avatar_icon.setBackgroundResource(R.drawable.cerceve_button_selected);
 
 
+                sharedPrefManager.putIntegertoSP("avatar_chosen", Integer.parseInt(view.getTag().toString()));
 
-            sharedPrefManager.putIntegertoSP("avatar_chosen", Integer.parseInt(view.getTag().toString()));
+                characterview.setImageResource(characters.get(sharedPrefManager.getIntegerFromSP("avatar_chosen", 0)).getImage());
 
-            characterview.setImageResource(characters.get(user_level - 1).getImages().get(sharedPrefManager.getIntegerFromSP("avatar_chosen", 0)));
-
-            final MediaPlayer selectAvatarSound = MediaPlayer.create(this,R.raw.levelup);
-            selectAvatarSound.start();
-            selectAvatarSound.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                @Override
-                public void onCompletion(MediaPlayer mediaPlayer) {
-                    selectAvatarSound.release();
-                }
-            });
-
+                final MediaPlayer selectAvatarSound = MediaPlayer.create(this, R.raw.levelup);
+                selectAvatarSound.start();
+                selectAvatarSound.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mediaPlayer) {
+                        selectAvatarSound.release();
+                    }
+                });
 
 
-            animBlink.setAnimationListener(new Animation.AnimationListener() {
-                @Override
-                public void onAnimationStart(Animation animation) {
+                animBlink.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+                        char_just_choosen = true;
 
-                }
+                    }
 
-                @Override
-                public void onAnimationEnd(Animation animation) {
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
 
-                    Handler handler = new Handler();
+                        Handler handler = new Handler();
 
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            fadeIn_fadeOut_Animation(mainmenu_layout,charchooselayout);
-                            if (mInterstitialAd.isLoaded()) {
-                               //  mInterstitialAd.show();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                fadeIn_fadeOut_Animation(mainmenu_layout, charchooselayout);
+                                if (mInterstitialAd.isLoaded()) {
+                                    //  mInterstitialAd.show();
+                                }
                             }
-                        }
-                    },1500);
+                        }, 700);
+
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                char_just_choosen = false;
+                            }
+                        }, 1200);
 
 
+                    }
 
-                }
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
 
-                @Override
-                public void onAnimationRepeat(Animation animation) {
+                    }
+                });
 
-                }
-            });
-
-            avatar_name.startAnimation(animBlink);
+                avatar_name.startAnimation(animBlink);
+                avatar_icon.startAnimation(vibrate);
+            }
 
 
         }
@@ -1075,155 +1044,155 @@ Media
       /*  if (isSignedIn()) {
 
 
-            Games.getLeaderboardsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+            SmartGames.getLeaderboardsClient(this, GoogleSignIn.getLastSignedInAccount(this))
                     .submitScore(getString(R.string.leaderboard_smart_kids_kings), kumulatiftoplamscore);
-            Games.getLeaderboardsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+            SmartGames.getLeaderboardsClient(this, GoogleSignIn.getLastSignedInAccount(this))
                     .submitScore(getString(R.string.leaderboard_summation_stars), toplamascore);
-            Games.getLeaderboardsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+            SmartGames.getLeaderboardsClient(this, GoogleSignIn.getLastSignedInAccount(this))
                     .submitScore(getString(R.string.leaderboard_subtraction_stars), cikarmascore);
-            Games.getLeaderboardsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+            SmartGames.getLeaderboardsClient(this, GoogleSignIn.getLastSignedInAccount(this))
                     .submitScore(getString(R.string.leaderboard_division_stars), bolmescore);
-            Games.getLeaderboardsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+            SmartGames.getLeaderboardsClient(this, GoogleSignIn.getLastSignedInAccount(this))
                     .submitScore(getString(R.string.leaderboard_multiplication_stars), carpmascore);
-            Games.getLeaderboardsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+            SmartGames.getLeaderboardsClient(this, GoogleSignIn.getLastSignedInAccount(this))
                     .submitScore(getString(R.string.leaderboard_serials_stars), ritmikscore);
-            Games.getLeaderboardsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+            SmartGames.getLeaderboardsClient(this, GoogleSignIn.getLastSignedInAccount(this))
                     .submitScore(getString(R.string.leaderboard_greater__lesser_stars), buyukkucukscore);
-            Games.getLeaderboardsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+            SmartGames.getLeaderboardsClient(this, GoogleSignIn.getLastSignedInAccount(this))
                     .submitScore(getString(R.string.leaderboard_symmetry_stars), simetriscore);
-            Games.getLeaderboardsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+            SmartGames.getLeaderboardsClient(this, GoogleSignIn.getLastSignedInAccount(this))
                     .submitScore(getString(R.string.leaderboard_time_challenge_stars), timescore);
 
 
             if (toplamaskorkumulatif > 1000) {
-                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
                         .unlock(getString(R.string.achievement_good_starter_summation));
             }
             if (cikarmaskorkumulatif > 1000) {
-                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
                         .unlock(getString(R.string.achievement_good_starter_subtraction));
             }
             if (bolmeskorkumulatif > 1000) {
-                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
                         .unlock(getString(R.string.achievement_good_starter_division));
             }
             if (carpmaskorkumulatif > 1000) {
-                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
                         .unlock(getString(R.string.achievement_good_starter_multiplication));
             }
             if (buyukkucukskorkumulatif > 1000) {
-                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
                         .unlock(getString(R.string.achievement_good_starter_greaterlesser));
             }
             if (ritmikskorkumulatif > 1000) {
-                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
                         .unlock(getString(R.string.achievement_good_starter_serials));
             }
             if (simetriskorkumulatif > 1000) {
-                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
                         .unlock(getString(R.string.achievement_good_starter_symmetry));
             }
 
 
             if (toplamaskorkumulatif > 20000) {
-                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
                         .unlock(getString(R.string.achievement_clever_kid_summation));
             }
             if (cikarmaskorkumulatif > 20000) {
-                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
                         .unlock(getString(R.string.achievement_clever_kid_subtraction));
             }
             if (carpmaskorkumulatif > 20000) {
-                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
                         .unlock(getString(R.string.achievement_clever_kid_multiplication));
             }
             if (bolmeskorkumulatif > 20000) {
-                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
                         .unlock(getString(R.string.achievement_clever_kid_division));
             }
             if (ritmikskorkumulatif > 20000) {
-                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
                         .unlock(getString(R.string.achievement_clever_kid_serials));
             }
             if (simetriskorkumulatif > 20000) {
-                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
                         .unlock(getString(R.string.achievement_clever_kid_symmetry));
             }
 
             if (toplamaskorkumulatif > 50000) {
-                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
                         .unlock(getString(R.string.achievement_summation_proffesor));
             }
             if (cikarmaskorkumulatif > 50000) {
-                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
                         .unlock(getString(R.string.achievement_subtraction_proffessor));
             }
             if (carpmaskorkumulatif > 50000) {
-                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
                         .unlock(getString(R.string.achievement_multiplication_proffessor));
             }
             if (bolmeskorkumulatif > 50000) {
-                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
                         .unlock(getString(R.string.achievement_division_proffessor));
             }
             if (buyukkucukskorkumulatif > 50000) {
-                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
                         .unlock(getString(R.string.achievement_greater_of_lesser_proffessor));
             }
             if (ritmikskorkumulatif > 50000) {
-                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
                         .unlock(getString(R.string.achievement_serials_proffessor));
             }
             if (simetriskorkumulatif > 50000) {
-                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
                         .unlock(getString(R.string.achievement_symmetry_proffessor));
             }
 
 
             if (timescorekumulatif > 5000) {
-                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
                         .unlock(getString(R.string.achievement_real_time_shooter));
             }
             if (timescorekumulatif > 10000) {
-                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
                         .unlock(getString(R.string.achievement_real_time_crusher));
             }
             if (timescorekumulatif > 50000) {
-                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
                         .unlock(getString(R.string.achievement_real_time_expert));
             }
             if (timescorekumulatif > 100000) {
-                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
                         .unlock(getString(R.string.achievement_real_time_professor));
             }
 
 
             if (toplamaskorkumulatif > 5000) {
-                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
                         .unlock(getString(R.string.achievement_5000_smart_points));
             }
             if (toplamaskorkumulatif > 10000) {
-                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
                         .unlock(getString(R.string.achievement_10000_smart_points));
             }
             if (toplamaskorkumulatif > 25000) {
-                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
                         .unlock(getString(R.string.achievement_25000_smart_points));
             }
             if (toplamaskorkumulatif > 40000) {
-                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
                         .unlock(getString(R.string.achievement_40000_smart_points));
             }
             if (toplamaskorkumulatif > 80000) {
-                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
                         .unlock(getString(R.string.achievement_80000_smart_points));
             }
             if (toplamaskorkumulatif > 100000) {
-                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
                         .unlock(getString(R.string.achievement_100000_smart_points));
             }
             if (toplamaskorkumulatif > 150000) {
-                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
+                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
                         .unlock(getString(R.string.achievement_150000_smart_points));
             }
 
@@ -1442,9 +1411,9 @@ Media
         fadein.setAlpha(0f);
         fadein.setVisibility(View.VISIBLE);
 
-        ObjectAnimator fadeOutAnim = ObjectAnimator.ofFloat(fadeout, View.ALPHA,  1f, 0f);
+        ObjectAnimator fadeOutAnim = ObjectAnimator.ofFloat(fadeout, View.ALPHA, 1f, 0f);
 
-        ObjectAnimator fadeInAnim = ObjectAnimator.ofFloat(fadein, View.ALPHA,  0f, 1f);
+        ObjectAnimator fadeInAnim = ObjectAnimator.ofFloat(fadein, View.ALPHA, 0f, 1f);
         fadeInAnim.setInterpolator(new DecelerateInterpolator());
         fadeOutAnim.setInterpolator(new AccelerateInterpolator());
 
@@ -1465,11 +1434,6 @@ Media
         mAnimationSet.start();
 
 
-
-
-
-
-
     }
 
 
@@ -1480,7 +1444,7 @@ Media
         if (byebyeLayout.getVisibility() == View.VISIBLE) {
             exitApp();
         } else if (charchooselayout.getVisibility() == View.VISIBLE) {
-            fadeIn_fadeOut_Animation(mainmenu_layout,charchooselayout);
+            fadeIn_fadeOut_Animation(mainmenu_layout, charchooselayout);
 
         } else {
             showByeScreen();

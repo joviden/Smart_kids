@@ -42,7 +42,7 @@
                 android:id="@+id/playingboygif"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
-                android:background="@drawable/ballgif"
+                android:background="@drawable/icon_ball"
                 android:layout_gravity="center_horizontal"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true" />

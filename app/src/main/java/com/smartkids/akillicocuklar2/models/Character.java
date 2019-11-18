@@ -6,22 +6,22 @@ import java.util.List;
 
 public class Character {
 
-    private List<String> names;
+    private String name;
     private String level;
-    private List<Integer> images;
+    private Integer image;
 
-    public Character(List<String> names, String level, List<Integer>  images) {
-        this.names = names;
+    public Character(String name, String level, Integer  image) {
+        this.name = name;
         this.level = level;
-        this.images = images;
+        this.image = image;
     }
 
-    public List<String> getNames() {
-        return names;
+    public String getNames() {
+        return name;
     }
 
-    public void setNames(List<String> names) {
-        this.names = names;
+    public void setNames(String names) {
+        this.name = names;
     }
 
     public String getLevel() {
@@ -32,11 +32,11 @@ public class Character {
         this.level = level;
     }
 
-    public List<Integer> getImages() {
-        return images;
+    public Integer getImage() {
+        return image;
     }
 
-    public void setImages(List<Integer> images) {
-        this.images = images;
+    public void setImage(Integer image) {
+        this.image = image;
     }
 }

@@ -22,7 +22,7 @@
         app:layout_constraintGuide_percent="0.14" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_horizontal25"
+        android:id="@+id/guideline_horizontal50"
         android:layout_width="1dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -66,7 +66,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toTopOf="@id/ad_container"
-        android:visibility="visible">
+        android:visibility="gone">
 
 
         <androidx.constraintlayout.widget.Guideline
@@ -99,7 +99,7 @@
             app:layout_constraintGuide_percent="0.36" />
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline_horizontal40"
+            android:id="@+id/guideline_horizontal38"
             android:layout_width="1dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -113,7 +113,7 @@
             app:layout_constraintGuide_percent="0.42" />
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline_horizontal50"
+            android:id="@+id/guideline_horizontal50a"
             android:layout_width="1dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -241,7 +241,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/guideline_horizontal16"
                 android:src="@drawable/icon1n1"
-                android:background="@drawable/cerceve_button"
+                android:background="@drawable/sliderbackground"
                 android:visibility="visible" />
 
 
@@ -255,12 +255,10 @@
             android:layout_height="0dp"
             android:background="@drawable/siklarclicked"
             android:max="100"
-            android:maxHeight="16dp"
-            android:minHeight="16dp"
             android:onClick="leveldurumu"
             android:progressDrawable="@drawable/horizontal_progress_bar2"
             android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal40"
+            app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal38"
             app:layout_constraintEnd_toEndOf="@id/guideline_vertical90"
             app:layout_constraintStart_toStartOf="@id/guideline_vertical10"
             app:layout_constraintTop_toTopOf="@id/guideline_horizontal36" />
@@ -277,7 +275,7 @@
             android:textAlignment="center"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal40"
+            app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal38"
             app:layout_constraintEnd_toEndOf="@id/guideline_vertical90"
             app:layout_constraintStart_toStartOf="@id/guideline_vertical10"
             app:layout_constraintTop_toTopOf="@id/guideline_horizontal36" />
@@ -286,7 +284,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal50"
+            app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal50a"
             app:layout_constraintEnd_toEndOf="@id/guideline_vertical90"
             app:layout_constraintStart_toStartOf="@id/guideline_vertical10"
             app:layout_constraintTop_toTopOf="@id/guideline_horizontal42">
@@ -629,7 +627,7 @@
         android:id="@+id/charchooselayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintTop_toBottomOf="@id/guideline_horizontal14"
         app:layout_constraintBottom_toTopOf="@id/ad_container">
 
@@ -684,7 +682,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:visibility="gone"
-        app:layout_constraintTop_toTopOf="@id/guideline_horizontal25"
+        app:layout_constraintTop_toTopOf="@id/guideline_horizontal50"
         app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal75"
         android:layout_gravity="center_vertical">
 
@@ -766,7 +764,7 @@
             android:id="@+id/gifBye"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="@drawable/byegif"
+            android:background="@drawable/gif_bye"
             app:layout_constraintBottom_toTopOf="@id/rateBtn"
             app:layout_constraintDimensionRatio="W,1:1"
             app:layout_constraintEnd_toEndOf="parent"
