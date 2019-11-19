@@ -468,9 +468,9 @@ public class RitmiksaymaActivity extends AppCompatActivity {
 
 
 
-        Intent i = new Intent(RitmiksaymaActivity.this,MathgamesActivity.class);startActivity(i);
+      /*  Intent i = new Intent(RitmiksaymaActivity.this,MathgamesActivity.class);startActivity(i);
         overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
-        startActivity(i);this.finish();
+        startActivity(i);this.finish();*/
 
     }
     @Override

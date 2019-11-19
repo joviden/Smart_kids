@@ -102,6 +102,8 @@ public class MainmenuActivity extends AppCompatActivity {
     private GoogleSignInAccount signedInAccount;
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -227,8 +229,8 @@ public class MainmenuActivity extends AppCompatActivity {
         mAdView.setAdUnitId(Constants.bannerTestId);  //DEGISTIR
         ad_container.addView(mAdView);
 
-        AdSize adSize = getAdSize();
-        mAdView.setAdSize(adSize);
+
+        mAdView.setAdSize(getAdSize());
 
         AdRequest adRequest = new AdRequest.Builder().build();
         if (mAdView != null) {
@@ -1216,12 +1218,14 @@ Media
                 this.finish();
                 break;
             case 2:
-                Intent k = new Intent(MainmenuActivity.this, MathgamesActivity.class);
+                Intent k = new Intent(MainmenuActivity.this, TrainingActivity.class);
+                k.putExtra("four_operation", false);
                 startActivity(k);
                 this.finish();
                 break;
             case 3:
                 Intent l = new Intent(MainmenuActivity.this, TrainingActivity.class);
+                l.putExtra("four_operation", true);
                 startActivity(l);
                 this.finish();
                 break;

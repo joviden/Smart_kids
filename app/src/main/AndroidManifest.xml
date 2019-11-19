@@ -112,7 +112,7 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".MainmenuActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".MathgamesActivity"
+        <activity android:name=".FourOpActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".TimechallengeActivity"
             android:screenOrientation="portrait"/>

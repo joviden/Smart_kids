@@ -657,9 +657,9 @@ public class BuyukKucukActivity extends AppCompatActivity {
     public void cikis(View view) {
 
 
-        Intent i = new Intent(BuyukKucukActivity.this,MathgamesActivity.class);startActivity(i);
+       /* Intent i = new Intent(BuyukKucukActivity.this,MathgamesActivity.class);startActivity(i);
         overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
-        startActivity(i);this.finish();
+        startActivity(i);this.finish();*/
 
     }
 
@@ -672,8 +672,8 @@ public class BuyukKucukActivity extends AppCompatActivity {
             Toast.makeText(BuyukKucukActivity.this,getString(R.string.quittoast),Toast.LENGTH_SHORT).show();
         }
         if (zorluk.getVisibility()==View.VISIBLE){
-            Intent myIntent = new Intent(BuyukKucukActivity.this, MathgamesActivity.class);
-            startActivity(myIntent);this.finish();
+         //   Intent myIntent = new Intent(BuyukKucukActivity.this, MathgamesActivity.class);
+        //    startActivity(myIntent);this.finish();
 
         }
     }
