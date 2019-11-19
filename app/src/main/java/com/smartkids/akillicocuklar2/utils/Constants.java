@@ -19,4 +19,6 @@ public class Constants {
     public static String nativeId = "ca-app-pub-4100535460120599/6667264751";
 
     public static final int items_Per_Ad = 2;
+
+    public static int toplama_puan = 30;
 }

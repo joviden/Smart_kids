@@ -3,11 +3,10 @@
     <dimen name="sorunumarasi">38sp</dimen>
     <dimen name="sorusayilar">32sp</dimen>
     <dimen name="sorumetni">16sp</dimen>
-    <dimen name="siklar">22sp</dimen>
+    <dimen name="siklar">24sp</dimen>
     <dimen name="testibitir">18sp</dimen>
     <dimen name="skorpuanı">18sp</dimen>
     <dimen name="nextquestion">18sp</dimen>
-    <dimen name="soruoperator">36sp</dimen>
 
 
     <dimen name="header_huge">48sp</dimen>
