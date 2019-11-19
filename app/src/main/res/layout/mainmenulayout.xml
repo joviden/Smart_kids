@@ -85,7 +85,7 @@
             app:layout_constraintGuide_percent="0.18" />
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline_horizontal35"
+            android:id="@+id/guideline_horizontal30"
             android:layout_width="1dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -235,7 +235,7 @@
                 android:id="@+id/characterview"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal35"
+                app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal30"
                 app:layout_constraintDimensionRatio="W,1:1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

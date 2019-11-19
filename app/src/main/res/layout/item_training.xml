@@ -7,14 +7,14 @@
     android:onClick="clickEvent">
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_vertical02"
+        android:id="@+id/guideline_vertical05"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.02" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_vertical98"
+        android:id="@+id/guideline_vertical95"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -41,8 +41,8 @@
         android:layout_height="0dp"
         app:layout_constraintTop_toTopOf="@id/guideline_horizontal03"
         app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal97"
-        app:layout_constraintStart_toStartOf="@id/guideline_vertical02"
-        app:layout_constraintEnd_toEndOf="@id/guideline_vertical98"
+        app:layout_constraintStart_toStartOf="@id/guideline_vertical05"
+        app:layout_constraintEnd_toEndOf="@id/guideline_vertical95"
         android:background="@drawable/sliderbackground">
 
         <androidx.constraintlayout.widget.Guideline

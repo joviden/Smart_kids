@@ -70,8 +70,14 @@ public class TrainingListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
      */
     @Override
     public int getItemViewType(int position) {
-        return (position % Constants.items_Per_Ad == 0) ? BANNER_AD_VIEW_TYPE
-                : MENU_ITEM_VIEW_TYPE;
+        if (recyclerViewItems.get(position) instanceof AdView) {
+            return BANNER_AD_VIEW_TYPE;
+        }else {
+            return MENU_ITEM_VIEW_TYPE;
+        }
+
+       /* return (position % Constants.items_Per_Ad == 0) ? BANNER_AD_VIEW_TYPE
+                : MENU_ITEM_VIEW_TYPE;*/
     }
 
     /**
@@ -116,10 +122,10 @@ public class TrainingListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                     menuItemHolder.progressTxt.setText(training.getSuccess()+"%");
 
 
-                    menuItemHolder.progressBar.setTag(String.valueOf(position));
-                    menuItemHolder.konubaslikTxt.setTag(String.valueOf(position));
-                    menuItemHolder.iconImg.setTag(String.valueOf(position));
-                    menuItemHolder.progressTxt.setTag(String.valueOf(position));
+                    menuItemHolder.progressBar.setTag(training.getName());
+                    menuItemHolder.konubaslikTxt.setTag(training.getName());
+                    menuItemHolder.iconImg.setTag(training.getName());
+                    menuItemHolder.progressTxt.setTag(training.getName());
 
 
                     break;

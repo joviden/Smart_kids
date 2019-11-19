@@ -130,7 +130,7 @@ public class TrainingActivity extends AppCompatActivity {
             @Override
             public void run() {
                 addBannerAds();
-                loadBannerAd(0);
+                loadBannerAd(1);
             }
         });
 
@@ -141,9 +141,11 @@ public class TrainingActivity extends AppCompatActivity {
     private void addBannerAds() {
         for (int i = 0; i < trainingList.size(); i += Constants.items_Per_Ad) {
             final AdView adView = new AdView(TrainingActivity.this);
-            trainingList.add(i, adView);
-            adView.setAdSize(getAdSize());
-            adView.setAdUnitId(Constants.bannerTestId);
+
+                trainingList.add(i+1, adView);
+                adView.setAdSize(getAdSize());
+                adView.setAdUnitId(Constants.bannerTestId);
+
         }
     }
 
@@ -199,47 +201,17 @@ public class TrainingActivity extends AppCompatActivity {
 
     public void clickEvent(View view) {
 
-        int which_one = Integer.parseInt(view.getTag().toString());
+
 
         if (four_operation){
-            switch (which_one) {
-                case 0:
-                    Intent i = new Intent(TrainingActivity.this, FourOpActivity.class);
-                    i.putExtra("op","toplama");
-                    startActivity(i);
-                    break;
-                case 1:
-                    Intent ii = new Intent(TrainingActivity.this, CikarmaActivity.class);
-                    ii.putExtra("op","cikarma");
-                    startActivity(ii);
-                    break;
-                case 2:
-                    Intent iii = new Intent(TrainingActivity.this, CarpmaActivity.class);
-                    iii.putExtra("op","carpma");
-                    startActivity(iii);
-                    break;
-                case 3:
-                    Intent iiii = new Intent(TrainingActivity.this, BolmeActivity.class);
-                    iiii.putExtra("op","bolme");
-                    startActivity(iiii);
-                    break;
-            }
-        }else {
-            switch (which_one) {
-                case 0:
-                    Intent i = new Intent(TrainingActivity.this, RitmiksaymaActivity .class);
-                    startActivity(i);
-                    break;
-                case 1:
-                    Intent ii = new Intent(TrainingActivity.this, BuyukKucukActivity.class);
-                    startActivity(ii);
-                    break;
-                case 2:
-                    Intent iii = new Intent(TrainingActivity.this, SimetryActivity.class);
-                    startActivity(iii);
-                    break;
 
-            }
+            Intent i = new Intent(TrainingActivity.this, FourOpActivity.class);
+            i.putExtra("op",view.getTag().toString());
+            startActivity(i);
+        }else {
+
+
+
         }
 
 

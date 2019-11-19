@@ -8,7 +8,7 @@
 
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_vertical02"
+        android:id="@+id/guideline_vertical05"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -59,7 +59,7 @@
         app:layout_constraintGuide_percent="0.77" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_vertical98"
+        android:id="@+id/guideline_vertical95"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -127,7 +127,7 @@
         app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal85"
         app:layout_constraintDimensionRatio="H,1:1"
         app:layout_constraintEnd_toEndOf="@id/guideline_vertical25"
-        app:layout_constraintStart_toStartOf="@id/guideline_vertical02"
+        app:layout_constraintStart_toStartOf="@id/guideline_vertical05"
         app:layout_constraintTop_toBottomOf="@id/guideline_horizontal21"
         android:background="@drawable/cerceve_button"
 
@@ -146,7 +146,7 @@
         android:textSize="@dimen/text_normal"
         app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal98"
         app:layout_constraintEnd_toEndOf="@id/guideline_vertical25"
-        app:layout_constraintStart_toStartOf="@id/guideline_vertical02"
+        app:layout_constraintStart_toStartOf="@id/guideline_vertical05"
         app:layout_constraintTop_toBottomOf="@id/guideline_horizontal85" />
 
 
@@ -214,7 +214,7 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal85"
         app:layout_constraintDimensionRatio="H,1:1"
-        app:layout_constraintEnd_toEndOf="@id/guideline_vertical98"
+        app:layout_constraintEnd_toEndOf="@id/guideline_vertical95"
         app:layout_constraintStart_toStartOf="@id/guideline_vertical77"
         app:layout_constraintTop_toBottomOf="@id/guideline_horizontal21"
         android:background="@drawable/cerceve_button"
@@ -233,7 +233,7 @@
         android:textColor="@color/white"
         android:textSize="@dimen/text_normal"
         app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal98"
-        app:layout_constraintEnd_toEndOf="@id/guideline_vertical98"
+        app:layout_constraintEnd_toEndOf="@id/guideline_vertical95"
         app:layout_constraintStart_toStartOf="@id/guideline_vertical77"
         app:layout_constraintTop_toBottomOf="@id/guideline_horizontal85" />
 
