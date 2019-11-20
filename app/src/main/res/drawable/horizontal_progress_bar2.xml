@@ -9,7 +9,7 @@
                 android:endColor="@color/grey"
                 android:angle="270"
                 />
-            <corners android:radius="60dp" />
+            <corners android:radius="8dp" />
             <stroke
                 android:width="2dp"
                 android:color="@color/textdark" />
@@ -26,7 +26,7 @@
                     android:endColor="#a24"
                     android:angle="270"
                     />
-                <corners android:radius="60dp" />
+                <corners android:radius="8dp" />
                 <stroke
                     android:width="2dp"
                     android:color="@color/textdark" />
@@ -44,7 +44,7 @@
                     android:endColor="#34ff38"
                     android:angle="270"
                     />
-                <corners android:radius="60dp" />
+                <corners android:radius="8dp" />
                 <stroke
                     android:width="2dp"
                     android:color="@color/textdark" />

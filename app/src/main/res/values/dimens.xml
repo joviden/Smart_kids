@@ -11,11 +11,13 @@
 
     <dimen name="header_huge">48sp</dimen>
     <dimen name="header_bigger">26sp</dimen>
+    <dimen name="header_biggest">32sp</dimen>
     <dimen name="header_big">22sp</dimen>
     <dimen name="text_normal">16sp</dimen>
     <dimen name="char_item_height">200dp</dimen>
     <dimen name="slider_item_height">250dp</dimen>
     <dimen name="alert_dialog_height">350dp</dimen>
+    <dimen name="alert_results_height">450dp</dimen>
 
 
 </resources>

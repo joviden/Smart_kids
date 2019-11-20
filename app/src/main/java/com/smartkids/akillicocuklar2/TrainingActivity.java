@@ -24,6 +24,7 @@ import com.google.android.gms.ads.MobileAds;
 import com.smartkids.akillicocuklar2.adapters.TrainingListAdapter;
 import com.smartkids.akillicocuklar2.models.Training;
 import com.smartkids.akillicocuklar2.utils.Constants;
+import com.smartkids.akillicocuklar2.utils.SharedPrefManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +36,7 @@ public class TrainingActivity extends AppCompatActivity {
     private InterstitialAd mInterstitialAd;
     private Context mcontext;
     private boolean four_operation;
+    private SharedPrefManager sharedPrefManager;
 
 
     private RecyclerView training_recycler;
@@ -49,13 +51,34 @@ public class TrainingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.training_layout);
 
-         four_operation = getIntent().getExtras().getBoolean("four_operation");
+        sharedPrefManager = new SharedPrefManager(this);
+
+        four_operation = getIntent().getExtras().getBoolean("four_operation");
 
         mcontext = TrainingActivity.this;
+
+        getScores();
 
         setupListAdapter();
 
         createAds();
+
+
+    }
+
+    private void getScores() {
+
+        success_summation = Math.round(sharedPrefManager.getIntegerFromSP(getString(R.string.konulartoplama) + "dogru", 0) * 100) /
+                                                                (sharedPrefManager.getIntegerFromSP(getString(R.string.konulartoplama) + "soru", 1));
+
+        success_extraction = Math.round(sharedPrefManager.getIntegerFromSP(getString(R.string.konularcikarma) + "dogru", 0) * 100) /
+                (sharedPrefManager.getIntegerFromSP(getString(R.string.konularcikarma) + "soru", 1));
+
+        success_multiplication = Math.round(sharedPrefManager.getIntegerFromSP(getString(R.string.konularcarpma) + "dogru", 0) * 100) /
+                (sharedPrefManager.getIntegerFromSP(getString(R.string.konularcarpma) + "soru", 1));
+
+        success_division = Math.round(sharedPrefManager.getIntegerFromSP(getString(R.string.konularbolme) + "dogru", 0) * 100) /
+                (sharedPrefManager.getIntegerFromSP(getString(R.string.konularbolme) + "soru", 1));
 
 
     }
@@ -93,28 +116,25 @@ public class TrainingActivity extends AppCompatActivity {
     }
 
     private void setupListAdapter() {
+
+
         training_recycler = findViewById(R.id.choose_train_recycler);
 
-        success_summation = 30;
-        success_extraction = 30;
-        success_division = 30;
-        success_multiplication = 30;
+      Log.i("succes","Success:"+success_summation+" "+success_extraction+" "+success_multiplication+" "+success_division);
 
 
         trainingList = new ArrayList<>();
 
-        if (four_operation){
+        if (four_operation) {
             trainingList.add(new Training(getString(R.string.konulartoplama), success_summation, R.drawable.icon_mental));
             trainingList.add(new Training(getString(R.string.konularcikarma), success_extraction, R.drawable.icon_mental));
             trainingList.add(new Training(getString(R.string.konularbolme), success_division, R.drawable.icon_mental));
             trainingList.add(new Training(getString(R.string.konularcarpma), success_multiplication, R.drawable.icon_mental));
-        }else {
+        } else {
             trainingList.add(new Training(getString(R.string.konularritmik), success_summation, R.drawable.icon_mental));
             trainingList.add(new Training(getString(R.string.konularbuyukkucuk), success_extraction, R.drawable.icon_mental));
             trainingList.add(new Training(getString(R.string.simetry), success_division, R.drawable.icon_mental));
         }
-
-
 
 
         trainingListAdapter2 = new TrainingListAdapter(this, trainingList);
@@ -124,15 +144,19 @@ public class TrainingActivity extends AppCompatActivity {
         mlayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         training_recycler.setLayoutManager(mlayoutManager);
         training_recycler.setItemAnimator(new DefaultItemAnimator());
+
+        addBannerAds();
+        loadBannerAd(1);
+
         training_recycler.setAdapter(trainingListAdapter2);
 
-        training_recycler.post(new Runnable() {
+        /*training_recycler.post(new Runnable() {
             @Override
             public void run() {
                 addBannerAds();
                 loadBannerAd(1);
             }
-        });
+        });*/
 
 
     }
@@ -142,9 +166,9 @@ public class TrainingActivity extends AppCompatActivity {
         for (int i = 0; i < trainingList.size(); i += Constants.items_Per_Ad) {
             final AdView adView = new AdView(TrainingActivity.this);
 
-                trainingList.add(i+1, adView);
-                adView.setAdSize(getAdSize());
-                adView.setAdUnitId(Constants.bannerTestId);
+            trainingList.add(i + 1, adView);
+            adView.setAdSize(getAdSize());
+            adView.setAdUnitId(Constants.bannerTestId);
 
         }
     }
@@ -173,7 +197,7 @@ public class TrainingActivity extends AppCompatActivity {
                     super.onAdLoaded();
                     // The previous banner ad loaded successfully, call this method again to
                     // load the next ad in the items list.
-                    trainingListAdapter2.notifyDataSetChanged();
+                  //  trainingListAdapter2.notifyDataSetChanged();
                     loadBannerAd(index + Constants.items_Per_Ad);
                 }
 
@@ -190,7 +214,7 @@ public class TrainingActivity extends AppCompatActivity {
             // Load the banner ad.
             adView.loadAd(new AdRequest.Builder().build());
 
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -198,23 +222,18 @@ public class TrainingActivity extends AppCompatActivity {
     }
 
 
-
     public void clickEvent(View view) {
 
 
-
-        if (four_operation){
+        if (four_operation) {
 
             Intent i = new Intent(TrainingActivity.this, FourOpActivity.class);
-            i.putExtra("op",view.getTag().toString());
+            i.putExtra("op", view.getTag().toString());
             startActivity(i);
-        }else {
-
+        } else {
 
 
         }
-
-
 
 
     }
@@ -256,8 +275,6 @@ public class TrainingActivity extends AppCompatActivity {
 
 
     }
-
-
 
 
 }

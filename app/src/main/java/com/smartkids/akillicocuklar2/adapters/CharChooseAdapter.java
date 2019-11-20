@@ -67,20 +67,20 @@ public class CharChooseAdapter extends RecyclerView.Adapter<CharChooseAdapter.Vi
         }
 
         holder.icon1.setTag(String.valueOf(4*position));
-        holder.icon2.setTag(String.valueOf(4*position+1));
-        holder.icon3.setTag(String.valueOf(4*position+2));
-        holder.icon4.setTag(String.valueOf(4*position+3));
+        holder.icon2.setTag(String.valueOf((4*position)+1));
+        holder.icon3.setTag(String.valueOf((4*position)+2));
+        holder.icon4.setTag(String.valueOf((4*position)+3));
 
-        holder.name1.setTag(String.valueOf(4*position)+"txt");
-        holder.name2.setTag(String.valueOf(4*position+1)+"txt");
-        holder.name3.setTag(String.valueOf(4*position+2)+"txt");
-        holder.name4.setTag(String.valueOf(4*position+3)+"txt");
+        holder.name1.setTag(String.valueOf((4*position))+"txt");
+        holder.name2.setTag(String.valueOf((4*position)+1)+"txt");
+        holder.name3.setTag(String.valueOf((4*position)+2)+"txt");
+        holder.name4.setTag(String.valueOf((4*position)+3)+"txt");
 
-        holder.levelTxt.setText(characters.get(position).getLevel());
-        holder.name1.setText(characters.get(4*position).getNames());
-        holder.name2.setText(characters.get(4*position+1).getNames());
-        holder.name3.setText(characters.get(4*position+2).getNames());
-        holder.name4.setText(characters.get(4*position+3).getNames());
+        holder.levelTxt.setText(characters.get((4*position)+1).getLevel());
+        holder.name1.setText(characters.get((4*position)).getNames());
+        holder.name2.setText(characters.get((4*position)+1).getNames());
+        holder.name3.setText(characters.get((4*position)+2).getNames());
+        holder.name4.setText(characters.get((4*position)+3).getNames());
 
 
         holder.icon1.setImageResource(characters.get(4*position).getImage());

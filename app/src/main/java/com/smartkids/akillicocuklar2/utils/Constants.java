@@ -1,5 +1,9 @@
 package com.smartkids.akillicocuklar2.utils;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Constants {
 
     public static String PACKAGE = "com.smartkids.akillicocuklar2";
@@ -21,4 +25,13 @@ public class Constants {
     public static final int items_Per_Ad = 2;
 
     public static int toplama_puan = 30;
+
+    public static int cikarma_puan = 50;
+
+    public static int carpma_puan = 75;
+
+    public static int bolme_puan = 100;
+    public  static List<Integer> levels = new ArrayList<>(Arrays.asList(0, 1000, 3000, 7000, 15000, 30000, 50000, 75000, 100000, 150000,250000,500000));
+
+
 }

@@ -90,11 +90,6 @@
             android:name=".TrainingActivity"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".ToplamaActivity"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name=".CikarmaActivity"
-            android:screenOrientation="portrait"/>
 
         <activity android:name=".RitmiksaymaActivity"
             android:screenOrientation="portrait"/>

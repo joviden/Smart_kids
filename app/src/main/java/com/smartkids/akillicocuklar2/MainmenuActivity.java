@@ -101,7 +101,8 @@ public class MainmenuActivity extends AppCompatActivity {
 
     private GoogleSignInAccount signedInAccount;
 
-
+    private ProgressBar progressBar;
+    private TextView progressTxt;
 
 
     @Override
@@ -131,6 +132,7 @@ public class MainmenuActivity extends AppCompatActivity {
 
         user_level = sharedPrefManager.getIntegerFromSP("level", 1);
 
+        setLevel();
         setListeners();
         inflatePager();
         setCharacterAdapter();
@@ -148,6 +150,54 @@ public class MainmenuActivity extends AppCompatActivity {
 
 
         }
+
+
+    }
+
+    private void setLevel() {
+
+        progressBar = findViewById(R.id.pointsbar);
+        progressTxt = findViewById(R.id.progressTxt);
+
+
+        for (int i = 1; i < Constants.levels.size(); i++) {
+            if (sharedPrefManager.getIntegerFromSP("skor_total", 0) > Constants.levels.get(i)) {
+                user_level = i + 1;
+            }
+        }
+
+        if (user_level != sharedPrefManager.getIntegerFromSP("level", 1)) {
+            newLevelReached();
+            Log.i("total_Score", "New Level:" + user_level);
+        } else {
+            progressTxt.setText(getText(R.string.level) + " " + user_level);
+            int percantage = (sharedPrefManager.getIntegerFromSP("skor_total", 0) * 100) / Constants.levels.get(user_level);
+            progressBar.setProgress(0);
+            progressBar.setMax(100);
+            ObjectAnimator animation = ObjectAnimator.ofInt(progressBar, "progress", 0, percantage);
+            animation.setDuration(2000); // 3.5 second
+            animation.setInterpolator(new DecelerateInterpolator());
+            animation.start();
+            Log.i("total_Score", "Level:" + user_level);
+        }
+
+
+    }
+
+    private void newLevelReached() {
+
+        sharedPrefManager.putIntegertoSP("level", user_level);
+
+        fadeIn_fadeOut_Animation(charchooselayout, mainmenu_layout);
+
+        final MediaPlayer selectAvatarSound = MediaPlayer.create(this, R.raw.levelup);
+        selectAvatarSound.start();
+        selectAvatarSound.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+                selectAvatarSound.release();
+            }
+        });
 
 
     }
@@ -312,7 +362,6 @@ public class MainmenuActivity extends AppCompatActivity {
                     }
 
 
-
                 }
 
                 @Override
@@ -333,50 +382,50 @@ public class MainmenuActivity extends AppCompatActivity {
         characters.add(new Character("Jack", "Level 1", R.drawable.icon1n3));
         characters.add(new Character("Jack", "Level 1", R.drawable.icon1n4));
 
-        characters.add(new Character("Jack", "Level 1", R.drawable.icon2n1));
-        characters.add(new Character("Jack", "Level 1", R.drawable.icon2n2));
-        characters.add(new Character("Jack", "Level 1", R.drawable.icon2n3));
-        characters.add(new Character("Jack", "Level 1", R.drawable.icon2n4));
+        characters.add(new Character("Jack", "Level 2", R.drawable.icon2n1));
+        characters.add(new Character("Jack", "Level 2", R.drawable.icon2n2));
+        characters.add(new Character("Jack", "Level 2", R.drawable.icon2n3));
+        characters.add(new Character("Jack", "Level 2", R.drawable.icon2n4));
 
-        characters.add(new Character("Jack", "Level 1", R.drawable.icon3n1));
-        characters.add(new Character("Jack", "Level 1", R.drawable.icon3n2));
-        characters.add(new Character("Jack", "Level 1", R.drawable.icon3n3));
-        characters.add(new Character("Jack", "Level 1", R.drawable.icon3n4));
+        characters.add(new Character("Jack", "Level 3", R.drawable.icon3n1));
+        characters.add(new Character("Jack", "Level 3", R.drawable.icon3n2));
+        characters.add(new Character("Jack", "Level 3", R.drawable.icon3n3));
+        characters.add(new Character("Jack", "Level 3", R.drawable.icon3n4));
 
-        characters.add(new Character("Jack", "Level 1", R.drawable.icon4n1));
-        characters.add(new Character("Jack", "Level 1", R.drawable.icon4n2));
-        characters.add(new Character("Jack", "Level 1", R.drawable.icon4n3));
-        characters.add(new Character("Jack", "Level 1", R.drawable.icon4n4));
+        characters.add(new Character("Jack", "Level 4", R.drawable.icon4n1));
+        characters.add(new Character("Jack", "Level 4", R.drawable.icon4n2));
+        characters.add(new Character("Jack", "Level 4", R.drawable.icon4n3));
+        characters.add(new Character("Jack", "Level 4", R.drawable.icon4n4));
 
-        characters.add(new Character("Jack", "Level 1", R.drawable.icon5n1));
-        characters.add(new Character("Jack", "Level 1", R.drawable.icon5n2));
-        characters.add(new Character("Jack", "Level 1", R.drawable.icon5n3));
-        characters.add(new Character("Jack", "Level 1", R.drawable.icon5n4));
+        characters.add(new Character("Jack", "Level 5", R.drawable.icon5n1));
+        characters.add(new Character("Jack", "Level 5", R.drawable.icon5n2));
+        characters.add(new Character("Jack", "Level 5", R.drawable.icon5n3));
+        characters.add(new Character("Jack", "Level 5", R.drawable.icon5n4));
 
-        characters.add(new Character("Jack", "Level 1", R.drawable.icon6n1));
-        characters.add(new Character("Jack", "Level 1", R.drawable.icon6n2));
-        characters.add(new Character("Jack", "Level 1", R.drawable.icon6n3));
-        characters.add(new Character("Jack", "Level 1", R.drawable.icon6n4));
+        characters.add(new Character("Jack", "Level 6", R.drawable.icon6n1));
+        characters.add(new Character("Jack", "Level 6", R.drawable.icon6n2));
+        characters.add(new Character("Jack", "Level 6", R.drawable.icon6n3));
+        characters.add(new Character("Jack", "Level 6", R.drawable.icon6n4));
 
-        characters.add(new Character("Jack", "Level 1", R.drawable.icon7n1));
-        characters.add(new Character("Jack", "Level 1", R.drawable.icon7n2));
-        characters.add(new Character("Jack", "Level 1", R.drawable.icon7n3));
-        characters.add(new Character("Jack", "Level 1", R.drawable.icon7n4));
+        characters.add(new Character("Jack", "Level 7", R.drawable.icon7n1));
+        characters.add(new Character("Jack", "Level 7", R.drawable.icon7n2));
+        characters.add(new Character("Jack", "Level 7", R.drawable.icon7n3));
+        characters.add(new Character("Jack", "Level 7", R.drawable.icon7n4));
 
-        characters.add(new Character("Jack", "Level 1", R.drawable.icon8n1));
-        characters.add(new Character("Jack", "Level 1", R.drawable.icon8n2));
-        characters.add(new Character("Jack", "Level 1", R.drawable.icon8n3));
-        characters.add(new Character("Jack", "Level 1", R.drawable.icon8n4));
+        characters.add(new Character("Jack", "Level 8", R.drawable.icon8n1));
+        characters.add(new Character("Jack", "Level 8", R.drawable.icon8n2));
+        characters.add(new Character("Jack", "Level 8", R.drawable.icon8n3));
+        characters.add(new Character("Jack", "Level 8", R.drawable.icon8n4));
 
-        characters.add(new Character("Jack", "Level 1", R.drawable.icon9n1));
-        characters.add(new Character("Jack", "Level 1", R.drawable.icon9n2));
-        characters.add(new Character("Jack", "Level 1", R.drawable.icon9n3));
-        characters.add(new Character("Jack", "Level 1", R.drawable.icon9n4));
+        characters.add(new Character("Jack", "Level 9", R.drawable.icon9n1));
+        characters.add(new Character("Jack", "Level 9", R.drawable.icon9n2));
+        characters.add(new Character("Jack", "Level 9", R.drawable.icon9n3));
+        characters.add(new Character("Jack", "Level 9", R.drawable.icon9n4));
 
-        characters.add(new Character("Jack", "Level 1", R.drawable.icon10n1));
-        characters.add(new Character("Jack", "Level 1", R.drawable.icon10n2));
-        characters.add(new Character("Jack", "Level 1", R.drawable.icon11));
-        characters.add(new Character("Jack", "Level 1", R.drawable.icon10n2));
+        characters.add(new Character("Jack", "Level 10", R.drawable.icon10n1));
+        characters.add(new Character("Jack", "Level 10", R.drawable.icon10n2));
+        characters.add(new Character("Jack", "Level 10", R.drawable.icon11));
+        characters.add(new Character("Jack", "Level 10", R.drawable.icon10n2));
 
 
         chooseAdapter = new CharChooseAdapter(this, characters, user_level, sharedPrefManager.getIntegerFromSP("avatar_chosen", 0));
@@ -394,6 +443,12 @@ public class MainmenuActivity extends AppCompatActivity {
 
     public void selectCharacter(View view) {
 
+        int tag = Integer.parseInt(view.getTag().toString());
+
+        Log.i("adapterTag","Tag:"+tag+"Tag/4"+tag/4);
+
+
+
 
         if (view.getAlpha() != 1) {
             Toast.makeText(getApplicationContext(), getString(R.string.levelyetersiz), Toast.LENGTH_SHORT).show();
@@ -402,16 +457,19 @@ public class MainmenuActivity extends AppCompatActivity {
             Animation animBlink = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.blink);
             Animation vibrate = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.vibrate);
 
-            RecyclerView.ViewHolder viewHolderX = char_recyclerView.findViewHolderForAdapterPosition(user_level - 1);
-            View viewX = null;
-            if (viewHolderX != null) {
-                viewX = viewHolderX.itemView;
+            RecyclerView.ViewHolder viewHolder_new = char_recyclerView.findViewHolderForAdapterPosition((tag/4));
+            RecyclerView.ViewHolder viewHolder_ex = char_recyclerView.findViewHolderForAdapterPosition((sharedPrefManager.getIntegerFromSP("avatar_chosen", 0)/4));
+            View view_new = null;
+            View view_ex = null;
+            if (viewHolder_new != null && viewHolder_ex != null) {
+                view_new = viewHolder_new.itemView;
+                view_ex = viewHolder_ex.itemView;
 
 
-                ImageView avatar_icon_ex = viewX.findViewWithTag(String.valueOf(sharedPrefManager.getIntegerFromSP("avatar_chosen", 0)));
-                TextView avatar_name_ex = viewX.findViewWithTag(String.valueOf(sharedPrefManager.getIntegerFromSP("avatar_chosen", 0)) + "txt");
-                ImageView avatar_icon = viewX.findViewWithTag(view.getTag().toString());
-                TextView avatar_name = viewX.findViewWithTag(view.getTag().toString() + "txt");
+                ImageView avatar_icon_ex = view_ex.findViewWithTag(String.valueOf(sharedPrefManager.getIntegerFromSP("avatar_chosen", 0)));
+                TextView avatar_name_ex = view_ex.findViewWithTag(String.valueOf(sharedPrefManager.getIntegerFromSP("avatar_chosen", 0)) + "txt");
+                ImageView avatar_icon = view_new.findViewWithTag(String.valueOf(tag));
+                TextView avatar_name = view_new.findViewWithTag(String.valueOf(tag) + "txt");
 
 
                 avatar_name_ex.setBackgroundResource(R.drawable.cerceve_button);
@@ -424,7 +482,7 @@ public class MainmenuActivity extends AppCompatActivity {
                 avatar_icon.setBackgroundResource(R.drawable.cerceve_button_selected);
 
 
-                sharedPrefManager.putIntegertoSP("avatar_chosen", Integer.parseInt(view.getTag().toString()));
+                sharedPrefManager.putIntegertoSP("avatar_chosen", tag);
 
                 characterview.setImageResource(characters.get(sharedPrefManager.getIntegerFromSP("avatar_chosen", 0)).getImage());
 
@@ -1314,11 +1372,9 @@ Media
 
 
     public void leveldurumu(View view) {
-        ProgressBar levelbar = findViewById(R.id.pointsbar);
 
-        int seviye = levelbar.getProgress();
-        int max = levelbar.getMax();
-        int fark = max - seviye;
+
+        int fark = Constants.levels.get(user_level) - (sharedPrefManager.getIntegerFromSP("skor_total", 0));
         Toast.makeText(getApplicationContext(), fark + " " + getString(R.string.leveldurumu), Toast.LENGTH_SHORT).show();
 
 

@@ -1,12 +1,14 @@
 package com.smartkids.akillicocuklar2.adapters;
 
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -126,6 +128,14 @@ public class TrainingListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                     menuItemHolder.konubaslikTxt.setTag(training.getName());
                     menuItemHolder.iconImg.setTag(training.getName());
                     menuItemHolder.progressTxt.setTag(training.getName());
+
+
+                    menuItemHolder.progressBar.setProgress(0);
+                    menuItemHolder.progressBar.setMax(100);
+                    ObjectAnimator animation = ObjectAnimator.ofInt(menuItemHolder.progressBar, "progress", 0, training.getSuccess() );
+                    animation.setDuration(2000); // 3.5 second
+                    animation.setInterpolator(new DecelerateInterpolator());
+                    animation.start();
 
 
                     break;
