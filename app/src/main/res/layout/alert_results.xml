@@ -46,7 +46,7 @@
             app:layout_constraintGuide_percent="0.9" />
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline_vertical95"
+            android:id="@+id/guideline_vertical98"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -88,7 +88,7 @@
 
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline_horizontal97"
+            android:id="@+id/guideline_horizontal99"
             android:layout_width="1dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -116,7 +116,7 @@
             app:layout_constraintTop_toTopOf="@id/guideline_horizontal05"
             app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal18"
             app:layout_constraintStart_toStartOf="@id/guideline_vertical05"
-            app:layout_constraintEnd_toEndOf="@id/guideline_vertical95"
+            app:layout_constraintEnd_toEndOf="@id/guideline_vertical98"
             android:background="@drawable/siklar"
             android:fontFamily="@font/justsay"
             android:text="SCORES"
@@ -135,7 +135,7 @@
             app:layout_constraintTop_toTopOf="@id/guideline_horizontal18"
             app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal87"
             app:layout_constraintStart_toStartOf="@id/guideline_vertical10"
-            app:layout_constraintEnd_toEndOf="@id/guideline_vertical95">
+            app:layout_constraintEnd_toEndOf="@id/guideline_vertical98">
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline_vertical88a"
@@ -295,7 +295,7 @@
             android:layout_height="0dp"
             app:layout_constraintDimensionRatio="W,2.7:1"
             app:layout_constraintTop_toTopOf="@id/guideline_horizontal87"
-            app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal97"
+            app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal99"
             app:layout_constraintStart_toStartOf="@id/guideline_vertical10"
             app:layout_constraintEnd_toEndOf="@id/guideline_vertical90"
             android:background="@drawable/siklarclicked"

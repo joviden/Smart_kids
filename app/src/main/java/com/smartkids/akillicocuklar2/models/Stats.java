@@ -2,28 +2,31 @@ package com.smartkids.akillicocuklar2.models;
 
 public class Stats {
 
+    String konu;
     int soru;
     int dogru;
     int yanlis;
+    int bos;
     int points;
-    int total_soru;
-    int total_dogru;
-    int total_yanlis;
-    int total_points;
-    int level;
-    int pointsto_nextlevel;
+    int image;
 
-    public Stats(int soru, int dogru, int yanlis, int points, int total_soru, int total_dogru, int total_yanlis, int total_points, int level, int pointsto_nextlevel) {
+
+    public Stats(String konu, int soru, int dogru, int yanlis, int bos, int points, int image) {
+        this.konu = konu;
         this.soru = soru;
         this.dogru = dogru;
         this.yanlis = yanlis;
+        this.bos = bos;
         this.points = points;
-        this.total_soru = total_soru;
-        this.total_dogru = total_dogru;
-        this.total_yanlis = total_yanlis;
-        this.total_points = total_points;
-        this.level = level;
-        this.pointsto_nextlevel = pointsto_nextlevel;
+        this.image = image;
+    }
+
+    public String getKonu() {
+        return konu;
+    }
+
+    public void setKonu(String konu) {
+        this.konu = konu;
     }
 
     public int getSoru() {
@@ -50,6 +53,14 @@ public class Stats {
         this.yanlis = yanlis;
     }
 
+    public int getBos() {
+        return bos;
+    }
+
+    public void setBos(int bos) {
+        this.bos = bos;
+    }
+
     public int getPoints() {
         return points;
     }
@@ -58,51 +69,11 @@ public class Stats {
         this.points = points;
     }
 
-    public int getTotal_soru() {
-        return total_soru;
+    public int getImage() {
+        return image;
     }
 
-    public void setTotal_soru(int total_soru) {
-        this.total_soru = total_soru;
-    }
-
-    public int getTotal_dogru() {
-        return total_dogru;
-    }
-
-    public void setTotal_dogru(int total_dogru) {
-        this.total_dogru = total_dogru;
-    }
-
-    public int getTotal_yanlis() {
-        return total_yanlis;
-    }
-
-    public void setTotal_yanlis(int total_yanlis) {
-        this.total_yanlis = total_yanlis;
-    }
-
-    public int getTotal_points() {
-        return total_points;
-    }
-
-    public void setTotal_points(int total_points) {
-        this.total_points = total_points;
-    }
-
-    public int getLevel() {
-        return level;
-    }
-
-    public void setLevel(int level) {
-        this.level = level;
-    }
-
-    public int getPointsto_nextlevel() {
-        return pointsto_nextlevel;
-    }
-
-    public void setPointsto_nextlevel(int pointsto_nextlevel) {
-        this.pointsto_nextlevel = pointsto_nextlevel;
+    public void setImage(int image) {
+        this.image = image;
     }
 }

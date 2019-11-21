@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
+import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
@@ -633,10 +634,10 @@ public class FourOpActivity extends AppCompatActivity {
 
 
             progressBar.setProgress(0);
-            progressBar.setMax(100);
-            ObjectAnimator animation = ObjectAnimator.ofInt(progressBar, "progress", 0, success_percent );
+            progressBar.setMax(100*1000);
+            ObjectAnimator animation = ObjectAnimator.ofInt(progressBar, "progress", 0, success_percent*1000 );
             animation.setDuration(2000); // 3.5 second
-            animation.setInterpolator(new DecelerateInterpolator());
+            animation.setInterpolator(new LinearInterpolator());
             animation.start();
 
             ValueAnimator animator_percent = new ValueAnimator();
@@ -784,6 +785,12 @@ public class FourOpActivity extends AppCompatActivity {
 
         sharedPrefManager.putIntegertoSP(operator+"skor",scorecounter+sharedPrefManager.getIntegerFromSP(operator+"skor",0));
 
+
+
+        sharedPrefManager.putIntegertoSP("soru_total",questioncounter+sharedPrefManager.getIntegerFromSP("soru_total",0));
+        sharedPrefManager.putIntegertoSP("dogru_total",dogrucounter+sharedPrefManager.getIntegerFromSP("dogru_total",0));
+        sharedPrefManager.putIntegertoSP("yanlis_total",yanliscounter+sharedPrefManager.getIntegerFromSP("yanlis_total",0));
+        sharedPrefManager.putIntegertoSP("bos_total",boscounter+sharedPrefManager.getIntegerFromSP("bos_total",0));
         sharedPrefManager.putIntegertoSP("skor_total",scorecounter+sharedPrefManager.getIntegerFromSP("skor_total",0));
 
 

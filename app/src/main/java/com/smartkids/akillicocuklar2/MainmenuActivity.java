@@ -29,6 +29,7 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
+import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -48,19 +49,27 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
+import com.google.android.gms.games.AnnotatedData;
 import com.google.android.gms.games.Games;
+import com.google.android.gms.games.LeaderboardsClient;
+import com.google.android.gms.games.leaderboard.LeaderboardScore;
+import com.google.android.gms.games.leaderboard.LeaderboardVariant;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.smartkids.akillicocuklar2.adapters.CharChooseAdapter;
-import com.smartkids.akillicocuklar2.adapters.PagerAdapter;
+import com.smartkids.akillicocuklar2.adapters.KonularPagerAdapter;
+import com.smartkids.akillicocuklar2.adapters.StatsPagerAdapter;
 import com.smartkids.akillicocuklar2.models.Character;
 import com.smartkids.akillicocuklar2.models.SmartGames;
+import com.smartkids.akillicocuklar2.models.Stats;
 import com.smartkids.akillicocuklar2.utils.Constants;
 import com.smartkids.akillicocuklar2.utils.SharedPrefManager;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -73,8 +82,10 @@ public class MainmenuActivity extends AppCompatActivity {
     private boolean char_just_choosen = false;
     private List<Character> characters;
     private List<SmartGames> smartGames;
-    private int pagenumber;
-    List<ImageView> dots;
+    private List<Stats> stats;
+    private int pagenumber, pagenumberStats;
+    private List<ImageView> dots, dots2;
+    private LeaderboardsClient mLeaderboardsClient;
 
 
     Integer kumulatiftoplamscore, toplamascore, cikarmascore, carpmascore, bolmescore, ritmikscore, buyukkucukscore, simetriscore, totalscore,
@@ -82,8 +93,9 @@ public class MainmenuActivity extends AppCompatActivity {
             level, timescorekumulatif, timescore;
 
 
-    ViewPager viewPager;
-    PagerAdapter pagerAdapter;
+    ViewPager viewPager, viewpagerStats;
+    KonularPagerAdapter konularPagerAdapter;
+    StatsPagerAdapter statsAdapter;
 
 
     private static final int RC_LEADERBOARD_UI = 9004;
@@ -94,7 +106,7 @@ public class MainmenuActivity extends AppCompatActivity {
 
     private RecyclerView char_recyclerView;
 
-    private ConstraintLayout mainmenu_layout, charchooselayout, byebyeLayout, sonuclarlayout;
+    private ConstraintLayout mainmenu_layout, charchooselayout, byebyeLayout, sonuclarlayout, statslayout;
     private ImageView characterview;
 
     private AppCompatButton profileBtn, leaderboardBtn, achievementBtn, rateappBtn, shareBtn;
@@ -119,6 +131,7 @@ public class MainmenuActivity extends AppCompatActivity {
         charchooselayout = findViewById(R.id.charchooselayout);
         byebyeLayout = findViewById(R.id.byebyeLayout);
         sonuclarlayout = findViewById(R.id.sonuclarlayout);
+        statslayout = findViewById(R.id.statslayout);
         profileBtn = findViewById(R.id.profileBtn);
         leaderboardBtn = findViewById(R.id.leaderboardBtn);
         achievementBtn = findViewById(R.id.achievementBtn);
@@ -129,14 +142,16 @@ public class MainmenuActivity extends AppCompatActivity {
 
         byebyeLayout.setVisibility(View.GONE);
         sonuclarlayout.setVisibility(View.GONE);
+        statslayout.setVisibility(View.GONE);
 
         user_level = sharedPrefManager.getIntegerFromSP("level", 1);
-
+        connectGoogleGames();
         setLevel();
         setListeners();
         inflatePager();
+        inflateStatsPager();
         setCharacterAdapter();
-        connectGoogleGames();
+
 
 
         if (sharedPrefManager.getIntegerFromSP("avatar_chosen", 100) == 100) {
@@ -166,17 +181,19 @@ public class MainmenuActivity extends AppCompatActivity {
             }
         }
 
+        progressTxt.setText(getText(R.string.level) + " " + user_level);
+
         if (user_level != sharedPrefManager.getIntegerFromSP("level", 1)) {
             newLevelReached();
             Log.i("total_Score", "New Level:" + user_level);
         } else {
-            progressTxt.setText(getText(R.string.level) + " " + user_level);
+
             int percantage = (sharedPrefManager.getIntegerFromSP("skor_total", 0) * 100) / Constants.levels.get(user_level);
             progressBar.setProgress(0);
-            progressBar.setMax(100);
-            ObjectAnimator animation = ObjectAnimator.ofInt(progressBar, "progress", 0, percantage);
-            animation.setDuration(2000); // 3.5 second
-            animation.setInterpolator(new DecelerateInterpolator());
+            progressBar.setMax(100 * 1000);
+            ObjectAnimator animation = ObjectAnimator.ofInt(progressBar, "progress", 0, percantage * 1000);
+            animation.setDuration(2000);
+            animation.setInterpolator(new LinearInterpolator());
             animation.start();
             Log.i("total_Score", "Level:" + user_level);
         }
@@ -185,6 +202,7 @@ public class MainmenuActivity extends AppCompatActivity {
     }
 
     private void newLevelReached() {
+
 
         sharedPrefManager.putIntegertoSP("level", user_level);
 
@@ -207,7 +225,7 @@ public class MainmenuActivity extends AppCompatActivity {
         profileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showStats();
+                fadeIn_fadeOut_Animation(statslayout, mainmenu_layout);
             }
         });
         leaderboardBtn.setOnClickListener(new View.OnClickListener() {
@@ -302,7 +320,109 @@ public class MainmenuActivity extends AppCompatActivity {
         });
     }
 
-    public void inflatePager() {
+    private void inflateStatsPager() {
+
+        stats = new ArrayList<>();
+        final List<String> konular = new ArrayList<>(Arrays.asList(getString(R.string.konulartoplama), getString(R.string.konularcikarma), getString(R.string.konularcarpma), getString(R.string.konularbolme)));
+
+        final TextView konubaslik_stats = findViewById(R.id.konubaslik_stats);
+
+        konubaslik_stats.setText(konular.get(0));
+
+
+        for (int i = 0; i < konular.size(); i++) {
+
+            stats.add(new Stats(konular.get(i), sharedPrefManager.getIntegerFromSP(konular.get(i) + "soru", 0),
+                    sharedPrefManager.getIntegerFromSP(konular.get(i) + "dogru", 0),
+                    sharedPrefManager.getIntegerFromSP(konular.get(i) + "yanlis", 0),
+                    sharedPrefManager.getIntegerFromSP(konular.get(i) + "bos", 0),
+                    sharedPrefManager.getIntegerFromSP(konular.get(i) + "skor", 0),
+                    R.drawable.icon_mental));
+
+
+        }
+
+        stats.add(new Stats(getString(R.string.total),
+                sharedPrefManager.getIntegerFromSP("soru_total", 0),
+                sharedPrefManager.getIntegerFromSP("dogru_total", 0),
+                sharedPrefManager.getIntegerFromSP("yanlis_total", 0),
+                sharedPrefManager.getIntegerFromSP("bos_total", 0),
+                sharedPrefManager.getIntegerFromSP("skor_total", 0), R.drawable.icon_mental));
+
+
+        final ImageView dot1 = findViewById(R.id.dot1d);
+        final ImageView dot2 = findViewById(R.id.dot2d);
+        final ImageView dot3 = findViewById(R.id.dot3d);
+        final ImageView dot4 = findViewById(R.id.dot4d);
+        final ImageView dot5 = findViewById(R.id.dot5d);
+
+        dots2 = new ArrayList<>();
+        dots2.add(dot1);
+        dots2.add(dot2);
+        dots2.add(dot3);
+        dots2.add(dot4);
+        dots2.add(dot5);
+        try {
+
+            viewpagerStats = findViewById(R.id.viewpagerStats);
+
+
+            statsAdapter = new StatsPagerAdapter(this, stats);
+            viewpagerStats.setAdapter(statsAdapter);
+
+            konular.add(getString(R.string.total));
+
+            viewpagerStats.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
+
+                @Override
+                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+
+                }
+
+                @Override
+                public void onPageSelected(int position) {
+
+                    pagenumberStats = position;
+                    Log.i("position", String.valueOf(pagenumberStats));
+
+                    konubaslik_stats.setText(konular.get(position));
+
+                    for (int i = 0; i < stats.size(); i++) {
+                        if (pagenumberStats != i) {
+                            dots2.get(i).setBackgroundResource(R.drawable.dot_unselected);
+                        } else {
+                            dots2.get(i).setBackgroundResource(R.drawable.dot_selected);
+                        }
+                    }
+
+
+                }
+
+                @Override
+                public void onPageScrollStateChanged(int state) {
+
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        AppCompatButton statscikisBtn = findViewById(R.id.statscikisBtn);
+
+        statscikisBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fadeIn_fadeOut_Animation(mainmenu_layout, statslayout);
+            }
+        });
+
+
+    }
+
+    private void inflatePager() {
 
 
         smartGames = new ArrayList<>();
@@ -336,8 +456,8 @@ public class MainmenuActivity extends AppCompatActivity {
             viewPager = findViewById(R.id.viewpager);
 
 
-            pagerAdapter = new PagerAdapter(this, smartGames);
-            viewPager.setAdapter(pagerAdapter);
+            konularPagerAdapter = new KonularPagerAdapter(this, smartGames);
+            viewPager.setAdapter(konularPagerAdapter);
             viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
 
@@ -445,9 +565,7 @@ public class MainmenuActivity extends AppCompatActivity {
 
         int tag = Integer.parseInt(view.getTag().toString());
 
-        Log.i("adapterTag","Tag:"+tag+"Tag/4"+tag/4);
-
-
+        Log.i("adapterTag", "Tag:" + tag + "Tag/4" + tag / 4);
 
 
         if (view.getAlpha() != 1) {
@@ -457,8 +575,8 @@ public class MainmenuActivity extends AppCompatActivity {
             Animation animBlink = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.blink);
             Animation vibrate = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.vibrate);
 
-            RecyclerView.ViewHolder viewHolder_new = char_recyclerView.findViewHolderForAdapterPosition((tag/4));
-            RecyclerView.ViewHolder viewHolder_ex = char_recyclerView.findViewHolderForAdapterPosition((sharedPrefManager.getIntegerFromSP("avatar_chosen", 0)/4));
+            RecyclerView.ViewHolder viewHolder_new = char_recyclerView.findViewHolderForAdapterPosition((tag / 4));
+            RecyclerView.ViewHolder viewHolder_ex = char_recyclerView.findViewHolderForAdapterPosition((sharedPrefManager.getIntegerFromSP("avatar_chosen", 0) / 4));
             View view_new = null;
             View view_ex = null;
             if (viewHolder_new != null && viewHolder_ex != null) {
@@ -542,40 +660,17 @@ public class MainmenuActivity extends AppCompatActivity {
         }
     }
 
-    public void skoraktar() {
-        ConstraintLayout sonuclarlayout = findViewById(R.id.sonuclarlayout);
-        Button toplamapuanTxtv = findViewById(R.id.toplamapuanTxtv);
-        Button cikarmapuanTxtv = findViewById(R.id.cikarmapuanTxtv);
-        Button carpmapuanTxtv = findViewById(R.id.carpmapuanTxtv);
-        Button bolmepuanTxtv = findViewById(R.id.bolmepuanTxtv);
-        Button simetripuanTxtv = findViewById(R.id.simetripuanTxtv);
-        Button serialspuanTxtv = findViewById(R.id.serialspuanTxtv);
-        Button buyukkucukpuanTxtv = findViewById(R.id.buyukkucukpuanTxtv);
-        Button timechallengepuanTxtv = findViewById(R.id.timechallengepuanTxtv);
-        Button smarttotalpuanTxtv = findViewById(R.id.smarttotalpuanTxtv);
-        Button levelTxtv = findViewById(R.id.levelTxtv);
-        Button nextlevelptsTxtv = findViewById(R.id.nextlevelptsTxtv);
-        Button progressTxt = findViewById(R.id.progressTxt);
 
-        ProgressBar levelbar = findViewById(R.id.pointsbar);
+    private void updateLeaderboards() {
 
-        int seviye = levelbar.getProgress();
-        int max = levelbar.getMax();
-        int fark = max - seviye;
+        Log.i("checkLeader","sent");
 
+        mLeaderboardsClient = Games.getLeaderboardsClient(this, signedInAccount);
+        mLeaderboardsClient.submitScore(Constants.leaderboard_total, sharedPrefManager.getIntegerFromSP("skor_total", 0));
 
-        toplamapuanTxtv.setText(getText(R.string.toplamapuan) + " " + String.valueOf(toplamaskorkumulatif));
-        cikarmapuanTxtv.setText(getText(R.string.cikarmapuan) + " " + String.valueOf(cikarmaskorkumulatif));
-        carpmapuanTxtv.setText(getText(R.string.carpmapuan) + " " + String.valueOf(carpmaskorkumulatif));
-        bolmepuanTxtv.setText(getText(R.string.bolmepuan) + " " + String.valueOf(bolmeskorkumulatif));
-        simetripuanTxtv.setText(getText(R.string.simetripuan) + " " + String.valueOf(simetriskorkumulatif));
-        serialspuanTxtv.setText(getText(R.string.ritmikpuan) + " " + String.valueOf(ritmikskorkumulatif));
-        buyukkucukpuanTxtv.setText(getText(R.string.buyukkucukpuan) + " " + String.valueOf(buyukkucukskorkumulatif));
-        timechallengepuanTxtv.setText(getText(R.string.timechallengepuan) + " " + String.valueOf(timescorekumulatif));
-        smarttotalpuanTxtv.setText(getText(R.string.totalsmartpuan) + " " + String.valueOf(kumulatiftoplamscore));
-        levelTxtv.setText(getText(R.string.levelsayisi) + " " + progressTxt.getText().toString());
-        nextlevelptsTxtv.setText(getText(R.string.nextlevelpts) + " " + String.valueOf(fark));
+    }
 
+    private void checkAchievements() {
 
     }
 
@@ -1335,6 +1430,30 @@ Media
 
     }
 
+    public void setPageStats(View view) {
+
+        switch (view.getId()) {
+            case R.id.dot1d:
+                viewpagerStats.setCurrentItem(0);
+                break;
+            case R.id.dot2d:
+                viewpagerStats.setCurrentItem(1);
+                break;
+            case R.id.dot3d:
+                viewpagerStats.setCurrentItem(2);
+                break;
+            case R.id.dot4d:
+                viewpagerStats.setCurrentItem(3);
+                break;
+            case R.id.dot5d:
+                viewpagerStats.setCurrentItem(4);
+                break;
+
+        }
+
+
+    }
+
     public void removeads(View view) {
 
         Uri uri = Uri.parse("market://details?id=com.deneme.erdemsalgin.smartkidspro");
@@ -1380,11 +1499,6 @@ Media
 
     }
 
-    private void showStats() {
-
-
-    }
-
     private void connectGoogleGames() {
 
         GoogleSignInClient signInClient = GoogleSignIn.getClient(this, GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN);
@@ -1395,6 +1509,7 @@ Media
                 if (task.isSuccessful()) {
                     Log.i("SignDurum", "OK");
                     signedInAccount = task.getResult();
+                    updateLeaderboards();
 
                 } else {
                     Log.i("SignDurum", "PROBLEM");
@@ -1415,7 +1530,7 @@ Media
 
     private void showLeaderBoard() {
         Games.getLeaderboardsClient(getApplicationContext(), GoogleSignIn.getLastSignedInAccount(getApplicationContext()))
-                .getLeaderboardIntent(getString(R.string.leaderboard_smart_kids_kings))
+                .getLeaderboardIntent(Constants.leaderboard_total)
                 .addOnSuccessListener(new OnSuccessListener<Intent>() {
                     @Override
                     public void onSuccess(Intent intent) {
@@ -1506,6 +1621,9 @@ Media
         } else if (charchooselayout.getVisibility() == View.VISIBLE) {
             fadeIn_fadeOut_Animation(mainmenu_layout, charchooselayout);
 
+        } else if (statslayout.getVisibility() == View.VISIBLE) {
+            fadeIn_fadeOut_Animation(mainmenu_layout, statslayout);
+
         } else {
             showByeScreen();
         }
@@ -1553,6 +1671,7 @@ Media
             if (result.isSuccess()) {
                 // The signed in account is stored in the result.
                 GoogleSignInAccount signedInAccount = result.getSignInAccount();
+
             } else {
                 /*
                 String message = result.getStatus().getStatusMessage();

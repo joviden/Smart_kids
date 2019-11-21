@@ -38,7 +38,7 @@
         app:layout_constraintGuide_percent="0.97" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_vertical95"
+        android:id="@+id/guideline_vertical98"
         android:layout_width="1dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -57,7 +57,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="@id/guideline_vertical05"
-        app:layout_constraintEnd_toEndOf="@id/guideline_vertical95"
+        app:layout_constraintEnd_toEndOf="@id/guideline_vertical98"
         app:layout_constraintTop_toTopOf="@id/guideline_horizontal03"
         app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal05"
         android:scaleType="centerInside"
@@ -71,7 +71,7 @@
         app:layout_constraintTop_toTopOf="@id/guideline_horizontal05"
         app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal85"
         app:layout_constraintStart_toStartOf="@id/guideline_vertical05"
-        app:layout_constraintEnd_toEndOf="@id/guideline_vertical95"
+        app:layout_constraintEnd_toEndOf="@id/guideline_vertical98"
         android:scaleType="centerInside"
         app:srcCompat="@drawable/girislogo" />
 

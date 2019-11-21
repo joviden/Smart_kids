@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
+import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -131,10 +132,10 @@ public class TrainingListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
 
                     menuItemHolder.progressBar.setProgress(0);
-                    menuItemHolder.progressBar.setMax(100);
-                    ObjectAnimator animation = ObjectAnimator.ofInt(menuItemHolder.progressBar, "progress", 0, training.getSuccess() );
+                    menuItemHolder.progressBar.setMax(100*1000);
+                    ObjectAnimator animation = ObjectAnimator.ofInt(menuItemHolder.progressBar, "progress", 0, training.getSuccess()*1000 );
                     animation.setDuration(2000); // 3.5 second
-                    animation.setInterpolator(new DecelerateInterpolator());
+                    animation.setInterpolator(new LinearInterpolator());
                     animation.start();
 
 
