@@ -13,6 +13,8 @@
     <string name="konularcarpma">multiplication</string>
     <string name="konularbolme">division</string>
     <string name="konularbuyukkucuk">greater/lesser</string>
+    <string name="konulartimechallange">time_challange</string>
+
     <string name="questionfordivision">Find the right answer for the division.</string>
     <string name="totalquestion">"Total Question: "</string>
     <string name="rightanswers">"Right Answers: "</string>

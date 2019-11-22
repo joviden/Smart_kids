@@ -54,14 +54,14 @@ Save this file as res/values/games-ids.xml in your project.
     <string name="achievement_100000_smart_points" translatable="false">CgkInciNzooaEAIQJA</string>
     <!-- achievement 150000 Smart Points -->
     <string name="achievement_150000_smart_points" translatable="false">CgkInciNzooaEAIQJQ</string>
-    <!-- achievement Real Time Shooter -->
-    <string name="achievement_real_time_shooter" translatable="false">CgkInciNzooaEAIQJg</string>
-    <!-- achievement Real Time Crusher -->
-    <string name="achievement_real_time_crusher" translatable="false">CgkInciNzooaEAIQJw</string>
-    <!-- achievement Real Time Expert -->
-    <string name="achievement_real_time_expert" translatable="false">CgkInciNzooaEAIQKA</string>
-    <!-- achievement Real Time Professor -->
-    <string name="achievement_real_time_professor" translatable="false">CgkInciNzooaEAIQKQ</string>
+    <!-- achievement Time Challenge Shooter -->
+    <string name="achievement_time_challenge_shooter" translatable="false">CgkInciNzooaEAIQJg</string>
+    <!-- achievement Time Challenge Crusher -->
+    <string name="achievement_time_challenge_crusher" translatable="false">CgkInciNzooaEAIQJw</string>
+    <!-- achievement Time Challenge Expert -->
+    <string name="achievement_time_challenge_expert" translatable="false">CgkInciNzooaEAIQKA</string>
+    <!-- achievement Time Challenge Professor -->
+    <string name="achievement_time_challenge_professor" translatable="false">CgkInciNzooaEAIQKQ</string>
     <!-- achievement Summation Expert -->
     <string name="achievement_summation_expert" translatable="false">CgkInciNzooaEAIQKg</string>
     <!-- achievement Subtraction Expert -->
@@ -95,8 +95,6 @@ Save this file as res/values/games-ids.xml in your project.
     <!-- achievement Odd or Even Proffessor -->
     <string name="achievement_odd_or_even_proffessor" translatable="false">CgkInciNzooaEAIQOQ</string>
     <!-- leaderboard Smart Kids Kings -->
-
-
     <string name="leaderboard_smart_kids_kings" translatable="false">CgkInciNzooaEAIQGQ</string>
     <!-- leaderboard Summation Stars -->
     <string name="leaderboard_summation_stars" translatable="false">CgkInciNzooaEAIQGg</string>

@@ -269,7 +269,7 @@ public class FourOpActivity extends AppCompatActivity {
         sikD_Btn.setEnabled(true);
 
 
-            sorunumarasiBtn.setText(getString(R.string.question) + " " + questioncounter+1);
+            sorunumarasiBtn.setText(getString(R.string.question) + " " + String.valueOf(questioncounter+1));
 
 
 

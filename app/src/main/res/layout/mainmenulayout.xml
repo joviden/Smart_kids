@@ -42,6 +42,13 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.98" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_vertical02"
+        android:layout_width="1dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.02" />
+
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -60,6 +67,8 @@
         android:src="@drawable/smartkidsheader"
         app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal14"
         app:layout_constraintTop_toTopOf="@id/guideline_horizontal01" />
+
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/mainmenu_layout"
@@ -117,7 +126,7 @@
             android:layout_width="1dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.50" />
+            app:layout_constraintGuide_percent="0.52" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_horizontal43"

@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -24,6 +25,7 @@ import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
+import android.view.Gravity;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
@@ -49,8 +51,10 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.games.AnnotatedData;
 import com.google.android.gms.games.Games;
+import com.google.android.gms.games.GamesClient;
 import com.google.android.gms.games.LeaderboardsClient;
 import com.google.android.gms.games.leaderboard.LeaderboardScore;
 import com.google.android.gms.games.leaderboard.LeaderboardVariant;
@@ -73,7 +77,7 @@ import java.util.HashMap;
 import java.util.List;
 
 
-public class MainmenuActivity extends AppCompatActivity {
+public class MainmenuActivity extends AppCompatActivity  {
 
     private AdView mAdView;
     private InterstitialAd mInterstitialAd;
@@ -88,11 +92,6 @@ public class MainmenuActivity extends AppCompatActivity {
     private LeaderboardsClient mLeaderboardsClient;
 
 
-    Integer kumulatiftoplamscore, toplamascore, cikarmascore, carpmascore, bolmescore, ritmikscore, buyukkucukscore, simetriscore, totalscore,
-            toplamaskorkumulatif, cikarmaskorkumulatif, carpmaskorkumulatif, bolmeskorkumulatif, ritmikskorkumulatif, buyukkucukskorkumulatif, simetriskorkumulatif,
-            level, timescorekumulatif, timescore;
-
-
     ViewPager viewPager, viewpagerStats;
     KonularPagerAdapter konularPagerAdapter;
     StatsPagerAdapter statsAdapter;
@@ -101,6 +100,7 @@ public class MainmenuActivity extends AppCompatActivity {
     private static final int RC_LEADERBOARD_UI = 9004;
     private static final int RC_ACHIEVEMENT_UI = 9003;
     private static final int RC_SIGN_IN = 9001;
+    private GoogleSignInClient signInClient;
 
     private CharChooseAdapter chooseAdapter;
 
@@ -145,13 +145,20 @@ public class MainmenuActivity extends AppCompatActivity {
         statslayout.setVisibility(View.GONE);
 
         user_level = sharedPrefManager.getIntegerFromSP("level", 1);
-        connectGoogleGames();
+
+        if (isSignedIn()&&signedInAccount!=null) {
+            updateLeaderboards();
+            checkAchievements();
+        }else {
+            connectGoogleGames();
+        }
+
+
         setLevel();
         setListeners();
         inflatePager();
         inflateStatsPager();
         setCharacterAdapter();
-
 
 
         if (sharedPrefManager.getIntegerFromSP("avatar_chosen", 100) == 100) {
@@ -231,11 +238,10 @@ public class MainmenuActivity extends AppCompatActivity {
         leaderboardBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isSignedIn()) {
+                if (GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this) != null) {
                     showLeaderBoard();
                 } else {
                     connectGoogleGames();
-
                     Toast.makeText(getApplicationContext(), "Google play is not connected or installed!", Toast.LENGTH_SHORT).show();
 
                 }
@@ -245,12 +251,10 @@ public class MainmenuActivity extends AppCompatActivity {
         achievementBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isSignedIn()) {
-
+                if (GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this) != null) {
                     showAchivement();
                 } else {
                     connectGoogleGames();
-
                     Toast.makeText(getApplicationContext(), "Google Play SmartGames is not connected or installed!", Toast.LENGTH_SHORT).show();
 
                 }
@@ -663,7 +667,7 @@ public class MainmenuActivity extends AppCompatActivity {
 
     private void updateLeaderboards() {
 
-        Log.i("checkLeader","sent");
+        Log.i("checkLeader", "sent");
 
         mLeaderboardsClient = Games.getLeaderboardsClient(this, signedInAccount);
         mLeaderboardsClient.submitScore(Constants.leaderboard_total, sharedPrefManager.getIntegerFromSP("skor_total", 0));
@@ -672,686 +676,169 @@ public class MainmenuActivity extends AppCompatActivity {
 
     private void checkAchievements() {
 
+
+        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konulartoplama) + "dogru", 0) > 9) {
+            Log.i("checkUnlock","unlocked");
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_good_starter_summation));
+        }
+        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularcikarma) + "dogru", 0) > 9) {
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_good_starter_subtraction));
+        }
+        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularcarpma) + "dogru", 0) > 9) {
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_good_starter_multiplication));
+        }
+        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularbolme) + "dogru", 0) > 9) {
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_good_starter_division));
+        }
+        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularbuyukkucuk) + "dogru", 0) > 9) {
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_good_starter_greaterlesser));
+        }
+        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularritmik) + "dogru", 0) > 9) {
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_good_starter_serials));
+        }
+        if (sharedPrefManager.getIntegerFromSP(getString(R.string.simetry) + "dogru", 0) > 9) {
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_good_starter_symmetry));
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konulartoplama) + "dogru", 0) > 49) {
+            Log.i("checkUnlock","unlocked");
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_clever_kid_summation));
+        }
+        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularcikarma) + "dogru", 0) > 49) {
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_clever_kid_subtraction));
+        }
+        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularcarpma) + "dogru", 0) > 49) {
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_clever_kid_multiplication));
+        }
+        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularbolme) + "dogru", 0) > 49) {
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_clever_kid_division));
+        }
+        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularbuyukkucuk) + "dogru", 0) > 49) {
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_clever_kid_greaterlesser));
+        }
+        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularritmik) + "dogru", 0) > 49) {
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_clever_kid_serials));
+        }
+        if (sharedPrefManager.getIntegerFromSP(getString(R.string.simetry) + "dogru", 0) > 49) {
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_clever_kid_symmetry));
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konulartoplama) + "dogru", 0) > 199) {
+            Log.i("checkUnlock","unlocked");
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_summation_expert));
+        }
+        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularcikarma) + "dogru", 0) > 199) {
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_subtraction_expert));
+        }
+        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularcarpma) + "dogru", 0) > 199) {
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_multiplication_expert));
+        }
+        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularbolme) + "dogru", 0) > 199) {
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_division_expert));
+        }
+        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularbuyukkucuk) + "dogru", 0) > 199) {
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_greater_or_lesser_expert));
+        }
+        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularritmik) + "dogru", 0) > 199) {
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_serials_expert));
+        }
+        if (sharedPrefManager.getIntegerFromSP(getString(R.string.simetry) + "dogru", 0) > 199) {
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_symmetry_expert));
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konulartoplama) + "dogru", 0) > 499) {
+            Log.i("checkUnlock","unlocked");
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_summation_proffesor));
+        }
+        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularcikarma) + "dogru", 0) > 499) {
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_subtraction_proffessor));
+        }
+        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularcarpma) + "dogru", 0) > 499) {
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_multiplication_proffessor));
+        }
+        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularbolme) + "dogru", 0) > 499) {
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_division_proffessor));
+        }
+        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularbuyukkucuk) + "dogru", 0) > 499) {
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_greater_of_lesser_proffessor));
+        }
+        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularritmik) + "dogru", 0) > 499) {
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_serials_proffessor));
+        }
+        if (sharedPrefManager.getIntegerFromSP(getString(R.string.simetry) + "dogru", 0) > 499) {
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_symmetry_proffessor));
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        if ( sharedPrefManager.getIntegerFromSP("skor_total",0) > 4999) {
+            Log.i("checkUnlock","unlocked");
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_5000_smart_points));
+        }
+        if ( sharedPrefManager.getIntegerFromSP("skor_total",0) > 9999) {
+            Log.i("checkUnlock","unlocked");
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_10000_smart_points));
+        }
+        if ( sharedPrefManager.getIntegerFromSP("skor_total",0) > 24999) {
+            Log.i("checkUnlock","unlocked");
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_25000_smart_points));
+        }
+        if ( sharedPrefManager.getIntegerFromSP("skor_total",0) > 39999) {
+            Log.i("checkUnlock","unlocked");
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_40000_smart_points));
+        }
+        if ( sharedPrefManager.getIntegerFromSP("skor_total",0) > 79999) {
+            Log.i("checkUnlock","unlocked");
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_80000_smart_points));
+        }
+        if ( sharedPrefManager.getIntegerFromSP("skor_total",0) > 99999) {
+            Log.i("checkUnlock","unlocked");
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_100000_smart_points));
+        }
+        if ( sharedPrefManager.getIntegerFromSP("skor_total",0) > 149999) {
+            Log.i("checkUnlock","unlocked");
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_150000_smart_points));
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konulartimechallange) + "skor", 0) > 4999) {
+            Log.i("checkUnlock","unlocked");
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_time_challenge_shooter));
+        }
+        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konulartimechallange) + "skor", 0) > 9999) {
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_time_challenge_crusher));
+        }
+        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konulartimechallange) + "skor", 0) > 49999) {
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_time_challenge_expert));
+        }
+        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konulartimechallange) + "skor", 0) > 99999) {
+            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_time_challenge_professor));
+        }
+
+
+
+
+
+
+
+
+
+
     }
 
 
     public void onResume() {
         super.onResume();
 
-/*
 
-        charchooselayout.setVisibility(View.GONE);
 
-        final SharedPreferences sp = getSharedPreferences("skorbilgiler", Activity.MODE_PRIVATE);
-        final SharedPreferences.Editor spEditor = sp.edit();
-
-
-        toplamascore = sp.getInt("toplamaleader", 0);
-        cikarmascore = sp.getInt("cikarmaleader", 0);
-        bolmescore = sp.getInt("bolmeleader", 0);
-        carpmascore = sp.getInt("carpmaleader", 0);
-        buyukkucukscore = sp.getInt("buyukkucukleader", 0);
-        simetriscore = sp.getInt("simetrileader", 0);
-        ritmikscore = sp.getInt("ritmikleader", 0);
-        timescore = sp.getInt("timescore", 0);
-
-
-        toplamaskorkumulatif = sp.getInt("toplamakumulatif", 0);
-        cikarmaskorkumulatif = sp.getInt("cikarmakumulatif", 0);
-        bolmeskorkumulatif = sp.getInt("bolmekumulatif", 0);
-        carpmaskorkumulatif = sp.getInt("carpmakumulatif", 0);
-        buyukkucukskorkumulatif = sp.getInt("buyukkucukkumulatif", 0);
-        ritmikskorkumulatif = sp.getInt("ritmikkumulatif", 0);
-        simetriskorkumulatif = sp.getInt("simetrikumulatif", 0);
-        timescorekumulatif = sp.getInt("timescorekumulatif", 0);
-        level = sp.getInt("level", 0);
-
-*/
-/*
-        Log.i("toplamakumulatif",String.valueOf(toplamaskorkumulatif));
-        Log.i("cikarmakumulatif",String.valueOf(cikarmaskorkumulatif));
-        Log.i("carpmakumulatif",String.valueOf(carpmaskorkumulatif));
-        Log.i("bolmekumulatif",String.valueOf(bolmeskorkumulatif));
-        Log.i("ritmikkumulatif",String.valueOf(ritmikskorkumulatif));
-        Log.i("buyukkucukkumulatif",String.valueOf(buyukkucukskorkumulatif));
-        Log.i("simetrikumulatif",String.valueOf(simetriskorkumulatif));
-        Log.i("timescorekumulatif",String.valueOf(timescorekumulatif));
-
-
-        Log.i("skortoplama",String.valueOf(toplamascore));
-        Log.i("skorcikarma",String.valueOf(cikarmascore));
-        Log.i("skorcarpma",String.valueOf(carpmascore));
-        Log.i("skorbolme",String.valueOf(bolmescore));
-        Log.i("skorritmik",String.valueOf(ritmikscore));
-        Log.i("skorbuyukkucuk",String.valueOf(buyukkucukscore));
-        Log.i("skorsimetri",String.valueOf(simetriscore));
-        Log.i("skortime",String.valueOf(timescore));
-*//*
-
-
-        kumulatiftoplamscore = toplamaskorkumulatif + cikarmaskorkumulatif + carpmaskorkumulatif + bolmeskorkumulatif + ritmikskorkumulatif +
-                buyukkucukskorkumulatif + simetriskorkumulatif + timescorekumulatif;
-
-
-        totalscore = sp.getInt("toplamskor", 0);
-
-
-        //      Log.i("kumulatiftotal",String.valueOf(kumulatiftoplamscore));
-
-
-        ///////////////////////////////avatar //////////////////////////////////
-
-        SharedPreferences spavatarilk = getSharedPreferences("avatarbilgiler", Activity.MODE_PRIVATE);
-        SharedPreferences.Editor spEditoravatarilk = spavatarilk.edit();
-        Integer i = spavatarilk.getInt("avatarsecildimi", 0);
-        Integer z = spavatarilk.getInt("secilenavatar", 0);
-
-        //    Log.i("resimsecil di mi ilk ",String.valueOf(i));
-        //    Log.i("secilen resim id",String.valueOf(z));
-
-
-        if (i == 0) {
-            charchooselayout.setVisibility(View.VISIBLE);
-        } else {
-            charchooselayout.setVisibility(View.GONE);
-            characterview.setImageResource(z);
-        }
-
-
-///////////////////////////////avatar //////////////////////////////////
-
-        ProgressBar toplamscorebar = (ProgressBar) findViewById(R.id.pointsbar);
-        Button progrestxt = (Button) findViewById(R.id.progressTxt);
-        toplamscorebar.getIndeterminateDrawable().setColorFilter(Color.parseColor("#43ff50"), android.graphics.PorterDuff.Mode.SRC_ATOP);
-
-
-*/
-
-
-
-
-/*
-        if (kumulatiftoplamscore <1000) {
-            toplamscorebar.setMax(1000);
-            toplamscorebar.setProgress((int) kumulatiftoplamscore);
-            level=1;
-            spEditor.putInt("level", 1);
-            spEditor.commit();
-
-
-
-
-            icon1n1.setAlpha((float) 1);icon1n2.setAlpha((float) 1);icon1n3.setAlpha((float) 1);icon1n4.setAlpha((float) 1);
-            icon2n1.setAlpha((float) 0.6);icon2n2.setAlpha((float) 0.6);icon2n3.setAlpha((float) 0.6);icon2n4.setAlpha((float) 0.6);
-            icon3n1.setAlpha((float) 0.6);icon3n2.setAlpha((float) 0.6);icon3n3.setAlpha((float) 0.6);icon3n4.setAlpha((float) 0.6);
-            icon4n1.setAlpha((float) 0.6);icon4n2.setAlpha((float) 0.6);icon4n3.setAlpha((float) 0.6);icon4n4.setAlpha((float) 0.6);
-            icon5n1.setAlpha((float) 0.6);icon5n2.setAlpha((float) 0.6);icon5n3.setAlpha((float) 0.6);icon5n4.setAlpha((float) 0.6);
-            icon6n1.setAlpha((float) 0.6);icon6n2.setAlpha((float) 0.6);icon6n3.setAlpha((float) 0.6);icon6n4.setAlpha((float) 0.6);
-            icon7n1.setAlpha((float) 0.6);icon7n2.setAlpha((float) 0.6);icon7n3.setAlpha((float) 0.6);icon7n4.setAlpha((float) 0.6);
-            icon8n1.setAlpha((float) 0.6);icon8n2.setAlpha((float) 0.6);icon8n3.setAlpha((float) 0.6);icon8n4.setAlpha((float) 0.6);
-            icon9n1.setAlpha((float) 0.6);icon9n2.setAlpha((float) 0.6);icon9n3.setAlpha((float) 0.6);icon9n4.setAlpha((float) 0.6);
-            icon10n1.setAlpha((float) 0.6);icon10n2.setAlpha((float) 0.6);
-            icon11n1.setAlpha((float) 0.6);
-
-
-        }
-
-        if (kumulatiftoplamscore >999 && kumulatiftoplamscore <5000) {
-
-            if (level==1) {
-                Toast.makeText(getApplicationContext(),getString(R.string.levelpass),Toast.LENGTH_LONG).show();
-                charchooselayout.setVisibility(View.VISIBLE);
-                level=2;
-                spEditor.putInt("level", level);
-                spEditor.commit();
-
-
-Media
-                final Player victory = MediaPlayer.create(this,R.raw.trumpet);
-                victory.start();
-                victory.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    @Override
-                    public void onCompletion(MediaPlayer mediaPlayer) {
-                        victory.release();
-                    }
-                });
-            }
-
-
-            toplamscorebar.setMax(5000);
-            toplamscorebar.setProgress((int) kumulatiftoplamscore -1000);
-            progrestxt.setText("Level 2 ");
-
-
-            icon1n1.setAlpha((float) 1);icon1n2.setAlpha((float) 1);icon1n3.setAlpha((float) 1);icon1n4.setAlpha((float) 1);
-            icon2n1.setAlpha((float) 1);icon2n2.setAlpha((float) 1);icon2n3.setAlpha((float) 1);icon2n4.setAlpha((float) 1);
-            icon3n1.setAlpha((float) 0.6);icon3n2.setAlpha((float) 0.6);icon3n3.setAlpha((float) 0.6);icon3n4.setAlpha((float) 0.6);
-            icon4n1.setAlpha((float) 0.6);icon4n2.setAlpha((float) 0.6);icon4n3.setAlpha((float) 0.6);icon4n4.setAlpha((float) 0.6);
-            icon5n1.setAlpha((float) 0.6);icon5n2.setAlpha((float) 0.6);icon5n3.setAlpha((float) 0.6);icon5n4.setAlpha((float) 0.6);
-            icon6n1.setAlpha((float) 0.6);icon6n2.setAlpha((float) 0.6);icon6n3.setAlpha((float) 0.6);icon6n4.setAlpha((float) 0.6);
-            icon7n1.setAlpha((float) 0.6);icon7n2.setAlpha((float) 0.6);icon7n3.setAlpha((float) 0.6);icon7n4.setAlpha((float) 0.6);
-            icon8n1.setAlpha((float) 0.6);icon8n2.setAlpha((float) 0.6);icon8n3.setAlpha((float) 0.6);icon8n4.setAlpha((float) 0.6);
-            icon9n1.setAlpha((float) 0.6);icon9n2.setAlpha((float) 0.6);icon9n3.setAlpha((float) 0.6);icon9n4.setAlpha((float) 0.6);
-            icon10n1.setAlpha((float) 0.6);icon10n2.setAlpha((float) 0.6);
-            icon11n1.setAlpha((float) 0.6);
-
-        }
-
-        if (kumulatiftoplamscore >4999 && kumulatiftoplamscore <10000) {
-
-            if (level==2) {
-                Toast.makeText(getApplicationContext(),getString(R.string.levelpass),Toast.LENGTH_LONG).show();
-                charchooselayout.setVisibility(View.VISIBLE);
-                level=3;
-                spEditor.putInt("level", level);
-                spEditor.commit();
-
-
-
-                final MediaPlayer victory = MediaPlayer.create(this,R.raw.trumpet);
-                victory.start();
-                victory.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    @Override
-                    public void onCompletion(MediaPlayer mediaPlayer) {
-                        victory.release();
-                    }
-                });
-            }
-            toplamscorebar.setMax(10000);
-            toplamscorebar.setProgress((int) kumulatiftoplamscore -5000);
-            progrestxt.setText("Level 3 ");
-
-
-
-            icon1n1.setAlpha((float) 1);icon1n2.setAlpha((float) 1);icon1n3.setAlpha((float) 1);icon1n4.setAlpha((float) 1);
-            icon2n1.setAlpha((float) 1);icon2n2.setAlpha((float) 1);icon2n3.setAlpha((float) 1);icon2n4.setAlpha((float) 1);
-            icon3n1.setAlpha((float) 1);icon3n2.setAlpha((float) 1);icon3n3.setAlpha((float) 1);icon3n4.setAlpha((float) 1);
-            icon4n1.setAlpha((float) 0.6);icon4n2.setAlpha((float) 0.6);icon4n3.setAlpha((float) 0.6);icon4n4.setAlpha((float) 0.6);
-            icon5n1.setAlpha((float) 0.6);icon5n2.setAlpha((float) 0.6);icon5n3.setAlpha((float) 0.6);icon5n4.setAlpha((float) 0.6);
-            icon6n1.setAlpha((float) 0.6);icon6n2.setAlpha((float) 0.6);icon6n3.setAlpha((float) 0.6);icon6n4.setAlpha((float) 0.6);
-            icon7n1.setAlpha((float) 0.6);icon7n2.setAlpha((float) 0.6);icon7n3.setAlpha((float) 0.6);icon7n4.setAlpha((float) 0.6);
-            icon8n1.setAlpha((float) 0.6);icon8n2.setAlpha((float) 0.6);icon8n3.setAlpha((float) 0.6);icon8n4.setAlpha((float) 0.6);
-            icon9n1.setAlpha((float) 0.6);icon9n2.setAlpha((float) 0.6);icon9n3.setAlpha((float) 0.6);icon9n4.setAlpha((float) 0.6);
-            icon10n1.setAlpha((float) 0.6);icon10n2.setAlpha((float) 0.6);
-            icon11n1.setAlpha((float) 0.6);
-        }
-        if (kumulatiftoplamscore >9999 && kumulatiftoplamscore <15000) {
-            if (level==3) {
-                Toast.makeText(getApplicationContext(),getString(R.string.levelpass),Toast.LENGTH_LONG).show();
-                charchooselayout.setVisibility(View.VISIBLE);
-                level=4;
-                spEditor.putInt("level", level);
-                spEditor.commit();
-
-
-                final MediaPlayer victory = MediaPlayer.create(this,R.raw.trumpet);
-                victory.start();
-                victory.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    @Override
-                    public void onCompletion(MediaPlayer mediaPlayer) {
-                        victory.release();
-                    }
-                });
-            }
-            toplamscorebar.setMax(15000);
-            toplamscorebar.setProgress((int) kumulatiftoplamscore -10000);
-            progrestxt.setText("Level 4 ");
-
-
-
-            icon1n1.setAlpha((float) 1);icon1n2.setAlpha((float) 1);icon1n3.setAlpha((float) 1);icon1n4.setAlpha((float) 1);
-            icon2n1.setAlpha((float) 1);icon2n2.setAlpha((float) 1);icon2n3.setAlpha((float) 1);icon2n4.setAlpha((float) 1);
-            icon3n1.setAlpha((float) 1);icon3n2.setAlpha((float) 1);icon3n3.setAlpha((float) 1);icon3n4.setAlpha((float) 1);
-            icon4n1.setAlpha((float) 1);icon4n2.setAlpha((float) 1);icon4n3.setAlpha((float) 1);icon4n4.setAlpha((float) 1);
-            icon5n1.setAlpha((float) 0.6);icon5n2.setAlpha((float) 0.6);icon5n3.setAlpha((float) 0.6);icon5n4.setAlpha((float) 0.6);
-            icon6n1.setAlpha((float) 0.6);icon6n2.setAlpha((float) 0.6);icon6n3.setAlpha((float) 0.6);icon6n4.setAlpha((float) 0.6);
-            icon7n1.setAlpha((float) 0.6);icon7n2.setAlpha((float) 0.6);icon7n3.setAlpha((float) 0.6);icon7n4.setAlpha((float) 0.6);
-            icon8n1.setAlpha((float) 0.6);icon8n2.setAlpha((float) 0.6);icon8n3.setAlpha((float) 0.6);icon8n4.setAlpha((float) 0.6);
-            icon9n1.setAlpha((float) 0.6);icon9n2.setAlpha((float) 0.6);icon9n3.setAlpha((float) 0.6);icon9n4.setAlpha((float) 0.6);
-            icon10n1.setAlpha((float) 0.6);icon10n2.setAlpha((float) 0.6);
-            icon11n1.setAlpha((float) 0.6);
-
-        }
-        if (kumulatiftoplamscore >14999 && kumulatiftoplamscore <25000) {
-
-            if (level==4) {
-                Toast.makeText(getApplicationContext(),getString(R.string.levelpass),Toast.LENGTH_LONG).show();
-                charchooselayout.setVisibility(View.VISIBLE);
-                level=5;
-                spEditor.putInt("level", level);
-                spEditor.commit();
-
-
-                final  MediaPlayer victory = MediaPlayer.create(this,R.raw.trumpet);
-                victory.start();
-                victory.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    @Override
-                    public void onCompletion(MediaPlayer mediaPlayer) {
-                        victory.release();
-                    }
-                });
-            }
-            toplamscorebar.setMax(25000);
-            toplamscorebar.setProgress((int) kumulatiftoplamscore -15000);
-            progrestxt.setText("Level 5 ");
-
-
-            icon1n1.setAlpha((float) 1);icon1n2.setAlpha((float) 1);icon1n3.setAlpha((float) 1);icon1n4.setAlpha((float) 1);
-            icon2n1.setAlpha((float) 1);icon2n2.setAlpha((float) 1);icon2n3.setAlpha((float) 1);icon2n4.setAlpha((float) 1);
-            icon3n1.setAlpha((float) 1);icon3n2.setAlpha((float) 1);icon3n3.setAlpha((float) 1);icon3n4.setAlpha((float) 1);
-            icon4n1.setAlpha((float) 1);icon4n2.setAlpha((float) 1);icon4n3.setAlpha((float) 1);icon4n4.setAlpha((float) 1);
-            icon5n1.setAlpha((float) 1);icon5n2.setAlpha((float) 1);icon5n3.setAlpha((float) 1);icon5n4.setAlpha((float) 1);
-            icon6n1.setAlpha((float) 0.6);icon6n2.setAlpha((float) 0.6);icon6n3.setAlpha((float) 0.6);icon6n4.setAlpha((float) 0.6);
-            icon7n1.setAlpha((float) 0.6);icon7n2.setAlpha((float) 0.6);icon7n3.setAlpha((float) 0.6);icon7n4.setAlpha((float) 0.6);
-            icon8n1.setAlpha((float) 0.6);icon8n2.setAlpha((float) 0.6);icon8n3.setAlpha((float) 0.6);icon8n4.setAlpha((float) 0.6);
-            icon9n1.setAlpha((float) 0.6);icon9n2.setAlpha((float) 0.6);icon9n3.setAlpha((float) 0.6);icon9n4.setAlpha((float) 0.6);
-            icon10n1.setAlpha((float) 0.6);icon10n2.setAlpha((float) 0.6);
-            icon11n1.setAlpha((float) 0.6);
-
-
-
-        }
-        if (kumulatiftoplamscore >24999 && kumulatiftoplamscore <35000) {
-
-
-            if (level==5) {
-                Toast.makeText(getApplicationContext(),getString(R.string.levelpass),Toast.LENGTH_LONG).show();
-                charchooselayout.setVisibility(View.VISIBLE);
-                level=6;
-                spEditor.putInt("level", level);
-                spEditor.commit();
-
-
-                final  MediaPlayer victory = MediaPlayer.create(this,R.raw.trumpet);
-                victory.start();
-                victory.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    @Override
-                    public void onCompletion(MediaPlayer mediaPlayer) {
-                        victory.release();
-                    }
-                });
-            }
-
-            toplamscorebar.setMax(35000);
-            toplamscorebar.setProgress((int) kumulatiftoplamscore -25000);
-            progrestxt.setText("Level 6 ");
-
-
-
-            icon1n1.setAlpha((float) 1);icon1n2.setAlpha((float) 1);icon1n3.setAlpha((float) 1);icon1n4.setAlpha((float) 1);
-            icon2n1.setAlpha((float) 1);icon2n2.setAlpha((float) 1);icon2n3.setAlpha((float) 1);icon2n4.setAlpha((float) 1);
-            icon3n1.setAlpha((float) 1);icon3n2.setAlpha((float) 1);icon3n3.setAlpha((float) 1);icon3n4.setAlpha((float) 1);
-            icon4n1.setAlpha((float) 1);icon4n2.setAlpha((float) 1);icon4n3.setAlpha((float) 1);icon4n4.setAlpha((float) 1);
-            icon5n1.setAlpha((float) 1);icon5n2.setAlpha((float) 1);icon5n3.setAlpha((float) 1);icon5n4.setAlpha((float) 1);
-            icon6n1.setAlpha((float) 1);icon6n2.setAlpha((float) 1);icon6n3.setAlpha((float) 1);icon6n4.setAlpha((float) 1);
-            icon7n1.setAlpha((float) 0.6);icon7n2.setAlpha((float) 0.6);icon7n3.setAlpha((float) 0.6);icon7n4.setAlpha((float) 0.6);
-            icon8n1.setAlpha((float) 0.6);icon8n2.setAlpha((float) 0.6);icon8n3.setAlpha((float) 0.6);icon8n4.setAlpha((float) 0.6);
-            icon9n1.setAlpha((float) 0.6);icon9n2.setAlpha((float) 0.6);icon9n3.setAlpha((float) 0.6);icon9n4.setAlpha((float) 0.6);
-            icon10n1.setAlpha((float) 0.6);icon10n2.setAlpha((float) 0.6);
-            icon11n1.setAlpha((float) 0.6);
-
-        }
-        if (kumulatiftoplamscore >34999 && kumulatiftoplamscore <50000) {
-
-
-            if (level==6) {
-                Toast.makeText(getApplicationContext(),getString(R.string.levelpass),Toast.LENGTH_LONG).show();
-                charchooselayout.setVisibility(View.VISIBLE);
-                level=7;
-                spEditor.putInt("level", level);
-                spEditor.commit();
-
-
-                final MediaPlayer victory = MediaPlayer.create(this,R.raw.trumpet);
-                victory.start();
-                victory.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    @Override
-                    public void onCompletion(MediaPlayer mediaPlayer) {
-                        victory.release();
-                    }
-                });
-            }
-            toplamscorebar.setMax(50000);
-            toplamscorebar.setProgress((int) kumulatiftoplamscore -35000);
-            progrestxt.setText("Level 7 ");
-
-
-
-            icon1n1.setAlpha((float) 1);icon1n2.setAlpha((float) 1);icon1n3.setAlpha((float) 1);icon1n4.setAlpha((float) 1);
-            icon2n1.setAlpha((float) 1);icon2n2.setAlpha((float) 1);icon2n3.setAlpha((float) 1);icon2n4.setAlpha((float) 1);
-            icon3n1.setAlpha((float) 1);icon3n2.setAlpha((float) 1);icon3n3.setAlpha((float) 1);icon3n4.setAlpha((float) 1);
-            icon4n1.setAlpha((float) 1);icon4n2.setAlpha((float) 1);icon4n3.setAlpha((float) 1);icon4n4.setAlpha((float) 1);
-            icon5n1.setAlpha((float) 1);icon5n2.setAlpha((float) 1);icon5n3.setAlpha((float) 1);icon5n4.setAlpha((float) 1);
-            icon6n1.setAlpha((float) 1);icon6n2.setAlpha((float) 1);icon6n3.setAlpha((float) 1);icon6n4.setAlpha((float) 1);
-            icon7n1.setAlpha((float) 1);icon7n2.setAlpha((float) 1);icon7n3.setAlpha((float) 1);icon7n4.setAlpha((float) 1);
-            icon8n1.setAlpha((float) 0.6);icon8n2.setAlpha((float) 0.6);icon8n3.setAlpha((float) 0.6);icon8n4.setAlpha((float) 0.6);
-            icon9n1.setAlpha((float) 0.6);icon9n2.setAlpha((float) 0.6);icon9n3.setAlpha((float) 0.6);icon9n4.setAlpha((float) 0.6);
-            icon10n1.setAlpha((float) 0.6);icon10n2.setAlpha((float) 0.6);
-            icon11n1.setAlpha((float) 0.6);
-
-        }
-        if (kumulatiftoplamscore >49999 && kumulatiftoplamscore <75000) {
-
-
-            if (level==7) {
-                Toast.makeText(getApplicationContext(),getString(R.string.levelpass),Toast.LENGTH_LONG).show();
-                charchooselayout.setVisibility(View.VISIBLE);
-                level=8;
-                spEditor.putInt("level", level);
-                spEditor.commit();
-
-
-                final  MediaPlayer victory = MediaPlayer.create(this,R.raw.trumpet);
-                victory.start();
-                victory.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    @Override
-                    public void onCompletion(MediaPlayer mediaPlayer) {
-                        victory.release();
-                    }
-                });
-            }
-            toplamscorebar.setMax(75000);
-            toplamscorebar.setProgress((int) kumulatiftoplamscore -50000);
-            progrestxt.setText("Level 8 ");
-
-
-
-            icon1n1.setAlpha((float) 1);icon1n2.setAlpha((float) 1);icon1n3.setAlpha((float) 1);icon1n4.setAlpha((float) 1);
-            icon2n1.setAlpha((float) 1);icon2n2.setAlpha((float) 1);icon2n3.setAlpha((float) 1);icon2n4.setAlpha((float) 1);
-            icon3n1.setAlpha((float) 1);icon3n2.setAlpha((float) 1);icon3n3.setAlpha((float) 1);icon3n4.setAlpha((float) 1);
-            icon4n1.setAlpha((float) 1);icon4n2.setAlpha((float) 1);icon4n3.setAlpha((float) 1);icon4n4.setAlpha((float) 1);
-            icon5n1.setAlpha((float) 1);icon5n2.setAlpha((float) 1);icon5n3.setAlpha((float) 1);icon5n4.setAlpha((float) 1);
-            icon6n1.setAlpha((float) 1);icon6n2.setAlpha((float) 1);icon6n3.setAlpha((float) 1);icon6n4.setAlpha((float) 1);
-            icon7n1.setAlpha((float) 1);icon7n2.setAlpha((float) 1);icon7n3.setAlpha((float) 1);icon7n4.setAlpha((float) 1);
-            icon8n1.setAlpha((float) 1);icon8n2.setAlpha((float) 1);icon8n3.setAlpha((float) 1);icon8n4.setAlpha((float) 1);
-            icon9n1.setAlpha((float) 0.6);icon9n2.setAlpha((float) 0.6);icon9n3.setAlpha((float) 0.6);icon9n4.setAlpha((float) 0.6);
-            icon10n1.setAlpha((float) 0.6);icon10n2.setAlpha((float) 0.6);
-            icon11n1.setAlpha((float) 0.6);
-
-        }
-        if (kumulatiftoplamscore >74999 && kumulatiftoplamscore <100000) {
-
-
-            if (level==8) {
-                Toast.makeText(getApplicationContext(),getString(R.string.levelpass),Toast.LENGTH_LONG).show();
-                charchooselayout.setVisibility(View.VISIBLE);
-                level=9;
-                spEditor.putInt("level", level);
-                spEditor.commit();
-
-
-                final  MediaPlayer   victory = MediaPlayer.create(this,R.raw.trumpet);
-                victory.start();
-                victory.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    @Override
-                    public void onCompletion(MediaPlayer mediaPlayer) {
-                        victory.release();
-                    }
-                });
-            }
-
-            toplamscorebar.setMax(100000);
-            toplamscorebar.setProgress((int) kumulatiftoplamscore -75000);
-            progrestxt.setText("Level 9 ");
-
-
-
-            icon1n1.setAlpha((float) 1);icon1n2.setAlpha((float) 1);icon1n3.setAlpha((float) 1);icon1n4.setAlpha((float) 1);
-            icon2n1.setAlpha((float) 1);icon2n2.setAlpha((float) 1);icon2n3.setAlpha((float) 1);icon2n4.setAlpha((float) 1);
-            icon3n1.setAlpha((float) 1);icon3n2.setAlpha((float) 1);icon3n3.setAlpha((float) 1);icon3n4.setAlpha((float) 1);
-            icon4n1.setAlpha((float) 1);icon4n2.setAlpha((float) 1);icon4n3.setAlpha((float) 1);icon4n4.setAlpha((float) 1);
-            icon5n1.setAlpha((float) 1);icon5n2.setAlpha((float) 1);icon5n3.setAlpha((float) 1);icon5n4.setAlpha((float) 1);
-            icon6n1.setAlpha((float) 1);icon6n2.setAlpha((float) 1);icon6n3.setAlpha((float) 1);icon6n4.setAlpha((float) 1);
-            icon7n1.setAlpha((float) 1);icon7n2.setAlpha((float) 1);icon7n3.setAlpha((float) 1);icon7n4.setAlpha((float) 1);
-            icon8n1.setAlpha((float) 1);icon8n2.setAlpha((float) 1);icon8n3.setAlpha((float) 1);icon8n4.setAlpha((float) 1);
-            icon9n1.setAlpha((float) 1);icon9n2.setAlpha((float) 1);icon9n3.setAlpha((float) 1);icon9n4.setAlpha((float) 1);
-            icon10n1.setAlpha((float) 0.6);icon10n2.setAlpha((float) 0.6);
-            icon11n1.setAlpha((float) 0.6);
-
-
-        }
-
-        if (kumulatiftoplamscore >99999 && kumulatiftoplamscore <125000) {
-
-
-            if (level==9) {
-                Toast.makeText(getApplicationContext(),getString(R.string.levelpass),Toast.LENGTH_LONG).show();
-                charchooselayout.setVisibility(View.VISIBLE);
-                level=10;
-                spEditor.putInt("level", level);
-                spEditor.commit();
-
-
-                final  MediaPlayer    victory = MediaPlayer.create(this,R.raw.trumpet);
-                victory.start();
-                victory.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    @Override
-                    public void onCompletion(MediaPlayer mediaPlayer) {
-                        victory.release();
-                    }
-                });
-            }
-
-            toplamscorebar.setMax(125000);
-            toplamscorebar.setProgress((int) kumulatiftoplamscore -100000);
-            progrestxt.setText("Level 10 ");
-
-
-            icon1n1.setAlpha((float) 1);icon1n2.setAlpha((float) 1);icon1n3.setAlpha((float) 1);icon1n4.setAlpha((float) 1);
-            icon2n1.setAlpha((float) 1);icon2n2.setAlpha((float) 1);icon2n3.setAlpha((float) 1);icon2n4.setAlpha((float) 1);
-            icon3n1.setAlpha((float) 1);icon3n2.setAlpha((float) 1);icon3n3.setAlpha((float) 1);icon3n4.setAlpha((float) 1);
-            icon4n1.setAlpha((float) 1);icon4n2.setAlpha((float) 1);icon4n3.setAlpha((float) 1);icon4n4.setAlpha((float) 1);
-            icon5n1.setAlpha((float) 1);icon5n2.setAlpha((float) 1);icon5n3.setAlpha((float) 1);icon5n4.setAlpha((float) 1);
-            icon6n1.setAlpha((float) 1);icon6n2.setAlpha((float) 1);icon6n3.setAlpha((float) 1);icon6n4.setAlpha((float) 1);
-            icon7n1.setAlpha((float) 1);icon7n2.setAlpha((float) 1);icon7n3.setAlpha((float) 1);icon7n4.setAlpha((float) 1);
-            icon8n1.setAlpha((float) 1);icon8n2.setAlpha((float) 1);icon8n3.setAlpha((float) 1);icon8n4.setAlpha((float) 1);
-            icon9n1.setAlpha((float) 1);icon9n2.setAlpha((float) 1);icon9n3.setAlpha((float) 1);icon9n4.setAlpha((float) 1);
-            icon10n1.setAlpha((float) 1);icon10n2.setAlpha((float) 1);
-            icon11n1.setAlpha((float) 0.6);
-        }
-
-        if (kumulatiftoplamscore >124999) {
-
-
-            if (level==10) {
-                Toast.makeText(getApplicationContext(),getString(R.string.levelpass),Toast.LENGTH_LONG).show();
-                charchooselayout.setVisibility(View.VISIBLE);
-                level=11;
-                spEditor.putInt("level", level);
-                spEditor.commit();
-
-
-                final MediaPlayer victory = MediaPlayer.create(this,R.raw.trumpet);
-                victory.start();
-                victory.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    @Override
-                    public void onCompletion(MediaPlayer mediaPlayer) {
-                        victory.release();
-                    }
-                });
-            }
-
-            toplamscorebar.setMax(1250000);
-            toplamscorebar.setProgress((int) kumulatiftoplamscore -125000);
-            progrestxt.setText("Level 11 ");
-
-
-            icon1n1.setAlpha((float) 1);icon1n2.setAlpha((float) 1);icon1n3.setAlpha((float) 1);icon1n4.setAlpha((float) 1);
-            icon2n1.setAlpha((float) 1);icon2n2.setAlpha((float) 1);icon2n3.setAlpha((float) 1);icon2n4.setAlpha((float) 1);
-            icon3n1.setAlpha((float) 1);icon3n2.setAlpha((float) 1);icon3n3.setAlpha((float) 1);icon3n4.setAlpha((float) 1);
-            icon4n1.setAlpha((float) 1);icon4n2.setAlpha((float) 1);icon4n3.setAlpha((float) 1);icon4n4.setAlpha((float) 1);
-            icon5n1.setAlpha((float) 1);icon5n2.setAlpha((float) 1);icon5n3.setAlpha((float) 1);icon5n4.setAlpha((float) 1);
-            icon6n1.setAlpha((float) 1);icon6n2.setAlpha((float) 1);icon6n3.setAlpha((float) 1);icon6n4.setAlpha((float) 1);
-            icon7n1.setAlpha((float) 1);icon7n2.setAlpha((float) 1);icon7n3.setAlpha((float) 1);icon7n4.setAlpha((float) 1);
-            icon8n1.setAlpha((float) 1);icon8n2.setAlpha((float) 1);icon8n3.setAlpha((float) 1);icon8n4.setAlpha((float) 1);
-            icon9n1.setAlpha((float) 1);icon9n2.setAlpha((float) 1);icon9n3.setAlpha((float) 1);icon9n4.setAlpha((float) 1);
-            icon10n1.setAlpha((float) 1);icon10n2.setAlpha((float) 1);
-            icon11n1.setAlpha((float) 1);
-
-        }*/
-
-        // level = sp.getInt("level",0);
-
-
-///////////////////////////////////////
-
-
-      /*  if (isSignedIn()) {
-
-
-            SmartGames.getLeaderboardsClient(this, GoogleSignIn.getLastSignedInAccount(this))
-                    .submitScore(getString(R.string.leaderboard_smart_kids_kings), kumulatiftoplamscore);
-            SmartGames.getLeaderboardsClient(this, GoogleSignIn.getLastSignedInAccount(this))
-                    .submitScore(getString(R.string.leaderboard_summation_stars), toplamascore);
-            SmartGames.getLeaderboardsClient(this, GoogleSignIn.getLastSignedInAccount(this))
-                    .submitScore(getString(R.string.leaderboard_subtraction_stars), cikarmascore);
-            SmartGames.getLeaderboardsClient(this, GoogleSignIn.getLastSignedInAccount(this))
-                    .submitScore(getString(R.string.leaderboard_division_stars), bolmescore);
-            SmartGames.getLeaderboardsClient(this, GoogleSignIn.getLastSignedInAccount(this))
-                    .submitScore(getString(R.string.leaderboard_multiplication_stars), carpmascore);
-            SmartGames.getLeaderboardsClient(this, GoogleSignIn.getLastSignedInAccount(this))
-                    .submitScore(getString(R.string.leaderboard_serials_stars), ritmikscore);
-            SmartGames.getLeaderboardsClient(this, GoogleSignIn.getLastSignedInAccount(this))
-                    .submitScore(getString(R.string.leaderboard_greater__lesser_stars), buyukkucukscore);
-            SmartGames.getLeaderboardsClient(this, GoogleSignIn.getLastSignedInAccount(this))
-                    .submitScore(getString(R.string.leaderboard_symmetry_stars), simetriscore);
-            SmartGames.getLeaderboardsClient(this, GoogleSignIn.getLastSignedInAccount(this))
-                    .submitScore(getString(R.string.leaderboard_time_challenge_stars), timescore);
-
-
-            if (toplamaskorkumulatif > 1000) {
-                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
-                        .unlock(getString(R.string.achievement_good_starter_summation));
-            }
-            if (cikarmaskorkumulatif > 1000) {
-                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
-                        .unlock(getString(R.string.achievement_good_starter_subtraction));
-            }
-            if (bolmeskorkumulatif > 1000) {
-                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
-                        .unlock(getString(R.string.achievement_good_starter_division));
-            }
-            if (carpmaskorkumulatif > 1000) {
-                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
-                        .unlock(getString(R.string.achievement_good_starter_multiplication));
-            }
-            if (buyukkucukskorkumulatif > 1000) {
-                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
-                        .unlock(getString(R.string.achievement_good_starter_greaterlesser));
-            }
-            if (ritmikskorkumulatif > 1000) {
-                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
-                        .unlock(getString(R.string.achievement_good_starter_serials));
-            }
-            if (simetriskorkumulatif > 1000) {
-                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
-                        .unlock(getString(R.string.achievement_good_starter_symmetry));
-            }
-
-
-            if (toplamaskorkumulatif > 20000) {
-                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
-                        .unlock(getString(R.string.achievement_clever_kid_summation));
-            }
-            if (cikarmaskorkumulatif > 20000) {
-                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
-                        .unlock(getString(R.string.achievement_clever_kid_subtraction));
-            }
-            if (carpmaskorkumulatif > 20000) {
-                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
-                        .unlock(getString(R.string.achievement_clever_kid_multiplication));
-            }
-            if (bolmeskorkumulatif > 20000) {
-                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
-                        .unlock(getString(R.string.achievement_clever_kid_division));
-            }
-            if (ritmikskorkumulatif > 20000) {
-                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
-                        .unlock(getString(R.string.achievement_clever_kid_serials));
-            }
-            if (simetriskorkumulatif > 20000) {
-                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
-                        .unlock(getString(R.string.achievement_clever_kid_symmetry));
-            }
-
-            if (toplamaskorkumulatif > 50000) {
-                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
-                        .unlock(getString(R.string.achievement_summation_proffesor));
-            }
-            if (cikarmaskorkumulatif > 50000) {
-                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
-                        .unlock(getString(R.string.achievement_subtraction_proffessor));
-            }
-            if (carpmaskorkumulatif > 50000) {
-                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
-                        .unlock(getString(R.string.achievement_multiplication_proffessor));
-            }
-            if (bolmeskorkumulatif > 50000) {
-                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
-                        .unlock(getString(R.string.achievement_division_proffessor));
-            }
-            if (buyukkucukskorkumulatif > 50000) {
-                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
-                        .unlock(getString(R.string.achievement_greater_of_lesser_proffessor));
-            }
-            if (ritmikskorkumulatif > 50000) {
-                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
-                        .unlock(getString(R.string.achievement_serials_proffessor));
-            }
-            if (simetriskorkumulatif > 50000) {
-                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
-                        .unlock(getString(R.string.achievement_symmetry_proffessor));
-            }
-
-
-            if (timescorekumulatif > 5000) {
-                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
-                        .unlock(getString(R.string.achievement_real_time_shooter));
-            }
-            if (timescorekumulatif > 10000) {
-                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
-                        .unlock(getString(R.string.achievement_real_time_crusher));
-            }
-            if (timescorekumulatif > 50000) {
-                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
-                        .unlock(getString(R.string.achievement_real_time_expert));
-            }
-            if (timescorekumulatif > 100000) {
-                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
-                        .unlock(getString(R.string.achievement_real_time_professor));
-            }
-
-
-            if (toplamaskorkumulatif > 5000) {
-                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
-                        .unlock(getString(R.string.achievement_5000_smart_points));
-            }
-            if (toplamaskorkumulatif > 10000) {
-                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
-                        .unlock(getString(R.string.achievement_10000_smart_points));
-            }
-            if (toplamaskorkumulatif > 25000) {
-                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
-                        .unlock(getString(R.string.achievement_25000_smart_points));
-            }
-            if (toplamaskorkumulatif > 40000) {
-                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
-                        .unlock(getString(R.string.achievement_40000_smart_points));
-            }
-            if (toplamaskorkumulatif > 80000) {
-                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
-                        .unlock(getString(R.string.achievement_80000_smart_points));
-            }
-            if (toplamaskorkumulatif > 100000) {
-                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
-                        .unlock(getString(R.string.achievement_100000_smart_points));
-            }
-            if (toplamaskorkumulatif > 150000) {
-                SmartGames.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(this))
-                        .unlock(getString(R.string.achievement_150000_smart_points));
-            }
-
-        }*/
 
 
     }
@@ -1386,7 +873,7 @@ Media
                 removeads(view);
                 break;
             case 5:
-                Uri uri = Uri.parse("market://search?q=pub:Erdem+SALGIN");
+                Uri uri = Uri.parse("market://search?q=pub:kodemachines");
                 Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
                 // To count with Play market backstack, After pressing back button,
                 // to taken back to our application, we need to add following flags to intent.
@@ -1499,31 +986,20 @@ Media
 
     }
 
+
     private void connectGoogleGames() {
 
-        GoogleSignInClient signInClient = GoogleSignIn.getClient(this, GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN);
+        GoogleSignInOptions signInOptions =
+                new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN)
+                        .requestScopes(Games.SCOPE_GAMES, Games.SCOPE_GAMES_LITE)
+                        .build();
 
-        signInClient.silentSignIn().addOnCompleteListener(new OnCompleteListener<GoogleSignInAccount>() {
-            @Override
-            public void onComplete(@NonNull Task<GoogleSignInAccount> task) {
-                if (task.isSuccessful()) {
-                    Log.i("SignDurum", "OK");
-                    signedInAccount = task.getResult();
-                    updateLeaderboards();
 
-                } else {
-                    Log.i("SignDurum", "PROBLEM");
-                }
 
-            }
-        });
+        signInClient = GoogleSignIn.getClient(MainmenuActivity.this, signInOptions);
 
-        signInClient.silentSignIn().addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-
-            }
-        });
+        Intent intent = signInClient.getSignInIntent();
+        startActivityForResult(intent, RC_SIGN_IN);
 
 
     }
@@ -1669,18 +1145,29 @@ Media
         if (requestCode == RC_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             if (result.isSuccess()) {
+
+                signedInAccount = result.getSignInAccount();
                 // The signed in account is stored in the result.
-                GoogleSignInAccount signedInAccount = result.getSignInAccount();
+                Log.i("checkSign", "Signed");
+
+                GamesClient gamesClient = Games.getGamesClient(getApplicationContext(), GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this));
+                gamesClient.setViewForPopups(getWindow().getDecorView().findViewById(android.R.id.content));
+
+                gamesClient.setGravityForPopups(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
+
+                updateLeaderboards();
+                checkAchievements();
+
 
             } else {
-                /*
+
                 String message = result.getStatus().getStatusMessage();
                 if (message == null || message.isEmpty()) {
                     message = getString(R.string.playgamesmassage);
                 }
                 new AlertDialog.Builder(this).setMessage(message)
                         .setNeutralButton(android.R.string.ok, null).show();
-                        */
+
             }
         }
     }
@@ -1688,8 +1175,6 @@ Media
     @Override
     public void onDestroy() {
         super.onDestroy();
-
-        System.gc();
 
 
     }

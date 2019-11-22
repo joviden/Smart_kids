@@ -1,0 +1,118 @@
+{
+  "project_info": {
+    "project_number": "896201352221",
+    "firebase_url": "https://smart-kids-96759320.firebaseio.com",
+    "project_id": "smart-kids-96759320",
+    "storage_bucket": "smart-kids-96759320.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:896201352221:android:dc1d1d1ceb52a202",
+        "android_client_info": {
+          "package_name": "com.deneme.erdemsalgin.smartkidspro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "896201352221-8f5hoquvfrbnhkft5v5mhacs30moqo63.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.deneme.erdemsalgin.smartkidspro",
+            "certificate_hash": "6d9f02af46d70446cb3728963d31acabb4f873a3"
+          }
+        },
+        {
+          "client_id": "896201352221-t99lqbo0ei9m2le2c064sasjpq783hk5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.deneme.erdemsalgin.smartkidspro",
+            "certificate_hash": "781c7918cb4402e6f8f6739a0644fbc7e61b07bf"
+          }
+        },
+        {
+          "client_id": "896201352221-kv5ttjbk8eag7fj3fc3r6sjj1v47kp1p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpnvezf914-4O1VIeJ0-nhRRL9jJPIsKY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "896201352221-kv5ttjbk8eag7fj3fc3r6sjj1v47kp1p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:896201352221:android:709bed299bd7718a",
+        "android_client_info": {
+          "package_name": "com.smartkids.akillicocuklar2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "896201352221-0949c3ptqam4dgnn0smk5ubht1ubh0bq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.smartkids.akillicocuklar2",
+            "certificate_hash": "6d9f02af46d70446cb3728963d31acabb4f873a3"
+          }
+        },
+        {
+          "client_id": "896201352221-25caoqdsi3kdqjtj7kr4nf8317g12otc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.smartkids.akillicocuklar2",
+            "certificate_hash": "effa32560b838368314fd5d62e520eb12521023a"
+          }
+        },
+        {
+          "client_id": "896201352221-kudkvh175cbfho1bmt7fp5h9b754dqqd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.smartkids.akillicocuklar2",
+            "certificate_hash": "cb3b4106b0c93fd65eaed2232f2ee6eb60849872"
+          }
+        },
+        {
+          "client_id": "896201352221-bu344nihunkoemenunuuer47i3ifh4m4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.smartkids.akillicocuklar2",
+            "certificate_hash": "12af73fd1c839f2ac4f2b5e7de12f53363279802"
+          }
+        },
+        {
+          "client_id": "896201352221-kv5ttjbk8eag7fj3fc3r6sjj1v47kp1p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpnvezf914-4O1VIeJ0-nhRRL9jJPIsKY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "896201352221-kv5ttjbk8eag7fj3fc3r6sjj1v47kp1p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      },
+      "admob_app_id": "ca-app-pub-4100535460120599~1018273710"
+    }
+  ],
+  "configuration_version": "1"
+}

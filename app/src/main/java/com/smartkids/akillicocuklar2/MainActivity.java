@@ -8,6 +8,10 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.games.Games;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -31,6 +35,16 @@ public class MainActivity extends AppCompatActivity {
         });
 
         MobileAds.initialize(this, "ca-app-pub-4100535460120599~1018273710");
+
+
+        if (GoogleSignIn.getLastSignedInAccount(this) != null) {
+            GoogleSignInOptions signInOptions =
+                    new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN)
+                            .requestScopes(Games.SCOPE_GAMES, Games.SCOPE_GAMES_LITE)
+                            .build();
+            GoogleSignInClient signInClient = GoogleSignIn.getClient(MainActivity.this, signInOptions);
+            signInClient.signOut();
+        }
 
 
 
