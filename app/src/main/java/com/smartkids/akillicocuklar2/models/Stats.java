@@ -2,13 +2,13 @@ package com.smartkids.akillicocuklar2.models;
 
 public class Stats {
 
-    String konu;
-    int soru;
-    int dogru;
-    int yanlis;
-    int bos;
-    int points;
-    int image;
+    private String konu;
+    private int soru;
+    private int dogru;
+    private int yanlis;
+    private int bos;
+    private int points;
+    private int image;
 
 
     public Stats(String konu, int soru, int dogru, int yanlis, int bos, int points, int image) {
