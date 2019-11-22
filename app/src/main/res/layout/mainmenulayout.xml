@@ -75,7 +75,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toTopOf="@id/ad_container"
-        android:visibility="visible">
+        android:visibility="gone">
 
 
         <androidx.constraintlayout.widget.Guideline
@@ -1054,7 +1054,7 @@
         app:layout_constraintTop_toBottomOf="@id/guideline_horizontal14"
         app:layout_constraintBottom_toTopOf="@id/ad_container"
         android:orientation="vertical"
-        android:visibility="gone"
+        android:visibility="visible"
         android:background="@color/orange">
 
         <androidx.constraintlayout.widget.Guideline
@@ -1176,7 +1176,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal90d"
+            app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal92d"
             app:layout_constraintEnd_toEndOf="@id/guideline_vertical65d"
             app:layout_constraintStart_toStartOf="@id/guideline_vertical35d"
             app:layout_constraintTop_toTopOf="@id/guideline_horizontal87d">
