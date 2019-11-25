@@ -5,5 +5,5 @@
     android:dither="true">
     <size android:height="18dp" android:width="18dp"/>
     <solid android:color="@color/color_bottom_line"/>
-    <stroke android:width="5dp" android:color="@color/blue" />
+    <stroke android:width="4dp" android:color="@color/blue" />
 </shape>
