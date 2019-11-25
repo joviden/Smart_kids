@@ -226,6 +226,7 @@
             app:start_text="-"
             app:end_text="+"
             app:text_size="@dimen/text_normal"
+            app:bar_color="@color/iconcolor"
             app:layout_constraintTop_toBottomOf="@id/gridboard"
             app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal60"
             app:duration="@android:integer/config_mediumAnimTime"
