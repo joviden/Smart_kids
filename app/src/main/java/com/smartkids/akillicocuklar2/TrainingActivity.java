@@ -13,7 +13,6 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
 import android.view.View;
-import android.widget.FrameLayout;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
@@ -87,18 +86,7 @@ public class TrainingActivity extends AppCompatActivity {
 
         MobileAds.initialize(this, Constants.adMobId);
 
-        FrameLayout ad_container = findViewById(R.id.ad_container);
-        mAdView = new AdView(this);
-        mAdView.setAdUnitId(Constants.bannerTestId);  //DEGISTIR
-        ad_container.addView(mAdView);
 
-        AdSize adSize = getAdSize();
-        mAdView.setAdSize(adSize);
-
-        AdRequest adRequest = new AdRequest.Builder().build();
-        if (mAdView != null) {
-            mAdView.loadAd(adRequest);
-        }
 
         mInterstitialAd = new InterstitialAd(this);
         // mInterstitialAd.setAdUnitId(Constants.interstitialId);  DEGISTIR
@@ -133,7 +121,7 @@ public class TrainingActivity extends AppCompatActivity {
         } else {
             trainingList.add(new Training(getString(R.string.konularritmik), success_summation, R.drawable.icon_mental));
             trainingList.add(new Training(getString(R.string.konularbuyukkucuk), success_extraction, R.drawable.icon_mental));
-            trainingList.add(new Training(getString(R.string.simetry), success_division, R.drawable.icon_mental));
+            trainingList.add(new Training(getString(R.string.konularsimetry), success_division, R.drawable.icon_mental));
         }
 
 
@@ -232,6 +220,31 @@ public class TrainingActivity extends AppCompatActivity {
             startActivity(i);
         } else {
 
+            if (view.getTag().toString().equals(getString(R.string.konularritmik))){
+                Intent i = new Intent(TrainingActivity.this, RitmiksaymaActivity.class);
+                startActivity(i);
+
+
+            }else   if (view.getTag().toString().equals(getString(R.string.konularsimetry))){
+                Intent i = new Intent(TrainingActivity.this, SimetryActivity.class);
+                startActivity(i);
+
+            }else   if (view.getTag().toString().equals(getString(R.string.konularbuyukkucuk))){
+                Intent i = new Intent(TrainingActivity.this, BuyukKucukActivity.class);
+                startActivity(i);
+
+            }
+
+
+
+
+
+
+
+
+
+
+
 
         }
 
@@ -263,6 +276,7 @@ public class TrainingActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        super.onBackPressed();
         Intent i = new Intent(TrainingActivity.this, MainmenuActivity.class);
         startActivity(i);
         this.finish();

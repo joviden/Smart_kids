@@ -54,7 +54,7 @@
     <string name="simetrysoru">根据对称轴画出左侧所示形状的对称性。</string>
     <string name="questionleft">题</string>
     <string name="quittoast">请点击完成测试退出！</string>
-    <string name="simetry">对称</string>
+    <string name="konularsimetry">对称</string>
     <string name="rateapp">请评价这个应用程序，如果你喜欢它！ 这将是一个伟大的动机，我设计更好的应用程序！ 谢谢！</string>
     <string name="bolumbasari">更迭： %</string>
     <string name="backtokonular">背部</string>

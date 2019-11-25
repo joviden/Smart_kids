@@ -55,7 +55,7 @@
     <string name="simetrysoru">समरूपता के अक्ष के अनुसार दाईं ओर बाईं ओर दिखाए गए आकार की समरूपता को ड्रा।</string>
     <string name="questionleft">सवाल</string>
     <string name="quittoast">बाहर निकलने के लिए कृपया समाप्त टेस्ट पर क्लिक करें!</string>
-    <string name="simetry">समरूपता</string>
+    <string name="konularsimetry">समरूपता</string>
     <string name="rateapp">अगर आपको यह पसंद आया तो कृपया इस एप को रेट करें! यह बेहतर एप डिजाइन करने के लिए मेरे लिए एक महान प्रेरणा होगी !!! धन्यवाद!</string>
     <string name="bolumbasari">सफलता: %</string>
     <string name="leveldurumu"> अगले स्तर के लिए छोड़ दिया अंक! \n बढ़ते रहें!</string>

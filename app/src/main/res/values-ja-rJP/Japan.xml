@@ -55,7 +55,7 @@
     <string name="simetrysoru">対称軸に沿って、左側から右側に示された形状の対称性を描きます。</string>
     <string name="questionleft">質問</string>
     <string name="quittoast">終了テストをクリックして終了してください！</string>
-    <string name="simetry">対称</string>
+    <string name="konularsimetry">対称</string>
     <string name="bolumbasari">成功： %</string>
     <string name="backtokonular">バック</string>
     <string name="leveldurumu"> ポイントは次のレベルのために残った！ \n 立ち止まるな！</string>

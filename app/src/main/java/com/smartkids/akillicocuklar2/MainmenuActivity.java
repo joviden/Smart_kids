@@ -7,12 +7,12 @@ import android.animation.ObjectAnimator;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
+import android.app.AlertDialog;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -32,7 +32,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -51,17 +50,10 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.games.AnnotatedData;
 import com.google.android.gms.games.Games;
 import com.google.android.gms.games.GamesClient;
 import com.google.android.gms.games.LeaderboardsClient;
-import com.google.android.gms.games.leaderboard.LeaderboardScore;
-import com.google.android.gms.games.leaderboard.LeaderboardVariant;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.smartkids.akillicocuklar2.adapters.CharChooseAdapter;
 import com.smartkids.akillicocuklar2.adapters.KonularPagerAdapter;
 import com.smartkids.akillicocuklar2.adapters.StatsPagerAdapter;
@@ -73,11 +65,11 @@ import com.smartkids.akillicocuklar2.utils.SharedPrefManager;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 
-public class MainmenuActivity extends AppCompatActivity  {
+public class MainmenuActivity extends AppCompatActivity {
 
     private AdView mAdView;
     private InterstitialAd mInterstitialAd;
@@ -90,6 +82,7 @@ public class MainmenuActivity extends AppCompatActivity  {
     private int pagenumber, pagenumberStats;
     private List<ImageView> dots, dots2;
     private LeaderboardsClient mLeaderboardsClient;
+    private AlertDialog alert_Exit;
 
 
     ViewPager viewPager, viewpagerStats;
@@ -106,12 +99,11 @@ public class MainmenuActivity extends AppCompatActivity  {
 
     private RecyclerView char_recyclerView;
 
-    private ConstraintLayout mainmenu_layout, charchooselayout, byebyeLayout, sonuclarlayout, statslayout;
+    private ConstraintLayout mainmenu_layout, charchooselayout,statslayout;
     private ImageView characterview;
 
     private AppCompatButton profileBtn, leaderboardBtn, achievementBtn, rateappBtn, shareBtn;
 
-    private GoogleSignInAccount signedInAccount;
 
     private ProgressBar progressBar;
     private TextView progressTxt;
@@ -129,8 +121,7 @@ public class MainmenuActivity extends AppCompatActivity  {
 
         mainmenu_layout = findViewById(R.id.mainmenu_layout);
         charchooselayout = findViewById(R.id.charchooselayout);
-        byebyeLayout = findViewById(R.id.byebyeLayout);
-        sonuclarlayout = findViewById(R.id.sonuclarlayout);
+
         statslayout = findViewById(R.id.statslayout);
         profileBtn = findViewById(R.id.profileBtn);
         leaderboardBtn = findViewById(R.id.leaderboardBtn);
@@ -140,17 +131,19 @@ public class MainmenuActivity extends AppCompatActivity  {
         characterview = findViewById(R.id.characterview);
 
 
-        byebyeLayout.setVisibility(View.GONE);
-        sonuclarlayout.setVisibility(View.GONE);
+
         statslayout.setVisibility(View.GONE);
 
         user_level = sharedPrefManager.getIntegerFromSP("level", 1);
 
-        if (isSignedIn()&&signedInAccount!=null) {
+        if (isSignedIn()) {
             updateLeaderboards();
             checkAchievements();
-        }else {
+            Log.i("checkSign", "Not null");
+        } else {
+            Log.i("checkSign", " null");
             connectGoogleGames();
+
         }
 
 
@@ -669,166 +662,163 @@ public class MainmenuActivity extends AppCompatActivity  {
 
         Log.i("checkLeader", "sent");
 
-        mLeaderboardsClient = Games.getLeaderboardsClient(this, signedInAccount);
-        mLeaderboardsClient.submitScore(Constants.leaderboard_total, sharedPrefManager.getIntegerFromSP("skor_total", 0));
+        if (GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this) != null) {
+            mLeaderboardsClient = Games.getLeaderboardsClient(this, Objects.requireNonNull(GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)));
+            mLeaderboardsClient.submitScore(Constants.leaderboard_total, sharedPrefManager.getIntegerFromSP("skor_total", 0));
+        }
 
     }
 
     private void checkAchievements() {
+        if (GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this) != null) {
 
 
-        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konulartoplama) + "dogru", 0) > 9) {
-            Log.i("checkUnlock","unlocked");
-            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_good_starter_summation));
-        }
-        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularcikarma) + "dogru", 0) > 9) {
-            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_good_starter_subtraction));
-        }
-        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularcarpma) + "dogru", 0) > 9) {
-            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_good_starter_multiplication));
-        }
-        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularbolme) + "dogru", 0) > 9) {
-            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_good_starter_division));
-        }
-        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularbuyukkucuk) + "dogru", 0) > 9) {
-            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_good_starter_greaterlesser));
-        }
-        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularritmik) + "dogru", 0) > 9) {
-            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_good_starter_serials));
-        }
-        if (sharedPrefManager.getIntegerFromSP(getString(R.string.simetry) + "dogru", 0) > 9) {
-            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_good_starter_symmetry));
-        }
+            if (sharedPrefManager.getIntegerFromSP(getString(R.string.konulartoplama) + "dogru", 0) > 9) {
+                Log.i("checkUnlock", "unlocked");
+                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_good_starter_summation));
+            }
+            if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularcikarma) + "dogru", 0) > 9) {
+                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_good_starter_subtraction));
+            }
+            if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularcarpma) + "dogru", 0) > 9) {
+                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_good_starter_multiplication));
+            }
+            if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularbolme) + "dogru", 0) > 9) {
+                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_good_starter_division));
+            }
+            if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularbuyukkucuk) + "dogru", 0) > 9) {
+                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_good_starter_greaterlesser));
+            }
+            if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularritmik) + "dogru", 0) > 9) {
+                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_good_starter_serials));
+            }
+            if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularsimetry) + "dogru", 0) > 9) {
+                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_good_starter_symmetry));
+            }
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konulartoplama) + "dogru", 0) > 49) {
-            Log.i("checkUnlock","unlocked");
-            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_clever_kid_summation));
-        }
-        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularcikarma) + "dogru", 0) > 49) {
-            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_clever_kid_subtraction));
-        }
-        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularcarpma) + "dogru", 0) > 49) {
-            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_clever_kid_multiplication));
-        }
-        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularbolme) + "dogru", 0) > 49) {
-            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_clever_kid_division));
-        }
-        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularbuyukkucuk) + "dogru", 0) > 49) {
-            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_clever_kid_greaterlesser));
-        }
-        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularritmik) + "dogru", 0) > 49) {
-            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_clever_kid_serials));
-        }
-        if (sharedPrefManager.getIntegerFromSP(getString(R.string.simetry) + "dogru", 0) > 49) {
-            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_clever_kid_symmetry));
-        }
+            if (sharedPrefManager.getIntegerFromSP(getString(R.string.konulartoplama) + "dogru", 0) > 49) {
+                Log.i("checkUnlock", "unlocked");
+                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_clever_kid_summation));
+            }
+            if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularcikarma) + "dogru", 0) > 49) {
+                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_clever_kid_subtraction));
+            }
+            if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularcarpma) + "dogru", 0) > 49) {
+                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_clever_kid_multiplication));
+            }
+            if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularbolme) + "dogru", 0) > 49) {
+                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_clever_kid_division));
+            }
+            if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularbuyukkucuk) + "dogru", 0) > 49) {
+                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_clever_kid_greaterlesser));
+            }
+            if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularritmik) + "dogru", 0) > 49) {
+                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_clever_kid_serials));
+            }
+            if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularsimetry) + "dogru", 0) > 49) {
+                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_clever_kid_symmetry));
+            }
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konulartoplama) + "dogru", 0) > 199) {
-            Log.i("checkUnlock","unlocked");
-            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_summation_expert));
-        }
-        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularcikarma) + "dogru", 0) > 199) {
-            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_subtraction_expert));
-        }
-        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularcarpma) + "dogru", 0) > 199) {
-            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_multiplication_expert));
-        }
-        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularbolme) + "dogru", 0) > 199) {
-            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_division_expert));
-        }
-        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularbuyukkucuk) + "dogru", 0) > 199) {
-            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_greater_or_lesser_expert));
-        }
-        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularritmik) + "dogru", 0) > 199) {
-            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_serials_expert));
-        }
-        if (sharedPrefManager.getIntegerFromSP(getString(R.string.simetry) + "dogru", 0) > 199) {
-            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_symmetry_expert));
-        }
+            if (sharedPrefManager.getIntegerFromSP(getString(R.string.konulartoplama) + "dogru", 0) > 199) {
+                Log.i("checkUnlock", "unlocked");
+                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_summation_expert));
+            }
+            if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularcikarma) + "dogru", 0) > 199) {
+                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_subtraction_expert));
+            }
+            if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularcarpma) + "dogru", 0) > 199) {
+                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_multiplication_expert));
+            }
+            if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularbolme) + "dogru", 0) > 199) {
+                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_division_expert));
+            }
+            if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularbuyukkucuk) + "dogru", 0) > 199) {
+                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_greater_or_lesser_expert));
+            }
+            if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularritmik) + "dogru", 0) > 199) {
+                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_serials_expert));
+            }
+            if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularsimetry) + "dogru", 0) > 199) {
+                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_symmetry_expert));
+            }
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konulartoplama) + "dogru", 0) > 499) {
-            Log.i("checkUnlock","unlocked");
-            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_summation_proffesor));
-        }
-        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularcikarma) + "dogru", 0) > 499) {
-            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_subtraction_proffessor));
-        }
-        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularcarpma) + "dogru", 0) > 499) {
-            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_multiplication_proffessor));
-        }
-        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularbolme) + "dogru", 0) > 499) {
-            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_division_proffessor));
-        }
-        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularbuyukkucuk) + "dogru", 0) > 499) {
-            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_greater_of_lesser_proffessor));
-        }
-        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularritmik) + "dogru", 0) > 499) {
-            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_serials_proffessor));
-        }
-        if (sharedPrefManager.getIntegerFromSP(getString(R.string.simetry) + "dogru", 0) > 499) {
-            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_symmetry_proffessor));
-        }
+            if (sharedPrefManager.getIntegerFromSP(getString(R.string.konulartoplama) + "dogru", 0) > 499) {
+                Log.i("checkUnlock", "unlocked");
+                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_summation_proffesor));
+            }
+            if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularcikarma) + "dogru", 0) > 499) {
+                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_subtraction_proffessor));
+            }
+            if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularcarpma) + "dogru", 0) > 499) {
+                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_multiplication_proffessor));
+            }
+            if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularbolme) + "dogru", 0) > 499) {
+                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_division_proffessor));
+            }
+            if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularbuyukkucuk) + "dogru", 0) > 499) {
+                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_greater_of_lesser_proffessor));
+            }
+            if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularritmik) + "dogru", 0) > 499) {
+                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_serials_proffessor));
+            }
+            if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularsimetry) + "dogru", 0) > 499) {
+                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_symmetry_proffessor));
+            }
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        if ( sharedPrefManager.getIntegerFromSP("skor_total",0) > 4999) {
-            Log.i("checkUnlock","unlocked");
-            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_5000_smart_points));
-        }
-        if ( sharedPrefManager.getIntegerFromSP("skor_total",0) > 9999) {
-            Log.i("checkUnlock","unlocked");
-            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_10000_smart_points));
-        }
-        if ( sharedPrefManager.getIntegerFromSP("skor_total",0) > 24999) {
-            Log.i("checkUnlock","unlocked");
-            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_25000_smart_points));
-        }
-        if ( sharedPrefManager.getIntegerFromSP("skor_total",0) > 39999) {
-            Log.i("checkUnlock","unlocked");
-            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_40000_smart_points));
-        }
-        if ( sharedPrefManager.getIntegerFromSP("skor_total",0) > 79999) {
-            Log.i("checkUnlock","unlocked");
-            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_80000_smart_points));
-        }
-        if ( sharedPrefManager.getIntegerFromSP("skor_total",0) > 99999) {
-            Log.i("checkUnlock","unlocked");
-            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_100000_smart_points));
-        }
-        if ( sharedPrefManager.getIntegerFromSP("skor_total",0) > 149999) {
-            Log.i("checkUnlock","unlocked");
-            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_150000_smart_points));
-        }
+            if (sharedPrefManager.getIntegerFromSP("skor_total", 0) > 4999) {
+                Log.i("checkUnlock", "unlocked");
+                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_5000_smart_points));
+            }
+            if (sharedPrefManager.getIntegerFromSP("skor_total", 0) > 9999) {
+                Log.i("checkUnlock", "unlocked");
+                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_10000_smart_points));
+            }
+            if (sharedPrefManager.getIntegerFromSP("skor_total", 0) > 24999) {
+                Log.i("checkUnlock", "unlocked");
+                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_25000_smart_points));
+            }
+            if (sharedPrefManager.getIntegerFromSP("skor_total", 0) > 39999) {
+                Log.i("checkUnlock", "unlocked");
+                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_40000_smart_points));
+            }
+            if (sharedPrefManager.getIntegerFromSP("skor_total", 0) > 79999) {
+                Log.i("checkUnlock", "unlocked");
+                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_80000_smart_points));
+            }
+            if (sharedPrefManager.getIntegerFromSP("skor_total", 0) > 99999) {
+                Log.i("checkUnlock", "unlocked");
+                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_100000_smart_points));
+            }
+            if (sharedPrefManager.getIntegerFromSP("skor_total", 0) > 149999) {
+                Log.i("checkUnlock", "unlocked");
+                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_150000_smart_points));
+            }
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konulartimechallange) + "skor", 0) > 4999) {
-            Log.i("checkUnlock","unlocked");
-            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_time_challenge_shooter));
+            if (sharedPrefManager.getIntegerFromSP(getString(R.string.konulartimechallange) + "skor", 0) > 4999) {
+                Log.i("checkUnlock", "unlocked");
+                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_time_challenge_shooter));
+            }
+            if (sharedPrefManager.getIntegerFromSP(getString(R.string.konulartimechallange) + "skor", 0) > 9999) {
+                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_time_challenge_crusher));
+            }
+            if (sharedPrefManager.getIntegerFromSP(getString(R.string.konulartimechallange) + "skor", 0) > 49999) {
+                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_time_challenge_expert));
+            }
+            if (sharedPrefManager.getIntegerFromSP(getString(R.string.konulartimechallange) + "skor", 0) > 99999) {
+                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_time_challenge_professor));
+            }
+
         }
-        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konulartimechallange) + "skor", 0) > 9999) {
-            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_time_challenge_crusher));
-        }
-        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konulartimechallange) + "skor", 0) > 49999) {
-            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_time_challenge_expert));
-        }
-        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konulartimechallange) + "skor", 0) > 99999) {
-            Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(getApplicationContext())).unlock(getString(R.string.achievement_time_challenge_professor));
-        }
-
-
-
-
-
-
-
-
 
 
     }
@@ -836,9 +826,6 @@ public class MainmenuActivity extends AppCompatActivity  {
 
     public void onResume() {
         super.onResume();
-
-
-
 
 
     }
@@ -989,11 +976,12 @@ public class MainmenuActivity extends AppCompatActivity  {
 
     private void connectGoogleGames() {
 
+        Log.i("checkSign", "connectGoogleGames");
+
         GoogleSignInOptions signInOptions =
                 new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN)
                         .requestScopes(Games.SCOPE_GAMES, Games.SCOPE_GAMES_LITE)
                         .build();
-
 
 
         signInClient = GoogleSignIn.getClient(MainmenuActivity.this, signInOptions);
@@ -1029,11 +1017,20 @@ public class MainmenuActivity extends AppCompatActivity  {
     private void showByeScreen() {
 
 
-        mainmenu_layout.setVisibility(View.GONE);
-        byebyeLayout.setVisibility(View.VISIBLE);
+        View view = getLayoutInflater().inflate(R.layout.alert_bye_layout, null);
 
-        AppCompatButton appcikisBtn = findViewById(R.id.appcikisBtn);
-        AppCompatButton rateBtn = findViewById(R.id.rateBtn);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setView(view);
+        alert_Exit = builder.create();
+        alert_Exit.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        alert_Exit.setView(view);
+        alert_Exit.show();
+        alert_Exit.setCancelable(true);
+
+
+
+        AppCompatButton appcikisBtn = view.findViewById(R.id.appcikisBtn);
+        AppCompatButton rateBtn = view.findViewById(R.id.rateBtn);
 
 
         if (sharedPrefManager.getBooleanFromSP("rateclick", false)) {
@@ -1092,9 +1089,7 @@ public class MainmenuActivity extends AppCompatActivity  {
     public void onBackPressed() {
 
 
-        if (byebyeLayout.getVisibility() == View.VISIBLE) {
-            exitApp();
-        } else if (charchooselayout.getVisibility() == View.VISIBLE) {
+        if (charchooselayout.getVisibility() == View.VISIBLE) {
             fadeIn_fadeOut_Animation(mainmenu_layout, charchooselayout);
 
         } else if (statslayout.getVisibility() == View.VISIBLE) {
@@ -1146,13 +1141,12 @@ public class MainmenuActivity extends AppCompatActivity  {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             if (result.isSuccess()) {
 
-                signedInAccount = result.getSignInAccount();
+                GoogleSignInAccount signedInAccount = result.getSignInAccount();
                 // The signed in account is stored in the result.
-                Log.i("checkSign", "Signed");
+                Log.i("checkSign", "Signed Result");
 
                 GamesClient gamesClient = Games.getGamesClient(getApplicationContext(), GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this));
                 gamesClient.setViewForPopups(getWindow().getDecorView().findViewById(android.R.id.content));
-
                 gamesClient.setGravityForPopups(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
 
                 updateLeaderboards();

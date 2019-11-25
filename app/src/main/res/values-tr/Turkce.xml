@@ -54,7 +54,7 @@
     <string name="simetrysoru">Sol tarafta gösterilen şeklin simetriğini, simetri eksenine göre sağ tarafa çiziniz.</string>
     <string name="questionleft">soru</string>
     <string name="quittoast">Çıkmak için Testi Bitir butonuna dokunun!</string>
-    <string name="simetry">simetri</string>
+    <string name="konularsimetry">simetri</string>
     <string name="rateapp">Uygulamamı beğendiyseniz tıklayarak 5 yıldız verebilirsiniz! Daha iyi uygulamalar yapmak için en büyük motivasyon kaynağım yapacağınız yorumlardır! Teşekkürler!</string>
     <string name="bolumbasari">Başarı: %</string>
     <string name="backtokonular">geri</string>

@@ -94,12 +94,6 @@
         <activity android:name=".RitmiksaymaActivity"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".CarpmaActivity"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name="com.smartkids.akillicocuklar2.BolmeActivity"
-            android:screenOrientation="portrait"/>
-
         <activity android:name=".BuyukKucukActivity"
             android:screenOrientation="portrait"/>
 

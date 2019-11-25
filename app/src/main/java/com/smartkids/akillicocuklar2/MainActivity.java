@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                             .requestScopes(Games.SCOPE_GAMES, Games.SCOPE_GAMES_LITE)
                             .build();
             GoogleSignInClient signInClient = GoogleSignIn.getClient(MainActivity.this, signInOptions);
-            signInClient.signOut();
+         //   signInClient.signOut();
         }
 
 

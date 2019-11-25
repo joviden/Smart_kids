@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/alert_results_height"
+    android:background="@drawable/cerceve_alert_dialog">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/alert_results_height"
+        android:visibility="visible">
+
+
+
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_horizontala52"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.52" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_horizontala85"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.85" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_horizontala87"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.87" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_verticala05"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.05" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_vertical15c"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.30" />
+
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_vertical85c"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.70" />
+
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_verticala95"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.95" />
+
+
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/gifBye"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/gif_bye"
+            app:layout_constraintBottom_toTopOf="@id/rateBtn"
+            app:layout_constraintDimensionRatio="W,1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/rateBtn"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/siklarclicked"
+            android:onClick="rateapp"
+            android:text="@string/rateapp"
+            android:textAllCaps="false"
+            android:visibility="visible"
+            android:textSize="@dimen/text_normal"
+            app:layout_constraintTop_toTopOf="@id/guideline_horizontala52"
+            app:layout_constraintBottom_toBottomOf="@id/guideline_horizontala85"
+            app:layout_constraintEnd_toEndOf="@id/guideline_verticala95"
+            app:layout_constraintStart_toStartOf="@id/guideline_verticala05" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/appcikisBtn"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/hatalisik"
+            android:fontFamily="@font/comic"
+            android:onClick="appcikis"
+            android:text="@string/exitapp"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_normal"
+            android:textStyle="bold"
+            app:layout_constraintDimensionRatio="W,1:3.6"
+            app:layout_constraintEnd_toEndOf="@id/guideline_vertical85c"
+            app:layout_constraintStart_toStartOf="@id/guideline_vertical15c"
+            app:layout_constraintTop_toBottomOf="@id/guideline_horizontala87"/>
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

@@ -9,9 +9,14 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -24,9 +29,12 @@ import java.util.Random;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.InterstitialAd;
+import com.ramotion.fluidslider.FluidSlider;
+import com.smartkids.akillicocuklar2.utils.Constants;
 
 /**
  * Created by erdem.salgin on 12.12.2017.
@@ -36,6 +44,10 @@ public class RitmiksaymaActivity extends AppCompatActivity {
 
     private AdView mAdView;
     private InterstitialAd mInterstitialAd;
+    private FluidSlider fluidSlider;
+
+    private AppCompatButton sayi1Btn,sayi2Btn,sayi3Btn,sayi4Btn,sayi5Btn;
+
 
 
     TextView sayi1View,sayi2View,sayi3View,sayi4View,sayi5View,sayi6View,cevapView,skorTxv,dogruView,yanlisView,sorusayisiView,soruView,puanView,bossayisi;
@@ -53,46 +65,28 @@ public class RitmiksaymaActivity extends AppCompatActivity {
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.ritmiklayout);
-        RelativeLayout sorugovde = (RelativeLayout) findViewById(R.id.sorugovdelayout);
+        setContentView(R.layout.ritmik_oruntu_layout);
+
+        createAds();
+        fluidSlider = findViewById(R.id.fluidSlider);
+
+        sayi1View = findViewById(R.id.nmb1Btn);
+        sayi2View = findViewById(R.id.nmb2Btn);
+        sayi3View = findViewById(R.id.nmb3Btn);
+        sayi4View = findViewById(R.id.nmb4Btn);
+        sayi5View = findViewById(R.id.nmb5Btn);
+
+
+
+
+
+       /* RelativeLayout sorugovde = (RelativeLayout) findViewById(R.id.sorugovdelayout);
         LinearLayout sonuclar = (LinearLayout)findViewById(R.id.sonuclarlayout);
 
         sorugovde.setVisibility(View.VISIBLE);
         sonuclar.setVisibility(View.GONE);
-/////////////////////reklamlar////////////////////////////
 
 
-        MobileAds.initialize(this, "ca-app-pub-4100535460120599~1018273710");
-        mAdView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
-
-        mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-4100535460120599/6760445164");
-        mInterstitialAd.loadAd(new AdRequest.Builder().build());
-
-
-
-        mInterstitialAd.setAdListener(new AdListener() {
-            @Override
-            public void onAdClosed() {
-                // Load the next interstitial.
-                mInterstitialAd.loadAd(new AdRequest.Builder().build());
-            }
-
-        });
-
-
-
-        ///////////////////////reklamlar/////////////////////////////
-
-        sayi1View = (TextView)findViewById(R.id.sayi1Txtv);
-        sayi2View = (TextView)findViewById(R.id.sayi2Txtv);
-        sayi3View = (TextView)findViewById(R.id.sayi3Txtv);
-        sayi4View = (TextView)findViewById(R.id.sayi4Txtv);
-        sayi5View = (TextView)findViewById(R.id.sayi5Txtv);
-        sayi6View = (TextView)findViewById(R.id.sayi6Txtv);
-        cevapView = (TextView)findViewById(R.id.cevapTxtv);
 
         soruView = (TextView)findViewById(R.id.sorunumarasıTxtv);
         soruView.setText(getString(R.string.questionleft) +" 1");
@@ -128,7 +122,7 @@ public class RitmiksaymaActivity extends AppCompatActivity {
 
 
          answer = Integer.valueOf(dizi.get(3));
-         //Log.i("dogrucevap",answer.toString());
+         //Log.i("dogrucevap",answer.toString());*/
     }
     //soru bitti
 
@@ -549,6 +543,53 @@ public class RitmiksaymaActivity extends AppCompatActivity {
         System.gc();
 
 
+    }
+
+    private AdSize getAdSize() {
+        // Step 2 - Determine the screen width (less decorations) to use for the ad width.
+        Display display = getWindowManager().getDefaultDisplay();
+        DisplayMetrics outMetrics = new DisplayMetrics();
+        display.getMetrics(outMetrics);
+
+        float widthPixels = outMetrics.widthPixels;
+        float density = outMetrics.density;
+
+        int adWidth = (int) (widthPixels / density);
+
+        // Step 3 - Get adaptive ad size and return for setting on the ad view.
+        return AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(this, adWidth);
+    }
+
+    private void createAds() {
+
+        MobileAds.initialize(this, Constants.adMobId);
+
+        FrameLayout ad_container = findViewById(R.id.ad_container);
+        mAdView = new AdView(this);
+        mAdView.setAdUnitId(Constants.bannerTestId);  //DEGISTIR
+        ad_container.addView(mAdView);
+
+
+        mAdView.setAdSize(getAdSize());
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        if (mAdView != null) {
+            mAdView.loadAd(adRequest);
+        }
+
+        mInterstitialAd = new InterstitialAd(this);
+        // mInterstitialAd.setAdUnitId(Constants.interstitialId);  DEGISTIR
+        mInterstitialAd.setAdUnitId(Constants.interstitialTestId);
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+
+        mInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdClosed() {
+                // Load the next interstitial.
+                mInterstitialAd.loadAd(new AdRequest.Builder().build());
+            }
+
+        });
     }
 
 
