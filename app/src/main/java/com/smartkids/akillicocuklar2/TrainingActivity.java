@@ -42,7 +42,7 @@ public class TrainingActivity extends AppCompatActivity {
     private List<Object> trainingList;
     private TrainingListAdapter trainingListAdapter2;
 
-    private int success_summation, success_extraction, success_division, success_multiplication;
+    private int success_summation, success_extraction, success_division, success_multiplication, success_ritmik,success_simetri,success_buyuk_kucuk;
 
 
     @Override
@@ -78,6 +78,15 @@ public class TrainingActivity extends AppCompatActivity {
 
         success_division = Math.round(sharedPrefManager.getIntegerFromSP(getString(R.string.konularbolme) + "dogru", 0) * 100) /
                 (sharedPrefManager.getIntegerFromSP(getString(R.string.konularbolme) + "soru", 1));
+
+        success_ritmik = Math.round(sharedPrefManager.getIntegerFromSP(getString(R.string.konularritmik) + "dogru", 0) * 100) /
+                (sharedPrefManager.getIntegerFromSP(getString(R.string.konularritmik) + "soru", 1));
+
+        success_buyuk_kucuk = Math.round(sharedPrefManager.getIntegerFromSP(getString(R.string.konularbuyukkucuk) + "dogru", 0) * 100) /
+                (sharedPrefManager.getIntegerFromSP(getString(R.string.konularbuyukkucuk) + "soru", 1));
+
+        success_simetri = Math.round(sharedPrefManager.getIntegerFromSP(getString(R.string.konularsimetry) + "dogru", 0) * 100) /
+                (sharedPrefManager.getIntegerFromSP(getString(R.string.konularsimetry) + "soru", 1));
 
 
     }
@@ -119,7 +128,7 @@ public class TrainingActivity extends AppCompatActivity {
             trainingList.add(new Training(getString(R.string.konularbolme), success_division, R.drawable.icon_mental));
             trainingList.add(new Training(getString(R.string.konularcarpma), success_multiplication, R.drawable.icon_mental));
         } else {
-            trainingList.add(new Training(getString(R.string.konularritmik), success_summation, R.drawable.icon_mental));
+            trainingList.add(new Training(getString(R.string.konularritmik), success_ritmik, R.drawable.icon_mental));
             trainingList.add(new Training(getString(R.string.konularbuyukkucuk), success_extraction, R.drawable.icon_mental));
             trainingList.add(new Training(getString(R.string.konularsimetry), success_division, R.drawable.icon_mental));
         }
@@ -138,13 +147,7 @@ public class TrainingActivity extends AppCompatActivity {
 
         training_recycler.setAdapter(trainingListAdapter2);
 
-        /*training_recycler.post(new Runnable() {
-            @Override
-            public void run() {
-                addBannerAds();
-                loadBannerAd(1);
-            }
-        });*/
+
 
 
     }

@@ -11,6 +11,7 @@ android {
         versionCode 23
         versionName "2.3"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
        
     }
     lintOptions {
@@ -50,6 +51,7 @@ dependencies {
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'com.ramotion.fluidslider:fluid-slider:0.3.1'
+    implementation 'com.romandanylyk:pageindicatorview:1.0.3'
 
 
 

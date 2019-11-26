@@ -121,7 +121,7 @@
             app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal30"
             app:layout_constraintDimensionRatio="W,1:8"
             android:rowCount="1"
-            android:columnCount="10">
+            android:columnCount="8">
 
 
             <androidx.appcompat.widget.AppCompatButton
@@ -132,6 +132,7 @@
                 android:layout_row="0"
                 android:layout_column="0"
                 android:layout_columnWeight="1"
+                android:textSize="@dimen/text_oruntu"
                 app:layout_constraintDimensionRatio="H,1:1"/>
 
             <androidx.appcompat.widget.AppCompatButton
@@ -142,6 +143,7 @@
                 android:layout_row="0"
                 android:layout_column="1"
                 android:layout_columnWeight="1"
+                android:textSize="@dimen/text_oruntu"
                 app:layout_constraintDimensionRatio="H,1:1"/>
 
 
@@ -153,6 +155,7 @@
                 android:layout_row="0"
                 android:layout_column="2"
                 android:layout_columnWeight="1"
+                android:textSize="@dimen/text_oruntu"
                 app:layout_constraintDimensionRatio="H,1:1" />
 
 
@@ -164,6 +167,7 @@
                 android:layout_row="0"
                 android:layout_column="3"
                 android:layout_columnWeight="1"
+                android:textSize="@dimen/text_oruntu"
                 app:layout_constraintDimensionRatio="H,1:1" />
 
 
@@ -175,6 +179,7 @@
                 android:layout_row="0"
                 android:layout_column="4"
                 android:layout_columnWeight="1"
+                android:textSize="@dimen/text_oruntu"
                 app:layout_constraintDimensionRatio="H,1:1" />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -185,6 +190,7 @@
                 android:layout_row="0"
                 android:layout_column="5"
                 android:layout_columnWeight="1"
+                android:textSize="@dimen/text_oruntu"
                 app:layout_constraintDimensionRatio="H,1:1"/>
 
             <androidx.appcompat.widget.AppCompatButton
@@ -195,6 +201,7 @@
                 android:layout_row="0"
                 android:layout_column="6"
                 android:layout_columnWeight="1"
+                android:textSize="@dimen/text_oruntu"
                 app:layout_constraintDimensionRatio="H,1:1"/>
 
 
@@ -206,6 +213,7 @@
                 android:layout_row="0"
                 android:layout_column="7"
                 android:layout_columnWeight="1"
+                android:textSize="@dimen/text_oruntu"
                 app:layout_constraintDimensionRatio="H,1:1" />
 
 
@@ -225,7 +233,7 @@
             android:elevation="2dp"
             app:start_text="-"
             app:end_text="+"
-            app:text_size="@dimen/text_normal"
+            app:text_size="@dimen/text_oruntu"
             app:bar_color="@color/iconcolor"
             app:layout_constraintTop_toBottomOf="@id/gridboard"
             app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal60"
@@ -239,7 +247,7 @@
             android:layout_height="0dp"
             android:background="@drawable/cevapbtn"
             android:fontFamily="@font/justsay"
-            android:onClick="tamamla"
+            android:onClick="cevapla"
             android:text="@string/cevapla"
             android:textAllCaps="false"
             android:textSize="@dimen/testibitir"

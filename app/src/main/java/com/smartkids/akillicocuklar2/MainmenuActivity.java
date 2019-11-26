@@ -54,6 +54,7 @@ import com.google.android.gms.games.Games;
 import com.google.android.gms.games.GamesClient;
 import com.google.android.gms.games.LeaderboardsClient;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.rd.PageIndicatorView;
 import com.smartkids.akillicocuklar2.adapters.CharChooseAdapter;
 import com.smartkids.akillicocuklar2.adapters.KonularPagerAdapter;
 import com.smartkids.akillicocuklar2.adapters.StatsPagerAdapter;
@@ -80,7 +81,7 @@ public class MainmenuActivity extends AppCompatActivity {
     private List<SmartGames> smartGames;
     private List<Stats> stats;
     private int pagenumber, pagenumberStats;
-    private List<ImageView> dots, dots2;
+    private List<ImageView> dots;
     private LeaderboardsClient mLeaderboardsClient;
     private AlertDialog alert_Exit;
 
@@ -319,8 +320,13 @@ public class MainmenuActivity extends AppCompatActivity {
 
     private void inflateStatsPager() {
 
+
         stats = new ArrayList<>();
-        final List<String> konular = new ArrayList<>(Arrays.asList(getString(R.string.konulartoplama), getString(R.string.konularcikarma), getString(R.string.konularcarpma), getString(R.string.konularbolme)));
+        final List<String> konular = new ArrayList<>(Arrays.asList(getString(R.string.konulartoplama),
+                getString(R.string.konularcikarma),
+                getString(R.string.konularcarpma),
+                getString(R.string.konularbolme),
+                getString(R.string.konularritmik)));
 
         final TextView konubaslik_stats = findViewById(R.id.konubaslik_stats);
 
@@ -347,18 +353,8 @@ public class MainmenuActivity extends AppCompatActivity {
                 sharedPrefManager.getIntegerFromSP("skor_total", 0), R.drawable.icon_mental));
 
 
-        final ImageView dot1 = findViewById(R.id.dot1d);
-        final ImageView dot2 = findViewById(R.id.dot2d);
-        final ImageView dot3 = findViewById(R.id.dot3d);
-        final ImageView dot4 = findViewById(R.id.dot4d);
-        final ImageView dot5 = findViewById(R.id.dot5d);
 
-        dots2 = new ArrayList<>();
-        dots2.add(dot1);
-        dots2.add(dot2);
-        dots2.add(dot3);
-        dots2.add(dot4);
-        dots2.add(dot5);
+
         try {
 
             viewpagerStats = findViewById(R.id.viewpagerStats);
@@ -386,13 +382,6 @@ public class MainmenuActivity extends AppCompatActivity {
 
                     konubaslik_stats.setText(konular.get(position));
 
-                    for (int i = 0; i < stats.size(); i++) {
-                        if (pagenumberStats != i) {
-                            dots2.get(i).setBackgroundResource(R.drawable.dot_unselected);
-                        } else {
-                            dots2.get(i).setBackgroundResource(R.drawable.dot_selected);
-                        }
-                    }
 
 
                 }
@@ -904,29 +893,7 @@ public class MainmenuActivity extends AppCompatActivity {
 
     }
 
-    public void setPageStats(View view) {
 
-        switch (view.getId()) {
-            case R.id.dot1d:
-                viewpagerStats.setCurrentItem(0);
-                break;
-            case R.id.dot2d:
-                viewpagerStats.setCurrentItem(1);
-                break;
-            case R.id.dot3d:
-                viewpagerStats.setCurrentItem(2);
-                break;
-            case R.id.dot4d:
-                viewpagerStats.setCurrentItem(3);
-                break;
-            case R.id.dot5d:
-                viewpagerStats.setCurrentItem(4);
-                break;
-
-        }
-
-
-    }
 
     public void removeads(View view) {
 

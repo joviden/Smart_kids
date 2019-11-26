@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:attrs="http://schemas.android.com/tools"
     android:background="@android:color/holo_orange_dark">
 
     <androidx.constraintlayout.widget.Guideline
@@ -195,6 +195,22 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.10" />
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_vertical85"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.85" />
+
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_vertical15"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.15" />
+
 
 
 
@@ -252,8 +268,8 @@
         <GridLayout
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintEnd_toEndOf="@id/guideline_vertical90"
-            app:layout_constraintStart_toStartOf="@id/guideline_vertical10"
+            app:layout_constraintEnd_toEndOf="@id/guideline_vertical85"
+            app:layout_constraintStart_toStartOf="@id/guideline_vertical15"
             app:layout_constraintTop_toTopOf="@id/guideline_horizontal42"
             app:layout_constraintDimensionRatio="W,1:5"
             android:rowCount="1"
@@ -337,7 +353,7 @@
             app:layout_constraintEnd_toEndOf="@id/guideline_vertical60"
             app:layout_constraintStart_toStartOf="@id/guideline_vertical35"
             app:layout_constraintTop_toTopOf="@id/guideline_horizontal86"
-            app:layout_constraintDimensionRatio="W,1:5"
+            app:layout_constraintDimensionRatio="W,1:6"
             android:rowCount="1"
             android:columnCount="6">
 
@@ -582,82 +598,25 @@
             app:layout_constraintTop_toTopOf="@id/guideline_horizontal15d"
             app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal85d" />
 
-        <GridLayout
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+
+        <com.rd.PageIndicatorView
+            android:id="@+id/pageIndicatorView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            app:piv_animationType="worm"
+            app:piv_dynamicCount="true"
+            app:piv_interactiveAnimation="true"
+            app:piv_selectedColor="@color/yesil"
+            app:piv_unselectedColor="@color/white"
+            app:piv_viewPager="@id/viewpagerStats"
+            attrs:piv_radius="10dp"
             app:layout_constraintEnd_toEndOf="@id/guideline_vertical65d"
             app:layout_constraintStart_toStartOf="@id/guideline_vertical35d"
             app:layout_constraintTop_toTopOf="@id/guideline_horizontal87d"
-            app:layout_constraintDimensionRatio="W,1:5"
-            android:rowCount="1"
-            android:columnCount="5">
-
-            <ImageView
-                android:id="@+id/dot1d"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/dot_selected"
-                android:contentDescription="@string/content_description"
-                android:onClick="setPageStats"
-                android:layout_row="0"
-                android:layout_column="0"
-                android:layout_columnWeight="1"
-                app:layout_constraintDimensionRatio="H,1:1" />
+            app:layout_constraintDimensionRatio="W,1:5"/>
 
 
-            <ImageView
-                android:id="@+id/dot2d"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/dot_unselected"
-                android:contentDescription="@string/content_description"
-                android:onClick="setPageStats"
-                app:layout_constraintDimensionRatio="H,1:1"
-                android:layout_row="0"
-                android:layout_column="1"
-                android:layout_columnWeight="1"/>
-
-
-            <ImageView
-                android:id="@+id/dot3d"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/dot_unselected"
-                android:contentDescription="@string/content_description"
-                android:onClick="setPageStats"
-                app:layout_constraintDimensionRatio="H,1:1"
-                android:layout_row="0"
-                android:layout_column="2"
-                android:layout_columnWeight="1"/>
-
-
-            <ImageView
-                android:id="@+id/dot4d"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/dot_unselected"
-                android:contentDescription="@string/content_description"
-                android:onClick="setPageStats"
-                app:layout_constraintDimensionRatio="H,1:1"
-                android:layout_row="0"
-                android:layout_column="3"
-                android:layout_columnWeight="1"/>
-
-
-            <ImageView
-                android:id="@+id/dot5d"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/dot_unselected"
-                android:contentDescription="@string/content_description"
-                android:onClick="setPageStats"
-                app:layout_constraintDimensionRatio="H,1:1"
-                android:layout_row="0"
-                android:layout_column="4"
-                android:layout_columnWeight="1"/>
-
-
-        </GridLayout>
 
 
 
