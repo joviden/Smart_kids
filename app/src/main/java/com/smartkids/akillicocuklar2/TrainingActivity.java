@@ -67,26 +67,60 @@ public class TrainingActivity extends AppCompatActivity {
 
     private void getScores() {
 
-        success_summation = Math.round(sharedPrefManager.getIntegerFromSP(getString(R.string.konulartoplama) + "dogru", 0) * 100) /
-                                                                (sharedPrefManager.getIntegerFromSP(getString(R.string.konulartoplama) + "soru", 1));
+        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konulartoplama) + "soru", 1)!=0){
+            success_summation = Math.round(sharedPrefManager.getIntegerFromSP(getString(R.string.konulartoplama) + "dogru", 0) * 100) /
+                    (sharedPrefManager.getIntegerFromSP(getString(R.string.konulartoplama) + "soru", 1));
+        }else {
+            success_summation = 0;
+        }
 
-        success_extraction = Math.round(sharedPrefManager.getIntegerFromSP(getString(R.string.konularcikarma) + "dogru", 0) * 100) /
-                (sharedPrefManager.getIntegerFromSP(getString(R.string.konularcikarma) + "soru", 1));
 
-        success_multiplication = Math.round(sharedPrefManager.getIntegerFromSP(getString(R.string.konularcarpma) + "dogru", 0) * 100) /
-                (sharedPrefManager.getIntegerFromSP(getString(R.string.konularcarpma) + "soru", 1));
+        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularcikarma) + "soru", 1)!=0){
+            success_extraction = Math.round(sharedPrefManager.getIntegerFromSP(getString(R.string.konularcikarma) + "dogru", 0) * 100) /
+                    (sharedPrefManager.getIntegerFromSP(getString(R.string.konularcikarma) + "soru", 1));
+        }else {
+            success_extraction = 0;
+        }
 
-        success_division = Math.round(sharedPrefManager.getIntegerFromSP(getString(R.string.konularbolme) + "dogru", 0) * 100) /
-                (sharedPrefManager.getIntegerFromSP(getString(R.string.konularbolme) + "soru", 1));
+        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularcarpma) + "soru", 1)!=0){
+            success_multiplication = Math.round(sharedPrefManager.getIntegerFromSP(getString(R.string.konularcarpma) + "dogru", 0) * 100) /
+                    (sharedPrefManager.getIntegerFromSP(getString(R.string.konularcarpma) + "soru", 1));
+        }else {
+            success_multiplication = 0;
+        }
 
-        success_ritmik = Math.round(sharedPrefManager.getIntegerFromSP(getString(R.string.konularritmik) + "dogru", 0) * 100) /
-                (sharedPrefManager.getIntegerFromSP(getString(R.string.konularritmik) + "soru", 1));
+        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularbolme) + "soru", 1)!=0){
+            success_division = Math.round(sharedPrefManager.getIntegerFromSP(getString(R.string.konularbolme) + "dogru", 0) * 100) /
+                    (sharedPrefManager.getIntegerFromSP(getString(R.string.konularbolme) + "soru", 1));
+        }else {
+            success_division = 0;
+        }
 
-        success_buyuk_kucuk = Math.round(sharedPrefManager.getIntegerFromSP(getString(R.string.konularbuyukkucuk) + "dogru", 0) * 100) /
-                (sharedPrefManager.getIntegerFromSP(getString(R.string.konularbuyukkucuk) + "soru", 1));
+        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularritmik) + "soru", 1)!=0){
+            success_ritmik = Math.round(sharedPrefManager.getIntegerFromSP(getString(R.string.konularritmik) + "dogru", 0) * 100) /
+                    (sharedPrefManager.getIntegerFromSP(getString(R.string.konularritmik) + "soru", 1));
+        }else {
+            success_ritmik = 0;
+        }
 
-        success_simetri = Math.round(sharedPrefManager.getIntegerFromSP(getString(R.string.konularsimetry) + "dogru", 0) * 100) /
-                (sharedPrefManager.getIntegerFromSP(getString(R.string.konularsimetry) + "soru", 1));
+        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularbuyukkucuk) + "soru", 1)!=0){
+            success_buyuk_kucuk = Math.round(sharedPrefManager.getIntegerFromSP(getString(R.string.konularbuyukkucuk) + "dogru", 0) * 100) /
+                    (sharedPrefManager.getIntegerFromSP(getString(R.string.konularbuyukkucuk) + "soru", 1));
+        }else {
+            success_buyuk_kucuk = 0;
+        }
+
+        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularsimetry) + "soru", 1)!=0){
+            success_simetri = Math.round(sharedPrefManager.getIntegerFromSP(getString(R.string.konularsimetry) + "dogru", 0) * 100) /
+                    (sharedPrefManager.getIntegerFromSP(getString(R.string.konularsimetry) + "soru", 1));
+        }else {
+            success_simetri = 0;
+        }
+
+
+
+
+
 
 
     }

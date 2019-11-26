@@ -3,12 +3,30 @@
     android:shape="rectangle">
     <gradient
         android:angle="90"
-        android:endColor="#61ffe3"
-        android:startColor="#00bd9b" />
-    <corners android:radius="20dp" />
+        android:endColor="@color/yesil"
+        android:startColor="@color/yesil" />
+    <corners android:radius="8dp" />
     <stroke
         android:width="2dp"
         android:color="#000" />
 
 
 </shape>
+
+
+
+
+<!--
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+android:shape="rectangle">
+<gradient
+    android:angle="90"
+    android:endColor="#61ffe3"
+    android:startColor="#00bd9b" />
+<corners android:radius="8dp" />
+<stroke
+    android:width="2dp"
+    android:color="#000" />
+
+
+</shape>-->

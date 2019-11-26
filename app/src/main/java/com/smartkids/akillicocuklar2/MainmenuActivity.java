@@ -143,7 +143,7 @@ public class MainmenuActivity extends AppCompatActivity {
             Log.i("checkSign", "Not null");
         } else {
             Log.i("checkSign", " null");
-            connectGoogleGames();
+            //connectGoogleGames();
 
         }
 

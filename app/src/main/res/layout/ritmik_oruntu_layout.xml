@@ -8,12 +8,7 @@
 
 
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_vertical05"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.02" />
+
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -40,12 +35,7 @@
         app:layout_constraintGuide_percent="0.14" />
 
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_vertical98"
-        android:layout_width="1dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.98" />
+
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/sorunumarasıBtn"
@@ -53,11 +43,12 @@
         android:layout_height="0dp"
         android:gravity="center_horizontal|center_vertical"
         android:text="Soru 1"
-        android:textColor="@color/textdark"
+        android:textColor="@color/light_black"
         android:textSize="@dimen/sorunumarasi"
         android:background="@color/transparent"
+        android:fontFamily="@font/mclaren"
+        android:textAllCaps="false"
         android:textStyle="bold"
-        android:fontFamily="@font/justsay"
         app:layout_constraintTop_toTopOf="@id/guideline_horizontal03"
         app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal14"/>
 
@@ -66,12 +57,24 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/soru_main"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/ad_container"
-        app:layout_constraintEnd_toEndOf="@id/guideline_vertical98"
-        app:layout_constraintStart_toStartOf="@id/guideline_vertical05"
         app:layout_constraintTop_toBottomOf="@id/sorunumarasıBtn">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_vertical02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.02" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_vertical98"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.98" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_horizontal10"
@@ -101,6 +104,20 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.70" />
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_vertical30"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.30" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_vertical70"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.70" />
+
 
 
 
@@ -113,116 +130,129 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.92" />
 
-        <GridLayout
-            android:id="@+id/gridboard"
-            android:layout_width="match_parent"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/box_container"
+            android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintTop_toTopOf="@id/guideline_horizontal10"
             app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal30"
-            app:layout_constraintDimensionRatio="W,1:8"
-            android:rowCount="1"
-            android:columnCount="8">
+            app:layout_constraintStart_toStartOf="@id/guideline_vertical02"
+            app:layout_constraintEnd_toEndOf="@id/guideline_vertical98">
+
+            <GridLayout
+                android:id="@+id/gridboard"
+                android:layout_width="match_parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="W,1:8"
+                android:rowCount="1"
+                android:columnCount="8">
 
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/nmb1Btn"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/ritmik_circle"
-                android:layout_row="0"
-                android:layout_column="0"
-                android:layout_columnWeight="1"
-                android:textSize="@dimen/text_oruntu"
-                app:layout_constraintDimensionRatio="H,1:1"/>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/nmb1Btn"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/ritmik_circle"
+                    android:layout_row="0"
+                    android:layout_column="0"
+                    android:layout_columnWeight="1"
+                    android:textSize="@dimen/text_oruntu"
+                    app:layout_constraintDimensionRatio="H,1:1"/>
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/nmb2Btn"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/ritmik_circle"
-                android:layout_row="0"
-                android:layout_column="1"
-                android:layout_columnWeight="1"
-                android:textSize="@dimen/text_oruntu"
-                app:layout_constraintDimensionRatio="H,1:1"/>
-
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/nmb3Btn"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/ritmik_circle"
-                android:layout_row="0"
-                android:layout_column="2"
-                android:layout_columnWeight="1"
-                android:textSize="@dimen/text_oruntu"
-                app:layout_constraintDimensionRatio="H,1:1" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/nmb2Btn"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/ritmik_circle"
+                    android:layout_row="0"
+                    android:layout_column="1"
+                    android:layout_columnWeight="1"
+                    android:textSize="@dimen/text_oruntu"
+                    app:layout_constraintDimensionRatio="H,1:1"/>
 
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/nmb4Btn"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/ritmik_circle"
-                android:layout_row="0"
-                android:layout_column="3"
-                android:layout_columnWeight="1"
-                android:textSize="@dimen/text_oruntu"
-                app:layout_constraintDimensionRatio="H,1:1" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/nmb3Btn"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/ritmik_circle"
+                    android:layout_row="0"
+                    android:layout_column="2"
+                    android:layout_columnWeight="1"
+                    android:textSize="@dimen/text_oruntu"
+                    app:layout_constraintDimensionRatio="H,1:1" />
 
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/nmb5Btn"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/ritmik_circle"
-                android:layout_row="0"
-                android:layout_column="4"
-                android:layout_columnWeight="1"
-                android:textSize="@dimen/text_oruntu"
-                app:layout_constraintDimensionRatio="H,1:1" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/nmb6Btn"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/ritmik_circle"
-                android:layout_row="0"
-                android:layout_column="5"
-                android:layout_columnWeight="1"
-                android:textSize="@dimen/text_oruntu"
-                app:layout_constraintDimensionRatio="H,1:1"/>
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/nmb7Btn"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/ritmik_circle"
-                android:layout_row="0"
-                android:layout_column="6"
-                android:layout_columnWeight="1"
-                android:textSize="@dimen/text_oruntu"
-                app:layout_constraintDimensionRatio="H,1:1"/>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/nmb4Btn"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/ritmik_circle"
+                    android:layout_row="0"
+                    android:layout_column="3"
+                    android:layout_columnWeight="1"
+                    android:textSize="@dimen/text_oruntu"
+                    app:layout_constraintDimensionRatio="H,1:1" />
 
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/nmb8Btn"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/ritmik_circle"
-                android:layout_row="0"
-                android:layout_column="7"
-                android:layout_columnWeight="1"
-                android:textSize="@dimen/text_oruntu"
-                app:layout_constraintDimensionRatio="H,1:1" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/nmb5Btn"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/ritmik_circle"
+                    android:layout_row="0"
+                    android:layout_column="4"
+                    android:layout_columnWeight="1"
+                    android:textSize="@dimen/text_oruntu"
+                    app:layout_constraintDimensionRatio="H,1:1" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/nmb6Btn"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/ritmik_circle"
+                    android:layout_row="0"
+                    android:layout_column="5"
+                    android:layout_columnWeight="1"
+                    android:textSize="@dimen/text_oruntu"
+                    app:layout_constraintDimensionRatio="H,1:1"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/nmb7Btn"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/ritmik_circle"
+                    android:layout_row="0"
+                    android:layout_column="6"
+                    android:layout_columnWeight="1"
+                    android:textSize="@dimen/text_oruntu"
+                    app:layout_constraintDimensionRatio="H,1:1"/>
 
 
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/nmb8Btn"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/ritmik_circle"
+                    android:layout_row="0"
+                    android:layout_column="7"
+                    android:layout_columnWeight="1"
+                    android:textSize="@dimen/text_oruntu"
+                    app:layout_constraintDimensionRatio="H,1:1" />
 
 
 
 
 
-        </GridLayout>
+
+
+            </GridLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 
 
@@ -234,8 +264,8 @@
             app:start_text="-"
             app:end_text="+"
             app:text_size="@dimen/text_oruntu"
-            app:bar_color="@color/iconcolor"
-            app:layout_constraintTop_toBottomOf="@id/gridboard"
+            app:bar_color="@color/light_blue_plt"
+            app:layout_constraintTop_toBottomOf="@id/box_container"
             app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal60"
             app:duration="@android:integer/config_mediumAnimTime"
             tools:targetApi="lollipop" />
@@ -246,17 +276,17 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@drawable/cevapbtn"
-            android:fontFamily="@font/justsay"
+            android:fontFamily="@font/mclaren"
+            android:textColor="@color/light_black"
+            android:textStyle="bold"
             android:onClick="cevapla"
             android:text="@string/cevapla"
             android:textAllCaps="false"
-            android:textSize="@dimen/testibitir"
-            android:textStyle="bold"
-            app:layout_constraintDimensionRatio="W,3.2:1"
+            android:textSize="@dimen/anwerbtn"
+            app:layout_constraintDimensionRatio="3:1"
             app:layout_constraintTop_toBottomOf="@id/fluidSlider"
-            app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal70"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintEnd_toEndOf="@id/guideline_vertical70"
+            app:layout_constraintStart_toStartOf="@id/guideline_vertical30" />
 
 
 
@@ -271,8 +301,8 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guideline_vertical98"
+            app:layout_constraintStart_toStartOf="@id/guideline_vertical02"
             app:layout_constraintTop_toBottomOf="@id/guideline_horizontal88b">
 
             <androidx.constraintlayout.widget.Guideline
@@ -323,11 +353,12 @@
                 android:layout_height="0dp"
                 android:layout_centerVertical="true"
                 android:background="@drawable/nextbuttongroup"
-                android:fontFamily="@font/comic"
                 android:onClick="tamamla"
                 android:text="@string/testibitir"
                 android:textAllCaps="false"
-                android:textSize="@dimen/testibitir"
+                android:textSize="@dimen/nextquestion"
+                android:textColor="@color/dahakirlibeyaz"
+                android:fontFamily="@font/mclaren"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/guideline_vertical35d"
@@ -339,12 +370,11 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/siklarclicked"
-                android:fontFamily="@font/comic"
-                android:text="@string/skor"
+                android:background="@drawable/btn_score"
+                android:text="200"
                 android:textAlignment="center"
                 android:textAllCaps="false"
-                android:textColor="@android:color/black"
+                android:textColor="@color/black"
                 android:textSize="@dimen/skorpuanı"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -358,12 +388,13 @@
                 android:layout_height="0dp"
                 android:layout_centerVertical="true"
                 android:background="@drawable/nextbuttongroup"
-                android:fontFamily="@font/comic"
                 android:onClick="nextquestion"
+                android:fontFamily="@font/mclaren"
                 android:text="@string/sonrakisoru"
                 android:textAllCaps="false"
                 android:textSize="@dimen/nextquestion"
                 android:textStyle="bold"
+                android:textColor="@color/dahakirlibeyaz"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/guideline_vertical65d"

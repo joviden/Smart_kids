@@ -68,7 +68,7 @@ public class RitmiksaymaActivity extends AppCompatActivity {
     private AppCompatButton sayi1Btn, sayi2Btn, sayi3Btn, sayi4Btn, sayi5Btn, sayi6Btn, sayi7Btn, sayi8Btn,skorBtn,tamamlaBtn, sorunumarasiBtn, nextquestionBtn,answerBtn;
     private List<AppCompatButton> numberBtns = new ArrayList<>();
     private int dogrucevap;
-    private ConstraintLayout soru_main;
+    private ConstraintLayout soru_main,box_container;
     private int hangiKutu;
     private AlertDialog alertDialog;
     private SharedPrefManager sharedPrefManager;
@@ -103,6 +103,7 @@ public class RitmiksaymaActivity extends AppCompatActivity {
         sayi8Btn = findViewById(R.id.nmb8Btn);
         skorBtn = findViewById(R.id.skorBtn);
         sorunumarasiBtn = findViewById(R.id.sorunumarasıBtn);
+        box_container = findViewById(R.id.box_container);
         nextquestionBtn = findViewById(R.id.nextquestionBtn);
         tamamlaBtn = findViewById(R.id.tamamlaBtn);
         soru_main = findViewById(R.id.soru_main);
@@ -276,7 +277,7 @@ public class RitmiksaymaActivity extends AppCompatActivity {
         });
 
 
-        soru_main.startAnimation(AnimationUtils.loadAnimation(RitmiksaymaActivity.this, R.anim.slide_in));
+        box_container.startAnimation(AnimationUtils.loadAnimation(RitmiksaymaActivity.this, R.anim.slide_in));
 
         try {
             final MediaPlayer gecis = MediaPlayer.create(this, R.raw.sorugecisi);

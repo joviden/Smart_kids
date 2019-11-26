@@ -118,9 +118,10 @@
             app:layout_constraintStart_toStartOf="@id/guideline_vertical05"
             app:layout_constraintEnd_toEndOf="@id/guideline_vertical98"
             android:background="@drawable/siklar"
-            android:fontFamily="@font/justsay"
-            android:text="SCORES"
+            android:fontFamily="@font/mclaren"
+            android:text="Scores"
             android:textAllCaps="false"
+            android:textColor="@color/light_black"
             android:textSize="@dimen/header_biggest"
             android:textStyle="bold" />
 
@@ -193,7 +194,7 @@
                     android:textSize="@dimen/text_normal"
                     android:textStyle="bold"
                     android:background="@android:color/transparent"
-                    android:fontFamily="@font/comic"
+                    android:fontFamily="@font/mclaren"
                     android:textAllCaps="false"/>
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -205,7 +206,7 @@
                     android:textSize="@dimen/text_normal"
                     android:textStyle="bold"
                     android:background="@android:color/transparent"
-                    android:fontFamily="@font/comic"
+                    android:fontFamily="@font/mclaren"
                     android:textAllCaps="false"/>
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -217,7 +218,7 @@
                     android:textSize="@dimen/text_normal"
                     android:textStyle="bold"
                     android:background="@android:color/transparent"
-                    android:fontFamily="@font/comic"
+                    android:fontFamily="@font/mclaren"
                     android:textAllCaps="false"/>
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -229,7 +230,7 @@
                     android:textSize="@dimen/text_normal"
                     android:textStyle="bold"
                     android:background="@android:color/transparent"
-                    android:fontFamily="@font/comic"
+                    android:fontFamily="@font/mclaren"
                     android:textAllCaps="false"/>
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -239,7 +240,7 @@
                     android:gravity="center_vertical"
                     android:text="@string/totalpoints"
                     android:textSize="@dimen/text_normal"
-                    android:fontFamily="@font/comic"
+                    android:fontFamily="@font/mclaren"
                     android:textStyle="bold"
                     android:background="@android:color/transparent"
                     android:textAllCaps="false"/>
@@ -266,7 +267,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:background="@android:color/transparent"
-                android:fontFamily="@font/comic"
+                android:fontFamily="@font/mclaren"
                 android:text="%100"
                 android:textAlignment="center"
                 android:textSize="@dimen/text_normal"
@@ -298,8 +299,8 @@
             app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal99"
             app:layout_constraintStart_toStartOf="@id/guideline_vertical10"
             app:layout_constraintEnd_toEndOf="@id/guideline_vertical90"
-            android:background="@drawable/siklarclicked"
-            android:fontFamily="@font/comic"
+            android:background="@drawable/cevapbtn"
+            android:fontFamily="@font/mclaren"
             android:text="@string/backtokonular"
             android:textAllCaps="false"
             android:textSize="@dimen/text_normal"

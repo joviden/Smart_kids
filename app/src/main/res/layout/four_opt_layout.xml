@@ -52,11 +52,12 @@
         android:layout_height="0dp"
         android:gravity="center_horizontal|center_vertical"
         android:text="Soru 1"
-        android:textColor="@color/textdark"
+        android:textColor="@color/light_black"
         android:textSize="@dimen/sorunumarasi"
         android:background="@color/transparent"
+        android:fontFamily="@font/mclaren"
+        android:textAllCaps="false"
         android:textStyle="bold"
-        android:fontFamily="@font/justsay"
         app:layout_constraintTop_toTopOf="@id/guideline_horizontal03"
         app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal14"/>
 
@@ -105,14 +106,14 @@
             android:layout_width="wrap_content"
             android:layout_height="1dp"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.27" />
+            app:layout_constraintGuide_percent="0.3" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_horizontal40b"
             android:layout_width="wrap_content"
             android:layout_height="1dp"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.40" />
+            app:layout_constraintGuide_percent="0.50" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_horizontal80b"
@@ -171,10 +172,10 @@
                 android:id="@+id/sayi1Btn"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:background="@drawable/edittext"
+                android:background="@drawable/soru_box_background"
                 android:gravity="center_horizontal|center_vertical"
                 android:text="36"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/light_black"
                 android:textSize="@dimen/sorusayilar"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -186,10 +187,10 @@
                 android:id="@+id/sayi2Btn"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:background="@drawable/edittext"
+                android:background="@drawable/soru_box_background"
                 android:gravity="center_horizontal|center_vertical"
                 android:text="36"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/light_black"
                 android:textSize="@dimen/sorusayilar"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -215,6 +216,8 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/siklarlayout"
             android:layout_width="0dp"
@@ -229,7 +232,7 @@
                 android:layout_width="1dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.15" />
+                app:layout_constraintGuide_percent="0.22" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline_vertical45c"
@@ -250,28 +253,28 @@
                 android:layout_width="1dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.85" />
+                app:layout_constraintGuide_percent="0.78" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline_horizontal28c"
                 android:layout_width="1dp"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.28" />
+                app:layout_constraintGuide_percent="0.40" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline_horizontal35c"
                 android:layout_width="1dp"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.35" />
+                app:layout_constraintGuide_percent="0.5" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline_horizontal63c"
                 android:layout_width="1dp"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.63" />
+                app:layout_constraintGuide_percent="0.9" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/sikaBtn"
@@ -280,6 +283,7 @@
                 android:background="@drawable/siklar"
                 android:onClick="cevapla"
                 android:text="18"
+                android:textStyle="bold"
                 android:textSize="@dimen/siklar"
                 app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal28c"
                 app:layout_constraintEnd_toEndOf="@id/guideline_vertical45c"
@@ -293,6 +297,7 @@
                 android:background="@drawable/siklar"
                 android:onClick="cevapla"
                 android:text="18"
+                android:textStyle="bold"
                 android:textSize="@dimen/siklar"
                 app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal28c"
                 app:layout_constraintEnd_toEndOf="@id/guideline_vertical85c"
@@ -306,6 +311,7 @@
                 android:background="@drawable/siklar"
                 android:onClick="cevapla"
                 android:text="18"
+                android:textStyle="bold"
                 android:textSize="@dimen/siklar"
                 app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal63c"
                 app:layout_constraintEnd_toEndOf="@id/guideline_vertical85c"
@@ -319,6 +325,7 @@
                 android:background="@drawable/siklar"
                 android:onClick="cevapla"
                 android:text="18"
+                android:textStyle="bold"
                 android:textSize="@dimen/siklar"
                 app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal63c"
                 app:layout_constraintEnd_toEndOf="@id/guideline_vertical45c"
@@ -385,11 +392,12 @@
                 android:layout_height="0dp"
                 android:layout_centerVertical="true"
                 android:background="@drawable/nextbuttongroup"
-                android:fontFamily="@font/comic"
                 android:onClick="tamamla"
                 android:text="@string/testibitir"
                 android:textAllCaps="false"
-                android:textSize="@dimen/testibitir"
+                android:textSize="@dimen/nextquestion"
+                android:textColor="@color/dahakirlibeyaz"
+                android:fontFamily="@font/mclaren"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/guideline_vertical35d"
@@ -401,12 +409,11 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/siklarclicked"
-                android:fontFamily="@font/comic"
-                android:text="@string/skor"
+                android:background="@drawable/btn_score"
+                android:text="200"
                 android:textAlignment="center"
                 android:textAllCaps="false"
-                android:textColor="@android:color/black"
+                android:textColor="@color/black"
                 android:textSize="@dimen/skorpuanı"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -420,12 +427,13 @@
                 android:layout_height="0dp"
                 android:layout_centerVertical="true"
                 android:background="@drawable/nextbuttongroup"
-                android:fontFamily="@font/comic"
                 android:onClick="nextquestion"
+                android:fontFamily="@font/mclaren"
                 android:text="@string/sonrakisoru"
                 android:textAllCaps="false"
                 android:textSize="@dimen/nextquestion"
                 android:textStyle="bold"
+                android:textColor="@color/dahakirlibeyaz"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/guideline_vertical65d"
