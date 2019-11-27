@@ -7,7 +7,6 @@
     <string name="konularcikarma">soustraction</string>
     <string name="konularcarpma">multiplication</string>
     <string name="konularbolme">division</string>
-    <string name="konularbuyukkucuk">plus / moins</string>
     <string name="questionfordivision">Trouvez la bonne réponse pour la division.</string>
     <string name="totalquestion">Question Totale:</string>
     <string name="rightanswers">Bonnes Réponses:</string>
@@ -24,7 +23,6 @@
     <string name="questionformultipication">Trouvez la bonne réponse pour la multiplication.</string>
     <string name="questionforaddition">Trouvez la bonne réponse pour la sommation.</string>
     <string name="questionforsubtraction">Trouvez la bonne réponse pour la soustraction.</string>
-    <string name="questionforbuyukkucuk">Faites glisser ces nombres dans l ordre décroissant.</string>
     <string name="cevapla">répondre</string>
     <string name="questionforritmik">Remplissez le blanc avec le bon numéro.</string>
     <string name="eksilt">diminution</string>

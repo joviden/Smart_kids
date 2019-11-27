@@ -34,6 +34,8 @@ public class Constants {
 
     public static int ritmik_puan = 75;
 
+    public static int simetri_puan = 75;
+
     public  static List<Integer> levels = new ArrayList<>(Arrays.asList(0, 1000, 3000, 7000, 15000, 30000, 50000, 75000, 100000, 150000,250000,500000));
 
     public static String leaderboard_total = "CgkInciNzooaEAIQGQ";

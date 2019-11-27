@@ -9,13 +9,11 @@
     <string name="konularcarpma">çarpma</string>
     <string name="konularbolme">bölme</string>
     <string name="konularritmik">ritmik sayma</string>
-    <string name="konularbuyukkucuk">büyük küçük</string>
     <string name="konulartekcift">tek / çift </string>
     <string name="questionfordivision">Bölme işleminin sonucu hangisidir?</string>
     <string name="questionformultipication">Çarpma işleminin sonucu hangisidir?</string>
     <string name="questionforaddition">Toplama işleminin sonucu hangisidir?</string>
     <string name="questionforsubtraction">Çıkarma işleminin sonucu hangisidir?</string>
-    <string name="questionforbuyukkucuk">Yukarıdaki sayıları Büyükten Küçüğe taşıyınız.</string>
     <string name="questionforritmik">Boş bırakılan yere hangi sayı gelmelidir?</string>
     <string name="totalquestion">Toplam Soru:</string>
     <string name="rightanswers">Doğru Sayısı:</string>

@@ -12,7 +12,6 @@
     <string name="konularcikarma">subtraction</string>
     <string name="konularcarpma">multiplication</string>
     <string name="konularbolme">division</string>
-    <string name="konularbuyukkucuk">greater/lesser</string>
     <string name="konulartimechallange">time_challange</string>
 
     <string name="questionfordivision">Find the right answer for the division.</string>
@@ -31,7 +30,6 @@
     <string name="questionformultipication">Find the right answer for the  multiplication.</string>
     <string name="questionforaddition">Find the right answer for the  summation.</string>
     <string name="questionforsubtraction">Find the right answer for the  subtraction.</string>
-    <string name="questionforbuyukkucuk">Drag these numbers into Descending order.</string>
     <string name="cevapla">answer</string>
     <string name="questionforritmik">Fill the blank with the correct number.</string>
     <string name="eksilt">decrease</string>

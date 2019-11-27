@@ -95,9 +95,6 @@
         <activity android:name=".RitmiksaymaActivity"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".BuyukKucukActivity"
-            android:screenOrientation="portrait"/>
-
         <activity android:name=".SimetryActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".MainmenuActivity"

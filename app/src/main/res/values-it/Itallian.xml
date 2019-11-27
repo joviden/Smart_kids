@@ -8,7 +8,6 @@
     <string name="konularcarpma">moltiplicazione</string>
     <string name="konularbolme">divisione</string>
     <string name="konularritmik">conteggio ritmico</string>
-    <string name="konularbuyukkucuk">maggiore / minore</string>
     <string name="konulartekcift">dispari/pari</string>
     <string name="questionfordivision">Trova la risposta giusta per la divisione.</string>
     <string name="totalquestion">"Questione Totale: "</string>
@@ -27,7 +26,6 @@
     <string name="questionformultipication">Trova la risposta giusta per la moltiplicazione.</string>
     <string name="questionforaddition">Trova la risposta giusta per la sommatoria.</string>
     <string name="questionforsubtraction">Trova la risposta giusta per la sottrazione.</string>
-    <string name="questionforbuyukkucuk">Trascina questi numeri in ordine decrescente.</string>
     <string name="cevapla">risposta</string>
     <string name="questionforritmik">Riempi lo spazio vuoto con il numero corretto.</string>
     <string name="eksilt">verringern</string>

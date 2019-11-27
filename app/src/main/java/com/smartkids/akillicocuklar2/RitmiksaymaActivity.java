@@ -22,6 +22,7 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LinearInterpolator;
@@ -65,7 +66,7 @@ public class RitmiksaymaActivity extends AppCompatActivity {
     private MediaPlayer dogru_cevap_music, hatali_cevap_music;
     private boolean user_answered;
     private List<Integer> numbers = new ArrayList<>();
-    private AppCompatButton sayi1Btn, sayi2Btn, sayi3Btn, sayi4Btn, sayi5Btn, sayi6Btn, sayi7Btn, sayi8Btn,skorBtn,tamamlaBtn, sorunumarasiBtn, nextquestionBtn,answerBtn;
+    private AppCompatButton sayi1Btn, sayi2Btn, sayi3Btn, sayi4Btn, sayi5Btn, sayi6Btn, sayi7Btn, sayi8Btn,skorBtn,tamamlaBtn, sorunumarasiBtn, nextquestionBtn,answerBtn,ipucuBtn;
     private List<AppCompatButton> numberBtns = new ArrayList<>();
     private int dogrucevap;
     private ConstraintLayout soru_main,box_container;
@@ -108,6 +109,8 @@ public class RitmiksaymaActivity extends AppCompatActivity {
         tamamlaBtn = findViewById(R.id.tamamlaBtn);
         soru_main = findViewById(R.id.soru_main);
         answerBtn = findViewById(R.id.answerBtn);
+        ipucuBtn = findViewById(R.id.ipucuBtn);
+        ipucuBtn.setAlpha(0.0f);
 
         numberBtns.add(sayi1Btn);
         numberBtns.add(sayi2Btn);
@@ -142,6 +145,7 @@ public class RitmiksaymaActivity extends AppCompatActivity {
                 ilksayi = rnd.nextInt(20 - 1) + 1;
                 artis = rnd.nextInt(16 - 1) + 1;
                 numbers.add(ilksayi);
+                ipucuBtn.setText("(a+"+artis+" , a+"+artis+" , a+"+artis+" ...)");
                 for (int i = 0; i < 11; i++) {
                     numbers.add(numbers.get(i) + artis);
                 }
@@ -150,6 +154,7 @@ public class RitmiksaymaActivity extends AppCompatActivity {
             case 1:
                 artis = rnd.nextInt(9 - 1) + 1;
                 ilksayi = 12 * artis;
+                ipucuBtn.setText("(a-"+artis+" , a-"+artis+" , a-"+artis+" ...)");
                 numbers.add(ilksayi);
                 for (int i = 0; i < 11; i++) {
                     numbers.add(numbers.get(i) - artis);
@@ -159,6 +164,7 @@ public class RitmiksaymaActivity extends AppCompatActivity {
             case 2:
                 ilksayi = rnd.nextInt(4 - 1) + 1;
                 numbers.add(ilksayi);
+                ipucuBtn.setText("(ax2 , a+"+ilksayi+" , ax2, a+"+ilksayi+" ...)");
 
                 for (int i = 0; i < 11; i++) {
                     if (i % 2 == 0) {
@@ -174,6 +180,7 @@ public class RitmiksaymaActivity extends AppCompatActivity {
                 artis = rnd.nextInt(5 - 1) + 1;
                 int constant2 = rnd.nextInt(5 - 1) + 1;
                 numbers.add(ilksayi);
+                ipucuBtn.setText("(a+"+(artis+constant2)+" , a-"+artis+" , a+"+(artis+constant2)+" , a-"+artis+" ...)");
                 for (int i = 0; i < 11; i++) {
                     if (i % 2 == 0) {
                         numbers.add(numbers.get(i) + artis + constant2);
@@ -187,6 +194,7 @@ public class RitmiksaymaActivity extends AppCompatActivity {
                 ilksayi = rnd.nextInt(10 - 1) + 1;
                 int constant3 = rnd.nextInt(4 - 1) + 1;
                 numbers.add(ilksayi);
+                ipucuBtn.setText("(a+"+"ix"+constant3+" , a+"+"ix"+constant3+" , a+"+"ix"+constant3+" ...)");
                 for (int i = 0; i < 11; i++) {
                     numbers.add(numbers.get(i) + (constant3 * (i + 1)));
                 }
@@ -307,6 +315,9 @@ public class RitmiksaymaActivity extends AppCompatActivity {
 
             dogrucounter++;
 
+            numberBtns.get(hangiKutu).setText(String.valueOf(dogrucevap));
+            numberBtns.get(hangiKutu).setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.yesil));
+
             try {
                 if (dogru_cevap_music == null) {
                     dogru_cevap_music = MediaPlayer.create(this, R.raw.rightanswer);
@@ -388,6 +399,12 @@ public class RitmiksaymaActivity extends AppCompatActivity {
             animator.setDuration(1000);
             animator.start();
 
+            ipucuBtn.setAlpha(1.0f);
+            AlphaAnimation animation1 = new AlphaAnimation(0.0f, 1.0f);
+            animation1.setDuration(1000);
+            animation1.setFillAfter(true);
+            ipucuBtn.startAnimation(animation1);
+
         }
     }
 
@@ -398,7 +415,7 @@ public class RitmiksaymaActivity extends AppCompatActivity {
             boscounter++;
             questioncounter++;
         }
-
+        ipucuBtn.setAlpha(0.0f);
 
         prepareQuestion();
 

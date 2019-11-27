@@ -326,7 +326,8 @@ public class MainmenuActivity extends AppCompatActivity {
                 getString(R.string.konularcikarma),
                 getString(R.string.konularcarpma),
                 getString(R.string.konularbolme),
-                getString(R.string.konularritmik)));
+                getString(R.string.konularritmik),
+                getString(R.string.konularsimetry)));
 
         final TextView konubaslik_stats = findViewById(R.id.konubaslik_stats);
 
@@ -675,9 +676,7 @@ public class MainmenuActivity extends AppCompatActivity {
             if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularbolme) + "dogru", 0) > 9) {
                 Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_good_starter_division));
             }
-            if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularbuyukkucuk) + "dogru", 0) > 9) {
-                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_good_starter_greaterlesser));
-            }
+
             if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularritmik) + "dogru", 0) > 9) {
                 Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_good_starter_serials));
             }
@@ -700,9 +699,7 @@ public class MainmenuActivity extends AppCompatActivity {
             if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularbolme) + "dogru", 0) > 49) {
                 Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_clever_kid_division));
             }
-            if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularbuyukkucuk) + "dogru", 0) > 49) {
-                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_clever_kid_greaterlesser));
-            }
+
             if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularritmik) + "dogru", 0) > 49) {
                 Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_clever_kid_serials));
             }
@@ -725,9 +722,7 @@ public class MainmenuActivity extends AppCompatActivity {
             if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularbolme) + "dogru", 0) > 199) {
                 Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_division_expert));
             }
-            if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularbuyukkucuk) + "dogru", 0) > 199) {
-                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_greater_or_lesser_expert));
-            }
+
             if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularritmik) + "dogru", 0) > 199) {
                 Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_serials_expert));
             }
@@ -750,9 +745,7 @@ public class MainmenuActivity extends AppCompatActivity {
             if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularbolme) + "dogru", 0) > 499) {
                 Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_division_proffessor));
             }
-            if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularbuyukkucuk) + "dogru", 0) > 499) {
-                Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_greater_of_lesser_proffessor));
-            }
+
             if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularritmik) + "dogru", 0) > 499) {
                 Games.getAchievementsClient(this, GoogleSignIn.getLastSignedInAccount(MainmenuActivity.this)).unlock(getString(R.string.achievement_serials_proffessor));
             }

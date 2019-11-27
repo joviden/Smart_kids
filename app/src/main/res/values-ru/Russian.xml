@@ -9,13 +9,11 @@
     <string name="konularcarpma">умножение</string>
     <string name="konularbolme">разделение</string>
     <string name="konularritmik">считающий</string>
-    <string name="konularbuyukkucuk">большая меньший</string>
     <string name="konulartekcift">нечетное/четное</string>
     <string name="questionfordivision">Найдите правильный ответ подразделения.</string>
     <string name="questionformultipication">Найдите правильный ответ умножения.</string>
     <string name="questionforaddition">Найдите правильный ответ добавления.</string>
     <string name="questionforsubtraction">Найдите правильный ответ на вычитание.</string>
-    <string name="questionforbuyukkucuk">Перетащите их в порядке убывания.</string>
     <string name="questionforritmik">Заполните пробел правильным номером.</string>
     <string name="totalquestion">вопрос:</string>
     <string name="rightanswers">верный:</string>

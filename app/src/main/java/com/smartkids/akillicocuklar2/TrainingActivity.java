@@ -103,12 +103,6 @@ public class TrainingActivity extends AppCompatActivity {
             success_ritmik = 0;
         }
 
-        if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularbuyukkucuk) + "soru", 1)!=0){
-            success_buyuk_kucuk = Math.round(sharedPrefManager.getIntegerFromSP(getString(R.string.konularbuyukkucuk) + "dogru", 0) * 100) /
-                    (sharedPrefManager.getIntegerFromSP(getString(R.string.konularbuyukkucuk) + "soru", 1));
-        }else {
-            success_buyuk_kucuk = 0;
-        }
 
         if (sharedPrefManager.getIntegerFromSP(getString(R.string.konularsimetry) + "soru", 1)!=0){
             success_simetri = Math.round(sharedPrefManager.getIntegerFromSP(getString(R.string.konularsimetry) + "dogru", 0) * 100) /
@@ -116,6 +110,8 @@ public class TrainingActivity extends AppCompatActivity {
         }else {
             success_simetri = 0;
         }
+
+        Log.i("simetribasari","Basari:"+success_simetri);
 
 
 
@@ -163,8 +159,7 @@ public class TrainingActivity extends AppCompatActivity {
             trainingList.add(new Training(getString(R.string.konularcarpma), success_multiplication, R.drawable.icon_mental));
         } else {
             trainingList.add(new Training(getString(R.string.konularritmik), success_ritmik, R.drawable.icon_mental));
-            trainingList.add(new Training(getString(R.string.konularbuyukkucuk), success_extraction, R.drawable.icon_mental));
-            trainingList.add(new Training(getString(R.string.konularsimetry), success_division, R.drawable.icon_mental));
+            trainingList.add(new Training(getString(R.string.konularsimetry), success_simetri, R.drawable.icon_mental));
         }
 
 
@@ -266,12 +261,7 @@ public class TrainingActivity extends AppCompatActivity {
                 Intent i = new Intent(TrainingActivity.this, SimetryActivity.class);
                 startActivity(i);
 
-            }else   if (view.getTag().toString().equals(getString(R.string.konularbuyukkucuk))){
-                Intent i = new Intent(TrainingActivity.this, BuyukKucukActivity.class);
-                startActivity(i);
-
             }
-
 
 
 

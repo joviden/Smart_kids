@@ -8,7 +8,6 @@
     <string name="konularcikarma">減算</string>
     <string name="konularcarpma">乗算</string>
     <string name="konularbolme">分割</string>
-    <string name="konularbuyukkucuk">大きい/小さい</string>
     <string name="questionfordivision">部門の正解を見つけてください。</string>
     <string name="totalquestion">"合計質問： "</string>
     <string name="rightanswers">"正しい答え： "</string>
@@ -25,7 +24,6 @@
     <string name="questionformultipication">乗算の正解を見つけてください。</string>
     <string name="questionforaddition">合計の正解を見つけてください。</string>
     <string name="questionforsubtraction">減算の正解を見つけてください。</string>
-    <string name="questionforbuyukkucuk">これらの数字を降順にドラッグします。</string>
     <string name="cevapla">回答</string>
     <string name="questionforritmik">ブランクに正しい番号を記入してください。</string>
     <string name="eksilt">減少</string>

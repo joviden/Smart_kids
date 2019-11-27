@@ -7,7 +7,6 @@
     <string name="konularcikarma">subtraktion</string>
     <string name="konularcarpma">multiplikation</string>
     <string name="konularbolme">aufteilung</string>
-    <string name="konularbuyukkucuk">größer / kleiner</string>
     <string name="questionfordivision">Finden Sie die richtige Antwort für die Division.</string>
     <string name="totalquestion">"Gesamtfrage: "</string>
     <string name="rightanswers">"Richtige Antworten: "</string>
@@ -24,7 +23,6 @@
     <string name="questionformultipication">Finde die richtige Antwort für die Multiplikation.</string>
     <string name="questionforaddition">Finden Sie die richtige Antwort für die Zusammenfassung.</string>
     <string name="questionforsubtraction">Finde die richtige Antwort für die Subtraktion.</string>
-    <string name="questionforbuyukkucuk">Ziehen Sie diese Zahlen in absteigende Reihenfolge.</string>
     <string name="cevapla">antworten</string>
     <string name="questionforritmik">Füllen Sie das Feld mit der richtigen Nummer aus.</string>
     <string name="eksilt">verringern</string>

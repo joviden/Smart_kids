@@ -8,7 +8,6 @@
     <string name="konularcarpma">गुणन</string>
     <string name="konularbolme">विभाजन</string>
     <string name="konularritmik">लयबद्ध गणना</string>
-    <string name="konularbuyukkucuk">सॉर्ट नंबर</string>
     <string name="konulartekcift">सिंगल/डबल</string>
     <string name="questionfordivision">विभाजन के लिए सही जवाब खोजें।</string>
     <string name="totalquestion">"कुल प्रश्न: "</string>
@@ -27,7 +26,6 @@
     <string name="questionformultipication">गुणन के लिए सही उत्तर ढूंढें</string>
     <string name="questionforaddition">सारांश के लिए सही उत्तर खोजें.</string>
     <string name="questionforsubtraction">घटाव के लिए सही उत्तर खोजें।</string>
-    <string name="questionforbuyukkucuk">इन नंबरों को अवरोही क्रम में खींचें।</string>
     <string name="cevapla">उत्तर</string>
     <string name="questionforritmik">रिक्त को सही संख्या के साथ भरें।</string>
     <string name="eksilt">कमी</string>

@@ -9,7 +9,6 @@
     <string name="konularcarpma">乘法</string>
     <string name="konularbolme">师</string>
     <string name="konularritmik">有节奏的计数</string>
-    <string name="konularbuyukkucuk">更大 / 较小</string>
     <string name="konulartekcift">奇数/偶数</string>
     <string name="questionfordivision">找到正确的答案。</string>
     <string name="totalquestion">"总问题："</string>
@@ -27,7 +26,6 @@
     <string name="questionformultipication">找到乘法的正确答案.</string>
     <string name="questionforaddition">为求和找到正确的答案。</string>
     <string name="questionforsubtraction">找到减法的正确答案。</string>
-    <string name="questionforbuyukkucuk">将这些数字按降序排列。</string>
     <string name="cevapla">回答</string>
     <string name="questionforritmik">用正确的数字填充空白。</string>
     <string name="eksilt">减少</string>
