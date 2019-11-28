@@ -141,7 +141,8 @@ For all inquiries please write to salginerdem@gmail.com.</string>
     <string name="filter_title">Smart Kids Math for kids. Math tests, summation, extraction, multiplication, division, 4 operation</string>
     <string name="content_description">header</string>
     <string name="total">total</string>
-
+    <string name="chooseOpt">Choose Operator</string>
+    <string name="ok">ok</string>
 
 
 </resources>

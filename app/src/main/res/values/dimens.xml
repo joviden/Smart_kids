@@ -15,7 +15,7 @@
     <dimen name="alert_results_height">450dp</dimen>
 
 
-
+    <dimen name="giant">68sp</dimen>
     <dimen name="header_huge">42sp</dimen>
     <dimen name="header_less_huge">32sp</dimen>
     <dimen name="header_bigger">26sp</dimen>

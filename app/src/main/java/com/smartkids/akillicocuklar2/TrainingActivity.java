@@ -303,7 +303,7 @@ public class TrainingActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+       
         Intent i = new Intent(TrainingActivity.this, MainmenuActivity.class);
         startActivity(i);
         this.finish();
