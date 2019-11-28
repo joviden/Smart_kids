@@ -306,7 +306,7 @@ public class TrainingActivity extends AppCompatActivity {
        
         Intent i = new Intent(TrainingActivity.this, MainmenuActivity.class);
         startActivity(i);
-        this.finish();
+        this.finishAffinity();
 
     }
 

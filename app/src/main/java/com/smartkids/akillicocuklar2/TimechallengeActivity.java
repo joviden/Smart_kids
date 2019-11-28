@@ -78,13 +78,14 @@ public class TimechallengeActivity extends AppCompatActivity implements Compound
     private CountDownTimer oyunsure, gerisayimcounter;
     private ConstraintLayout girisLayout,soru_main;
     private boolean isPaused = false;
-
+    private ImageView chronoImg;
+    private MediaPlayer gamemusic,intromusic;
 
     RelativeLayout sorugovde, gerisayim;
     LinearLayout sonuclar;
     Integer sayi1, sayi2, level, cevap, sorucounter, dogrucounter, yanliscounter, scorecounter, progress, levelsure, cevapcounter, kalansure, sorupuani;
     TextView sayi1View, sayi2View;
-    MediaPlayer gamemusic;
+
     ProgressBar timebar;
 
 
@@ -102,6 +103,7 @@ public class TimechallengeActivity extends AppCompatActivity implements Compound
         goBtn = findViewById(R.id.goBtn);
         girisLayout = findViewById(R.id.girisLayout);
         soru_main = findViewById(R.id.soru_main);
+        chronoImg = findViewById(R.id.chronoImg);
 
         sorucounter = 0;
         yanliscounter = 0;
@@ -151,6 +153,7 @@ public class TimechallengeActivity extends AppCompatActivity implements Compound
         checkbox_carpma.setOnCheckedChangeListener(this);
         checkbox_bolme.setOnCheckedChangeListener(this);
         final Animation scaleAnim = AnimationUtils.loadAnimation(this,R.anim.scale);
+        final Animation animationAkrep = AnimationUtils.loadAnimation(this,R.anim.rotate_seconds);
 
         okBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -160,6 +163,17 @@ public class TimechallengeActivity extends AppCompatActivity implements Compound
                         alertDialog.dismiss();
                     }
                     goBtn.startAnimation(scaleAnim);
+                    chronoImg.startAnimation(animationAkrep);
+                    intromusic = MediaPlayer.create(TimechallengeActivity.this,R.raw.ticktock);
+                    intromusic.start();
+
+                    intromusic.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mediaPlayer) {
+                            intromusic.start();
+
+                        }
+                    });
 
 
                 } else {
@@ -179,12 +193,21 @@ public class TimechallengeActivity extends AppCompatActivity implements Compound
         goBtn.clearAnimation();
 
 
+        if (intromusic!=null) {
+            intromusic.release();
+        }
+
+        intromusic = MediaPlayer.create(TimechallengeActivity.this,R.raw.start);
+
+
+
 
         gerisayimcounter = new CountDownTimer(4000,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
 
                 goBtn.setText("" + millisUntilFinished / 1000);
+                intromusic.start();
 
             }
 
@@ -193,6 +216,12 @@ public class TimechallengeActivity extends AppCompatActivity implements Compound
 
                fadeIn_fadeOut_Animation(soru_main,girisLayout);
                prepareQuestion();
+
+                if (intromusic!=null) {
+                    intromusic.release();
+                }
+
+
 
                 gamemusic = MediaPlayer.create(TimechallengeActivity.this,R.raw.gamemusic1);
                 gamemusic.start();
