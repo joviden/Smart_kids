@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/pause_height"
+    android:background="@drawable/cerceve_alert_dialog">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/pause_height">
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_vertical02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.02" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_vertical15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.15" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_vertical47"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.47" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_vertical53"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.53" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_vertical20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.2" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_vertical80"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.8" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_vertical85"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.85" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_vertical98"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.98" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_horizontal10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.07" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_horizontal32"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.42" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_horizontal50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.6" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_horizontal75"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.88" />
+
+
+
+
+
+
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_horizontal98"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.95" />
+
+
+        <TextView
+            android:id="@+id/levelTxt"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:background="@drawable/cerceve_button"
+            android:fontFamily="@font/justsay"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="@string/leave"
+            android:textColor="@color/textsari"
+            android:textSize="@dimen/header_big"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal32"
+            app:layout_constraintEnd_toEndOf="@id/guideline_vertical80"
+            app:layout_constraintStart_toStartOf="@id/guideline_vertical20"
+            app:layout_constraintTop_toTopOf="@id/guideline_horizontal10" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/resumeBtn"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/cerceve_button"
+            android:onClick="tamamla"
+            android:text="@string/go"
+            android:textAllCaps="false"
+            android:textSize="@dimen/nextquestion"
+            android:textColor="@color/dahakirlibeyaz"
+            android:fontFamily="@font/mclaren"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal75"
+            app:layout_constraintEnd_toEndOf="@id/guideline_vertical85"
+            app:layout_constraintStart_toStartOf="@id/guideline_vertical53"
+            app:layout_constraintTop_toTopOf="@id/guideline_horizontal50" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/exitBtn"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/cerceve_button"
+            android:onClick="tamamla"
+            android:text="@string/exit"
+            android:textAllCaps="false"
+            android:textSize="@dimen/nextquestion"
+            android:textColor="@color/dahakirlibeyaz"
+            android:fontFamily="@font/mclaren"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal75"
+            app:layout_constraintEnd_toEndOf="@id/guideline_vertical47"
+            app:layout_constraintStart_toStartOf="@id/guideline_vertical15"
+            app:layout_constraintTop_toTopOf="@id/guideline_horizontal50" />
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>
+
+
+
+

@@ -63,7 +63,7 @@ public class FourOpActivity extends AppCompatActivity {
     private int rangeup, rangedown, range2up, range2down;
     private int question_point;
     private boolean user_answered;
-    private MediaPlayer dogru_cevap_music, hatali_cevap_music;
+    private MediaPlayer dogru_cevap_music, hatali_cevap_music, gecis;
 
 
     AppCompatButton sikA_Btn, sikB_Btn, sikC_Btn, sikD_Btn, sayi1Btn, sayi2Btn, sembolBtn, sorunumarasiBtn, tamamlaBtn, skorBtn, nextquestionBtn;
@@ -98,22 +98,21 @@ public class FourOpActivity extends AppCompatActivity {
 
 
         if (operator.equals(getString(R.string.konulartoplama)))
-            question_point=Constants.toplama_puan;
+            question_point = Constants.toplama_puan;
 
         if (operator.equals(getString(R.string.konularcikarma)))
-            question_point=Constants.cikarma_puan;
+            question_point = Constants.cikarma_puan;
 
         if (operator.equals(getString(R.string.konularcarpma)))
-            question_point=Constants.carpma_puan;
+            question_point = Constants.carpma_puan;
 
         if (operator.equals(getString(R.string.konularbolme)))
-            question_point=Constants.bolme_puan;
-
-
+            question_point = Constants.bolme_puan;
 
 
         dogru_cevap_music = MediaPlayer.create(this, R.raw.rightanswer);
         hatali_cevap_music = MediaPlayer.create(this, R.raw.wronganswer);
+        gecis = MediaPlayer.create(this, R.raw.sorugecisi);
 
 
         createAds();
@@ -220,7 +219,7 @@ public class FourOpActivity extends AppCompatActivity {
                     range2up = 10;
                     range2down = 4;
                 }
-                question_point = (int )Math.round(question_point*1.20);
+                question_point = (int) Math.round(question_point * 1.20);
                 break;
 
             case R.id.zorBtn:
@@ -241,7 +240,7 @@ public class FourOpActivity extends AppCompatActivity {
                     range2up = 15;
                     range2down = 8;
                 }
-                question_point = (int )Math.round(question_point*1.50);
+                question_point = (int) Math.round(question_point * 1.50);
                 break;
         }
 
@@ -250,9 +249,9 @@ public class FourOpActivity extends AppCompatActivity {
 
     private void prepareQuestion() {
 
-        user_answered=false;
+        user_answered = false;
 
-        if (questioncounter!=0 && questioncounter%5==0){
+        if (questioncounter != 0 && questioncounter % 5 == 0) {
             if (mInterstitialAd.isLoaded()) {
                 mInterstitialAd.show();
             }
@@ -269,11 +268,7 @@ public class FourOpActivity extends AppCompatActivity {
         sikD_Btn.setEnabled(true);
 
 
-            sorunumarasiBtn.setText(getString(R.string.question) + " " + String.valueOf(questioncounter+1));
-
-
-
-
+        sorunumarasiBtn.setText(getString(R.string.question) + " " + String.valueOf(questioncounter + 1));
 
 
         if (operator.equals(getString(R.string.konulartoplama))) {
@@ -293,18 +288,13 @@ public class FourOpActivity extends AppCompatActivity {
         sorusayilarlayout.startAnimation(AnimationUtils.loadAnimation(FourOpActivity.this, R.anim.slide_in));
         siklarlayout.startAnimation(AnimationUtils.loadAnimation(FourOpActivity.this, R.anim.slide_in));
 
-        try {
-            final MediaPlayer gecis = MediaPlayer.create(this, R.raw.sorugecisi);
+        if (gecis==null){
+            gecis = MediaPlayer.create(this, R.raw.sorugecisi);
+        }else {
             gecis.start();
-            gecis.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                @Override
-                public void onCompletion(MediaPlayer mediaPlayer) {
-                    gecis.release();
-                }
-            });
-        } catch (Exception e) {
-            e.printStackTrace();
         }
+
+
 
 
     }
@@ -513,9 +503,9 @@ public class FourOpActivity extends AppCompatActivity {
     private void getNumbersCarpma() {
 
         Random random = new Random();
-        sayi1 = random.nextInt(rangeup-rangedown)+rangedown;
-        sayi2 = random.nextInt(rangeup-rangedown)+rangedown;
-        dogrucevap = sayi1*sayi2;
+        sayi1 = random.nextInt(rangeup - rangedown) + rangedown;
+        sayi2 = random.nextInt(rangeup - rangedown) + rangedown;
+        dogrucevap = sayi1 * sayi2;
 
         List<Integer> presiklar = new ArrayList<Integer>();
         for (int i = 1; i < 6; i++) {
@@ -524,7 +514,9 @@ public class FourOpActivity extends AppCompatActivity {
                 presiklar.add(dogrucevap - i);
         }
         presiklar.add(dogrucevap + 10);
-        if ((dogrucevap-10)>0){presiklar.add(dogrucevap-10);}
+        if ((dogrucevap - 10) > 0) {
+            presiklar.add(dogrucevap - 10);
+        }
         presiklar.remove(Integer.valueOf(dogrucevap));
         Collections.shuffle(presiklar);
         presiklar.add(random.nextInt(4 - 0) + 0, dogrucevap);
@@ -546,7 +538,7 @@ public class FourOpActivity extends AppCompatActivity {
     private void getNumbersBolme() {
 
         Random random = new Random();
-        dogrucevap = random.nextInt(rangeup -rangedown) + rangedown;
+        dogrucevap = random.nextInt(rangeup - rangedown) + rangedown;
         sayi2 = random.nextInt(range2up - range2down) + range2down;
         sayi1 = sayi2 * dogrucevap;
 
@@ -557,7 +549,9 @@ public class FourOpActivity extends AppCompatActivity {
                 presiklar.add(dogrucevap - i);
         }
         presiklar.add(dogrucevap + 10);
-        if ((dogrucevap-10)>0){presiklar.add(dogrucevap-10);}
+        if ((dogrucevap - 10) > 0) {
+            presiklar.add(dogrucevap - 10);
+        }
         presiklar.remove(Integer.valueOf(dogrucevap));
         Collections.shuffle(presiklar);
         presiklar.add(random.nextInt(4 - 0) + 0, dogrucevap);
@@ -602,7 +596,6 @@ public class FourOpActivity extends AppCompatActivity {
         alertDialog.setCancelable(false);
 
 
-
         testcikisBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -612,30 +605,24 @@ public class FourOpActivity extends AppCompatActivity {
         });
 
 
-
-
-
         if (cevapcounter > 0) {
 
-            int success_percent = (dogrucounter*100)/questioncounter;
+            int success_percent = (dogrucounter * 100) / questioncounter;
 
-            Log.i("success_percent","Success:"+success_percent+" "+"Question:"+questioncounter);
+            Log.i("success_percent", "Success:" + success_percent + " " + "Question:" + questioncounter);
 
-            if (success_percent==100) {
+            if (success_percent == 100) {
 
                 learnedStampBtn.setVisibility(View.INVISIBLE);
-                final Animation stampAnim = AnimationUtils.loadAnimation(this,R.anim.wordcompleted);
+                final Animation stampAnim = AnimationUtils.loadAnimation(this, R.anim.wordcompleted);
                 stampAnim.setFillAfter(true);
                 learnedStampBtn.startAnimation(stampAnim);
             }
 
 
-
-
-
             progressBar.setProgress(0);
-            progressBar.setMax(100*1000);
-            ObjectAnimator animation = ObjectAnimator.ofInt(progressBar, "progress", 0, success_percent*1000 );
+            progressBar.setMax(100 * 1000);
+            ObjectAnimator animation = ObjectAnimator.ofInt(progressBar, "progress", 0, success_percent * 1000);
             animation.setDuration(2000); // 3.5 second
             animation.setInterpolator(new LinearInterpolator());
             animation.start();
@@ -644,7 +631,7 @@ public class FourOpActivity extends AppCompatActivity {
             animator_percent.setObjectValues(0, success_percent);
             animator_percent.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                 public void onAnimationUpdate(ValueAnimator animation) {
-                    progressTxt.setText("%"+ String.valueOf(animation.getAnimatedValue()));
+                    progressTxt.setText("%" + String.valueOf(animation.getAnimatedValue()));
                 }
             });
             animator_percent.setEvaluator(new TypeEvaluator<Integer>() {
@@ -656,10 +643,7 @@ public class FourOpActivity extends AppCompatActivity {
             animator_percent.start();
 
 
-
-
-
-          //  Progres animation = ObjectAnimator.ofInt(progressBar, "progress", 0, Math.round(dogrucounter/questioncounter*100));
+            //  Progres animation = ObjectAnimator.ofInt(progressBar, "progress", 0, Math.round(dogrucounter/questioncounter*100));
 
 
             ValueAnimator animator = new ValueAnimator();
@@ -775,31 +759,22 @@ public class FourOpActivity extends AppCompatActivity {
 
         /////////////////skor bilgileri burada///////////////////////////////
 
-        sharedPrefManager.putIntegertoSP(operator+"soru",questioncounter+sharedPrefManager.getIntegerFromSP(operator+"soru",0));
+        sharedPrefManager.putIntegertoSP(operator + "soru", questioncounter + sharedPrefManager.getIntegerFromSP(operator + "soru", 0));
 
-        sharedPrefManager.putIntegertoSP(operator+"dogru",dogrucounter+sharedPrefManager.getIntegerFromSP(operator+"dogru",0));
+        sharedPrefManager.putIntegertoSP(operator + "dogru", dogrucounter + sharedPrefManager.getIntegerFromSP(operator + "dogru", 0));
 
-        sharedPrefManager.putIntegertoSP(operator+"yanlis",yanliscounter+sharedPrefManager.getIntegerFromSP(operator+"yanlis",0));
+        sharedPrefManager.putIntegertoSP(operator + "yanlis", yanliscounter + sharedPrefManager.getIntegerFromSP(operator + "yanlis", 0));
 
-        sharedPrefManager.putIntegertoSP(operator+"bos",boscounter+sharedPrefManager.getIntegerFromSP(operator+"bos",0));
+        sharedPrefManager.putIntegertoSP(operator + "bos", boscounter + sharedPrefManager.getIntegerFromSP(operator + "bos", 0));
 
-        sharedPrefManager.putIntegertoSP(operator+"skor",scorecounter+sharedPrefManager.getIntegerFromSP(operator+"skor",0));
-
-
-
-        sharedPrefManager.putIntegertoSP("soru_total",questioncounter+sharedPrefManager.getIntegerFromSP("soru_total",0));
-        sharedPrefManager.putIntegertoSP("dogru_total",dogrucounter+sharedPrefManager.getIntegerFromSP("dogru_total",0));
-        sharedPrefManager.putIntegertoSP("yanlis_total",yanliscounter+sharedPrefManager.getIntegerFromSP("yanlis_total",0));
-        sharedPrefManager.putIntegertoSP("bos_total",boscounter+sharedPrefManager.getIntegerFromSP("bos_total",0));
-        sharedPrefManager.putIntegertoSP("skor_total",scorecounter+sharedPrefManager.getIntegerFromSP("skor_total",0));
+        sharedPrefManager.putIntegertoSP(operator + "skor", scorecounter + sharedPrefManager.getIntegerFromSP(operator + "skor", 0));
 
 
-
-
-
-
-
-
+        sharedPrefManager.putIntegertoSP("soru_total", questioncounter + sharedPrefManager.getIntegerFromSP("soru_total", 0));
+        sharedPrefManager.putIntegertoSP("dogru_total", dogrucounter + sharedPrefManager.getIntegerFromSP("dogru_total", 0));
+        sharedPrefManager.putIntegertoSP("yanlis_total", yanliscounter + sharedPrefManager.getIntegerFromSP("yanlis_total", 0));
+        sharedPrefManager.putIntegertoSP("bos_total", boscounter + sharedPrefManager.getIntegerFromSP("bos_total", 0));
+        sharedPrefManager.putIntegertoSP("skor_total", scorecounter + sharedPrefManager.getIntegerFromSP("skor_total", 0));
 
 
     }

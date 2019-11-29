@@ -2,6 +2,7 @@
 <resources>
     <dimen name="sorunumarasi">34sp</dimen>
     <dimen name="sorusayilar">32sp</dimen>
+    <dimen name="level">28sp</dimen>
     <dimen name="sorumetni">16sp</dimen>
     <dimen name="siklar">24sp</dimen>
     <dimen name="testibitir">18sp</dimen>
@@ -10,6 +11,7 @@
     <dimen name="anwerbtn">16sp</dimen>
 
     <dimen name="char_item_height">200dp</dimen>
+    <dimen name="pause_height">150dp</dimen>
     <dimen name="slider_item_height">250dp</dimen>
     <dimen name="alert_dialog_height">350dp</dimen>
     <dimen name="alert_results_height">450dp</dimen>
